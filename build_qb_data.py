@@ -3,7 +3,7 @@ from pathlib import Path
 import nflreadpy as nfl
 import polars as pl
 
-seasons = list(range(2014, 2026))
+seasons = list(range(2014, 2027))
 frames = []
 
 for season in seasons:
