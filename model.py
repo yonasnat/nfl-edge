@@ -2,7 +2,7 @@ import polars as pl
 from sklearn.linear_model import LinearRegression
 
 MIN_EDGE = 2.0
-FEATURES = ["points_diff", "home_off", "home_def", "away_off", "away_def", "rest_diff"]
+FEATURES = ["points_diff", "home_off", "home_def", "away_off", "away_def", "home_qb", "away_qb", "rest_diff"]
 
 features = pl.read_parquet("data/features.parquet").with_columns(
     (pl.col("home_rest") - pl.col("away_rest")).fill_null(0).alias("rest_diff")
