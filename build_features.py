@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import nflreadpy as nfl
 import polars as pl
 
@@ -42,6 +44,8 @@ deff = {}          # running defensive EPA per play allowed
 qb_epa = {}        # each quarterback's faded total EPA
 qb_drops = {}      # each quarterback's faded total dropbacks
 last_starter = {}  # each team's most recent starting QB: (id, name)
+name_to_id = {}    # every starting QB we have seen: full name -> id
+overrides = {}     # starters you set by hand in qb_overrides.csv: team -> (id, name)
 rows = []
 upcoming_games = []
 missing = 0
@@ -57,7 +61,9 @@ def qb_rating(qb_id):
 
 
 def starter(game, side, team):
-    """The listed starting QB, or the team's most recent starter if none is listed."""
+    """Who starts at QB: your override, the listed starter, or the most recent one."""
+    if game["result"] is None and team in overrides:
+        return overrides[team]
     qb_id = game[side + "_qb_id"]
     qb_name = game[side + "_qb_name"]
     if qb_id is None and team in last_starter:
@@ -147,11 +153,13 @@ for game in games.iter_rows(named=True):
         qb_epa[qb_id] = qb_epa.get(qb_id, 0.0) * QB_DECAY + epa_total
         qb_drops[qb_id] = qb_drops.get(qb_id, 0.0) * QB_DECAY + dropbacks
 
-    # 5. Remember who started, for upcoming games
+    # 5. Remember who started, for upcoming games and for name lookups
     if game["home_qb_id"] is not None:
         last_starter[home] = (game["home_qb_id"], game["home_qb_name"])
+        name_to_id[game["home_qb_name"]] = game["home_qb_id"]
     if game["away_qb_id"] is not None:
         last_starter[away] = (game["away_qb_id"], game["away_qb_name"])
+        name_to_id[game["away_qb_name"]] = game["away_qb_id"]
 
 features = pl.DataFrame(rows)
 features.write_parquet("data/features.parquet")
@@ -159,6 +167,21 @@ features.write_parquet("data/features.parquet")
 print("Completed games:", features.height)
 print("Team-games with no EPA found:", missing)
 print("Saved to data/features.parquet")
+print()
+
+# Read the starters you set by hand, if the file exists
+overrides_path = Path("qb_overrides.csv")
+if overrides_path.exists():
+    for line in overrides_path.read_text().splitlines()[1:]:
+        if not line.strip():
+            continue
+        team, qb_name = [part.strip() for part in line.split(",", 1)]
+        qb_id = name_to_id.get(qb_name)
+        overrides[team] = (qb_id, qb_name)
+        if qb_id is None:
+            print(f"Override: {team} starts {qb_name} (no history found, check the spelling)")
+        else:
+            print(f"Override: {team} starts {qb_name}")
 
 # Upcoming games use the ratings as they stand after every completed game
 upcoming_rows = [make_row(game, home, away, bonus) for game, home, away, bonus in upcoming_games]
