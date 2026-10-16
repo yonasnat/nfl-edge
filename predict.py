@@ -1,8 +1,12 @@
+from datetime import date
+from pathlib import Path
+
 import polars as pl
 from sklearn.linear_model import LinearRegression
 
 MIN_EDGE = 2.0
 FEATURES = ["points_diff", "home_off", "home_def", "away_off", "away_def", "home_qb", "away_qb", "rest_diff"]
+LOG_PATH = Path("predictions_log.csv")
 
 
 def add_rest(table):
@@ -30,6 +34,9 @@ model.fit(history.select(FEATURES).to_numpy(), history["result"].to_numpy())
 
 predictions = model.predict(upcoming.select(FEATURES).to_numpy())
 
+today = date.today().isoformat()
+new_entries = []
+
 first = upcoming.row(0, named=True)
 print(f"{first['season']} week {first['week']} - model vs. market")
 print(f"Trained on {history.height} completed games")
@@ -55,7 +62,39 @@ for row, predicted in zip(upcoming.iter_rows(named=True), predictions):
         flag = "   <-- disagrees by 2+ points" if abs(edge) >= MIN_EDGE else ""
         print(f"  Market: {as_line(home, away, spread)}")
         print(f"  Gap:    {abs(edge):.1f} points toward {lean}{flag}")
+
+        # Only log games that haven't started yet
+        if row["gameday"] > today:
+            new_entries.append(
+                {
+                    "game_id": row["game_id"],
+                    "season": row["season"],
+                    "week": row["week"],
+                    "away": away,
+                    "home": home,
+                    "model_line": round(float(predicted), 1),
+                    "market_line": float(spread),
+                    "logged": today,
+                }
+            )
+        else:
+            print("  (already started or today, not logged)")
     print()
 
+# Add this week's predictions to the log, replacing earlier entries for the same games
+if new_entries:
+    new = pl.DataFrame(new_entries)
+    if LOG_PATH.exists():
+        old = pl.read_csv(LOG_PATH)
+        old = old.filter(~pl.col("game_id").is_in(new["game_id"].to_list()))
+        combined = pl.concat([old, new], how="vertical_relaxed")
+    else:
+        combined = new
+    combined.sort(["season", "week", "game_id"]).write_csv(LOG_PATH)
+    print(f"Logged {len(new_entries)} predictions to {LOG_PATH}")
+else:
+    print("Nothing new to log.")
+
+print()
 print("Backtest record for 2+ point gaps: about 50%, below the 52.4% break-even.")
 print("These are for tracking the model, not for betting yet.")
