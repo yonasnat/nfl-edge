@@ -1,0 +1,51 @@
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+h1 {
+  margin: 0 0 4px;
+}
+
+.subtitle {
+  color: #666;
+  margin: 0 0 24px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap;
+}
+
+th {
+  font-weight: 600;
+  color: #555;
+}
+
+tr.flagged {
+  background: #fff6d6;
+}
+
+.note {
+  color: #666;
+  font-size: 13px;
+  margin-top: 16px;
+}
+
+.message {
+  padding: 32px 16px;
+}

@@ -1,5 +1,6 @@
 import polars as pl
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from sklearn.linear_model import LinearRegression
 
 FEATURES = ["points_diff", "home_off", "home_def", "away_off", "away_def", "home_qb", "away_qb", "rest_diff"]
@@ -13,6 +14,13 @@ def add_rest(table):
 
 
 app = FastAPI(title="NFL Edge")
+
+# Allow the React dashboard (running on port 5173) to request data
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_methods=["GET"],
+)
 
 # Train the model once, when the server starts
 history = add_rest(pl.read_parquet("data/features.parquet"))
