@@ -3,6 +3,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sklearn.linear_model import LinearRegression
 
+from tracking import grade_log
+
 FEATURES = ["points_diff", "home_off", "home_def", "away_off", "away_def", "home_qb", "away_qb", "rest_diff"]
 
 
@@ -59,3 +61,9 @@ def predictions():
         )
 
     return {"season": first["season"], "week": first["week"], "games": games}
+
+
+@app.get("/record")
+def record():
+    """Every logged prediction with its result, plus the running record."""
+    return grade_log()
