@@ -1,6 +1,10 @@
+import json
+from pathlib import Path
+
 import requests
 
 FORECAST_URL = "https://api.open-meteo.com/v1/forecast"
+EVIDENCE_PATH = Path("data/weather_evidence.json")
 
 # Each home team's stadium location (latitude, longitude)
 STADIUMS = {
@@ -42,12 +46,69 @@ STADIUMS = {
 RETRACTABLE = {"ARI", "ATL", "DAL", "HOU", "IND"}
 
 
+def wind_band(wind):
+    if wind >= 20:
+        return "20+ mph"
+    if wind >= 15:
+        return "15-19 mph"
+    if wind >= 10:
+        return "10-14 mph"
+    return "0-9 mph"
+
+
+def temp_band(temp):
+    if temp <= 32:
+        return "32F or less"
+    if temp <= 49:
+        return "33-49F"
+    if temp <= 79:
+        return "50-79F"
+    return "80F+"
+
+
+def load_evidence():
+    """Results from weather_effects.py, or None if it hasn't been run."""
+    if not EVIDENCE_PATH.exists():
+        return None
+    return json.loads(EVIDENCE_PATH.read_text())
+
+
+def describe(kind, row, seasons):
+    """One sentence of evidence for a weather band."""
+    direction = "below" if row["vs_line"] < 0 else "above"
+    return (
+        f"Past outdoor games with {row['band']} {kind} ({row['games']} games, {seasons}): "
+        f"scoring averaged {abs(row['vs_line']):.1f} points {direction} the total, "
+        f"and the under won {row['under_rate']:.0%}. Based on conditions measured at kickoff, not forecasts."
+    )
+
+
+def weather_evidence(wind, temp):
+    """Evidence for this game's conditions, skipping the normal (calm, mild) bands."""
+    evidence = load_evidence()
+    if evidence is None:
+        return []
+
+    notes = []
+    w = wind_band(wind)
+    if w != "0-9 mph":
+        for row in evidence["wind"]:
+            if row["band"] == w:
+                notes.append(describe("wind", row, evidence["seasons"]))
+    t = temp_band(temp)
+    if t != "50-79F":
+        for row in evidence["temperature"]:
+            if row["band"] == t:
+                notes.append(describe("temperatures", row, evidence["seasons"]))
+    return notes
+
+
 def unavailable(reason):
-    return {"available": False, "reason": reason, "flags": []}
+    return {"available": False, "reason": reason, "flags": [], "evidence": []}
 
 
 def kickoff_weather(game):
-    """The forecast at kickoff for one game, plus flags for notable conditions."""
+    """The forecast at kickoff for one game, plus flags and historical evidence."""
     if game["location"] == "Neutral":
         return unavailable("Neutral-site game: forecast not supported yet")
 
@@ -57,6 +118,7 @@ def kickoff_weather(game):
             "indoor": True,
             "summary": "Indoors: weather won't be a factor",
             "flags": [],
+            "evidence": [],
         }
 
     coords = STADIUMS.get(game["home"])
@@ -94,8 +156,8 @@ def kickoff_weather(game):
     precip = hourly["precipitation_probability"][i] or 0
 
     flags = []
-    if wind >= 15:
-        flags.append(f"Strong wind: {wind:.0f} mph")
+    if wind >= 10:
+        flags.append(f"Wind: {wind:.0f} mph")
     if gusts >= 25:
         flags.append(f"Gusts up to {gusts:.0f} mph")
     if precip >= 50:
@@ -107,6 +169,11 @@ def kickoff_weather(game):
     if game["home"] in RETRACTABLE:
         flags.append("Retractable roof: may be closed on game day")
 
+     # Outdoor evidence only applies if a retractable roof is open
+    evidence = weather_evidence(wind, temp)
+    if game["home"] in RETRACTABLE:
+        evidence = ["If the roof is open: " + note for note in evidence]
+
     return {
         "available": True,
         "indoor": False,
@@ -116,4 +183,5 @@ def kickoff_weather(game):
         "precip_chance": precip,
         "summary": f"{temp:.0f}°F, wind {wind:.0f} mph, {precip}% chance of precipitation",
         "flags": flags,
+        "evidence": evidence,
     }
