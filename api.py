@@ -1,8 +1,9 @@
 import polars as pl
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sklearn.linear_model import LinearRegression
 
+from briefing import build_briefing, this_week
 from tracking import grade_log
 
 FEATURES = ["points_diff", "home_off", "home_def", "away_off", "away_def", "home_qb", "away_qb", "rest_diff"]
@@ -35,6 +36,21 @@ model.fit(history.select(FEATURES).to_numpy(), history["result"].to_numpy())
 def home():
     """A simple check that the server is running."""
     return {"message": "NFL Edge API is running"}
+
+
+@app.get("/games")
+def games():
+    """This week's games."""
+    return {"games": this_week()}
+
+
+@app.get("/games/{game_id}")
+def game_briefing(game_id: str):
+    """The full briefing for one game."""
+    briefing = build_briefing(game_id)
+    if briefing is None:
+        raise HTTPException(status_code=404, detail="Game not found")
+    return briefing
 
 
 @app.get("/predictions")
