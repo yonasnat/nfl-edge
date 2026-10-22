@@ -2,6 +2,7 @@ import nflreadpy as nfl
 import polars as pl
 
 from weather import kickoff_weather
+from situation import situation
 
 SEASON = 2026
 
@@ -135,12 +136,20 @@ def build_briefing(game_id):
 
     game = game_info(match.row(0, named=True))
     weather = kickoff_weather(game)
+    conditions = situation(game)
     profiles = load_profiles()
     home = game["home"]
     away = game["away"]
 
     if home not in profiles or away not in profiles:
-        return {"game": game, "weather": weather, "teams": None, "matchups": [], "key_matchups": []}
+        return {
+            "game": game,
+            "weather": weather,
+            "situation": conditions,
+            "teams": None,
+            "matchups": [],
+            "key_matchups": [],
+        }
 
     matchups = []
     for offense, defense in ((home, away), (away, home)):
@@ -152,6 +161,7 @@ def build_briefing(game_id):
     return {
         "game": game,
         "weather": weather,
+        "situation": conditions,
         "teams": {"away": team_card(away, profiles), "home": team_card(home, profiles)},
         "matchups": matchups,
         "key_matchups": key_matchups,
