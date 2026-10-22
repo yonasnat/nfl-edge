@@ -1,10 +1,13 @@
+import json
 import math
 from datetime import datetime
+from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from weather import STADIUMS
 
 EASTERN = ZoneInfo("America/New_York")
+EVIDENCE_PATH = Path("data/situation_evidence.json")
 
 # Each team's home time zone
 TEAM_TIMEZONES = {
@@ -69,13 +72,31 @@ def clock(moment):
     return moment.strftime("%-I:%M %p")
 
 
+def load_evidence():
+    """Results from situation_effects.py, as factor -> result, or {} if not run yet."""
+    if not EVIDENCE_PATH.exists():
+        return {}, ""
+    data = json.loads(EVIDENCE_PATH.read_text())
+    return {row["factor"]: row for row in data["factors"]}, data["seasons"]
+
+
+def describe(team, row, seasons):
+    """One sentence of evidence for a situational factor."""
+    return (
+        f"{team} - {row['factor']} ({row['games']} games, {seasons}): covered the spread "
+        f"{row['cover_rate']:.0%} of the time, averaging {(row['avg_vs_spread'] or 0.0):+.1f} points "
+        f"vs. the spread. Break-even is 52.4%."
+    )
+
+
 def situation(game):
-    """Rest, surface, elevation, travel, and body-clock facts for one game."""
+    """Rest, surface, elevation, travel, and body-clock facts for one game, with evidence."""
     home = game["home"]
     away = game["away"]
     neutral = game["location"] == "Neutral"
     facts = []
     flags = []
+    matched = []   # (team, factor) pairs to look up in the evidence
 
     # Rest
     home_rest = game["home_rest"]
@@ -87,9 +108,15 @@ def situation(game):
                 flags.append(f"{team} on a short week ({days} days of rest)")
             elif days >= 13:
                 flags.append(f"{team} coming off a bye ({days} days of rest)")
+        if home_rest >= 13 and away_rest < 13:
+            matched.append((home, "Team off a bye vs. opponent not off a bye"))
+        elif away_rest >= 13 and home_rest < 13:
+            matched.append((away, "Team off a bye vs. opponent not off a bye"))
         if abs(home_rest - away_rest) >= 3:
             rested = home if home_rest > away_rest else away
             flags.append(f"Rest advantage: {rested} has {abs(home_rest - away_rest)} more days")
+            if home_rest < 13 and away_rest < 13:
+                matched.append((rested, "Team with 3+ more days of rest (no byes)"))
 
     # Playing surface
     if game["surface"]:
@@ -107,12 +134,15 @@ def situation(game):
             facts.append(f"Elevation: about {elevation:,} feet")
             if elevation >= 4000:
                 flags.append(f"High altitude: about {elevation:,} feet")
+                if home == "DEN":
+                    matched.append((home, "Denver at home (altitude)"))
 
         if away in STADIUMS and home in STADIUMS:
             miles = miles_between(STADIUMS[away], STADIUMS[home])
             facts.append(f"{away} travel: about {miles:,.0f} miles")
             if miles >= 2000:
                 flags.append(f"Long trip: {away} travels about {miles:,.0f} miles")
+                matched.append((away, "Visitor traveling 2,000+ miles"))
 
     # Time zones and body clock (kickoff times in the schedule are Eastern)
     if game["gametime"] and home in TEAM_TIMEZONES and away in TEAM_TIMEZONES:
@@ -128,6 +158,9 @@ def situation(game):
                 direction = "east" if zones > 0 else "west"
                 plural = "zone" if abs(zones) == 1 else "zones"
                 facts.append(f"{away} crosses {abs(zones):.0f} time {plural} traveling {direction}")
+            if abs(zones) >= 3:
+                flags.append(f"{away} crosses {abs(zones):.0f} time zones traveling {direction}")
+                matched.append((away, f"Visitor crossing 3 time zones {direction}"))
 
         facts.append(f"Kickoff on body clocks: {away} {clock(away_clock)}, {home} {clock(home_clock)}")
 
@@ -138,5 +171,11 @@ def situation(game):
         for team, team_clock in teams_to_check:
             if team_clock.hour < 11:
                 flags.append(f"Early body-clock kickoff: {clock(team_clock)} for {team}")
+                if not neutral:
+                    matched.append((team, "Visitor with early body-clock kickoff (before 11 AM)"))
 
-    return {"facts": facts, "flags": flags}
+    # Look up the historical result for each matched factor
+    results, seasons = load_evidence()
+    evidence = [describe(team, results[factor], seasons) for team, factor in matched if factor in results]
+
+    return {"facts": facts, "flags": flags, "evidence": evidence}
