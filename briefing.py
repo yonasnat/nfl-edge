@@ -4,6 +4,7 @@ import polars as pl
 from weather import kickoff_weather
 from situation import situation
 from history import head_to_head
+from players import key_players
 
 SEASON = 2026
 
@@ -141,6 +142,7 @@ def build_briefing(game_id):
     weather = kickoff_weather(game)
     conditions = situation(game)
     history = head_to_head(away, home)
+    players = {"away": key_players(away, home), "home": key_players(home, away)}
     profiles = load_profiles()
 
     if home not in profiles or away not in profiles:
@@ -149,6 +151,7 @@ def build_briefing(game_id):
             "weather": weather,
             "situation": conditions,
             "head_to_head": history,
+            "players": players,
             "teams": None,
             "matchups": [],
             "key_matchups": [],
@@ -166,6 +169,7 @@ def build_briefing(game_id):
         "weather": weather,
         "situation": conditions,
         "head_to_head": history,
+        "players": players,
         "teams": {"away": team_card(away, profiles), "home": team_card(home, profiles)},
         "matchups": matchups,
         "key_matchups": key_matchups,
