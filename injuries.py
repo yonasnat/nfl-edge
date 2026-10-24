@@ -1,3 +1,5 @@
+import re
+
 import nflreadpy as nfl
 import polars as pl
 
@@ -5,6 +7,15 @@ SEASON = 2026
 
 # Lower number = more serious, for sorting
 SEVERITY = {"Out": 0, "Doubtful": 1, "Questionable": 2}
+SUFFIXES = {"jr", "sr", "ii", "iii", "iv", "v"}
+
+
+def name_key(name):
+    """A simplified name for matching: 'Carlton Davis III' -> 'carlton davis'."""
+    if not name:
+        return ""
+    words = re.sub(r"[^a-z\s]", "", name.lower()).split()
+    return " ".join(w for w in words if w not in SUFFIXES)
 
 
 def load_snap_shares():
@@ -28,8 +39,12 @@ def load_snap_shares():
     # Some versions store percentages as 0-100 instead of 0-1
     scale = 100 if shares["share"].max() > 1.5 else 1
 
-    by_name_team = {(r["player"], r["team"]): r["share"] / scale for r in shares.iter_rows(named=True)}
-    by_name = {r["player"]: r["share"] / scale for r in shares.iter_rows(named=True)}
+    by_name_team = {}
+    by_name = {}
+    for r in shares.iter_rows(named=True):
+        key = name_key(r["player"])
+        by_name_team[(key, r["team"])] = r["share"] / scale
+        by_name[key] = r["share"] / scale
     return by_name_team, by_name
 
 
@@ -46,15 +61,35 @@ def importance(position, share):
     return "Depth"
 
 
+def describe(p):
+    """The part of a headline in parentheses: position, importance, injury."""
+    parts = [p["position"]]
+    if p["importance"] != "Unknown":
+        parts.append(p["importance"].lower())
+    if p["injury"]:
+        parts.append(p["injury"])
+    return ", ".join(parts)
+
+
 def team_injuries(team, game_week, reports, shares):
     """The latest injury report for one team, most serious and most important first."""
     by_name_team, by_name = shares
     rows = reports.filter(pl.col("team") == team)
     if rows.height == 0:
-        return {"team": team, "report_week": None, "current": False, "players": [], "headlines": []}
+        return {
+            "team": team,
+            "report_week": None,
+            "current": False,
+            "statuses_published": False,
+            "note": "No injury report found",
+            "players": [],
+            "headlines": [],
+        }
 
     report_week = rows["week"].max()
     latest = rows.filter(pl.col("week") == report_week)
+    current = report_week >= game_week
+    statuses_published = latest["report_status"].is_not_null().any()
 
     players = []
     for r in latest.iter_rows(named=True):
@@ -65,11 +100,11 @@ def team_injuries(team, game_week, reports, shares):
         if status is None and practice.startswith("Full"):
             continue
 
-        name = r["full_name"]
-        share = by_name_team.get((name, team), by_name.get(name))
+        key = name_key(r["full_name"])
+        share = by_name_team.get((key, team), by_name.get(key))
         players.append(
             {
-                "name": name,
+                "name": r["full_name"],
                 "position": r["position"],
                 "injury": r["report_primary_injury"] or r["practice_primary_injury"],
                 "status": status,
@@ -83,16 +118,28 @@ def team_injuries(team, game_week, reports, shares):
 
     headlines = []
     for p in players:
-        serious = p["status"] in ("Out", "Doubtful")
-        key_questionable = p["status"] == "Questionable" and p["importance"] in ("Starting QB", "Starter")
-        if serious or key_questionable:
-            detail = p["importance"].lower() if p["importance"] != "Unknown" else p["position"]
-            headlines.append(f"{p['name']} ({p['position']}, {detail}, {p['injury']}): {p['status']}")
+        important = p["importance"] in ("Starting QB", "Starter")
+        practice = p["practice"] or ""
+        if p["status"] in ("Out", "Doubtful"):
+            headlines.append(f"{p['name']} ({describe(p)}): {p['status']}")
+        elif p["status"] == "Questionable" and important:
+            headlines.append(f"{p['name']} ({describe(p)}): Questionable")
+        elif p["status"] is None and important and practice.startswith("Did Not"):
+            headlines.append(f"{p['name']} ({describe(p)}): did not practice")
+
+    if not current:
+        note = f"Latest report is from Week {report_week}; this week's report isn't out yet."
+    elif not statuses_published:
+        note = "Practice reports only so far. Game statuses (Out, Questionable) usually come out the day before the game, or Friday for Sunday games."
+    else:
+        note = "Includes game statuses."
 
     return {
         "team": team,
         "report_week": report_week,
-        "current": report_week >= game_week,
+        "current": current,
+        "statuses_published": bool(statuses_published),
+        "note": note,
         "players": players,
         "headlines": headlines,
     }
