@@ -1,0 +1,38 @@
+export const TEAMS = {
+  ARI: { city: "Arizona", name: "Cardinals", color: "#97233F" },
+  ATL: { city: "Atlanta", name: "Falcons", color: "#A71930" },
+  BAL: { city: "Baltimore", name: "Ravens", color: "#5B3FB5" },
+  BUF: { city: "Buffalo", name: "Bills", color: "#1D5BD6" },
+  CAR: { city: "Carolina", name: "Panthers", color: "#0085CA" },
+  CHI: { city: "Chicago", name: "Bears", color: "#C83803" },
+  CIN: { city: "Cincinnati", name: "Bengals", color: "#FB4F14" },
+  CLE: { city: "Cleveland", name: "Browns", color: "#FF3C00" },
+  DAL: { city: "Dallas", name: "Cowboys", color: "#2E5AAC" },
+  DEN: { city: "Denver", name: "Broncos", color: "#FB4F14" },
+  DET: { city: "Detroit", name: "Lions", color: "#0076B6" },
+  GB: { city: "Green Bay", name: "Packers", color: "#2E6B4F" },
+  HOU: { city: "Houston", name: "Texans", color: "#C8102E" },
+  IND: { city: "Indianapolis", name: "Colts", color: "#1F5AA6" },
+  JAX: { city: "Jacksonville", name: "Jaguars", color: "#006778" },
+  KC: { city: "Kansas City", name: "Chiefs", color: "#E31837" },
+  LV: { city: "Las Vegas", name: "Raiders", color: "#6B6B6B" },
+  LAC: { city: "Los Angeles", name: "Chargers", color: "#0080C6" },
+  LA: { city: "Los Angeles", name: "Rams", color: "#1E4FD6" },
+  MIA: { city: "Miami", name: "Dolphins", color: "#008E97" },
+  MIN: { city: "Minnesota", name: "Vikings", color: "#6B3FA0" },
+  NE: { city: "New England", name: "Patriots", color: "#C60C30" },
+  NO: { city: "New Orleans", name: "Saints", color: "#9F8958" },
+  NYG: { city: "New York", name: "Giants", color: "#1E3FA0" },
+  NYJ: { city: "New York", name: "Jets", color: "#125740" },
+  PHI: { city: "Philadelphia", name: "Eagles", color: "#00646E" },
+  PIT: { city: "Pittsburgh", name: "Steelers", color: "#D49A00" },
+  SF: { city: "San Francisco", name: "49ers", color: "#AA0000" },
+  SEA: { city: "Seattle", name: "Seahawks", color: "#3C8A2E" },
+  TB: { city: "Tampa Bay", name: "Buccaneers", color: "#D50A0A" },
+  TEN: { city: "Tennessee", name: "Titans", color: "#4B92DB" },
+  WAS: { city: "Washington", name: "Commanders", color: "#7A1F1F" },
+};
+
+export function team(abbreviation) {
+  return TEAMS[abbreviation] ?? { city: "", name: abbreviation, color: "#52525b" };
+}

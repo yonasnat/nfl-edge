@@ -1,3 +1,5 @@
+from datetime import datetime
+from zoneinfo import ZoneInfo
 import nflreadpy as nfl
 import polars as pl
 
@@ -39,11 +41,19 @@ def load_profiles():
 
 def game_info(row):
     """The basic facts about one game."""
+    kickoff = None
+    if row["gametime"]:
+        kickoff = (
+            datetime.strptime(f"{row['gameday']} {row['gametime']}", "%Y-%m-%d %H:%M")
+            .replace(tzinfo=ZoneInfo("America/New_York"))
+            .isoformat()
+        )
     return {
         "game_id": row["game_id"],
         "week": row["week"],
         "gameday": str(row["gameday"]),
         "gametime": row["gametime"],
+        "kickoff": kickoff,
         "away": row["away_team"],
         "home": row["home_team"],
         "away_score": row["away_score"],
@@ -58,7 +68,6 @@ def game_info(row):
         "home_rest": row["home_rest"],
         "div_game": bool(row["div_game"]),
     }
-
 
 def this_week():
     """Every game in the earliest week that still has games left to play."""
