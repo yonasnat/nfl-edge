@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 import requests
+from cache import ttl_cache
 
 FORECAST_URL = "https://api.open-meteo.com/v1/forecast"
 EVIDENCE_PATH = Path("data/weather_evidence.json")
@@ -102,6 +103,22 @@ def weather_evidence(wind, temp):
                 notes.append(describe("temperatures", row, evidence["seasons"]))
     return notes
 
+@ttl_cache(900)
+def fetch_hourly(latitude, longitude, day):
+    """One day's hourly forecast for a location, refreshed every 15 minutes."""
+    params = {
+        "latitude": latitude,
+        "longitude": longitude,
+        "hourly": "temperature_2m,precipitation_probability,wind_speed_10m,wind_gusts_10m",
+        "temperature_unit": "fahrenheit",
+        "wind_speed_unit": "mph",
+        "timezone": "America/New_York",
+        "start_date": day,
+        "end_date": day,
+    }
+    response = requests.get(FORECAST_URL, params=params, timeout=10)
+    response.raise_for_status()
+    return response.json()["hourly"]
 
 def unavailable(reason):
     return {"available": False, "reason": reason, "flags": [], "evidence": []}
@@ -127,21 +144,9 @@ def kickoff_weather(game):
 
     # Kickoff times in the schedule are US Eastern time, so ask for Eastern times back
     kickoff_hour = int(game["gametime"].split(":")[0])
-    params = {
-        "latitude": coords[0],
-        "longitude": coords[1],
-        "hourly": "temperature_2m,precipitation_probability,wind_speed_10m,wind_gusts_10m",
-        "temperature_unit": "fahrenheit",
-        "wind_speed_unit": "mph",
-        "timezone": "America/New_York",
-        "start_date": game["gameday"],
-        "end_date": game["gameday"],
-    }
 
     try:
-        response = requests.get(FORECAST_URL, params=params, timeout=10)
-        response.raise_for_status()
-        hourly = response.json()["hourly"]
+        hourly = fetch_hourly(coords[0], coords[1], game["gameday"])
     except (requests.RequestException, KeyError, ValueError):
         return unavailable("Forecast not available yet (usually within about two weeks of kickoff)")
 

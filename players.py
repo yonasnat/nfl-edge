@@ -1,4 +1,5 @@
 import polars as pl
+from cache import ttl_cache
 
 SEASON = 2026
 PLAYER_PATH = "data/player_games.parquet"
@@ -34,6 +35,10 @@ STATS = {
 # Which players to show: (position, how we measure usage, how many)
 ROLES = [("QB", "attempts", 1), ("RB", "carries", 2), ("WR", "targets", 3), ("TE", "targets", 1)]
 
+@ttl_cache(600)
+def load_player_games():
+    """Every player game since 2015, reloaded from disk every 10 minutes."""
+    return pl.read_parquet(PLAYER_PATH)
 
 def averages(rows, columns):
     """Per-game averages for a set of games, or None if there are no games."""
@@ -107,7 +112,7 @@ def player_card(games, player_id, position, opponent):
 
 def key_players(team, opponent, qb_id=None):
     """The starting QB plus the most-used RBs, WRs, and TE on a team this season."""
-    games = pl.read_parquet(PLAYER_PATH)
+    games = load_player_games()
     season = games.filter(pl.col("season") == SEASON)
 
     # Only players whose most recent game this season was for this team (handles trades)

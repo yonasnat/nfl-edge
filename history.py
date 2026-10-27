@@ -2,6 +2,7 @@ from functools import lru_cache
 
 import nflreadpy as nfl
 import polars as pl
+from cache import ttl_cache
 
 RENAMED = {"OAK": "LV", "SD": "LAC", "STL": "LA"}
 PAST_SEASONS = list(range(2015, 2026))
@@ -22,10 +23,15 @@ def past_games():
     return normalize(nfl.load_schedules(PAST_SEASONS))
 
 
+@ttl_cache(300)
+def current_games():
+    """The current season, refreshed every 5 minutes."""
+    return normalize(nfl.load_schedules(CURRENT_SEASON))
+
+
 def all_games():
-    """Past seasons plus a fresh copy of the current season."""
-    current = normalize(nfl.load_schedules(CURRENT_SEASON))
-    return pl.concat([past_games(), current], how="diagonal_relaxed")
+    """Past seasons plus the current season."""
+    return pl.concat([past_games(), current_games()], how="diagonal_relaxed")
 
 
 def head_to_head(team_a, team_b, recent=10):

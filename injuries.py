@@ -3,6 +3,7 @@ import re
 import nflreadpy as nfl
 import polars as pl
 import requests
+from cache import ttl_cache
 
 SEASON = 2026
 ESPN_URL = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
@@ -34,7 +35,7 @@ def name_key(name):
     words = re.sub(r"[^a-z\s]", "", name.lower()).split()
     return " ".join(w for w in words if w not in SUFFIXES)
 
-
+@ttl_cache(600)
 def load_espn():
     """ESPN's injury list as team -> {name key -> entry}, or None if unreachable."""
     try:
@@ -65,7 +66,7 @@ def load_espn():
         by_team[abbreviation] = entries
     return by_team
 
-
+@ttl_cache(21600)
 def load_snap_shares():
     """Each player's average share of snaps this season, by (name, team) and by name."""
     try:
@@ -213,10 +214,15 @@ def team_injuries(team, game_week, reports, shares, espn):
     }
 
 
+@ttl_cache(1800)
+def load_reports():
+    """The official injury reports, refreshed every 30 minutes."""
+    return nfl.load_injuries(SEASON)
+
 def injuries(game):
     """Injury reports for both teams in a game."""
     try:
-        reports = nfl.load_injuries(SEASON)
+        reports = load_reports()
     except Exception:
         reports = None
 

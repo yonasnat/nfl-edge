@@ -8,6 +8,7 @@ from situation import situation
 from history import head_to_head
 from players import key_players
 from injuries import injuries
+from cache import ttl_cache
 
 SEASON = 2026
 
@@ -27,17 +28,16 @@ def ordinal(n):
         suffix = {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
     return f"{n}{suffix}"
 
-
+@ttl_cache(300)
 def load_schedule():
     """This season's full schedule, including results for played games."""
     return nfl.load_schedules(SEASON)
 
-
+@ttl_cache(600)
 def load_profiles():
     """Team profiles from build_team_profiles.py, as team -> stats."""
     table = pl.read_parquet("data/team_profiles.parquet")
     return {row["team"]: row for row in table.iter_rows(named=True)}
-
 
 def game_info(row):
     """The basic facts about one game."""
@@ -155,7 +155,7 @@ def starting_qb(schedule, team, row):
             return qb
     return None
 
-
+@ttl_cache(180)
 def build_briefing(game_id):
     """Everything we know about one game, or None if the game doesn't exist."""
     schedule = load_schedule()
