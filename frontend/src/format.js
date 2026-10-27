@@ -25,3 +25,13 @@ export function roofLabel(roof) {
   if (roof === "outdoors") return "Outdoors";
   return "";
 }
+
+// Like "3h ago" for a news timestamp
+export function timeAgo(iso) {
+  const minutes = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
+  if (Number.isNaN(minutes)) return "";
+  if (minutes < 60) return `${Math.max(minutes, 1)}m ago`;
+  const hours = Math.round(minutes / 60);
+  if (hours < 48) return `${hours}h ago`;
+  return `${Math.round(hours / 24)}d ago`;
+}
