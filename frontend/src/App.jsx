@@ -2,6 +2,7 @@ import { NavLink, Route, Routes } from "react-router";
 import Home from "./pages/Home";
 import Game from "./pages/Game";
 import Methodology from "./pages/Methodology";
+import ServerGate from "./components/ServerGate";
 
 function navClass({ isActive }) {
   return isActive ? "text-white" : "text-zinc-400 transition hover:text-white";
@@ -27,11 +28,13 @@ export default function App() {
       </header>
 
       <main className="mx-auto max-w-5xl px-4 py-8">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/game/:gameId" element={<Game />} />
-          <Route path="/methodology" element={<Methodology />} />
-        </Routes>
+        <ServerGate>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/game/:gameId" element={<Game />} />
+            <Route path="/methodology" element={<Methodology />} />
+          </Routes>
+        </ServerGate>
       </main>
     </div>
   );
