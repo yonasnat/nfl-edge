@@ -126,6 +126,14 @@ export default function Game() {
         </div>
       </div>
 
+      {final && (
+        <div className="mt-4 rounded-2xl border border-yellow-500/20 bg-yellow-500/5 p-4 text-sm text-yellow-100/90">
+          This game has been played. The briefing below shows the latest data, which now includes
+          this game's result and next week's injury reports. Saved pre-game briefings are coming
+          with scheduled updates.
+        </div>
+      )}
+
       <nav className="sticky top-14 z-10 -mx-4 mt-6 overflow-x-auto border-b border-zinc-800 bg-zinc-950/90 px-4 backdrop-blur">
         <div className="flex gap-5 text-sm font-medium">
           {SECTIONS.map(([id, label]) => (
@@ -150,7 +158,7 @@ export default function Game() {
         title="Key players"
         subtitle="Per-game numbers this season, recently, over his career, and against this opponent."
       />
-      <Players players={data.players} game={game} />
+      <Players players={data.players} game={game} injuries={data.injuries} />
 
       <SectionHeading
         id="conditions"

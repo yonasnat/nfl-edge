@@ -139,6 +139,23 @@ def team_card(team, profiles):
     }
 
 
+def starting_qb(schedule, team, row):
+    """The game's listed starting QB, or the team's most recent starter if none is listed."""
+    side = "home" if row["home_team"] == team else "away"
+    if row[f"{side}_qb_id"]:
+        return row[f"{side}_qb_id"]
+
+    played = schedule.filter(
+        pl.col("result").is_not_null()
+        & ((pl.col("home_team") == team) | (pl.col("away_team") == team))
+    ).sort("week", descending=True)
+    for game in played.iter_rows(named=True):
+        qb = game["home_qb_id"] if game["home_team"] == team else game["away_qb_id"]
+        if qb:
+            return qb
+    return None
+
+
 def build_briefing(game_id):
     """Everything we know about one game, or None if the game doesn't exist."""
     schedule = load_schedule()
@@ -146,13 +163,17 @@ def build_briefing(game_id):
     if match.height == 0:
         return None
 
-    game = game_info(match.row(0, named=True))
+    row = match.row(0, named=True)
+    game = game_info(row)
     home = game["home"]
     away = game["away"]
     weather = kickoff_weather(game)
     conditions = situation(game)
     history = head_to_head(away, home)
-    players = {"away": key_players(away, home), "home": key_players(home, away)}
+    players = {
+        "away": key_players(away, home, starting_qb(schedule, away, row)),
+        "home": key_players(home, away, starting_qb(schedule, home, row)),
+    }
     injury_report = injuries(game)
     profiles = load_profiles()
 

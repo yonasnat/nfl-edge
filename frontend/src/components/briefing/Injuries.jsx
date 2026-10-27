@@ -48,7 +48,7 @@ function TeamInjuries({ report }) {
                   <Badge tone={STATUS_TONE[p.status] ?? "zinc"}>{p.status ?? practiceLabel(p.practice)}</Badge>
                 </span>
               </div>
-              {p.news && (
+              {p.news && p.news.length > 15 && (
                 <p className="mt-1.5 text-sm leading-relaxed text-zinc-400">
                   {p.news}{" "}
                   <span className="text-xs text-zinc-600">

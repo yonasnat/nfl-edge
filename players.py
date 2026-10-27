@@ -72,7 +72,10 @@ def player_card(games, player_id, position, opponent):
 
     main = columns[0]
     name = latest["player_display_name"]
-    summary = f"{name}: {season_avg[main]:.0f} {labels[main]} per game this season ({this_season.height} games)."
+    if season_avg:
+        summary = f"{name}: {season_avg[main]:.0f} {labels[main]} per game this season ({this_season.height} games)."
+    else:
+        summary = f"{name}: hasn't played yet this season."
     if vs_opponent.height == 0:
         summary += f" Hasn't played {opponent} since 2015."
     else:
@@ -102,8 +105,8 @@ def player_card(games, player_id, position, opponent):
     }
 
 
-def key_players(team, opponent):
-    """The most-used QB, RBs, WRs, and TE on a team this season, with their history."""
+def key_players(team, opponent, qb_id=None):
+    """The starting QB plus the most-used RBs, WRs, and TE on a team this season."""
     games = pl.read_parquet(PLAYER_PATH)
     season = games.filter(pl.col("season") == SEASON)
 
@@ -118,7 +121,15 @@ def key_players(team, opponent):
     )
 
     cards = []
+
+    # Quarterback: this game's starter when we know him
+    have_starter = qb_id is not None and games.filter(pl.col("player_id") == qb_id).height > 0
+    if have_starter:
+        cards.append(player_card(games, qb_id, "QB", opponent))
+
     for position, usage, count in ROLES:
+        if position == "QB" and have_starter:
+            continue
         top = (
             on_team.filter(pl.col("position") == position)
             .group_by("player_id")
