@@ -1,5 +1,6 @@
 from concurrent.futures import ThreadPoolExecutor
 
+import os
 import polars as pl
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -23,7 +24,7 @@ app = FastAPI(title="NFL Edge")
 # Allow the React dashboard (running on port 5173) to request data
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=os.environ.get("ALLOWED_ORIGINS", "http://localhost:5173").split(","),
     allow_methods=["GET"],
 )
 
