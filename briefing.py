@@ -208,3 +208,52 @@ def build_briefing(game_id):
         "matchups": matchups,
         "key_matchups": key_matchups,
     }
+
+def card_badges(briefing):
+    """A few short labels for a game's home page card, most important first."""
+    badges = []
+
+    # Quarterbacks and missing starters
+    injury_report = briefing.get("injuries") or {}
+    for side in ("away", "home"):
+        report = injury_report.get(side) or {}
+        team = report.get("team")
+        players = report.get("players", [])
+        for p in players:
+            if p["importance"] == "Starting QB" and p["status"] in ("Out", "Doubtful", "Questionable"):
+                tone = "red" if p["status"] in ("Out", "Doubtful") else "yellow"
+                badges.append({"tone": tone, "text": f"{team} QB {p['status'].lower()}"})
+        starters_out = sum(
+            1 for p in players
+            if p["status"] in ("Out", "Doubtful") and p["importance"] in ("Starter", "Starting QB")
+        )
+        if starters_out >= 2:
+            badges.append({"tone": "red", "text": f"{team}: {starters_out} starters out"})
+
+    # Weather
+    weather = briefing.get("weather") or {}
+    if weather.get("available") and not weather.get("indoor"):
+        if weather.get("wind_mph", 0) >= 10:
+            badges.append({"tone": "yellow", "text": f"Wind {weather['wind_mph']} mph"})
+        if weather.get("precip_chance", 0) >= 50:
+            badges.append({"tone": "yellow", "text": "Rain or snow likely"})
+        if weather.get("temperature_f", 60) <= 32:
+            badges.append({"tone": "yellow", "text": "Freezing"})
+
+    # Situation
+    for flag in (briefing.get("situation") or {}).get("flags", []):
+        if "coming off a bye" in flag:
+            badges.append({"tone": "orange", "text": f"{flag.split()[0]} off bye"})
+        elif flag.startswith("Long trip"):
+            badges.append({"tone": "orange", "text": "Long trip"})
+        elif flag.startswith("Early body-clock"):
+            badges.append({"tone": "orange", "text": f"Early body clock ({flag.split()[-1]})"})
+        elif flag.startswith("High altitude"):
+            badges.append({"tone": "orange", "text": "Altitude"})
+
+    # Lopsided matchups
+    edges = len(briefing.get("key_matchups", []))
+    if edges >= 2:
+        badges.append({"tone": "green", "text": f"{edges} big matchup edges"})
+
+    return badges[:4]

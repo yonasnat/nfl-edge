@@ -4,6 +4,7 @@ import { getJson } from "../api";
 import { team } from "../teams";
 import { formatSpread, kickoffDay, kickoffTime, roofLabel } from "../format";
 import TeamChip from "../components/TeamChip";
+import { Badge } from "../components/ui";
 
 function Pill({ children }) {
   return (
@@ -25,7 +26,29 @@ function TeamRow({ abbr, score }) {
   );
 }
 
-function GameCard({ game }) {
+function CardBadges({ badges }) {
+  // undefined: still loading. Empty list: nothing notable.
+  if (badges === undefined) {
+    return (
+      <div className="mt-3 flex gap-1.5">
+        <span className="h-5 w-20 animate-pulse rounded-full bg-zinc-800" />
+        <span className="h-5 w-16 animate-pulse rounded-full bg-zinc-800" />
+      </div>
+    );
+  }
+  if (badges.length === 0) return null;
+  return (
+    <div className="mt-3 flex flex-wrap gap-1.5">
+      {badges.map((b) => (
+        <Badge key={b.text} tone={b.tone}>
+          {b.text}
+        </Badge>
+      ))}
+    </div>
+  );
+}
+
+function GameCard({ game, badges }) {
   const final = game.home_score !== null && game.away_score !== null;
   return (
     <Link
@@ -44,6 +67,8 @@ function GameCard({ game }) {
         <TeamRow abbr={game.home} score={final ? game.home_score : null} />
       </div>
 
+      <CardBadges badges={badges} />
+
       <div className="mt-4 flex items-center gap-2 text-xs">
         <Pill>{formatSpread(game)}</Pill>
         {game.total_line !== null && <Pill>O/U {game.total_line}</Pill>}
@@ -55,12 +80,20 @@ function GameCard({ game }) {
 
 export default function Home() {
   const [games, setGames] = useState(null);
+  const [badges, setBadges] = useState({});
+  const [badgesLoaded, setBadgesLoaded] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Show the cards first, then fill in badges when they're ready
     getJson("/games")
       .then((data) => setGames(data.games))
       .catch((err) => setError(err.message));
+
+    getJson("/games/badges")
+      .then(setBadges)
+      .catch(() => setBadges({}))
+      .finally(() => setBadgesLoaded(true));
   }, []);
 
   if (error) {
@@ -94,7 +127,11 @@ export default function Home() {
           </h2>
           <div className="grid gap-3 sm:grid-cols-2">
             {day.games.map((game) => (
-              <GameCard key={game.game_id} game={game} />
+              <GameCard
+                key={game.game_id}
+                game={game}
+                badges={badgesLoaded ? badges[game.game_id] ?? [] : undefined}
+              />
             ))}
           </div>
         </section>

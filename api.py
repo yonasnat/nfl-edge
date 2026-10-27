@@ -1,9 +1,11 @@
+from concurrent.futures import ThreadPoolExecutor
+
 import polars as pl
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sklearn.linear_model import LinearRegression
 
-from briefing import build_briefing, this_week
+from briefing import build_briefing, card_badges, this_week
 from tracking import grade_log
 
 FEATURES = ["points_diff", "home_off", "home_def", "away_off", "away_def", "home_qb", "away_qb", "rest_diff"]
@@ -42,6 +44,16 @@ def home():
 def games():
     """This week's games."""
     return {"games": this_week()}
+
+
+# This must come before /games/{game_id}, or "badges" would be read as a game ID
+@app.get("/games/badges")
+def games_badges():
+    """Short labels for every game this week, built in parallel."""
+    week = this_week()
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        briefings = list(pool.map(lambda g: build_briefing(g["game_id"]), week))
+    return {g["game_id"]: card_badges(b) if b else [] for g, b in zip(week, briefings)}
 
 
 @app.get("/games/{game_id}")
