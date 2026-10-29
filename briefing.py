@@ -155,7 +155,7 @@ def starting_qb(schedule, team, row):
             return qb
     return None
 
-@ttl_cache(180)
+@ttl_cache(360)
 def build_briefing(game_id):
     """Everything we know about one game, or None if the game doesn't exist."""
     schedule = load_schedule()

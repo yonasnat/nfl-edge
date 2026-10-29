@@ -1,0 +1,13 @@
+name: Keep API awake
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"   # every 10 minutes
+  workflow_dispatch:          # also allows running it by hand from GitHub
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping the API
+        run: curl --silent --show-error --max-time 120 https://nfl-edge-api-uc6f.onrender.com/ || true

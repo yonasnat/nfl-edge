@@ -1,6 +1,8 @@
 from concurrent.futures import ThreadPoolExecutor
 
 import os
+import threading
+import time
 import polars as pl
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -52,7 +54,7 @@ def games():
 def games_badges():
     """Short labels for every game this week, built in parallel."""
     week = this_week()
-    with ThreadPoolExecutor(max_workers=6) as pool:
+    with ThreadPoolExecutor(max_workers=3) as pool:
         briefings = list(pool.map(lambda g: build_briefing(g["game_id"]), week))
     return {g["game_id"]: card_badges(b) if b else [] for g, b in zip(week, briefings)}
 
@@ -96,3 +98,17 @@ def predictions():
 def record():
     """Every logged prediction with its result, plus the running record."""
     return grade_log()
+
+def keep_briefings_warm():
+    """Rebuild this week's briefings every 5 minutes, so visitors never wait."""
+    while True:
+        try:
+            games_badges()
+        except Exception as error:
+            print("Background refresh failed:", error, flush=True)
+        time.sleep(300)
+
+
+@app.on_event("startup")
+def start_background_refresh():
+    threading.Thread(target=keep_briefings_warm, daemon=True).start()
