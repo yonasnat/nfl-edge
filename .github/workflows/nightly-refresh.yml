@@ -1,0 +1,26 @@
+name: Nightly data refresh
+
+on:
+  schedule:
+    - cron: "17 10 * * *"   # every day at 10:17 UTC, 3:17 AM Pacific
+  workflow_dispatch:         # also allows running it by hand
+
+permissions:
+  contents: write            # lets this job push a commit
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Record the refresh time
+        run: date -u +"%Y-%m-%dT%H:%M:%SZ" > data_refreshed_at.txt
+
+      - name: Commit and push, which makes Render rebuild with fresh data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data_refreshed_at.txt
+          git commit -m "Nightly data refresh"
+          git push
