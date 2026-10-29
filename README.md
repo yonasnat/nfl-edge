@@ -1,34 +1,49 @@
 # NFL Edge
 
-A research tool for NFL bettors that organizes the information that moves games, such as team efficiency, quarterback quality, injuries, and conditions, into one place, with an honest record of how well its numbers have held up.
+**Live app: [nfl-edge-theta.vercel.app](https://nfl-edge-theta.vercel.app)**
 
-## What it does today
+A research tool for NFL bettors. For every game, it builds a briefing that pulls together the information that moves games (injuries ranked by importance, offense-vs-defense matchups, kickoff weather, travel and rest, head-to-head history, and key player trends) and shows how similar situations played out historically, with sample sizes so users can tell real patterns from noise.
 
-- **Data pipeline:** Pulls every NFL play since 2014 (about 600,000 plays) from nflverse and summarizes team efficiency (EPA per play) and quarterback performance for every game.
-- **Ratings:** Maintains running offensive, defensive, and quarterback ratings that use only information available before each game, which avoids data leakage.
-- **Model and backtest:** A linear regression on those ratings, trained on 2015–2020 and tested on 2021–2025. It misses the final margin by 10.06 points per game on average, against 9.76 for the sportsbook line.
-- **Live tracking:** Predictions are logged to version control before kickoff and graded automatically, so the record can't be edited after the fact.
-- **App:** A FastAPI backend serves the data to a React dashboard.
+It does not make picks. It started as a prediction model, and testing showed why that's the wrong product (see below).
 
-## What I learned
+## Features
 
-Predicting winners is easy and doesn't make money: favorites won 66% of games from 2015 to 2025 but covered the spread only 48.6% of the time. The backtest showed that when this model disagreed with the market, the market was usually right, because it knew things the model didn't, like injuries and offensive line changes. That finding shaped the direction of the project: instead of picking bets, the app's job is to surface and organize that information for the person making the decision.
+- **Game cards** with badges for what stands out: quarterback status, starters out, wind, byes, long trips
+- **Injury reports** merging the official NFL report with ESPN's news feed, ranked by each player's snap share
+- **Matchup breakdowns** comparing each offense to the opposing defense, unit by unit, using EPA per play
+- **Kickoff weather** with historical evidence (for example, how scoring compared to the total in past 10–19 mph wind games)
+- **Travel, rest, and body-clock factors** backtested against the spread over 2,900 games
+- **Player history**: season, last 3 games, career, and vs. this opponent, with sample-size badges
+- **Head-to-head history** since 2015
 
-## Roadmap
+## What testing showed
 
-A game briefing page for every matchup:
+- Favorites won 66% of games from 2015 to 2025 but covered the spread only 48.6% of the time.
+- A regression model on team efficiency and quarterback ratings, tested on 1,424 games it never saw, missed final margins by 10.06 points on average against the sportsbook's 9.76. When it disagreed with the line, the line was usually right, because it priced in information like injuries.
+- Of the betting angles tested, moderate wind (10–19 mph) stood out: the under won 58.6% of 594 games, against a 52.4% break-even. Byes, altitude, and early body-clock kickoffs showed no edge once the line was accounted for.
 
-- Injuries ranked by estimated impact
-- A timeline of news and line movement during the week
-- Offense vs. defense matchup breakdowns
-- Weather and stadium conditions at kickoff
-- Rest, travel, and schedule factors
-- Historical trends shown with sample sizes
-- A personal bet tracker with closing line value
+## Architecture
+
+```
+nflverse, ESPN, Open-Meteo
+        │
+        ▼
+Python data pipeline (Polars) ──► rebuilt nightly by GitHub Actions
+        │
+        ▼
+FastAPI backend in Docker on Render
+  - per-source caching (2.1s → 0.04s per briefing)
+  - background refresh every 5 minutes
+        │
+        ▼
+React + Tailwind frontend on Vercel
+```
+
+A GitHub Actions job pings the API every 10 minutes to keep the free-tier server awake, and the frontend shows a waking-up screen if it's asleep anyway.
 
 ## Tech stack
 
-Python, Polars, scikit-learn, FastAPI, React (Vite), Git
+Python, Polars, scikit-learn, FastAPI, React, React Router, Tailwind CSS, Docker, GitHub Actions, Render, Vercel
 
 ## Running it locally
 
@@ -36,10 +51,7 @@ Python, Polars, scikit-learn, FastAPI, React (Vite), Git
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-
-python build_data.py
-python build_qb_data.py
-python build_features.py
+python build_all.py
 uvicorn api:app --reload
 ```
 
@@ -55,4 +67,4 @@ Then open http://localhost:5173.
 
 ## Data
 
-Play-by-play and schedule data from [nflverse](https://github.com/nflverse).
+Play-by-play, schedules, rosters, and official injury reports from [nflverse](https://github.com/nflverse). Injury statuses and news from ESPN. Weather from [Open-Meteo](https://open-meteo.com). For research only; not betting advice.
