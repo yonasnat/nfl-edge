@@ -9,6 +9,7 @@ from history import head_to_head
 from players import key_players
 from injuries import injuries
 from cache import ttl_cache
+from similarity import similar_defenses
 
 SEASON = 2026
 
@@ -176,6 +177,7 @@ def build_briefing(game_id):
     }
     injury_report = injuries(game)
     profiles = load_profiles()
+    defense_styles = {"away": similar_defenses(away), "home": similar_defenses(home)}
 
     if home not in profiles or away not in profiles:
         return {
@@ -185,6 +187,7 @@ def build_briefing(game_id):
             "head_to_head": history,
             "players": players,
             "injuries": injury_report,
+            "defense_styles": defense_styles,
             "teams": None,
             "matchups": [],
             "key_matchups": [],
@@ -204,6 +207,7 @@ def build_briefing(game_id):
         "head_to_head": history,
         "players": players,
         "injuries": injury_report,
+        "defense_styles": defense_styles,
         "teams": {"away": team_card(away, profiles), "home": team_card(home, profiles)},
         "matchups": matchups,
         "key_matchups": key_matchups,

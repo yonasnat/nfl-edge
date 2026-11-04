@@ -1,5 +1,6 @@
 import polars as pl
 from cache import ttl_cache
+from similarity import player_vs_similar, similar_defenses
 
 SEASON = 2026
 PLAYER_PATH = "data/player_games.parquet"
@@ -47,7 +48,7 @@ def averages(rows, columns):
     return {c: round(rows[c].fill_null(0).mean(), 1) for c in columns}
 
 
-def player_card(games, player_id, position, opponent):
+def player_card(games, player_id, position, opponent, neighbors=None):
     """One player's season, recent, career, and vs.-opponent numbers."""
     rows = games.filter(pl.col("player_id") == player_id).sort(["season", "week"])
     columns = [c for c, _ in STATS[position]]
@@ -97,6 +98,13 @@ def player_card(games, player_id, position, opponent):
         for r in vs_opponent.iter_rows(named=True)
     ]
 
+    vs_similar = None
+    if neighbors:
+        vs_similar = player_vs_similar(games, player_id, columns, neighbors)
+        if vs_similar and vs_similar.get("games"):
+            for s in vs_similar["stats"]:
+                s["label"] = labels[s["stat"]]
+
     return {
         "player_id": player_id,
         "name": name,
@@ -107,6 +115,7 @@ def player_card(games, player_id, position, opponent):
         "stats": stats,
         "vs_opponent_log": vs_games,
         "summary": summary,
+        "vs_similar": vs_similar,
     }
 
 
@@ -125,12 +134,14 @@ def key_players(team, opponent, qb_id=None):
         (pl.col("latest_team") == team) & (pl.col("team") == team)
     )
 
+    similar = similar_defenses(opponent)
+    neighbors = similar["neighbors"] if similar else None
     cards = []
 
     # Quarterback: this game's starter when we know him
     have_starter = qb_id is not None and games.filter(pl.col("player_id") == qb_id).height > 0
     if have_starter:
-        cards.append(player_card(games, qb_id, "QB", opponent))
+        cards.append(player_card(games, qb_id, "QB", opponent, neighbors))
 
     for position, usage, count in ROLES:
         if position == "QB" and have_starter:
@@ -143,5 +154,5 @@ def key_players(team, opponent, qb_id=None):
             .head(count)
         )
         for row in top.iter_rows(named=True):
-            cards.append(player_card(games, row["player_id"], position, opponent))
+            cards.append(player_card(games, row["player_id"], position, opponent, neighbors))
     return cards

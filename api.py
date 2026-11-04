@@ -1,13 +1,17 @@
 from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime, timezone
 
 import os
 import threading
 import time
 import polars as pl
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 from sklearn.linear_model import LinearRegression
 
+import assistant
+import snapshots
 from briefing import build_briefing, card_badges, this_week
 from tracking import grade_log
 
@@ -27,7 +31,8 @@ app = FastAPI(title="NFL Edge")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=os.environ.get("ALLOWED_ORIGINS", "http://localhost:5173").split(","),
-    allow_methods=["GET"],
+    allow_methods=["GET", "POST"],
+    allow_headers=["Content-Type"],
 )
 
 # Train the model once, when the server starts
@@ -68,6 +73,47 @@ def game_briefing(game_id: str):
     return briefing
 
 
+@app.get("/games/{game_id}/changes")
+def game_changes(game_id: str, since: str | None = None):
+    """What changed in a game's briefing since a time (default: the last 72 hours)."""
+    if since:
+        try:
+            since_time = datetime.fromisoformat(since.replace("Z", "+00:00"))
+        except ValueError:
+            raise HTTPException(status_code=400, detail="since must be an ISO date and time")
+        if since_time.tzinfo is None:
+            since_time = since_time.replace(tzinfo=timezone.utc)
+    else:
+        since_time = snapshots.default_since()
+    return snapshots.changes_since(game_id, since_time)
+
+
+@app.get("/assistant")
+def assistant_status():
+    """Whether Ask Edge is set up on this server."""
+    return {"enabled": bool(assistant.API_KEY), "model": assistant.MODEL}
+
+
+class Question(BaseModel):
+    question: str
+
+
+@app.post("/games/{game_id}/ask")
+def ask_edge(game_id: str, body: Question, request: Request):
+    """Answer a question about one game, using only the app's data."""
+    if not assistant.API_KEY:
+        raise HTTPException(status_code=503, detail="Ask Edge isn't set up on this server yet.")
+    forwarded = request.headers.get("x-forwarded-for", "")
+    visitor = forwarded.split(",")[0].strip() or (request.client.host if request.client else "unknown")
+    ok, message = assistant.allowed(visitor)
+    if not ok:
+        raise HTTPException(status_code=429, detail=message)
+    try:
+        return assistant.ask(game_id, body.question)
+    except assistant.AssistantError as error:
+        raise HTTPException(status_code=400, detail=str(error))
+
+
 @app.get("/predictions")
 def predictions():
     """This week's games: the model's line next to the market's."""
@@ -99,11 +145,22 @@ def record():
     """Every logged prediction with its result, plus the running record."""
     return grade_log()
 
+def refresh_and_snapshot():
+    """Rebuild this week's briefings and save a snapshot of any that changed."""
+    games_badges()
+    saved = 0
+    for g in this_week():
+        briefing = build_briefing(g["game_id"])
+        if briefing is not None and snapshots.record(briefing):
+            saved += 1
+    return saved
+
+
 def keep_briefings_warm():
-    """Rebuild this week's briefings every 5 minutes, so visitors never wait."""
+    """Every 5 minutes: rebuild briefings (so visitors never wait) and record what changed."""
     while True:
         try:
-            games_badges()
+            refresh_and_snapshot()
         except Exception as error:
             print("Background refresh failed:", error, flush=True)
         time.sleep(300)
@@ -111,4 +168,8 @@ def keep_briefings_warm():
 
 @app.on_event("startup")
 def start_background_refresh():
+    try:
+        snapshots.setup()
+    except Exception as error:
+        print("Snapshot storage unavailable:", error, flush=True)
     threading.Thread(target=keep_briefings_warm, daemon=True).start()

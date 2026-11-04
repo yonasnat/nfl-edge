@@ -10,6 +10,8 @@ STEPS = [
     "build_player_data.py",    # player game logs
     "weather_effects.py",      # historical weather evidence
     "situation_effects.py",    # historical travel and rest evidence
+    "build_snap_data.py",      # snap shares, for injury impact
+    "build_defense_styles.py", # defense styles, for similar-defense matchups
 ]
 
 for step in STEPS:
