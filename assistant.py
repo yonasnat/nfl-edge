@@ -183,10 +183,18 @@ def ask(game_id, question):
             data = call_model(contents, system)
         except requests.HTTPError as error:
             status = error.response.status_code if error.response is not None else None
+            detail = error.response.text[:500] if error.response is not None else ""
+            # Shows up in Render's Logs tab (never includes the key, which is sent in a header)
+            print(f"Gemini error {status} for model {MODEL}: {detail}", flush=True)
             if status == 429:
                 raise AssistantError("Ask Edge is busy right now (free-tier limit). Try again in a minute.")
+            if status in (400, 401, 403) and ("API key" in detail or "API_KEY" in detail or status in (401, 403)):
+                raise AssistantError("Ask Edge's AI key was rejected by Google. Check GEMINI_API_KEY on the server.")
+            if status == 404:
+                raise AssistantError(f"The AI model {MODEL} wasn't found. Check GEMINI_MODEL on the server.")
             raise AssistantError("Ask Edge couldn't reach the AI model. Try again shortly.")
-        except requests.RequestException:
+        except requests.RequestException as error:
+            print(f"Gemini request failed: {type(error).__name__}: {error}", flush=True)
             raise AssistantError("Ask Edge couldn't reach the AI model. Try again shortly.")
 
         candidates = data.get("candidates") or []

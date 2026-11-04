@@ -18,7 +18,7 @@ BRIEFING = {
 
 class FakeResponse:
     def __init__(self, data, status=200):
-        self.data, self.status_code = data, status
+        self.data, self.status_code, self.text = data, status, ""
 
     def raise_for_status(self):
         if self.status_code >= 400:
@@ -103,3 +103,13 @@ def test_rate_limits(monkeypatch):
     assert not assistant.allowed("ip", now + 2)[0]
     assert assistant.allowed("other-ip", now + 3)[0]
     assert assistant.allowed("ip", now + 3700)[0]  # an hour later
+
+
+def test_rejected_key_says_so_and_logs_googles_reason(setup, capsys):
+    _, replies = setup
+    response = FakeResponse({}, status=400)
+    response.text = '{"error": {"message": "API key not valid. Please pass a valid API key."}}'
+    replies.append(response)
+    with pytest.raises(assistant.AssistantError, match="key was rejected"):
+        assistant.ask("G1", "anything")
+    assert "API key not valid" in capsys.readouterr().out
