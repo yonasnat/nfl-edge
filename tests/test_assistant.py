@@ -7,8 +7,8 @@ BRIEFING = {
     "game": {"game_id": "G1", "away": "CIN", "home": "ATL"},
     "injuries": {
         "available": True,
-        "away": {"team": "CIN", "players": [{"name": "Tee Higgins", "status": "Out", "headshot_url": "x"}]},
-        "home": {"team": "ATL", "players": []},
+        "away": {"team": "CIN", "players": [{"name": "Tee Higgins", "status": "Out", "headshot_url": "x"}], "headlines": ["Tee Higgins (WR): Out"]},
+        "home": {"team": "ATL", "players": [], "headlines": []},
     },
     "players": {"away": [{"name": "Ja'Marr Chase", "position": "WR", "player_id": "1", "stats": []}], "home": []},
     "defense_styles": {"away": {"team": "CIN", "traits": ["rarely gets sacks"]}, "home": None},
@@ -31,6 +31,8 @@ class FakeResponse:
 @pytest.fixture
 def setup(monkeypatch):
     monkeypatch.setattr(assistant.time, "sleep", lambda seconds: None)
+    monkeypatch.setattr(assistant, "_answers", {})
+    monkeypatch.setattr(assistant, "_no_thinking_setting", set())
     monkeypatch.setattr(assistant, "API_KEY", "test-key")
     monkeypatch.setattr(assistant, "build_briefing", lambda game_id: BRIEFING if game_id == "G1" else None)
     sent = []
@@ -62,6 +64,10 @@ def test_agent_calls_a_tool_then_answers(setup):
     tool_reply = sent[1]["contents"][-1]["parts"][0]["functionResponse"]
     assert tool_reply["name"] == "get_injuries"
     assert tool_reply["response"]["result"]["CIN"]["players"][0] == {"name": "Tee Higgins", "status": "Out"}
+    # The opening message carries a game summary so simple questions need no tool calls
+    opening = sent[0]["contents"][0]["parts"][0]["text"]
+    assert "Tee Higgins (WR): Out" in opening and opening.endswith("Question: Who is out for Cincinnati?")
+    assert sent[0]["generationConfig"]["thinkingConfig"] == {"thinkingLevel": "low"}
     assert "CIN at ATL" in sent[0]["systemInstruction"]["parts"][0]["text"]
 
 
@@ -147,3 +153,22 @@ def test_no_models_available(setup):
     replies += [FakeResponse({}, status=404) for _ in range(3)]
     with pytest.raises(assistant.AssistantError, match="None of Ask Edge's AI models"):
         assistant.ask("G1", "anything")
+
+
+def test_repeat_questions_come_from_the_cache(setup):
+    sent, replies = setup
+    replies.append(FakeResponse(text("Sunny.")))
+    first = assistant.ask("G1", "Does the weather matter?")
+    again = assistant.ask("G1", "  does the WEATHER matter  ")
+    assert again["answer"] == first["answer"] == "Sunny." and again["cached"] is True
+    assert len(sent) == 1  # the model was only called once
+
+
+def test_models_without_thinking_levels_are_asked_again_without_it(setup):
+    sent, replies = setup
+    rejected = FakeResponse({}, status=400)
+    rejected.text = '{"error": {"message": "Thinking level is not supported for this model."}}'
+    replies += [rejected, FakeResponse(text("ok"))]
+    assert assistant.ask("G1", "anything")["answer"] == "ok"
+    assert "thinkingConfig" in sent[0]["generationConfig"]
+    assert "thinkingConfig" not in sent[1]["generationConfig"]

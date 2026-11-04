@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { postJson } from "../../api";
 import { Card } from "../ui";
 
@@ -36,6 +36,29 @@ function Answer({ item }) {
             </span>
           ))}
         </div>
+      )}
+    </div>
+  );
+}
+
+// While waiting: a seconds counter, and a note when the AI is checking several sections
+function Working() {
+  const [seconds, setSeconds] = useState(0);
+  useEffect(() => {
+    const timer = setInterval(() => setSeconds((s) => s + 1), 1000);
+    return () => clearInterval(timer);
+  }, []);
+  return (
+    <div className="mt-4 rounded-xl bg-zinc-800/50 p-4 text-sm text-zinc-400">
+      <div className="flex items-center gap-2">
+        <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
+        <span>Looking through this game's data...</span>
+        <span className="ml-auto tabular-nums text-xs text-zinc-500">{seconds}s</span>
+      </div>
+      {seconds >= 8 && (
+        <p className="mt-2 text-xs text-zinc-500">
+          Still working: the AI is checking a few sections of the briefing before it answers.
+        </p>
       )}
     </div>
   );
@@ -100,11 +123,7 @@ export default function AskEdge({ game }) {
         </div>
       )}
 
-      {busy && (
-        <div className="mt-4 animate-pulse rounded-xl bg-zinc-800/50 p-4 text-sm text-zinc-400">
-          Looking through this game's data...
-        </div>
-      )}
+      {busy && <Working />}
       {error && <p className="mt-3 text-sm text-red-300">{error}</p>}
 
       <div className="mt-4 space-y-3">
