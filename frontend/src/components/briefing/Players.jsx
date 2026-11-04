@@ -20,6 +20,31 @@ function show(value) {
   return Number.isInteger(value) ? value : value.toFixed(1);
 }
 
+// How he did against defenses that play like this opponent's, vs. all his games
+function SimilarStrip({ vs, opponent }) {
+  if (!vs?.games) return null;
+  const main = vs.stats[0];
+  const change = main.change_pct;
+  const tone = change === null ? "zinc" : change >= 10 ? "green" : change <= -10 ? "red" : "zinc";
+  return (
+    <div className="mt-3 rounded-lg bg-zinc-800/50 p-2.5 text-xs">
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="text-zinc-400">vs defenses like {opponent}'s:</span>
+        <span className="font-bold tabular-nums text-zinc-100">
+          {show(main.vs_similar)} {main.label}
+        </span>
+        {change !== null && (
+          <Badge tone={tone}>
+            {change > 0 ? "+" : ""}
+            {change}% vs usual
+          </Badge>
+        )}
+        <SampleSize games={vs.games} />
+      </div>
+    </div>
+  );
+}
+
 function PlayerCard({ p, opponent, status }) {
   return (
     <Card>
@@ -62,6 +87,8 @@ function PlayerCard({ p, opponent, status }) {
           ))}
         </tbody>
       </table>
+
+      <SimilarStrip vs={p.vs_similar} opponent={opponent} />
 
       <div className="mt-3 flex items-center gap-2 text-xs text-zinc-500">
         <span>vs {opponent}:</span>

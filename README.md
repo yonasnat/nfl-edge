@@ -15,6 +15,10 @@ It does not make picks. It started as a prediction model, and testing showed why
 - **Travel, rest, and body-clock factors** backtested against the spread over 2,900 games
 - **Player history**: season, last 3 games, career, and vs. this opponent, with sample-size badges
 - **Head-to-head history** since 2015
+- **Ask Edge (AI research assistant)**: ask a question in plain English; a Gemini-powered agent calls 7 tools that read the app's own data, answers only from the results, and shows what it looked up
+- **"What changed" feed**: briefings are snapshotted to PostgreSQL every 5 minutes; each game shows injury, forecast, line, and QB changes since your last visit
+- **Similar-defense matchups**: a k-nearest-neighbors model describes every defense since 2022 by 9 style features and shows how each key player performed against the defenses most like this week's opponent
+- **Injury impact in points**: for injured starters, how the team's offense or defense performed in games he missed since 2024, shrunk toward zero for small samples
 
 ## What testing showed
 
@@ -31,19 +35,22 @@ nflverse, ESPN, Open-Meteo
 Python data pipeline (Polars) ──► rebuilt nightly by GitHub Actions
         │
         ▼
-FastAPI backend in Docker on Render
+FastAPI backend in Docker on Render ◄──► Gemini API (Ask Edge tool calling)
   - per-source caching (2.1s → 0.04s per briefing)
   - background refresh every 5 minutes
+  - snapshots ──► PostgreSQL (Neon)
         │
         ▼
 React + Tailwind frontend on Vercel
 ```
 
+Every push and pull request runs the test suite (pytest) and a frontend lint and build in GitHub Actions.
+
 A GitHub Actions job pings the API every 10 minutes to keep the free-tier server awake, and the frontend shows a waking-up screen if it's asleep anyway.
 
 ## Tech stack
 
-Python, Polars, scikit-learn, FastAPI, React, React Router, Tailwind CSS, Docker, GitHub Actions, Render, Vercel
+Python, Polars, scikit-learn, FastAPI, PostgreSQL, Gemini API (function calling), React, React Router, Tailwind CSS, Docker, pytest, GitHub Actions, Render, Vercel, Neon
 
 ## Running it locally
 
@@ -64,6 +71,17 @@ npm run dev
 ```
 
 Then open http://localhost:5173.
+
+Run the tests with `pytest`.
+
+### Optional settings (environment variables on the API)
+
+| Variable | What it does |
+|---|---|
+| `DATABASE_URL` | PostgreSQL connection string for "What changed" history. Without it, snapshots go to a local SQLite file. |
+| `GEMINI_API_KEY` | Turns on Ask Edge. Free key from [Google AI Studio](https://aistudio.google.com/apikey). |
+| `GEMINI_MODEL` | Model to use (default `gemini-2.5-flash`). |
+| `ASSISTANT_PER_HOUR`, `ASSISTANT_PER_DAY` | Question limits per visitor per hour (default 10) and per day overall (default 150), to stay inside the free tier. |
 
 ## Data
 

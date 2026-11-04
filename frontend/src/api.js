@@ -8,3 +8,14 @@ export function getJson(path) {
     return response.json();
   });
 }
+export function postJson(path, body) {
+  return fetch(`${API_URL}${path}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  }).then(async (response) => {
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(data.detail ?? `server error ${response.status}`);
+    return data;
+  });
+}

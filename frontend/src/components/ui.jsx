@@ -64,8 +64,3 @@ export function Stat({ label, value, sub }) {
     </div>
   );
 }
-
-export function ordinal(n) {
-  const suffix = n % 100 >= 11 && n % 100 <= 13 ? "th" : { 1: "st", 2: "nd", 3: "rd" }[n % 10] || "th";
-  return `${n}${suffix}`;
-}

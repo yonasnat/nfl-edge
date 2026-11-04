@@ -1,5 +1,6 @@
 import { team } from "../../teams";
-import { Badge, Card, ordinal } from "../ui";
+import { Badge, Card } from "../ui";
+import { ordinal } from "../../format";
 
 const UNIT_LABEL = { overall: "Overall", pass: "Passing", rush: "Rushing" };
 

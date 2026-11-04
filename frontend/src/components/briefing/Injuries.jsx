@@ -48,6 +48,21 @@ function TeamInjuries({ report }) {
                   <Badge tone={STATUS_TONE[p.status] ?? "zinc"}>{p.status ?? practiceLabel(p.practice)}</Badge>
                 </span>
               </div>
+              {p.impact && (
+                <div className="mt-2 rounded-lg border border-zinc-700/60 bg-zinc-950/40 p-2.5 text-xs text-zinc-300">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="font-semibold text-zinc-200">Without him</span>
+                    <Badge tone={p.impact.points_per_game >= 1 ? "red" : p.impact.points_per_game <= -1 ? "green" : "zinc"}>
+                      {p.impact.points_per_game > 0 ? "-" : p.impact.points_per_game < 0 ? "+" : "±"}
+                      {Math.abs(p.impact.points_per_game).toFixed(1)} pts/game
+                    </Badge>
+                    <span className="text-zinc-500">
+                      {p.impact.games_without} games without · {p.impact.games_with} with
+                    </span>
+                  </div>
+                  <p className="mt-1.5 leading-relaxed text-zinc-400">{p.impact.summary}</p>
+                </div>
+              )}
               {p.news && p.news.length > 15 && (
                 <p className="mt-1.5 text-sm leading-relaxed text-zinc-400">
                   {p.news}{" "}

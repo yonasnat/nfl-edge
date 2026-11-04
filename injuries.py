@@ -1,9 +1,9 @@
-import re
-
 import nflreadpy as nfl
 import polars as pl
 import requests
 from cache import ttl_cache
+from impact import describe as describe_impact, injury_impact
+from names import name_key
 
 SEASON = 2026
 ESPN_URL = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
@@ -11,7 +11,6 @@ ESPN_URL = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
 # Lower number = more serious, for sorting
 SEVERITY = {"Out": 0, "Doubtful": 1, "Questionable": 2}
 GAME_STATUSES = {"Out", "Doubtful", "Questionable"}
-SUFFIXES = {"jr", "sr", "ii", "iii", "iv", "v"}
 
 ESPN_TEAMS = {
     "Arizona Cardinals": "ARI", "Atlanta Falcons": "ATL", "Baltimore Ravens": "BAL",
@@ -28,12 +27,6 @@ ESPN_TEAMS = {
 }
 
 
-def name_key(name):
-    """A simplified name for matching: 'Carlton Davis III' -> 'carlton davis'."""
-    if not name:
-        return ""
-    words = re.sub(r"[^a-z\s]", "", name.lower()).split()
-    return " ".join(w for w in words if w not in SUFFIXES)
 
 @ttl_cache(600)
 def load_espn():
@@ -171,6 +164,16 @@ def team_injuries(team, game_week, reports, shares, espn):
         share = by_name_team.get((key, team), by_name.get(key))
         p["snap_share"] = round(share, 2) if share is not None else None
         p["importance"] = importance(p["position"], share)
+        p["impact"] = None
+        at_risk = p["status"] in GAME_STATUSES or (p["practice"] or "").startswith("Did Not")
+        if at_risk and p["importance"] in ("Starting QB", "Starter"):
+            try:
+                result = injury_impact(key, team, p["position"])
+            except Exception:
+                result = None
+            if result is not None:
+                result["summary"] = describe_impact(p["name"], team, result)
+                p["impact"] = result
         listed.append(p)
 
     listed.sort(key=lambda p: (SEVERITY.get(p["status"], 3), -(p["snap_share"] or 0)))

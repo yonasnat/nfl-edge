@@ -10,9 +10,13 @@ import Matchup from "../components/briefing/Matchup";
 import Players from "../components/briefing/Players";
 import Conditions from "../components/briefing/Conditions";
 import History from "../components/briefing/History";
+import Changes from "../components/briefing/Changes";
+import AskEdge from "../components/briefing/AskEdge";
+import DefenseStyles from "../components/briefing/DefenseStyles";
 
 const SECTIONS = [
   ["overview", "At a glance"],
+  ["ask", "Ask Edge"],
   ["injuries", "Injuries"],
   ["matchup", "Matchup"],
   ["players", "Players"],
@@ -56,8 +60,9 @@ function TeamBlock({ abbr, score, alignRight }) {
     <div className={`flex min-w-0 flex-1 items-center gap-3 ${alignRight ? "flex-row-reverse text-right" : ""}`}>
       <TeamChip abbr={abbr} size="lg" />
       <div className="min-w-0">
-        <div className="truncate text-lg font-black leading-tight sm:text-2xl">{t.name}</div>
-        <div className="truncate text-xs text-zinc-400">{t.city}</div>
+        {/* On phones the team badge already shows the abbreviation, so the name is hidden */}
+        <div className="hidden truncate text-lg font-black leading-tight sm:block sm:text-2xl">{t.name}</div>
+        <div className="hidden truncate text-xs text-zinc-400 sm:block">{t.city}</div>
         {score !== null && <div className="mt-1 text-3xl font-black tabular-nums">{score}</div>}
       </div>
     </div>
@@ -83,12 +88,19 @@ export default function Game() {
   const { gameId } = useParams();
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  const [askEnabled, setAskEnabled] = useState(false);
 
   useEffect(() => {
     getJson(`/games/${gameId}`)
       .then(setData)
       .catch((err) => setError(err.message));
   }, [gameId]);
+
+  useEffect(() => {
+    getJson("/assistant")
+      .then((s) => setAskEnabled(s.enabled))
+      .catch(() => setAskEnabled(false));
+  }, []);
 
   if (error) return <p className="text-zinc-400">Couldn't load this game ({error}).</p>;
   if (!data) return <Loading />;
@@ -126,6 +138,8 @@ export default function Game() {
         </div>
       </div>
 
+      {!final && <Changes gameId={game.game_id} />}
+
       {final && (
         <div className="mt-4 rounded-2xl border border-yellow-500/20 bg-yellow-500/5 p-4 text-sm text-yellow-100/90">
           This game has been played. The briefing below shows the latest data, which now includes
@@ -136,7 +150,7 @@ export default function Game() {
 
       <nav className="sticky top-14 z-10 -mx-4 mt-6 overflow-x-auto border-b border-zinc-800 bg-zinc-950/90 px-4 backdrop-blur">
         <div className="flex gap-5 text-sm font-medium">
-          {SECTIONS.map(([id, label]) => (
+          {SECTIONS.filter(([id]) => id !== "ask" || askEnabled).map(([id, label]) => (
             <a key={id} href={`#${id}`} className="whitespace-nowrap py-3 text-zinc-400 transition hover:text-white">
               {label}
             </a>
@@ -147,16 +161,28 @@ export default function Game() {
       <SectionHeading id="overview" title="At a glance" subtitle="The most important items from every section below." />
       <Takeaways data={data} />
 
+      {askEnabled && (
+        <>
+          <SectionHeading
+            id="ask"
+            title="Ask Edge"
+            subtitle="Ask a question in plain English. The AI looks up the answer in this game's data and shows what it checked."
+          />
+          <AskEdge game={game} />
+        </>
+      )}
+
       <SectionHeading id="injuries" title="Injuries" subtitle="Ranked by status, then by how much each player plays." />
       <Injuries injuries={data.injuries} />
 
       <SectionHeading id="matchup" title="Matchup" subtitle="Each offense against the defense it faces, unit by unit." />
       <Matchup matchups={data.matchups} teams={data.teams} />
+      <DefenseStyles styles={data.defense_styles} />
 
       <SectionHeading
         id="players"
         title="Key players"
-        subtitle="Per-game numbers this season, recently, over his career, and against this opponent."
+        subtitle="Per-game numbers this season, recently, over his career, against this opponent, and against defenses that play like it."
       />
       <Players players={data.players} game={game} injuries={data.injuries} />
 
@@ -172,7 +198,7 @@ export default function Game() {
 
       <p className="mt-12 text-xs text-zinc-600">
         Data: nflverse (play-by-play, schedules, official injury reports), ESPN (injury statuses and news),
-        Open-Meteo (weather). For research only; not betting advice.
+        Open-Meteo (weather). Ask Edge uses Google Gemini. For research only; not betting advice.
       </p>
     </div>
   );
