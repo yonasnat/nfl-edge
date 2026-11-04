@@ -5,17 +5,24 @@ status, the forecast, the betting lines, the starting quarterbacks) and saves a 
 whenever any fact differs from the last one saved. Comparing an older snapshot with the
 newest one gives the "What changed" feed.
 
-Storage: PostgreSQL when DATABASE_URL is set (in production, so history survives
-restarts and redeploys), otherwise a SQLite file (for running on your own computer).
+Storage: PostgreSQL (Neon) when DATABASE_URL is set, so history survives restarts and
+redeploys; otherwise a SQLite file (for running on your own computer without a database).
+
+Neon gives two connection strings. DATABASE_URL is the pooled one (through PgBouncer), used
+for normal queries. DATABASE_URL_UNPOOLED is the direct one, used for schema changes, which
+Neon recommends running outside the pooler.
 """
 import json
 import os
+
+import env  # noqa: F401  (loads .env.local / .env before reading settings)
 import sqlite3
 import threading
 from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
 
 DATABASE_URL = os.environ.get("DATABASE_URL")
+DATABASE_URL_UNPOOLED = os.environ.get("DATABASE_URL_UNPOOLED")
 SQLITE_PATH = os.environ.get("SNAPSHOT_SQLITE_PATH", "data/snapshots.db")
 
 # How big a forecast change must be to count, so small model wiggles aren't "news"
@@ -27,12 +34,18 @@ _lock = threading.Lock()
 # ---------- Storage ----------
 
 @contextmanager
-def connect():
-    """A database connection that commits on success and always closes."""
-    if DATABASE_URL:
-        import psycopg  # only needed in production
+def connect(direct=False):
+    """A database connection that commits on success and always closes.
 
-        conn = psycopg.connect(DATABASE_URL)
+    direct=True uses Neon's unpooled connection (for creating tables), when one is set.
+    """
+    if DATABASE_URL:
+        import psycopg  # only needed with PostgreSQL
+
+        url = (DATABASE_URL_UNPOOLED or DATABASE_URL) if direct else DATABASE_URL
+        # prepare_threshold=None: no server-side prepared statements, which a
+        # transaction-mode pooler (PgBouncer) can hand to the wrong connection
+        conn = psycopg.connect(url, prepare_threshold=None, connect_timeout=10)
     else:
         os.makedirs(os.path.dirname(SQLITE_PATH) or ".", exist_ok=True)
         conn = sqlite3.connect(SQLITE_PATH)
@@ -49,7 +62,7 @@ def sql(query):
 
 
 def setup():
-    with _lock, connect() as conn:
+    with _lock, connect(direct=True) as conn:
         conn.execute(
             """
             CREATE TABLE IF NOT EXISTS briefing_snapshots (

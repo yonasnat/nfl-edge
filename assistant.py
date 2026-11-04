@@ -13,6 +13,7 @@ from collections import defaultdict, deque
 
 import requests
 
+import env  # noqa: F401  (loads .env.local / .env before reading settings)
 from briefing import build_briefing
 from names import name_key
 from snapshots import changes_since, default_since
