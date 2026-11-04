@@ -20,6 +20,9 @@ from snapshots import changes_since, default_since
 
 API_KEY = os.environ.get("GEMINI_API_KEY")
 MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+# Tried in order when the main model is overloaded (Google returns 503 during demand spikes)
+FALLBACK_MODELS = [m.strip() for m in os.environ.get("GEMINI_FALLBACK_MODELS", "gemini-2.5-flash-lite").split(",") if m.strip()]
+RETRY_DELAYS = [1, 3]    # seconds to wait before retrying the same model
 URL = os.environ.get("GEMINI_URL", "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent")
 MAX_ROUNDS = 5           # tool-calling rounds before we give up
 MAX_QUESTION = 400       # characters
@@ -141,9 +144,34 @@ def allowed(visitor, now=None):
 
 # ---------- The agent loop ----------
 
+class Overloaded(Exception):
+    pass
+
+
 def call_model(contents, system):
+    """One generateContent call, retrying and falling back to lighter models if Google is overloaded.
+
+    Returns (response JSON, model that answered).
+    """
+    last_error = None
+    for model in [MODEL] + FALLBACK_MODELS:
+        for delay in [0] + RETRY_DELAYS:
+            if delay:
+                time.sleep(delay)
+            try:
+                return call_once(model, contents, system), model
+            except requests.HTTPError as error:
+                status = error.response.status_code if error.response is not None else None
+                if status not in (500, 503):
+                    raise
+                print(f"Gemini {model} overloaded ({status}); retrying", flush=True)
+                last_error = error
+    raise Overloaded() from last_error
+
+
+def call_once(model, contents, system):
     response = requests.post(
-        URL.format(model=MODEL),
+        URL.format(model=model),
         headers={"x-goog-api-key": API_KEY, "Content-Type": "application/json"},
         json={
             "systemInstruction": {"parts": [{"text": system}]},
@@ -151,7 +179,7 @@ def call_model(contents, system):
             "tools": [{"functionDeclarations": TOOLS}],
             "generationConfig": {"temperature": 0.2, "maxOutputTokens": 1024},
         },
-        timeout=40,
+        timeout=25,
     )
     response.raise_for_status()
     return response.json()
@@ -178,9 +206,12 @@ def ask(game_id, question):
 
     contents = [{"role": "user", "parts": [{"text": question}]}]
     tools_used = []
+    answered_by = MODEL
     for _ in range(MAX_ROUNDS):
         try:
-            data = call_model(contents, system)
+            data, answered_by = call_model(contents, system)
+        except Overloaded:
+            raise AssistantError("Google's AI model is overloaded right now. Try again in a minute.")
         except requests.HTTPError as error:
             status = error.response.status_code if error.response is not None else None
             detail = error.response.text[:500] if error.response is not None else ""
@@ -208,7 +239,7 @@ def ask(game_id, question):
             answer = "".join(p.get("text", "") for p in parts if not p.get("thought")).strip()
             if not answer:
                 raise AssistantError("Ask Edge couldn't answer that one.")
-            return {"answer": answer, "tools_used": tools_used, "model": MODEL}
+            return {"answer": answer, "tools_used": tools_used, "model": answered_by}
 
         # The model asked for data: run each tool and send the results back
         contents.append({"role": "model", "parts": parts})

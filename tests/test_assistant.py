@@ -30,13 +30,14 @@ class FakeResponse:
 
 @pytest.fixture
 def setup(monkeypatch):
+    monkeypatch.setattr(assistant.time, "sleep", lambda seconds: None)
     monkeypatch.setattr(assistant, "API_KEY", "test-key")
     monkeypatch.setattr(assistant, "build_briefing", lambda game_id: BRIEFING if game_id == "G1" else None)
     sent = []
     replies = []
 
     def fake_post(url, headers, json, timeout):
-        sent.append(json)
+        sent.append({**json, "_url": url})
         return replies.pop(0)
 
     monkeypatch.setattr(assistant.requests, "post", fake_post)
@@ -113,3 +114,22 @@ def test_rejected_key_says_so_and_logs_googles_reason(setup, capsys):
     with pytest.raises(assistant.AssistantError, match="key was rejected"):
         assistant.ask("G1", "anything")
     assert "API key not valid" in capsys.readouterr().out
+
+
+def test_overloaded_model_retries_then_falls_back(setup):
+    sent, replies = setup
+    busy = FakeResponse({}, status=503)
+    replies += [busy, busy, busy, FakeResponse(text("Answer from the lighter model."))]
+    result = assistant.ask("G1", "anything")
+    assert result["answer"] == "Answer from the lighter model."
+    assert result["model"] == "gemini-2.5-flash-lite"
+    assert [s["_url"].split("/models/")[1].split(":")[0] for s in sent] == [
+        "gemini-2.5-flash", "gemini-2.5-flash", "gemini-2.5-flash", "gemini-2.5-flash-lite"
+    ]
+
+
+def test_everything_overloaded_gives_a_clear_message(setup):
+    _, replies = setup
+    replies += [FakeResponse({}, status=503) for _ in range(6)]
+    with pytest.raises(assistant.AssistantError, match="overloaded"):
+        assistant.ask("G1", "anything")
