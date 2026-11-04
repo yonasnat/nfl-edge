@@ -96,10 +96,23 @@ export default function Game() {
       .catch((err) => setError(err.message));
   }, [gameId]);
 
+  // Ask the server whether Ask Edge is on. A sleeping or busy server can fail this check,
+  // so try a few times before hiding the section.
   useEffect(() => {
-    getJson("/assistant")
-      .then((s) => setAskEnabled(s.enabled))
-      .catch(() => setAskEnabled(false));
+    let cancelled = false;
+    let timer;
+    function check(attempt) {
+      getJson("/assistant")
+        .then((s) => !cancelled && setAskEnabled(s.enabled))
+        .catch(() => {
+          if (!cancelled && attempt < 4) timer = setTimeout(() => check(attempt + 1), 3000 * attempt);
+        });
+    }
+    check(1);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
   }, []);
 
   if (error) return <p className="text-zinc-400">Couldn't load this game ({error}).</p>;
