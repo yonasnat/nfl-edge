@@ -122,14 +122,28 @@ def test_overloaded_model_retries_then_falls_back(setup):
     replies += [busy, busy, busy, FakeResponse(text("Answer from the lighter model."))]
     result = assistant.ask("G1", "anything")
     assert result["answer"] == "Answer from the lighter model."
-    assert result["model"] == "gemini-2.5-flash-lite"
+    assert result["model"] == "gemini-flash-lite-latest"
     assert [s["_url"].split("/models/")[1].split(":")[0] for s in sent] == [
-        "gemini-2.5-flash", "gemini-2.5-flash", "gemini-2.5-flash", "gemini-2.5-flash-lite"
+        "gemini-flash-latest", "gemini-flash-latest", "gemini-flash-latest", "gemini-flash-lite-latest"
     ]
 
 
 def test_everything_overloaded_gives_a_clear_message(setup):
     _, replies = setup
-    replies += [FakeResponse({}, status=503) for _ in range(6)]
+    replies += [FakeResponse({}, status=503) for _ in range(9)]
     with pytest.raises(assistant.AssistantError, match="overloaded"):
+        assistant.ask("G1", "anything")
+
+
+def test_missing_model_skips_straight_to_the_next_one(setup):
+    sent, replies = setup
+    replies += [FakeResponse({}, status=404), FakeResponse(text("ok"))]
+    result = assistant.ask("G1", "anything")
+    assert result["model"] == "gemini-flash-lite-latest" and len(sent) == 2
+
+
+def test_no_models_available(setup):
+    _, replies = setup
+    replies += [FakeResponse({}, status=404) for _ in range(3)]
+    with pytest.raises(assistant.AssistantError, match="None of Ask Edge's AI models"):
         assistant.ask("G1", "anything")

@@ -19,9 +19,15 @@ from names import name_key
 from snapshots import changes_since, default_since
 
 API_KEY = os.environ.get("GEMINI_API_KEY")
-MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
-# Tried in order when the main model is overloaded (Google returns 503 during demand spikes)
-FALLBACK_MODELS = [m.strip() for m in os.environ.get("GEMINI_FALLBACK_MODELS", "gemini-2.5-flash-lite").split(",") if m.strip()]
+# "-latest" aliases always point at Google's current Flash models, so the app keeps working
+# when older model versions are retired or unavailable to new projects
+MODEL = os.environ.get("GEMINI_MODEL", "gemini-flash-latest")
+# Tried in order when a model is overloaded (503) or not available to this key (404)
+FALLBACK_MODELS = [
+    m.strip()
+    for m in os.environ.get("GEMINI_FALLBACK_MODELS", "gemini-flash-lite-latest,gemini-2.5-flash").split(",")
+    if m.strip()
+]
 RETRY_DELAYS = [1, 3]    # seconds to wait before retrying the same model
 URL = os.environ.get("GEMINI_URL", "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent")
 MAX_ROUNDS = 5           # tool-calling rounds before we give up
@@ -162,10 +168,16 @@ def call_model(contents, system):
                 return call_once(model, contents, system), model
             except requests.HTTPError as error:
                 status = error.response.status_code if error.response is not None else None
+                if status == 404:
+                    print(f"Gemini model {model} not available; trying the next one", flush=True)
+                    last_error = error
+                    break  # no point retrying a model that doesn't exist for this key
                 if status not in (500, 503):
                     raise
                 print(f"Gemini {model} overloaded ({status}); retrying", flush=True)
                 last_error = error
+    if last_error is not None and last_error.response is not None and last_error.response.status_code == 404:
+        raise last_error
     raise Overloaded() from last_error
 
 
@@ -222,7 +234,7 @@ def ask(game_id, question):
             if status in (400, 401, 403) and ("API key" in detail or "API_KEY" in detail or status in (401, 403)):
                 raise AssistantError("Ask Edge's AI key was rejected by Google. Check GEMINI_API_KEY on the server.")
             if status == 404:
-                raise AssistantError(f"The AI model {MODEL} wasn't found. Check GEMINI_MODEL on the server.")
+                raise AssistantError("None of Ask Edge's AI models are available to this key. Check GEMINI_MODEL on the server.")
             raise AssistantError("Ask Edge couldn't reach the AI model. Try again shortly.")
         except requests.RequestException as error:
             print(f"Gemini request failed: {type(error).__name__}: {error}", flush=True)
