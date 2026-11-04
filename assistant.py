@@ -29,6 +29,9 @@ FALLBACK_MODELS = [
     if m.strip()
 ]
 RETRY_DELAYS = [1, 3]    # seconds to wait before retrying the same model
+# Newer Flash models "think" before answering, which is slow. Low is plenty for lookups.
+THINKING_LEVEL = os.environ.get("GEMINI_THINKING_LEVEL", "low")
+ANSWER_CACHE_SECONDS = 600  # the same question about the same game is answered from memory
 URL = os.environ.get("GEMINI_URL", "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent")
 MAX_ROUNDS = 5           # tool-calling rounds before we give up
 MAX_QUESTION = 400       # characters
@@ -38,9 +41,12 @@ PER_DAY = int(os.environ.get("ASSISTANT_PER_DAY", "150"))  # stays inside the fr
 SYSTEM = """You are Ask Edge, the research assistant inside NFL Edge, an NFL research app.
 You answer questions about ONE game: {away} at {home} ({game_id}).
 
+A short summary of the game is included with the question. If it fully answers the question,
+answer from it directly; otherwise use the tools for details.
+
 Rules:
-- Use the tools to look things up. Every number or fact you state must come from a tool result.
-  If the tools don't have it, say the app doesn't have that data. Never guess or use outside knowledge.
+- Use the summary and the tools to look things up. Every number or fact you state must come from a tool result.
+  If neither has it, say the app doesn't have that data. Never guess or use outside knowledge.
 - Mention sample sizes ("in 4 games") and say when a sample is small (under 4 games is very small).
 - You do research, not picks. Never tell the user what to bet, never predict a winner or a score,
   and never say a bet is a "lock" or "value". If asked, explain you only lay out the evidence.
@@ -125,6 +131,48 @@ def run_tool(name, args, briefing):
     return {"error": f"Unknown tool {name}"}
 
 
+def summary(briefing):
+    """A compact overview sent with every question, so simple ones need no tool calls."""
+    game = briefing["game"]
+    injuries = briefing.get("injuries") or {}
+    weather = briefing.get("weather") or {}
+    return {
+        "game": {k: game.get(k) for k in ("away", "home", "kickoff", "stadium", "roof", "spread_line", "total_line", "div_game")},
+        "injury_headlines": {
+            injuries[s]["team"]: injuries[s]["headlines"] for s in ("away", "home") if injuries.get("available")
+        },
+        "big_matchup_edges": briefing.get("key_matchups", []),
+        "weather": {k: weather.get(k) for k in ("available", "indoor", "temperature_f", "wind_mph", "precip_chance", "flags")},
+        "situation_flags": (briefing.get("situation") or {}).get("flags", []),
+        "key_players": {
+            s: [c["name"] + " (" + c["position"] + ")" for c in (briefing.get("players") or {}).get(s, [])]
+            for s in ("away", "home")
+        },
+    }
+
+
+# ---------- Answer cache ----------
+
+_answers = {}
+
+
+def cache_key(game_id, question):
+    return game_id, " ".join(question.lower().split()).rstrip("?!. ")
+
+
+def cached_answer(game_id, question, now=None):
+    saved = _answers.get(cache_key(game_id, question))
+    if saved and (now or time.time()) - saved[0] < ANSWER_CACHE_SECONDS:
+        return saved[1]
+    return None
+
+
+def remember_answer(game_id, question, result, now=None):
+    if len(_answers) > 500:
+        _answers.clear()
+    _answers[cache_key(game_id, question)] = (now or time.time(), result)
+
+
 # ---------- Rate limits, so a public demo can't use up the free quota ----------
 
 _visitors = defaultdict(deque)
@@ -181,7 +229,14 @@ def call_model(contents, system):
     raise Overloaded() from last_error
 
 
+_no_thinking_setting = set()  # models that rejected the thinking setting
+
+
 def call_once(model, contents, system):
+    config = {"temperature": 0.2, "maxOutputTokens": 1024}
+    if THINKING_LEVEL and model not in _no_thinking_setting:
+        config["thinkingConfig"] = {"thinkingLevel": THINKING_LEVEL}
+    started = time.time()
     response = requests.post(
         URL.format(model=model),
         headers={"x-goog-api-key": API_KEY, "Content-Type": "application/json"},
@@ -189,10 +244,16 @@ def call_once(model, contents, system):
             "systemInstruction": {"parts": [{"text": system}]},
             "contents": contents,
             "tools": [{"functionDeclarations": TOOLS}],
-            "generationConfig": {"temperature": 0.2, "maxOutputTokens": 1024},
+            "generationConfig": config,
         },
         timeout=25,
     )
+    print(f"Gemini {model}: {response.status_code} in {time.time() - started:.1f}s", flush=True)
+
+    # Older models don't know thinkingLevel; remember that and ask again without it
+    if response.status_code == 400 and "thinking" in response.text.lower() and "thinkingConfig" in config:
+        _no_thinking_setting.add(model)
+        return call_once(model, contents, system)
     response.raise_for_status()
     return response.json()
 
@@ -210,13 +271,19 @@ def ask(game_id, question):
         raise AssistantError("Ask a question about this game.")
     question = question[:MAX_QUESTION]
 
+    saved = cached_answer(game_id, question)
+    if saved is not None:
+        return {**saved, "cached": True}
+
+    started = time.time()
     briefing = build_briefing(game_id)
     if briefing is None:
         raise AssistantError("Game not found.")
     game = briefing["game"]
     system = SYSTEM.format(away=game["away"], home=game["home"], game_id=game_id)
 
-    contents = [{"role": "user", "parts": [{"text": question}]}]
+    opening = f"Game summary:\n{json.dumps(summary(briefing), default=str)}\n\nQuestion: {question}"
+    contents = [{"role": "user", "parts": [{"text": opening}]}]
     tools_used = []
     answered_by = MODEL
     for _ in range(MAX_ROUNDS):
@@ -251,7 +318,10 @@ def ask(game_id, question):
             answer = "".join(p.get("text", "") for p in parts if not p.get("thought")).strip()
             if not answer:
                 raise AssistantError("Ask Edge couldn't answer that one.")
-            return {"answer": answer, "tools_used": tools_used, "model": answered_by}
+            result = {"answer": answer, "tools_used": tools_used, "model": answered_by}
+            print(f"Ask Edge answered in {time.time() - started:.1f}s with {len(tools_used)} tool calls", flush=True)
+            remember_answer(game_id, question, result)
+            return result
 
         # The model asked for data: run each tool and send the results back
         contents.append({"role": "model", "parts": parts})

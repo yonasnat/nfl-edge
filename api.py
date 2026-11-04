@@ -105,6 +105,10 @@ def ask_edge(game_id: str, body: Question, request: Request):
         raise HTTPException(status_code=503, detail="Ask Edge isn't set up on this server yet.")
     forwarded = request.headers.get("x-forwarded-for", "")
     visitor = forwarded.split(",")[0].strip() or (request.client.host if request.client else "unknown")
+    # Repeat questions come from memory and don't count against the visitor's limit
+    saved = assistant.cached_answer(game_id, (body.question or "").strip()[: assistant.MAX_QUESTION])
+    if saved is not None:
+        return {**saved, "cached": True}
     ok, message = assistant.allowed(visitor)
     if not ok:
         raise HTTPException(status_code=429, detail=message)
