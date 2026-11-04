@@ -84,6 +84,7 @@ To use the Neon database locally: `npm i -g neon`, `neon login`, then `neon depl
 | `DATABASE_URL_UNPOOLED` | Neon's direct connection string, used only to create the table. Optional; falls back to `DATABASE_URL`. |
 | `GEMINI_API_KEY` | Turns on Ask Edge. Free key from [Google AI Studio](https://aistudio.google.com/apikey). |
 | `GEMINI_MODEL` | Model to use (default `gemini-2.5-flash`). |
+| `GEMINI_FALLBACK_MODELS` | Comma-separated models to try when the main one is overloaded (default `gemini-2.5-flash-lite`). |
 | `ASSISTANT_PER_HOUR`, `ASSISTANT_PER_DAY` | Question limits per visitor per hour (default 10) and per day overall (default 150), to stay inside the free tier. |
 
 ## Data
