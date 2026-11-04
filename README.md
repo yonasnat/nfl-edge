@@ -74,11 +74,14 @@ Then open http://localhost:5173.
 
 Run the tests with `pytest`.
 
+To use the Neon database locally: `npm i -g neon`, `neon login`, then `neon deploy` (or `neon env pull`). That writes `DATABASE_URL` and `DATABASE_URL_UNPOOLED` to `.env.local`, which the API loads automatically. `.env.local` is git-ignored.
+
 ### Optional settings (environment variables on the API)
 
 | Variable | What it does |
 |---|---|
-| `DATABASE_URL` | PostgreSQL connection string for "What changed" history. Without it, snapshots go to a local SQLite file. |
+| `DATABASE_URL` | PostgreSQL (Neon) pooled connection string for "What changed" history. Without it, snapshots go to a local SQLite file. |
+| `DATABASE_URL_UNPOOLED` | Neon's direct connection string, used only to create the table. Optional; falls back to `DATABASE_URL`. |
 | `GEMINI_API_KEY` | Turns on Ask Edge. Free key from [Google AI Studio](https://aistudio.google.com/apikey). |
 | `GEMINI_MODEL` | Model to use (default `gemini-2.5-flash`). |
 | `ASSISTANT_PER_HOUR`, `ASSISTANT_PER_DAY` | Question limits per visitor per hour (default 10) and per day overall (default 150), to stay inside the free tier. |

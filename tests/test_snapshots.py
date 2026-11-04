@@ -68,3 +68,45 @@ def test_player_leaving_the_report():
 
 def test_no_snapshots_yet():
     assert snapshots.changes_since("NOPE", T0)["changes"] == []
+
+
+def test_neon_urls_pooled_for_queries_direct_for_schema(monkeypatch):
+    import psycopg
+
+    used = []
+
+    class FakeConn:
+        def execute(self, *args):
+            return self
+
+        def fetchone(self):
+            return None
+
+        def commit(self):
+            pass
+
+        def close(self):
+            pass
+
+    def fake_connect(url, **kwargs):
+        used.append((url, kwargs.get("prepare_threshold", "missing")))
+        return FakeConn()
+
+    monkeypatch.setattr(psycopg, "connect", fake_connect)
+    monkeypatch.setattr(snapshots, "DATABASE_URL", "postgresql://pooled")
+    monkeypatch.setattr(snapshots, "DATABASE_URL_UNPOOLED", "postgresql://direct")
+    snapshots.setup()
+    snapshots.latest("G1")
+    assert used == [("postgresql://direct", None), ("postgresql://pooled", None)]
+
+
+def test_without_unpooled_url_schema_uses_the_pooled_one(monkeypatch):
+    import psycopg
+
+    used = []
+    monkeypatch.setattr(psycopg, "connect", lambda url, **kw: used.append(url) or (_ for _ in ()).throw(RuntimeError("stop")))
+    monkeypatch.setattr(snapshots, "DATABASE_URL", "postgresql://pooled")
+    monkeypatch.setattr(snapshots, "DATABASE_URL_UNPOOLED", None)
+    with pytest.raises(RuntimeError):
+        snapshots.setup()
+    assert used == ["postgresql://pooled"]
