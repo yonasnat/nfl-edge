@@ -36,3 +36,17 @@ def test_assistant_status_and_disabled_ask(monkeypatch):
 def test_changes_endpoint_validates_since():
     assert client.get("/games/G1/changes?since=not-a-date").status_code == 400
     assert client.get("/games/G1/changes?since=2026-11-01T12:00:00Z").json()["changes"] == []
+
+
+def test_evals_endpoint(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    assert client.get("/evals").json() == {"available": False}
+    (tmp_path / "evals" / "results").mkdir(parents=True)
+    (tmp_path / "evals" / "results" / "latest.json").write_text(
+        '{"summary": {"questions": 2}, "results": ['
+        '{"id": "q1", "question": "A?", "checks": {"grounded": true, "no_picks": true}},'
+        '{"id": "q2", "question": "B?", "checks": {"grounded": false, "no_picks": true, "cites_sample": null}}]}'
+    )
+    data = client.get("/evals").json()
+    assert data["available"] and data["summary"]["questions"] == 2
+    assert data["failures"] == [{"id": "q2", "question": "B?", "failed": ["grounded"]}]

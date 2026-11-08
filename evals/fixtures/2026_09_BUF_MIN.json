@@ -1,0 +1,2311 @@
+{
+ "note": "Frozen for Ask Edge evals. Real app data, except the forecast and 'changes' are fixed test values.",
+ "briefing": {
+  "game": {
+   "game_id": "2026_09_BUF_MIN",
+   "week": 9,
+   "gameday": "2026-11-09",
+   "gametime": "20:15",
+   "kickoff": "2026-11-09T20:15:00-05:00",
+   "away": "BUF",
+   "home": "MIN",
+   "away_score": null,
+   "home_score": null,
+   "location": "Home",
+   "stadium": "U.S. Bank Stadium",
+   "roof": "dome",
+   "surface": "sportturf",
+   "spread_line": -3.0,
+   "total_line": 43.5,
+   "away_rest": 8,
+   "home_rest": 8,
+   "div_game": false
+  },
+  "weather": {
+   "available": true,
+   "indoor": true,
+   "summary": "Indoors: weather won't be a factor",
+   "flags": [],
+   "evidence": []
+  },
+  "situation": {
+   "facts": [
+    "Rest: BUF 8 days, MIN 8 days",
+    "Surface: artificial turf (sportturf)",
+    "Elevation: about 830 feet",
+    "BUF travel: about 736 miles",
+    "BUF crosses 1 time zone traveling west",
+    "Kickoff on body clocks: BUF 8:15 PM, MIN 7:15 PM"
+   ],
+   "flags": [],
+   "evidence": []
+  },
+  "head_to_head": {
+   "games": 2,
+   "summary": "2 meetings since 2015: BUF 1-1 MIN. Against the spread: BUF 1-1 MIN. Totals: 1 overs, 1 unders, averaging 48.0 points.",
+   "wins": {
+    "BUF": 1,
+    "MIN": 1
+   },
+   "covers": {
+    "BUF": 1,
+    "MIN": 1
+   },
+   "ties": 0,
+   "overs": 1,
+   "unders": 1,
+   "avg_total": 48.0,
+   "caution": "Older meetings involved different rosters and coaches; the most recent games matter most.",
+   "recent": [
+    {
+     "season": 2022,
+     "week": 10,
+     "game_type": "REG",
+     "gameday": "2022-11-13",
+     "home": "BUF",
+     "away": "MIN",
+     "home_score": 30,
+     "away_score": 33,
+     "winner": "MIN",
+     "spread_line": 6.5,
+     "covered": "MIN",
+     "total": 63,
+     "total_line": 47.0,
+     "went": "over"
+    },
+    {
+     "season": 2018,
+     "week": 3,
+     "game_type": "REG",
+     "gameday": "2018-09-23",
+     "home": "MIN",
+     "away": "BUF",
+     "home_score": 6,
+     "away_score": 27,
+     "winner": "BUF",
+     "spread_line": 16.5,
+     "covered": "BUF",
+     "total": 33,
+     "total_line": 41.0,
+     "went": "under"
+    }
+   ]
+  },
+  "players": {
+   "away": [
+    {
+     "player_id": "00-0034857",
+     "name": "Josh Allen",
+     "position": "QB",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ynrhq9iv30ysjpwmrfdv",
+     "games_this_season": 7,
+     "vs_opponent_games": 2,
+     "stats": [
+      {
+       "stat": "passing_yards",
+       "label": "passing yards",
+       "season": 256.1,
+       "last3": 251.3,
+       "career": 241.8,
+       "vs_opponent": 263.0
+      },
+      {
+       "stat": "passing_tds",
+       "label": "passing TDs",
+       "season": 1.6,
+       "last3": 1.7,
+       "career": 1.8,
+       "vs_opponent": 1.0
+      },
+      {
+       "stat": "passing_interceptions",
+       "label": "interceptions",
+       "season": 0.7,
+       "last3": 0.7,
+       "career": 0.7,
+       "vs_opponent": 1.0
+      },
+      {
+       "stat": "rushing_yards",
+       "label": "rushing yards",
+       "season": 38.6,
+       "last3": 50.7,
+       "career": 38.9,
+       "vs_opponent": 61.5
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2018,
+       "week": 3,
+       "team": "BUF",
+       "passing_yards": 196,
+       "passing_tds": 1,
+       "passing_interceptions": 0,
+       "rushing_yards": 39
+      },
+      {
+       "season": 2022,
+       "week": 10,
+       "team": "BUF",
+       "passing_yards": 330,
+       "passing_tds": 1,
+       "passing_interceptions": 2,
+       "rushing_yards": 84
+      }
+     ],
+     "summary": "Josh Allen: 256 passing yards per game this season (7 games). 2 games vs. MIN: 263 per game, compared with 242 in all games since 2015. Very small sample.",
+     "vs_similar": {
+      "games": 4,
+      "baseline_games": 65,
+      "stats": [
+       {
+        "stat": "passing_yards",
+        "vs_similar": 193.0,
+        "baseline": 246.0,
+        "change_pct": -22,
+        "label": "passing yards"
+       },
+       {
+        "stat": "passing_tds",
+        "vs_similar": 1.2,
+        "baseline": 1.8,
+        "change_pct": -31,
+        "label": "passing TDs"
+       },
+       {
+        "stat": "passing_interceptions",
+        "vs_similar": 1.0,
+        "baseline": 0.7,
+        "change_pct": 35,
+        "label": "interceptions"
+       },
+       {
+        "stat": "rushing_yards",
+        "vs_similar": 30.5,
+        "baseline": 36.9,
+        "change_pct": -17,
+        "label": "rushing yards"
+       }
+      ],
+      "log": [
+       {
+        "season": 2023,
+        "week": 1,
+        "opponent": "NYJ",
+        "passing_yards": 236,
+        "passing_tds": 1,
+        "passing_interceptions": 3,
+        "rushing_yards": 36
+       },
+       {
+        "season": 2023,
+        "week": 11,
+        "opponent": "NYJ",
+        "passing_yards": 275,
+        "passing_tds": 3,
+        "passing_interceptions": 1,
+        "rushing_yards": 15
+       },
+       {
+        "season": 2024,
+        "week": 5,
+        "opponent": "HOU",
+        "passing_yards": 131,
+        "passing_tds": 1,
+        "passing_interceptions": 0,
+        "rushing_yards": 54
+       },
+       {
+        "season": 2025,
+        "week": 16,
+        "opponent": "CLE",
+        "passing_yards": 130,
+        "passing_tds": 0,
+        "passing_interceptions": 0,
+        "rushing_yards": 17
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0037248",
+     "name": "James Cook",
+     "position": "RB",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/anjbznqb9i21wzcgrtbs",
+     "games_this_season": 7,
+     "vs_opponent_games": 1,
+     "stats": [
+      {
+       "stat": "rushing_yards",
+       "label": "rushing yards",
+       "season": 101.0,
+       "last3": 95.3,
+       "career": 68.2,
+       "vs_opponent": 22.0
+      },
+      {
+       "stat": "carries",
+       "label": "carries",
+       "season": 19.7,
+       "last3": 22.7,
+       "career": 13.7,
+       "vs_opponent": 5.0
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 1.7,
+       "last3": 2.0,
+       "career": 2.0,
+       "vs_opponent": 0.0
+      },
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 15.7,
+       "last3": 28.7,
+       "career": 17.1,
+       "vs_opponent": 0.0
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2022,
+       "week": 10,
+       "team": "BUF",
+       "rushing_yards": 22,
+       "carries": 5,
+       "receptions": 0,
+       "receiving_yards": 0
+      }
+     ],
+     "summary": "James Cook: 101 rushing yards per game this season (7 games). 1 game vs. MIN: 22 per game, compared with 68 in all games since 2015. Very small sample.",
+     "vs_similar": {
+      "games": 4,
+      "baseline_games": 66,
+      "stats": [
+       {
+        "stat": "rushing_yards",
+        "vs_similar": 79.5,
+        "baseline": 64.5,
+        "change_pct": 23,
+        "label": "rushing yards"
+       },
+       {
+        "stat": "carries",
+        "vs_similar": 16.2,
+        "baseline": 12.8,
+        "change_pct": 27,
+        "label": "carries"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 2.5,
+        "baseline": 2.0,
+        "change_pct": 27,
+        "label": "receptions"
+       },
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 20.0,
+        "baseline": 17.8,
+        "change_pct": 12,
+        "label": "receiving yards"
+       }
+      ],
+      "log": [
+       {
+        "season": 2023,
+        "week": 1,
+        "opponent": "NYJ",
+        "rushing_yards": 46,
+        "carries": 12,
+        "receptions": 4,
+        "receiving_yards": 17
+       },
+       {
+        "season": 2023,
+        "week": 11,
+        "opponent": "NYJ",
+        "rushing_yards": 73,
+        "carries": 17,
+        "receptions": 3,
+        "receiving_yards": 29
+       },
+       {
+        "season": 2024,
+        "week": 5,
+        "opponent": "HOU",
+        "rushing_yards": 82,
+        "carries": 20,
+        "receptions": 2,
+        "receiving_yards": 17
+       },
+       {
+        "season": 2025,
+        "week": 16,
+        "opponent": "CLE",
+        "rushing_yards": 117,
+        "carries": 16,
+        "receptions": 1,
+        "receiving_yards": 17
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0039875",
+     "name": "Ray Davis",
+     "position": "RB",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/o1pjw2vvag9cz7bw1kte",
+     "games_this_season": 6,
+     "vs_opponent_games": 0,
+     "stats": [
+      {
+       "stat": "rushing_yards",
+       "label": "rushing yards",
+       "season": 7.0,
+       "last3": 12.0,
+       "career": 17.7,
+       "vs_opponent": null
+      },
+      {
+       "stat": "carries",
+       "label": "carries",
+       "season": 1.8,
+       "last3": 3.0,
+       "career": 4.2,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 0.5,
+       "last3": 0.7,
+       "career": 0.7,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 6.7,
+       "last3": 12.0,
+       "career": 7.7,
+       "vs_opponent": null
+      }
+     ],
+     "vs_opponent_log": [],
+     "summary": "Ray Davis: 7 rushing yards per game this season (6 games). Hasn't played MIN since 2015.",
+     "vs_similar": {
+      "games": 2,
+      "baseline_games": 34,
+      "stats": [
+       {
+        "stat": "rushing_yards",
+        "vs_similar": 7.0,
+        "baseline": 21.1,
+        "change_pct": -67,
+        "label": "rushing yards"
+       },
+       {
+        "stat": "carries",
+        "vs_similar": 1.5,
+        "baseline": 5.0,
+        "change_pct": -70,
+        "label": "carries"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 1.5,
+        "baseline": 0.8,
+        "change_pct": 89,
+        "label": "receptions"
+       },
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 12.0,
+        "baseline": 8.1,
+        "change_pct": 48,
+        "label": "receiving yards"
+       }
+      ],
+      "log": [
+       {
+        "season": 2024,
+        "week": 5,
+        "opponent": "HOU",
+        "rushing_yards": 0,
+        "carries": 0,
+        "receptions": 1,
+        "receiving_yards": 4
+       },
+       {
+        "season": 2025,
+        "week": 16,
+        "opponent": "CLE",
+        "rushing_yards": 14,
+        "carries": 3,
+        "receptions": 2,
+        "receiving_yards": 20
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0037261",
+     "name": "Khalil Shakir",
+     "position": "WR",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ituuwxmqtheiha2kkrvt",
+     "games_this_season": 7,
+     "vs_opponent_games": 1,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 50.6,
+       "last3": 59.3,
+       "career": 43.3,
+       "vs_opponent": 6.0
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 3.9,
+       "last3": 4.0,
+       "career": 3.8,
+       "vs_opponent": 1.0
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 5.4,
+       "last3": 5.0,
+       "career": 4.9,
+       "vs_opponent": 2.0
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.1,
+       "last3": 0.3,
+       "career": 0.2,
+       "vs_opponent": 0.0
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2022,
+       "week": 10,
+       "team": "BUF",
+       "receiving_yards": 6,
+       "receptions": 1,
+       "targets": 2,
+       "receiving_tds": 0
+      }
+     ],
+     "summary": "Khalil Shakir: 51 receiving yards per game this season (7 games). 1 game vs. MIN: 6 per game, compared with 43 in all games since 2015. Very small sample.",
+     "vs_similar": {
+      "games": 2,
+      "baseline_games": 57,
+      "stats": [
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 74.5,
+        "baseline": 40.6,
+        "change_pct": 84,
+        "label": "receiving yards"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 3.5,
+        "baseline": 3.5,
+        "change_pct": 1,
+        "label": "receptions"
+       },
+       {
+        "stat": "targets",
+        "vs_similar": 4.5,
+        "baseline": 4.6,
+        "change_pct": -1,
+        "label": "targets"
+       },
+       {
+        "stat": "receiving_tds",
+        "vs_similar": 0.5,
+        "baseline": 0.2,
+        "change_pct": 159,
+        "label": "receiving TDs"
+       }
+      ],
+      "log": [
+       {
+        "season": 2023,
+        "week": 11,
+        "opponent": "NYJ",
+        "receiving_yards": 115,
+        "receptions": 3,
+        "targets": 4,
+        "receiving_tds": 1
+       },
+       {
+        "season": 2025,
+        "week": 16,
+        "opponent": "CLE",
+        "receiving_yards": 34,
+        "receptions": 4,
+        "targets": 5,
+        "receiving_tds": 0
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0039901",
+     "name": "Keon Coleman",
+     "position": "WR",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/garesglkqop2fvgc5bgh",
+     "games_this_season": 7,
+     "vs_opponent_games": 0,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 41.0,
+       "last3": 23.3,
+       "career": 35.5,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 2.9,
+       "last3": 2.0,
+       "career": 2.5,
+       "vs_opponent": null
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 3.9,
+       "last3": 3.7,
+       "career": 4.2,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.4,
+       "last3": 0.7,
+       "career": 0.3,
+       "vs_opponent": null
+      }
+     ],
+     "vs_opponent_log": [],
+     "summary": "Keon Coleman: 41 receiving yards per game this season (7 games). Hasn't played MIN since 2015.",
+     "vs_similar": {
+      "games": 1,
+      "baseline_games": 25,
+      "stats": [
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 49.0,
+        "baseline": 38.4,
+        "change_pct": 28,
+        "label": "receiving yards"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 1.0,
+        "baseline": 2.7,
+        "change_pct": -63,
+        "label": "receptions"
+       },
+       {
+        "stat": "targets",
+        "vs_similar": 5.0,
+        "baseline": 4.6,
+        "change_pct": 8,
+        "label": "targets"
+       },
+       {
+        "stat": "receiving_tds",
+        "vs_similar": 1.0,
+        "baseline": 0.3,
+        "change_pct": 212,
+        "label": "receiving TDs"
+       }
+      ],
+      "log": [
+       {
+        "season": 2024,
+        "week": 5,
+        "opponent": "HOU",
+        "receiving_yards": 49,
+        "receptions": 1,
+        "targets": 5,
+        "receiving_tds": 1
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0034827",
+     "name": "DJ Moore",
+     "position": "WR",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/tmiale9dvql5ol2xmhf1",
+     "games_this_season": 5,
+     "vs_opponent_games": 8,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 52.0,
+       "last3": 53.3,
+       "career": 62.2,
+       "vs_opponent": 67.1
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 3.2,
+       "last3": 3.7,
+       "career": 4.6,
+       "vs_opponent": 5.5
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 5.4,
+       "last3": 6.3,
+       "career": 7.4,
+       "vs_opponent": 8.2
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.4,
+       "last3": 0.3,
+       "career": 0.3,
+       "vs_opponent": 0.1
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2020,
+       "week": 12,
+       "team": "CAR",
+       "receiving_yards": 61,
+       "receptions": 4,
+       "targets": 9,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2021,
+       "week": 6,
+       "team": "CAR",
+       "receiving_yards": 73,
+       "receptions": 5,
+       "targets": 13,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2023,
+       "week": 6,
+       "team": "CHI",
+       "receiving_yards": 51,
+       "receptions": 5,
+       "targets": 8,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2023,
+       "week": 12,
+       "team": "CHI",
+       "receiving_yards": 114,
+       "receptions": 11,
+       "targets": 13,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2024,
+       "week": 12,
+       "team": "CHI",
+       "receiving_yards": 106,
+       "receptions": 7,
+       "targets": 7,
+       "receiving_tds": 1
+      },
+      {
+       "season": 2024,
+       "week": 15,
+       "team": "CHI",
+       "receiving_yards": 46,
+       "receptions": 8,
+       "targets": 8,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2025,
+       "week": 1,
+       "team": "CHI",
+       "receiving_yards": 68,
+       "receptions": 3,
+       "targets": 5,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2025,
+       "week": 11,
+       "team": "CHI",
+       "receiving_yards": 18,
+       "receptions": 1,
+       "targets": 3,
+       "receiving_tds": 0
+      }
+     ],
+     "summary": "DJ Moore: 52 receiving yards per game this season (5 games). 8 games vs. MIN: 67 per game, compared with 62 in all games since 2015.",
+     "vs_similar": {
+      "games": 5,
+      "baseline_games": 68,
+      "stats": [
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 37.2,
+        "baseline": 57.4,
+        "change_pct": -35,
+        "label": "receiving yards"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 3.2,
+        "baseline": 4.5,
+        "change_pct": -29,
+        "label": "receptions"
+       },
+       {
+        "stat": "targets",
+        "vs_similar": 6.6,
+        "baseline": 7.0,
+        "change_pct": -6,
+        "label": "targets"
+       },
+       {
+        "stat": "receiving_tds",
+        "vs_similar": 0.4,
+        "baseline": 0.4,
+        "change_pct": 1,
+        "label": "receiving TDs"
+       }
+      ],
+      "log": [
+       {
+        "season": 2022,
+        "week": 3,
+        "opponent": "NO",
+        "receiving_yards": 2,
+        "receptions": 1,
+        "targets": 6,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2022,
+        "week": 18,
+        "opponent": "NO",
+        "receiving_yards": 10,
+        "receptions": 1,
+        "targets": 4,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2023,
+        "week": 15,
+        "opponent": "CLE",
+        "receiving_yards": 52,
+        "receptions": 4,
+        "targets": 8,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2024,
+        "week": 2,
+        "opponent": "HOU",
+        "receiving_yards": 53,
+        "receptions": 6,
+        "targets": 10,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2025,
+        "week": 15,
+        "opponent": "CLE",
+        "receiving_yards": 69,
+        "receptions": 4,
+        "targets": 5,
+        "receiving_tds": 2
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0038933",
+     "name": "Dalton Kincaid",
+     "position": "TE",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/cmrfup2mfx13pjb0qznw",
+     "games_this_season": 7,
+     "vs_opponent_games": 0,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 57.3,
+       "last3": 43.7,
+       "career": 43.3,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 3.9,
+       "last3": 4.0,
+       "career": 3.7,
+       "vs_opponent": null
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 5.0,
+       "last3": 5.3,
+       "career": 5.1,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.3,
+       "last3": 0.3,
+       "career": 0.3,
+       "vs_opponent": null
+      }
+     ],
+     "vs_opponent_log": [],
+     "summary": "Dalton Kincaid: 57 receiving yards per game this season (7 games). Hasn't played MIN since 2015.",
+     "vs_similar": {
+      "games": 4,
+      "baseline_games": 41,
+      "stats": [
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 26.5,
+        "baseline": 41.3,
+        "change_pct": -36,
+        "label": "receiving yards"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 3.0,
+        "baseline": 3.8,
+        "change_pct": -21,
+        "label": "receptions"
+       },
+       {
+        "stat": "targets",
+        "vs_similar": 4.5,
+        "baseline": 5.2,
+        "change_pct": -14,
+        "label": "targets"
+       },
+       {
+        "stat": "receiving_tds",
+        "vs_similar": 0.0,
+        "baseline": 0.2,
+        "change_pct": -100,
+        "label": "receiving TDs"
+       }
+      ],
+      "log": [
+       {
+        "season": 2023,
+        "week": 1,
+        "opponent": "NYJ",
+        "receiving_yards": 26,
+        "receptions": 4,
+        "targets": 4,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2023,
+        "week": 11,
+        "opponent": "NYJ",
+        "receiving_yards": 46,
+        "receptions": 6,
+        "targets": 7,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2024,
+        "week": 5,
+        "opponent": "HOU",
+        "receiving_yards": 34,
+        "receptions": 2,
+        "targets": 6,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2025,
+        "week": 16,
+        "opponent": "CLE",
+        "receiving_yards": 0,
+        "receptions": 0,
+        "targets": 1,
+        "receiving_tds": 0
+       }
+      ]
+     }
+    }
+   ],
+   "home": [
+    {
+     "player_id": "00-0035228",
+     "name": "Kyler Murray",
+     "position": "QB",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/qzoa3bglbgxpxcvjqzo1",
+     "games_this_season": 6,
+     "vs_opponent_games": 2,
+     "stats": [
+      {
+       "stat": "passing_yards",
+       "label": "passing yards",
+       "season": 170.3,
+       "last3": 196.3,
+       "career": 230.0,
+       "vs_opponent": 203.5
+      },
+      {
+       "stat": "passing_tds",
+       "label": "passing TDs",
+       "season": 0.8,
+       "last3": 1.3,
+       "career": 1.3,
+       "vs_opponent": 1.0
+      },
+      {
+       "stat": "passing_interceptions",
+       "label": "interceptions",
+       "season": 0.5,
+       "last3": 0.3,
+       "career": 0.7,
+       "vs_opponent": 0.5
+      },
+      {
+       "stat": "rushing_yards",
+       "label": "rushing yards",
+       "season": 27.8,
+       "last3": 41.7,
+       "career": 35.8,
+       "vs_opponent": 59.0
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2020,
+       "week": 10,
+       "team": "ARI",
+       "passing_yards": 245,
+       "passing_tds": 1,
+       "passing_interceptions": 1,
+       "rushing_yards": 61
+      },
+      {
+       "season": 2024,
+       "week": 1,
+       "team": "ARI",
+       "passing_yards": 162,
+       "passing_tds": 1,
+       "passing_interceptions": 0,
+       "rushing_yards": 57
+      }
+     ],
+     "summary": "Kyler Murray: 170 passing yards per game this season (6 games). 2 games vs. BUF: 204 per game, compared with 230 in all games since 2015. Very small sample.",
+     "vs_similar": {
+      "games": 2,
+      "baseline_games": 41,
+      "stats": [
+       {
+        "stat": "passing_yards",
+        "vs_similar": 279.0,
+        "baseline": 219.0,
+        "change_pct": 27,
+        "label": "passing yards"
+       },
+       {
+        "stat": "passing_tds",
+        "vs_similar": 3.0,
+        "baseline": 1.2,
+        "change_pct": 141,
+        "label": "passing TDs"
+       },
+       {
+        "stat": "passing_interceptions",
+        "vs_similar": 1.5,
+        "baseline": 0.6,
+        "change_pct": 137,
+        "label": "interceptions"
+       },
+       {
+        "stat": "rushing_yards",
+        "vs_similar": 30.0,
+        "baseline": 34.3,
+        "change_pct": -13,
+        "label": "rushing yards"
+       }
+      ],
+      "log": [
+       {
+        "season": 2022,
+        "week": 8,
+        "opponent": "MIN",
+        "passing_yards": 326,
+        "passing_tds": 3,
+        "passing_interceptions": 2,
+        "rushing_yards": 36
+       },
+       {
+        "season": 2023,
+        "week": 17,
+        "opponent": "PHI",
+        "passing_yards": 232,
+        "passing_tds": 3,
+        "passing_interceptions": 1,
+        "rushing_yards": 24
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0033293",
+     "name": "Aaron Jones",
+     "position": "RB",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/bktkfvgfwujkdbzkcfim",
+     "games_this_season": 7,
+     "vs_opponent_games": 2,
+     "stats": [
+      {
+       "stat": "rushing_yards",
+       "label": "rushing yards",
+       "season": 65.4,
+       "last3": 53.7,
+       "career": 62.2,
+       "vs_opponent": 104.0
+      },
+      {
+       "stat": "carries",
+       "label": "carries",
+       "season": 15.7,
+       "last3": 12.7,
+       "career": 12.9,
+       "vs_opponent": 15.5
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 2.1,
+       "last3": 2.0,
+       "career": 2.8,
+       "vs_opponent": 2.5
+      },
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 12.9,
+       "last3": 7.3,
+       "career": 21.5,
+       "vs_opponent": 15.5
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2018,
+       "week": 4,
+       "team": "GB",
+       "rushing_yards": 65,
+       "carries": 11,
+       "receptions": 1,
+       "receiving_yards": 17
+      },
+      {
+       "season": 2022,
+       "week": 8,
+       "team": "GB",
+       "rushing_yards": 143,
+       "carries": 20,
+       "receptions": 4,
+       "receiving_yards": 14
+      }
+     ],
+     "summary": "Aaron Jones: 65 rushing yards per game this season (7 games). 2 games vs. BUF: 104 per game, compared with 62 in all games since 2015. Very small sample.",
+     "vs_similar": {
+      "games": 4,
+      "baseline_games": 57,
+      "stats": [
+       {
+        "stat": "rushing_yards",
+        "vs_similar": 60.5,
+        "baseline": 60.8,
+        "change_pct": 0,
+        "label": "rushing yards"
+       },
+       {
+        "stat": "carries",
+        "vs_similar": 9.0,
+        "baseline": 13.0,
+        "change_pct": -31,
+        "label": "carries"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 2.8,
+        "baseline": 2.9,
+        "change_pct": -7,
+        "label": "receptions"
+       },
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 18.2,
+        "baseline": 21.7,
+        "change_pct": -16,
+        "label": "receiving yards"
+       }
+      ],
+      "log": [
+       {
+        "season": 2022,
+        "week": 1,
+        "opponent": "MIN",
+        "rushing_yards": 49,
+        "carries": 5,
+        "receptions": 3,
+        "receiving_yards": 27
+       },
+       {
+        "season": 2022,
+        "week": 17,
+        "opponent": "MIN",
+        "rushing_yards": 111,
+        "carries": 14,
+        "receptions": 2,
+        "receiving_yards": 2
+       },
+       {
+        "season": 2023,
+        "week": 7,
+        "opponent": "DEN",
+        "rushing_yards": 35,
+        "carries": 8,
+        "receptions": 3,
+        "receiving_yards": 22
+       },
+       {
+        "season": 2025,
+        "week": 10,
+        "opponent": "BAL",
+        "rushing_yards": 47,
+        "carries": 9,
+        "receptions": 3,
+        "receiving_yards": 22
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0037525",
+     "name": "Jordan Mason",
+     "position": "RB",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/xe3i1lsb3rsioqy61krt",
+     "games_this_season": 3,
+     "vs_opponent_games": 1,
+     "stats": [
+      {
+       "stat": "rushing_yards",
+       "label": "rushing yards",
+       "season": 49.0,
+       "last3": 49.0,
+       "career": 35.6,
+       "vs_opponent": 78.0
+      },
+      {
+       "stat": "carries",
+       "label": "carries",
+       "season": 12.7,
+       "last3": 12.7,
+       "career": 7.1,
+       "vs_opponent": 13.0
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 0.0,
+       "last3": 0.0,
+       "career": 0.5,
+       "vs_opponent": 0.0
+      },
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 0.0,
+       "last3": 0.0,
+       "career": 2.8,
+       "vs_opponent": 0.0
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2024,
+       "week": 13,
+       "team": "SF",
+       "rushing_yards": 78,
+       "carries": 13,
+       "receptions": 0,
+       "receiving_yards": 0
+      }
+     ],
+     "summary": "Jordan Mason: 49 rushing yards per game this season (3 games). 1 game vs. BUF: 78 per game, compared with 36 in all games since 2015. Very small sample.",
+     "vs_similar": {
+      "games": 3,
+      "baseline_games": 56,
+      "stats": [
+       {
+        "stat": "rushing_yards",
+        "vs_similar": 31.0,
+        "baseline": 35.9,
+        "change_pct": -14,
+        "label": "rushing yards"
+       },
+       {
+        "stat": "carries",
+        "vs_similar": 6.7,
+        "baseline": 7.1,
+        "change_pct": -5,
+        "label": "carries"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 1.0,
+        "baseline": 0.5,
+        "change_pct": 100,
+        "label": "receptions"
+       },
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 5.7,
+        "baseline": 3.1,
+        "change_pct": 83,
+        "label": "receiving yards"
+       }
+      ],
+      "log": [
+       {
+        "season": 2023,
+        "week": 13,
+        "opponent": "PHI",
+        "rushing_yards": 10,
+        "carries": 2,
+        "receptions": 0,
+        "receiving_yards": 0
+       },
+       {
+        "season": 2024,
+        "week": 7,
+        "opponent": "KC",
+        "rushing_yards": 58,
+        "carries": 14,
+        "receptions": 2,
+        "receiving_yards": 11
+       },
+       {
+        "season": 2025,
+        "week": 10,
+        "opponent": "BAL",
+        "rushing_yards": 25,
+        "carries": 4,
+        "receptions": 1,
+        "receiving_yards": 6
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0036322",
+     "name": "Justin Jefferson",
+     "position": "WR",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/tzx1iqbxxa1807m6olwj",
+     "games_this_season": 6,
+     "vs_opponent_games": 1,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 55.8,
+       "last3": 52.0,
+       "career": 87.5,
+       "vs_opponent": 193.0
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 4.7,
+       "last3": 5.0,
+       "career": 6.1,
+       "vs_opponent": 10.0
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 6.7,
+       "last3": 7.7,
+       "career": 9.1,
+       "vs_opponent": 16.0
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.7,
+       "last3": 0.7,
+       "career": 0.5,
+       "vs_opponent": 1.0
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2022,
+       "week": 10,
+       "team": "MIN",
+       "receiving_yards": 193,
+       "receptions": 10,
+       "targets": 16,
+       "receiving_tds": 1
+      }
+     ],
+     "summary": "Justin Jefferson: 56 receiving yards per game this season (6 games). 1 game vs. BUF: 193 per game, compared with 88 in all games since 2015. Very small sample.",
+     "vs_similar": {
+      "games": 2,
+      "baseline_games": 61,
+      "stats": [
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 98.0,
+        "baseline": 89.6,
+        "change_pct": 9,
+        "label": "receiving yards"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 7.5,
+        "baseline": 6.3,
+        "change_pct": 19,
+        "label": "receptions"
+       },
+       {
+        "stat": "targets",
+        "vs_similar": 12.5,
+        "baseline": 9.5,
+        "change_pct": 32,
+        "label": "targets"
+       },
+       {
+        "stat": "receiving_tds",
+        "vs_similar": 0.0,
+        "baseline": 0.4,
+        "change_pct": -100,
+        "label": "receiving TDs"
+       }
+      ],
+      "log": [
+       {
+        "season": 2023,
+        "week": 2,
+        "opponent": "PHI",
+        "receiving_yards": 159,
+        "receptions": 11,
+        "targets": 13,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2025,
+        "week": 10,
+        "opponent": "BAL",
+        "receiving_yards": 37,
+        "receptions": 4,
+        "targets": 12,
+        "receiving_tds": 0
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0038994",
+     "name": "Jordan Addison",
+     "position": "WR",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ty8e8iasniuuhto6qfdx",
+     "games_this_season": 6,
+     "vs_opponent_games": 0,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 41.5,
+       "last3": 46.0,
+       "career": 50.5,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 2.7,
+       "last3": 3.0,
+       "career": 3.7,
+       "vs_opponent": null
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 5.5,
+       "last3": 5.7,
+       "career": 6.2,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.2,
+       "last3": 0.0,
+       "career": 0.4,
+       "vs_opponent": null
+      }
+     ],
+     "vs_opponent_log": [],
+     "summary": "Jordan Addison: 42 receiving yards per game this season (6 games). Hasn't played BUF since 2015.",
+     "vs_similar": {
+      "games": 3,
+      "baseline_games": 46,
+      "stats": [
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 50.3,
+        "baseline": 52.1,
+        "change_pct": -3,
+        "label": "receiving yards"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 3.0,
+        "baseline": 3.8,
+        "change_pct": -21,
+        "label": "receptions"
+       },
+       {
+        "stat": "targets",
+        "vs_similar": 7.3,
+        "baseline": 6.2,
+        "change_pct": 18,
+        "label": "targets"
+       },
+       {
+        "stat": "receiving_tds",
+        "vs_similar": 0.3,
+        "baseline": 0.5,
+        "change_pct": -30,
+        "label": "receiving TDs"
+       }
+      ],
+      "log": [
+       {
+        "season": 2023,
+        "week": 2,
+        "opponent": "PHI",
+        "receiving_yards": 72,
+        "receptions": 3,
+        "targets": 5,
+        "receiving_tds": 1
+       },
+       {
+        "season": 2023,
+        "week": 11,
+        "opponent": "DEN",
+        "receiving_yards": 44,
+        "receptions": 3,
+        "targets": 6,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2025,
+        "week": 10,
+        "opponent": "BAL",
+        "receiving_yards": 35,
+        "receptions": 3,
+        "targets": 11,
+        "receiving_tds": 0
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0036259",
+     "name": "Jauan Jennings",
+     "position": "WR",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/g99ydreysqfoo0ucocl3",
+     "games_this_season": 6,
+     "vs_opponent_games": 1,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 9.0,
+       "last3": 15.0,
+       "career": 33.2,
+       "vs_opponent": 56.0
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 1.0,
+       "last3": 1.3,
+       "career": 2.7,
+       "vs_opponent": 3.0
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 1.7,
+       "last3": 2.0,
+       "career": 4.3,
+       "vs_opponent": 5.0
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.0,
+       "last3": 0.0,
+       "career": 0.3,
+       "vs_opponent": 0.0
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2024,
+       "week": 13,
+       "team": "SF",
+       "receiving_yards": 56,
+       "receptions": 3,
+       "targets": 5,
+       "receiving_tds": 0
+      }
+     ],
+     "summary": "Jauan Jennings: 9 receiving yards per game this season (6 games). 1 game vs. BUF: 56 per game, compared with 33 in all games since 2015. Very small sample.",
+     "vs_similar": {
+      "games": 4,
+      "baseline_games": 59,
+      "stats": [
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 44.0,
+        "baseline": 39.0,
+        "change_pct": 13,
+        "label": "receiving yards"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 3.2,
+        "baseline": 3.2,
+        "change_pct": 3,
+        "label": "receptions"
+       },
+       {
+        "stat": "targets",
+        "vs_similar": 4.8,
+        "baseline": 4.9,
+        "change_pct": -4,
+        "label": "targets"
+       },
+       {
+        "stat": "receiving_tds",
+        "vs_similar": 0.5,
+        "baseline": 0.3,
+        "change_pct": 74,
+        "label": "receiving TDs"
+       }
+      ],
+      "log": [
+       {
+        "season": 2023,
+        "week": 13,
+        "opponent": "PHI",
+        "receiving_yards": 44,
+        "receptions": 3,
+        "targets": 4,
+        "receiving_tds": 1
+       },
+       {
+        "season": 2025,
+        "week": 6,
+        "opponent": "TB",
+        "receiving_yards": 7,
+        "receptions": 1,
+        "targets": 3,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2025,
+        "week": 11,
+        "opponent": "ARI",
+        "receiving_yards": 54,
+        "receptions": 4,
+        "targets": 6,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2025,
+        "week": 16,
+        "opponent": "IND",
+        "receiving_yards": 71,
+        "receptions": 5,
+        "targets": 6,
+        "receiving_tds": 1
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0035229",
+     "name": "T.J. Hockenson",
+     "position": "TE",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/rs8o65x0u0n9xzde0fd6",
+     "games_this_season": 7,
+     "vs_opponent_games": 1,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 42.1,
+       "last3": 33.3,
+       "career": 46.5,
+       "vs_opponent": 45.0
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 4.4,
+       "last3": 3.0,
+       "career": 4.5,
+       "vs_opponent": 7.0
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 5.3,
+       "last3": 3.7,
+       "career": 6.4,
+       "vs_opponent": 10.0
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.4,
+       "last3": 0.7,
+       "career": 0.3,
+       "vs_opponent": 0.0
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2022,
+       "week": 10,
+       "team": "MIN",
+       "receiving_yards": 45,
+       "receptions": 7,
+       "targets": 10,
+       "receiving_tds": 0
+      }
+     ],
+     "summary": "T.J. Hockenson: 42 receiving yards per game this season (7 games). 1 game vs. BUF: 45 per game, compared with 46 in all games since 2015. Very small sample.",
+     "vs_similar": {
+      "games": 4,
+      "baseline_games": 57,
+      "stats": [
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 36.8,
+        "baseline": 48.5,
+        "change_pct": -24,
+        "label": "receiving yards"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 4.0,
+        "baseline": 4.8,
+        "change_pct": -16,
+        "label": "receptions"
+       },
+       {
+        "stat": "targets",
+        "vs_similar": 5.2,
+        "baseline": 6.7,
+        "change_pct": -22,
+        "label": "targets"
+       },
+       {
+        "stat": "receiving_tds",
+        "vs_similar": 0.8,
+        "baseline": 0.2,
+        "change_pct": 205,
+        "label": "receiving TDs"
+       }
+      ],
+      "log": [
+       {
+        "season": 2022,
+        "week": 3,
+        "opponent": "MIN",
+        "receiving_yards": 18,
+        "receptions": 3,
+        "targets": 4,
+        "receiving_tds": 1
+       },
+       {
+        "season": 2023,
+        "week": 2,
+        "opponent": "PHI",
+        "receiving_yards": 66,
+        "receptions": 7,
+        "targets": 8,
+        "receiving_tds": 2
+       },
+       {
+        "season": 2023,
+        "week": 11,
+        "opponent": "DEN",
+        "receiving_yards": 55,
+        "receptions": 4,
+        "targets": 7,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2025,
+        "week": 10,
+        "opponent": "BAL",
+        "receiving_yards": 8,
+        "receptions": 2,
+        "targets": 2,
+        "receiving_tds": 0
+       }
+      ]
+     }
+    }
+   ]
+  },
+  "injuries": {
+   "available": true,
+   "away": {
+    "team": "BUF",
+    "report_week": 9,
+    "current": true,
+    "statuses_published": false,
+    "updated": null,
+    "note": "ESPN unavailable; showing the official report only.",
+    "players": [
+     {
+      "name": "Dion Dawkins",
+      "position": "T",
+      "injury": "Rib",
+      "status": null,
+      "practice": "Did Not Participate In Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.99,
+      "importance": "Starter",
+      "impact": {
+       "unit": "offense",
+       "epa_with": 0.169,
+       "epa_without": 0.129,
+       "games_with": 38,
+       "games_without": 3,
+       "points_per_game": 0.8,
+       "raw_points_per_game": 2.4,
+       "small_sample": true,
+       "summary": "In 3 games Dion Dawkins missed since 2024, BUF's offense played about the same as with him (adjusted for sample size). Very small sample."
+      }
+     },
+     {
+      "name": "Alec Anderson",
+      "position": "G",
+      "injury": "Ankle",
+      "status": null,
+      "practice": "Did Not Participate In Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.99,
+      "importance": "Starter",
+      "impact": {
+       "unit": "offense",
+       "epa_with": 0.179,
+       "epa_without": 0.094,
+       "games_with": 11,
+       "games_without": 12,
+       "points_per_game": 3.4,
+       "raw_points_per_game": 5.2,
+       "small_sample": false,
+       "summary": "In 12 games Alec Anderson missed since 2024, BUF's offense was about 3.4 points per game worse than with him (adjusted for sample size)."
+      }
+     },
+     {
+      "name": "Spencer Brown",
+      "position": "T",
+      "injury": "Back",
+      "status": null,
+      "practice": "Limited Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.88,
+      "importance": "Starter",
+      "impact": null
+     },
+     {
+      "name": "Keon Coleman",
+      "position": "WR",
+      "injury": "Shoulder",
+      "status": null,
+      "practice": "Limited Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.69,
+      "importance": "Rotation",
+      "impact": null
+     },
+     {
+      "name": "Khalil Shakir",
+      "position": "WR",
+      "injury": "Not injury related - personal matter",
+      "status": null,
+      "practice": "Did Not Participate In Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.64,
+      "importance": "Rotation",
+      "impact": null
+     },
+     {
+      "name": "DJ Moore",
+      "position": "WR",
+      "injury": "Shoulder",
+      "status": null,
+      "practice": "Limited Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.55,
+      "importance": "Rotation",
+      "impact": null
+     },
+     {
+      "name": "Greg Gaines",
+      "position": "DT",
+      "injury": "Calf",
+      "status": null,
+      "practice": "Did Not Participate In Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.32,
+      "importance": "Depth",
+      "impact": null
+     },
+     {
+      "name": "Josh Palmer",
+      "position": "WR",
+      "injury": "Hamstring",
+      "status": null,
+      "practice": "Did Not Participate In Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.32,
+      "importance": "Depth",
+      "impact": null
+     },
+     {
+      "name": "Jordan Hancock",
+      "position": "CB",
+      "injury": "Hamstring",
+      "status": null,
+      "practice": "Limited Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.1,
+      "importance": "Depth",
+      "impact": null
+     },
+     {
+      "name": "Sam Franklin Jr.",
+      "position": "S",
+      "injury": "Illness",
+      "status": null,
+      "practice": "Did Not Participate In Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.0,
+      "importance": "Depth",
+      "impact": null
+     }
+    ],
+    "headlines": [
+     "Dion Dawkins (T, starter, Rib): did not practice",
+     "Alec Anderson (G, starter, Ankle): did not practice"
+    ],
+    "news_source": "ESPN"
+   },
+   "home": {
+    "team": "MIN",
+    "report_week": 9,
+    "current": true,
+    "statuses_published": false,
+    "updated": null,
+    "note": "ESPN unavailable; showing the official report only.",
+    "players": [
+     {
+      "name": "Kyler Murray",
+      "position": "QB",
+      "injury": "Hamstring",
+      "status": null,
+      "practice": "Did Not Participate In Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.86,
+      "importance": "Starting QB",
+      "impact": null
+     },
+     {
+      "name": "Andrew Van Ginkel",
+      "position": "LB",
+      "injury": "Chest",
+      "status": null,
+      "practice": "Limited Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.85,
+      "importance": "Starter",
+      "impact": null
+     },
+     {
+      "name": "Jauan Jennings",
+      "position": "WR",
+      "injury": "Calf",
+      "status": null,
+      "practice": "Did Not Participate In Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.67,
+      "importance": "Rotation",
+      "impact": null
+     },
+     {
+      "name": "Theo Jackson",
+      "position": "S",
+      "injury": "Quadricep",
+      "status": null,
+      "practice": "Did Not Participate In Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.59,
+      "importance": "Rotation",
+      "impact": null
+     },
+     {
+      "name": "Demond Claiborne",
+      "position": "RB",
+      "injury": "Knee",
+      "status": null,
+      "practice": "Did Not Participate In Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.07,
+      "importance": "Depth",
+      "impact": null
+     },
+     {
+      "name": "Jay Ward",
+      "position": "S",
+      "injury": "Knee",
+      "status": null,
+      "practice": "Limited Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.01,
+      "importance": "Depth",
+      "impact": null
+     }
+    ],
+    "headlines": [
+     "Kyler Murray (QB, starting qb, Hamstring): did not practice"
+    ],
+    "news_source": "ESPN"
+   }
+  },
+  "defense_styles": {
+   "away": {
+    "team": "BUF",
+    "based_on_season": 2026,
+    "traits": [
+     "opponents pass a lot against it",
+     "lets offenses stay on schedule",
+     "gives up efficient passing"
+    ],
+    "neighbors": [
+     {
+      "team": "IND",
+      "season": 2025,
+      "traits": [
+       "opponents pass a lot against it",
+       "stout against the run"
+      ]
+     },
+     {
+      "team": "BAL",
+      "season": 2025,
+      "traits": [
+       "rarely gets sacks",
+       "opponents pass a lot against it"
+      ]
+     },
+     {
+      "team": "MIN",
+      "season": 2022,
+      "traits": [
+       "gives up big passing plays",
+       "allows yards after the catch"
+      ]
+     },
+     {
+      "team": "ARI",
+      "season": 2025,
+      "traits": [
+       "lets offenses stay on schedule",
+       "allows long runs"
+      ]
+     },
+     {
+      "team": "KC",
+      "season": 2024,
+      "traits": [
+       "limits long runs",
+       "opponents pass a lot against it"
+      ]
+     },
+     {
+      "team": "DEN",
+      "season": 2023,
+      "traits": [
+       "gives up efficient passing",
+       "lets offenses stay on schedule"
+      ]
+     },
+     {
+      "team": "TB",
+      "season": 2025,
+      "traits": [
+       "opponents pass a lot against it",
+       "stout against the run"
+      ]
+     },
+     {
+      "team": "PHI",
+      "season": 2023,
+      "traits": [
+       "leaky against the run",
+       "opponents pass a lot against it"
+      ]
+     }
+    ]
+   },
+   "home": {
+    "team": "MIN",
+    "based_on_season": 2026,
+    "traits": [
+     "gets home with the pass rush",
+     "shuts down passing",
+     "rarely lets offenses stay on schedule"
+    ],
+    "neighbors": [
+     {
+      "team": "DAL",
+      "season": 2022,
+      "traits": [
+       "gets home with the pass rush",
+       "shuts down passing"
+      ]
+     },
+     {
+      "team": "CLE",
+      "season": 2023,
+      "traits": [
+       "rarely lets offenses stay on schedule",
+       "shuts down passing"
+      ]
+     },
+     {
+      "team": "CLE",
+      "season": 2025,
+      "traits": [
+       "gets home with the pass rush",
+       "shuts down passing"
+      ]
+     },
+     {
+      "team": "NYJ",
+      "season": 2023,
+      "traits": [
+       "rarely lets offenses stay on schedule",
+       "opponents run a lot against it"
+      ]
+     },
+     {
+      "team": "LAC",
+      "season": 2025,
+      "traits": [
+       "limits big passing plays",
+       "allows yards after the catch"
+      ]
+     },
+     {
+      "team": "HOU",
+      "season": 2024,
+      "traits": [
+       "allows yards after the catch",
+       "opponents throw deep on it"
+      ]
+     },
+     {
+      "team": "NO",
+      "season": 2022,
+      "traits": [
+       "limits big passing plays",
+       "shuts down passing"
+      ]
+     },
+     {
+      "team": "DEN",
+      "season": 2024,
+      "traits": [
+       "gets home with the pass rush",
+       "shuts down passing"
+      ]
+     }
+    ]
+   }
+  },
+  "teams": {
+   "away": {
+    "team": "BUF",
+    "games": 7,
+    "offense": {
+     "overall": 2,
+     "pass": 5,
+     "rush": 1,
+     "success": 4
+    },
+    "defense": {
+     "overall": 23,
+     "pass": 24,
+     "rush": 19,
+     "success": 26
+    }
+   },
+   "home": {
+    "team": "MIN",
+    "games": 7,
+    "offense": {
+     "overall": 29,
+     "pass": 24,
+     "rush": 28,
+     "success": 30
+    },
+    "defense": {
+     "overall": 1,
+     "pass": 1,
+     "rush": 10,
+     "success": 1
+    }
+   }
+  },
+  "matchups": [
+   {
+    "unit": "overall",
+    "offense": "MIN",
+    "defense": "BUF",
+    "offense_rank": 29,
+    "defense_rank": 23,
+    "favors": "BUF",
+    "strength": "slight",
+    "summary": "MIN's overall offense (29th) vs. BUF's overall defense (23rd): slight edge BUF"
+   },
+   {
+    "unit": "pass",
+    "offense": "MIN",
+    "defense": "BUF",
+    "offense_rank": 24,
+    "defense_rank": 24,
+    "favors": null,
+    "strength": null,
+    "summary": "MIN's passing offense (24th) vs. BUF's pass defense (24th): even"
+   },
+   {
+    "unit": "rush",
+    "offense": "MIN",
+    "defense": "BUF",
+    "offense_rank": 28,
+    "defense_rank": 19,
+    "favors": "BUF",
+    "strength": "slight",
+    "summary": "MIN's rushing offense (28th) vs. BUF's run defense (19th): slight edge BUF"
+   },
+   {
+    "unit": "overall",
+    "offense": "BUF",
+    "defense": "MIN",
+    "offense_rank": 2,
+    "defense_rank": 1,
+    "favors": null,
+    "strength": null,
+    "summary": "BUF's overall offense (2nd) vs. MIN's overall defense (1st): even"
+   },
+   {
+    "unit": "pass",
+    "offense": "BUF",
+    "defense": "MIN",
+    "offense_rank": 5,
+    "defense_rank": 1,
+    "favors": null,
+    "strength": null,
+    "summary": "BUF's passing offense (5th) vs. MIN's pass defense (1st): even"
+   },
+   {
+    "unit": "rush",
+    "offense": "BUF",
+    "defense": "MIN",
+    "offense_rank": 1,
+    "defense_rank": 10,
+    "favors": "BUF",
+    "strength": "slight",
+    "summary": "BUF's rushing offense (1st) vs. MIN's run defense (10th): slight edge BUF"
+   }
+  ],
+  "key_matchups": []
+ },
+ "changes": {
+  "tracking_since": "2026-11-03T12:00:00+00:00",
+  "changes": [
+   {
+    "kind": "line",
+    "text": "Spread moved: -2.0 \u2192 -3.0",
+    "tone": "blue",
+    "at": "2026-11-05T15:00:00+00:00"
+   }
+  ]
+ }
+}

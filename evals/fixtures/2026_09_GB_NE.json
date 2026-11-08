@@ -1,0 +1,2006 @@
+{
+ "note": "Frozen for Ask Edge evals. Real app data, except the forecast and 'changes' are fixed test values.",
+ "briefing": {
+  "game": {
+   "game_id": "2026_09_GB_NE",
+   "week": 9,
+   "gameday": "2026-11-08",
+   "gametime": "16:25",
+   "kickoff": "2026-11-08T16:25:00-05:00",
+   "away": "GB",
+   "home": "NE",
+   "away_score": null,
+   "home_score": null,
+   "location": "Home",
+   "stadium": "Gillette Stadium",
+   "roof": "outdoors",
+   "surface": "fieldturf",
+   "spread_line": 3.5,
+   "total_line": 44.5,
+   "away_rest": 10,
+   "home_rest": 7,
+   "div_game": false
+  },
+  "weather": {
+   "available": true,
+   "indoor": false,
+   "temperature_f": 45,
+   "wind_mph": 8,
+   "gusts_mph": 15,
+   "precip_chance": 60,
+   "summary": "45\u00b0F, wind 8 mph, 60% chance of precipitation",
+   "flags": [
+    "Rain or snow likely (60%)"
+   ],
+   "evidence": [
+    "Past outdoor games with 33-49F temperatures (476 games, 2015-2025): scoring averaged 0.0 points above the total, and the under won 52%. Based on conditions measured at kickoff, not forecasts."
+   ]
+  },
+  "situation": {
+   "facts": [
+    "Rest: GB 10 days, NE 7 days",
+    "Surface: artificial turf (fieldturf)",
+    "Elevation: about 290 feet",
+    "GB travel: about 859 miles",
+    "GB crosses 1 time zone traveling east",
+    "Kickoff on body clocks: GB 3:25 PM, NE 4:25 PM"
+   ],
+   "flags": [
+    "Rest advantage: GB has 3 more days"
+   ],
+   "evidence": [
+    "GB - Team with 3+ more days of rest (no byes) (342 games, 2015-2025): covered the spread 53% of the time, averaging +0.6 points vs. the spread. Break-even is 52.4%."
+   ]
+  },
+  "head_to_head": {
+   "games": 2,
+   "summary": "2 meetings since 2015: GB 1-1 NE. Against the spread: GB 0-2 NE. Totals: 1 overs, 1 unders, averaging 49.5 points.",
+   "wins": {
+    "GB": 1,
+    "NE": 1
+   },
+   "covers": {
+    "GB": 0,
+    "NE": 2
+   },
+   "ties": 0,
+   "overs": 1,
+   "unders": 1,
+   "avg_total": 49.5,
+   "caution": "Older meetings involved different rosters and coaches; the most recent games matter most.",
+   "recent": [
+    {
+     "season": 2022,
+     "week": 4,
+     "game_type": "REG",
+     "gameday": "2022-10-02",
+     "home": "GB",
+     "away": "NE",
+     "home_score": 27,
+     "away_score": 24,
+     "winner": "GB",
+     "spread_line": 10.0,
+     "covered": "NE",
+     "total": 51,
+     "total_line": 40.5,
+     "went": "over"
+    },
+    {
+     "season": 2018,
+     "week": 9,
+     "game_type": "REG",
+     "gameday": "2018-11-04",
+     "home": "NE",
+     "away": "GB",
+     "home_score": 31,
+     "away_score": 17,
+     "winner": "NE",
+     "spread_line": 5.0,
+     "covered": "NE",
+     "total": 48,
+     "total_line": 56.0,
+     "went": "under"
+    }
+   ]
+  },
+  "players": {
+   "away": [
+    {
+     "player_id": "00-0036264",
+     "name": "Jordan Love",
+     "position": "QB",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/thz8stjkbjwddxqnozi5",
+     "games_this_season": 8,
+     "vs_opponent_games": 0,
+     "stats": [
+      {
+       "stat": "passing_yards",
+       "label": "passing yards",
+       "season": 280.8,
+       "last3": 279.3,
+       "career": 214.2,
+       "vs_opponent": null
+      },
+      {
+       "stat": "passing_tds",
+       "label": "passing TDs",
+       "season": 2.0,
+       "last3": 2.0,
+       "career": 1.6,
+       "vs_opponent": null
+      },
+      {
+       "stat": "passing_interceptions",
+       "label": "interceptions",
+       "season": 0.8,
+       "last3": 1.0,
+       "career": 0.6,
+       "vs_opponent": null
+      },
+      {
+       "stat": "rushing_yards",
+       "label": "rushing yards",
+       "season": 1.2,
+       "last3": 4.0,
+       "career": 8.5,
+       "vs_opponent": null
+      }
+     ],
+     "vs_opponent_log": [],
+     "summary": "Jordan Love: 281 passing yards per game this season (8 games). Hasn't played NE since 2015.",
+     "vs_similar": {
+      "games": 3,
+      "baseline_games": 59,
+      "stats": [
+       {
+        "stat": "passing_yards",
+        "vs_similar": 311.0,
+        "baseline": 226.6,
+        "change_pct": 37,
+        "label": "passing yards"
+       },
+       {
+        "stat": "passing_tds",
+        "vs_similar": 2.3,
+        "baseline": 1.6,
+        "change_pct": 42,
+        "label": "passing TDs"
+       },
+       {
+        "stat": "passing_interceptions",
+        "vs_similar": 0.7,
+        "baseline": 0.6,
+        "change_pct": 16,
+        "label": "interceptions"
+       },
+       {
+        "stat": "rushing_yards",
+        "vs_similar": 3.7,
+        "baseline": 9.1,
+        "change_pct": -60,
+        "label": "rushing yards"
+       }
+      ],
+      "log": [
+       {
+        "season": 2023,
+        "week": 10,
+        "opponent": "PIT",
+        "passing_yards": 289,
+        "passing_tds": 2,
+        "passing_interceptions": 2,
+        "rushing_yards": 11
+       },
+       {
+        "season": 2023,
+        "week": 15,
+        "opponent": "TB",
+        "passing_yards": 284,
+        "passing_tds": 2,
+        "passing_interceptions": 0,
+        "rushing_yards": 1
+       },
+       {
+        "season": 2025,
+        "week": 8,
+        "opponent": "PIT",
+        "passing_yards": 360,
+        "passing_tds": 3,
+        "passing_interceptions": 0,
+        "rushing_yards": -1
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0039811",
+     "name": "MarShawn Lloyd",
+     "position": "RB",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/xp8sd4enimuk4zd0aqgu",
+     "games_this_season": 8,
+     "vs_opponent_games": 0,
+     "stats": [
+      {
+       "stat": "rushing_yards",
+       "label": "rushing yards",
+       "season": 18.6,
+       "last3": 12.3,
+       "career": 18.2,
+       "vs_opponent": null
+      },
+      {
+       "stat": "carries",
+       "label": "carries",
+       "season": 7.1,
+       "last3": 5.7,
+       "career": 7.0,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 1.6,
+       "last3": 1.0,
+       "career": 1.6,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 9.9,
+       "last3": 8.0,
+       "career": 9.1,
+       "vs_opponent": null
+      }
+     ],
+     "vs_opponent_log": [],
+     "summary": "MarShawn Lloyd: 19 rushing yards per game this season (8 games). Hasn't played NE since 2015.",
+     "vs_similar": {
+      "games": 0
+     }
+    },
+    {
+     "player_id": "00-0035700",
+     "name": "Josh Jacobs",
+     "position": "RB",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/uceokxeo0uqrqms3e3vl",
+     "games_this_season": 2,
+     "vs_opponent_games": 3,
+     "stats": [
+      {
+       "stat": "rushing_yards",
+       "label": "rushing yards",
+       "season": 37.5,
+       "last3": 37.5,
+       "career": 73.6,
+       "vs_opponent": 80.3
+      },
+      {
+       "stat": "carries",
+       "label": "carries",
+       "season": 16.0,
+       "last3": 16.0,
+       "career": 17.5,
+       "vs_opponent": 21.0
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 5.5,
+       "last3": 5.5,
+       "career": 2.6,
+       "vs_opponent": 2.3
+      },
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 34.0,
+       "last3": 34.0,
+       "career": 20.2,
+       "vs_opponent": 15.0
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2020,
+       "week": 3,
+       "team": "LV",
+       "rushing_yards": 71,
+       "carries": 16,
+       "receptions": 3,
+       "receiving_yards": 12
+      },
+      {
+       "season": 2022,
+       "week": 15,
+       "team": "LV",
+       "rushing_yards": 93,
+       "carries": 22,
+       "receptions": 2,
+       "receiving_yards": 17
+      },
+      {
+       "season": 2023,
+       "week": 6,
+       "team": "LV",
+       "rushing_yards": 77,
+       "carries": 25,
+       "receptions": 2,
+       "receiving_yards": 16
+      }
+     ],
+     "summary": "Josh Jacobs: 38 rushing yards per game this season (2 games). 3 games vs. NE: 80 per game, compared with 74 in all games since 2015. Very small sample.",
+     "vs_similar": {
+      "games": 2,
+      "baseline_games": 64,
+      "stats": [
+       {
+        "stat": "rushing_yards",
+        "vs_similar": 47.5,
+        "baseline": 74.9,
+        "change_pct": -37,
+        "label": "rushing yards"
+       },
+       {
+        "stat": "carries",
+        "vs_similar": 15.0,
+        "baseline": 17.8,
+        "change_pct": -16,
+        "label": "carries"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 3.0,
+        "baseline": 2.7,
+        "change_pct": 11,
+        "label": "receptions"
+       },
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 15.0,
+        "baseline": 21.7,
+        "change_pct": -31,
+        "label": "receiving yards"
+       }
+      ],
+      "log": [
+       {
+        "season": 2023,
+        "week": 3,
+        "opponent": "PIT",
+        "rushing_yards": 62,
+        "carries": 17,
+        "receptions": 3,
+        "receiving_yards": 18
+       },
+       {
+        "season": 2025,
+        "week": 8,
+        "opponent": "PIT",
+        "rushing_yards": 33,
+        "carries": 13,
+        "receptions": 3,
+        "receiving_yards": 12
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0040667",
+     "name": "Matthew Golden",
+     "position": "WR",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/dbjki6b0swksr7mk17wk",
+     "games_this_season": 8,
+     "vs_opponent_games": 0,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 77.4,
+       "last3": 74.0,
+       "career": 46.3,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 5.4,
+       "last3": 6.3,
+       "career": 3.3,
+       "vs_opponent": null
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 10.2,
+       "last3": 12.7,
+       "career": 5.7,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.5,
+       "last3": 0.7,
+       "career": 0.2,
+       "vs_opponent": null
+      }
+     ],
+     "vs_opponent_log": [],
+     "summary": "Matthew Golden: 77 receiving yards per game this season (8 games). Hasn't played NE since 2015.",
+     "vs_similar": {
+      "games": 1,
+      "baseline_games": 22,
+      "stats": [
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 4.0,
+        "baseline": 44.5,
+        "change_pct": -91,
+        "label": "receiving yards"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 3.0,
+        "baseline": 3.3,
+        "change_pct": -8,
+        "label": "receptions"
+       },
+       {
+        "stat": "targets",
+        "vs_similar": 3.0,
+        "baseline": 5.7,
+        "change_pct": -48,
+        "label": "targets"
+       },
+       {
+        "stat": "receiving_tds",
+        "vs_similar": 0.0,
+        "baseline": 0.2,
+        "change_pct": -100,
+        "label": "receiving TDs"
+       }
+      ],
+      "log": [
+       {
+        "season": 2025,
+        "week": 8,
+        "opponent": "PIT",
+        "receiving_yards": 4,
+        "receptions": 3,
+        "targets": 3,
+        "receiving_tds": 0
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0038124",
+     "name": "Christian Watson",
+     "position": "WR",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/tumeg4d32sirkab2xzu5",
+     "games_this_season": 8,
+     "vs_opponent_games": 1,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 88.5,
+       "last3": 78.0,
+       "career": 52.2,
+       "vs_opponent": 8.0
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 5.2,
+       "last3": 5.3,
+       "career": 3.1,
+       "vs_opponent": 1.0
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 8.2,
+       "last3": 8.7,
+       "career": 5.2,
+       "vs_opponent": 3.0
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.8,
+       "last3": 0.0,
+       "career": 0.5,
+       "vs_opponent": 0.0
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2022,
+       "week": 4,
+       "team": "GB",
+       "receiving_yards": 8,
+       "receptions": 1,
+       "targets": 3,
+       "receiving_tds": 0
+      }
+     ],
+     "summary": "Christian Watson: 88 receiving yards per game this season (8 games). 1 game vs. NE: 8 per game, compared with 52 in all games since 2015. Very small sample.",
+     "vs_similar": {
+      "games": 2,
+      "baseline_games": 55,
+      "stats": [
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 54.0,
+        "baseline": 54.0,
+        "change_pct": 0,
+        "label": "receiving yards"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 3.0,
+        "baseline": 3.2,
+        "change_pct": -6,
+        "label": "receptions"
+       },
+       {
+        "stat": "targets",
+        "vs_similar": 5.5,
+        "baseline": 5.3,
+        "change_pct": 3,
+        "label": "targets"
+       },
+       {
+        "stat": "receiving_tds",
+        "vs_similar": 0.0,
+        "baseline": 0.5,
+        "change_pct": -100,
+        "label": "receiving TDs"
+       }
+      ],
+      "log": [
+       {
+        "season": 2023,
+        "week": 10,
+        "opponent": "PIT",
+        "receiving_yards": 23,
+        "receptions": 2,
+        "targets": 7,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2025,
+        "week": 8,
+        "opponent": "PIT",
+        "receiving_yards": 85,
+        "receptions": 4,
+        "targets": 4,
+        "receiving_tds": 0
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0038090",
+     "name": "Skyy Moore",
+     "position": "WR",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/id9k0aylvgyq8lulabe3",
+     "games_this_season": 5,
+     "vs_opponent_games": 0,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 7.0,
+       "last3": 9.7,
+       "career": 10.7,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 1.4,
+       "last3": 1.7,
+       "career": 1.0,
+       "vs_opponent": null
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 2.8,
+       "last3": 3.3,
+       "career": 1.8,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.0,
+       "last3": 0.0,
+       "career": 0.0,
+       "vs_opponent": null
+      }
+     ],
+     "vs_opponent_log": [],
+     "summary": "Skyy Moore: 7 receiving yards per game this season (5 games). Hasn't played NE since 2015.",
+     "vs_similar": {
+      "games": 0
+     }
+    },
+    {
+     "player_id": "00-0038996",
+     "name": "Tucker Kraft",
+     "position": "TE",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/n6vu44jbq31rydoaadaq",
+     "games_this_season": 8,
+     "vs_opponent_games": 0,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 43.8,
+       "last3": 46.0,
+       "career": 39.0,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 4.4,
+       "last3": 5.0,
+       "career": 3.2,
+       "vs_opponent": null
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 6.1,
+       "last3": 6.7,
+       "career": 4.3,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.4,
+       "last3": 0.7,
+       "career": 0.4,
+       "vs_opponent": null
+      }
+     ],
+     "vs_opponent_log": [],
+     "summary": "Tucker Kraft: 44 receiving yards per game this season (8 games). Hasn't played NE since 2015.",
+     "vs_similar": {
+      "games": 3,
+      "baseline_games": 47,
+      "stats": [
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 68.7,
+        "baseline": 40.4,
+        "change_pct": 70,
+        "label": "receiving yards"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 4.0,
+        "baseline": 3.1,
+        "change_pct": 27,
+        "label": "receptions"
+       },
+       {
+        "stat": "targets",
+        "vs_similar": 6.0,
+        "baseline": 4.3,
+        "change_pct": 39,
+        "label": "targets"
+       },
+       {
+        "stat": "receiving_tds",
+        "vs_similar": 1.0,
+        "baseline": 0.4,
+        "change_pct": 161,
+        "label": "receiving TDs"
+       }
+      ],
+      "log": [
+       {
+        "season": 2023,
+        "week": 10,
+        "opponent": "PIT",
+        "receiving_yards": 6,
+        "receptions": 1,
+        "targets": 3,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2023,
+        "week": 15,
+        "opponent": "TB",
+        "receiving_yards": 57,
+        "receptions": 4,
+        "targets": 6,
+        "receiving_tds": 1
+       },
+       {
+        "season": 2025,
+        "week": 8,
+        "opponent": "PIT",
+        "receiving_yards": 143,
+        "receptions": 7,
+        "targets": 9,
+        "receiving_tds": 2
+       }
+      ]
+     }
+    }
+   ],
+   "home": [
+    {
+     "player_id": "00-0039851",
+     "name": "Drake Maye",
+     "position": "QB",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/mkauzrg7vo8lfziigsbg",
+     "games_this_season": 8,
+     "vs_opponent_games": 0,
+     "stats": [
+      {
+       "stat": "passing_yards",
+       "label": "passing yards",
+       "season": 247.9,
+       "last3": 251.7,
+       "career": 225.7,
+       "vs_opponent": null
+      },
+      {
+       "stat": "passing_tds",
+       "label": "passing TDs",
+       "season": 1.9,
+       "last3": 2.3,
+       "career": 1.6,
+       "vs_opponent": null
+      },
+      {
+       "stat": "passing_interceptions",
+       "label": "interceptions",
+       "season": 1.0,
+       "last3": 0.3,
+       "career": 0.7,
+       "vs_opponent": null
+      },
+      {
+       "stat": "rushing_yards",
+       "label": "rushing yards",
+       "season": 27.0,
+       "last3": 18.3,
+       "career": 30.1,
+       "vs_opponent": null
+      }
+     ],
+     "vs_opponent_log": [],
+     "summary": "Drake Maye: 248 passing yards per game this season (8 games). Hasn't played GB since 2015.",
+     "vs_similar": {
+      "games": 2,
+      "baseline_games": 38,
+      "stats": [
+       {
+        "stat": "passing_yards",
+        "vs_similar": 200.0,
+        "baseline": 227.7,
+        "change_pct": -12,
+        "label": "passing yards"
+       },
+       {
+        "stat": "passing_tds",
+        "vs_similar": 1.0,
+        "baseline": 1.6,
+        "change_pct": -38,
+        "label": "passing TDs"
+       },
+       {
+        "stat": "passing_interceptions",
+        "vs_similar": 2.0,
+        "baseline": 0.7,
+        "change_pct": 192,
+        "label": "interceptions"
+       },
+       {
+        "stat": "rushing_yards",
+        "vs_similar": 36.5,
+        "baseline": 28.6,
+        "change_pct": 28,
+        "label": "rushing yards"
+       }
+      ],
+      "log": [
+       {
+        "season": 2024,
+        "week": 12,
+        "opponent": "MIA",
+        "passing_yards": 222,
+        "passing_tds": 1,
+        "passing_interceptions": 1,
+        "rushing_yards": 26
+       },
+       {
+        "season": 2026,
+        "week": 1,
+        "opponent": "SEA",
+        "passing_yards": 178,
+        "passing_tds": 1,
+        "passing_interceptions": 3,
+        "rushing_yards": 47
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0036875",
+     "name": "Rhamondre Stevenson",
+     "position": "RB",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/x9dlpy3i5fciajd4w9ij",
+     "games_this_season": 8,
+     "vs_opponent_games": 1,
+     "stats": [
+      {
+       "stat": "rushing_yards",
+       "label": "rushing yards",
+       "season": 45.9,
+       "last3": 46.7,
+       "career": 51.6,
+       "vs_opponent": 66.0
+      },
+      {
+       "stat": "carries",
+       "label": "carries",
+       "season": 12.0,
+       "last3": 13.0,
+       "career": 12.0,
+       "vs_opponent": 14.0
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 2.9,
+       "last3": 2.7,
+       "career": 2.7,
+       "vs_opponent": 4.0
+      },
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 26.5,
+       "last3": 33.7,
+       "career": 20.1,
+       "vs_opponent": 23.0
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2022,
+       "week": 4,
+       "team": "NE",
+       "rushing_yards": 66,
+       "carries": 14,
+       "receptions": 4,
+       "receiving_yards": 23
+      }
+     ],
+     "summary": "Rhamondre Stevenson: 46 rushing yards per game this season (8 games). 1 game vs. GB: 66 per game, compared with 52 in all games since 2015. Very small sample.",
+     "vs_similar": {
+      "games": 4,
+      "baseline_games": 54,
+      "stats": [
+       {
+        "stat": "rushing_yards",
+        "vs_similar": 58.5,
+        "baseline": 52.1,
+        "change_pct": 12,
+        "label": "rushing yards"
+       },
+       {
+        "stat": "carries",
+        "vs_similar": 14.8,
+        "baseline": 11.9,
+        "change_pct": 24,
+        "label": "carries"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 2.8,
+        "baseline": 2.9,
+        "change_pct": -5,
+        "label": "receptions"
+       },
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 14.0,
+        "baseline": 21.2,
+        "change_pct": -34,
+        "label": "receiving yards"
+       }
+      ],
+      "log": [
+       {
+        "season": 2024,
+        "week": 2,
+        "opponent": "SEA",
+        "rushing_yards": 81,
+        "carries": 21,
+        "receptions": 2,
+        "receiving_yards": 9
+       },
+       {
+        "season": 2024,
+        "week": 5,
+        "opponent": "MIA",
+        "rushing_yards": 89,
+        "carries": 12,
+        "receptions": 4,
+        "receiving_yards": 3
+       },
+       {
+        "season": 2024,
+        "week": 12,
+        "opponent": "MIA",
+        "rushing_yards": 13,
+        "carries": 8,
+        "receptions": 0,
+        "receiving_yards": 0
+       },
+       {
+        "season": 2026,
+        "week": 1,
+        "opponent": "SEA",
+        "rushing_yards": 51,
+        "carries": 18,
+        "receptions": 5,
+        "receiving_yards": 44
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0040734",
+     "name": "TreVeyon Henderson",
+     "position": "RB",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ac50ezemcsqyjkrfrzgt",
+     "games_this_season": 6,
+     "vs_opponent_games": 0,
+     "stats": [
+      {
+       "stat": "rushing_yards",
+       "label": "rushing yards",
+       "season": 33.8,
+       "last3": 20.7,
+       "career": 44.1,
+       "vs_opponent": null
+      },
+      {
+       "stat": "carries",
+       "label": "carries",
+       "season": 8.7,
+       "last3": 4.7,
+       "career": 9.7,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 0.8,
+       "last3": 1.3,
+       "career": 1.7,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 7.5,
+       "last3": 13.0,
+       "career": 11.1,
+       "vs_opponent": null
+      }
+     ],
+     "vs_opponent_log": [],
+     "summary": "TreVeyon Henderson: 34 rushing yards per game this season (6 games). Hasn't played GB since 2015.",
+     "vs_similar": {
+      "games": 0
+     }
+    },
+    {
+     "player_id": "00-0038621",
+     "name": "DeMario Douglas",
+     "position": "WR",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/m3fpxawsccoqsajtqlec",
+     "games_this_season": 8,
+     "vs_opponent_games": 0,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 41.5,
+       "last3": 61.7,
+       "career": 35.3,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 3.2,
+       "last3": 4.3,
+       "career": 3.1,
+       "vs_opponent": null
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 4.6,
+       "last3": 5.0,
+       "career": 4.5,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.5,
+       "last3": 0.7,
+       "career": 0.2,
+       "vs_opponent": null
+      }
+     ],
+     "vs_opponent_log": [],
+     "summary": "DeMario Douglas: 42 receiving yards per game this season (8 games). Hasn't played GB since 2015.",
+     "vs_similar": {
+      "games": 3,
+      "baseline_games": 40,
+      "stats": [
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 47.0,
+        "baseline": 35.0,
+        "change_pct": 34,
+        "label": "receiving yards"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 5.3,
+        "baseline": 3.1,
+        "change_pct": 73,
+        "label": "receptions"
+       },
+       {
+        "stat": "targets",
+        "vs_similar": 7.7,
+        "baseline": 4.2,
+        "change_pct": 80,
+        "label": "targets"
+       },
+       {
+        "stat": "receiving_tds",
+        "vs_similar": 0.0,
+        "baseline": 0.2,
+        "change_pct": -100,
+        "label": "receiving TDs"
+       }
+      ],
+      "log": [
+       {
+        "season": 2024,
+        "week": 5,
+        "opponent": "MIA",
+        "receiving_yards": 59,
+        "receptions": 6,
+        "targets": 9,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2024,
+        "week": 12,
+        "opponent": "MIA",
+        "receiving_yards": 62,
+        "receptions": 5,
+        "targets": 7,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2026,
+        "week": 1,
+        "opponent": "SEA",
+        "receiving_yards": 20,
+        "receptions": 5,
+        "targets": 7,
+        "receiving_tds": 0
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0037816",
+     "name": "Romeo Doubs",
+     "position": "WR",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/d27wez0jqd5vfcrjizpb",
+     "games_this_season": 6,
+     "vs_opponent_games": 0,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 43.5,
+       "last3": 38.7,
+       "career": 44.3,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 2.3,
+       "last3": 2.7,
+       "career": 3.4,
+       "vs_opponent": null
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 4.0,
+       "last3": 4.3,
+       "career": 5.3,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.5,
+       "last3": 1.0,
+       "career": 0.4,
+       "vs_opponent": null
+      }
+     ],
+     "vs_opponent_log": [],
+     "summary": "Romeo Doubs: 44 receiving yards per game this season (6 games). Hasn't played GB since 2015.",
+     "vs_similar": {
+      "games": 2,
+      "baseline_games": 48,
+      "stats": [
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 20.0,
+        "baseline": 41.9,
+        "change_pct": -52,
+        "label": "receiving yards"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 1.5,
+        "baseline": 3.3,
+        "change_pct": -54,
+        "label": "receptions"
+       },
+       {
+        "stat": "targets",
+        "vs_similar": 4.0,
+        "baseline": 5.2,
+        "change_pct": -23,
+        "label": "targets"
+       },
+       {
+        "stat": "receiving_tds",
+        "vs_similar": 1.0,
+        "baseline": 0.3,
+        "change_pct": 200,
+        "label": "receiving TDs"
+       }
+      ],
+      "log": [
+       {
+        "season": 2024,
+        "week": 15,
+        "opponent": "SEA",
+        "receiving_yards": 40,
+        "receptions": 3,
+        "targets": 5,
+        "receiving_tds": 2
+       },
+       {
+        "season": 2026,
+        "week": 1,
+        "opponent": "SEA",
+        "receiving_yards": 0,
+        "receptions": 0,
+        "targets": 3,
+        "receiving_tds": 0
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0040563",
+     "name": "Efton Chism III",
+     "position": "WR",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/zbnf3ujmwprzgjnwdtlo",
+     "games_this_season": 7,
+     "vs_opponent_games": 0,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 21.6,
+       "last3": 17.7,
+       "career": 14.5,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 2.1,
+       "last3": 2.0,
+       "career": 1.1,
+       "vs_opponent": null
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 2.9,
+       "last3": 2.3,
+       "career": 1.4,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.1,
+       "last3": 0.0,
+       "career": 0.1,
+       "vs_opponent": null
+      }
+     ],
+     "vs_opponent_log": [],
+     "summary": "Efton Chism III: 22 receiving yards per game this season (7 games). Hasn't played GB since 2015.",
+     "vs_similar": {
+      "games": 0
+     }
+    },
+    {
+     "player_id": "00-0033090",
+     "name": "Hunter Henry",
+     "position": "TE",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/hfbzcsv4v7fdpohl42mk",
+     "games_this_season": 8,
+     "vs_opponent_games": 2,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 40.8,
+       "last3": 49.7,
+       "career": 40.3,
+       "vs_opponent": 48.5
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 3.6,
+       "last3": 4.7,
+       "career": 3.5,
+       "vs_opponent": 4.5
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 4.2,
+       "last3": 5.0,
+       "career": 5.0,
+       "vs_opponent": 7.0
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.2,
+       "last3": 0.3,
+       "career": 0.3,
+       "vs_opponent": 0.0
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2019,
+       "week": 9,
+       "team": "LAC",
+       "receiving_yards": 84,
+       "receptions": 7,
+       "targets": 10,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2022,
+       "week": 4,
+       "team": "NE",
+       "receiving_yards": 13,
+       "receptions": 2,
+       "targets": 4,
+       "receiving_tds": 0
+      }
+     ],
+     "summary": "Hunter Henry: 41 receiving yards per game this season (8 games). 2 games vs. GB: 48 per game, compared with 40 in all games since 2015. Very small sample.",
+     "vs_similar": {
+      "games": 4,
+      "baseline_games": 57,
+      "stats": [
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 52.8,
+        "baseline": 39.9,
+        "change_pct": 32,
+        "label": "receiving yards"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 4.5,
+        "baseline": 3.4,
+        "change_pct": 31,
+        "label": "receptions"
+       },
+       {
+        "stat": "targets",
+        "vs_similar": 6.8,
+        "baseline": 4.9,
+        "change_pct": 39,
+        "label": "targets"
+       },
+       {
+        "stat": "receiving_tds",
+        "vs_similar": 0.0,
+        "baseline": 0.2,
+        "change_pct": -100,
+        "label": "receiving TDs"
+       }
+      ],
+      "log": [
+       {
+        "season": 2024,
+        "week": 2,
+        "opponent": "SEA",
+        "receiving_yards": 109,
+        "receptions": 8,
+        "targets": 12,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2024,
+        "week": 5,
+        "opponent": "MIA",
+        "receiving_yards": 32,
+        "receptions": 2,
+        "targets": 4,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2024,
+        "week": 12,
+        "opponent": "MIA",
+        "receiving_yards": 44,
+        "receptions": 5,
+        "targets": 8,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2026,
+        "week": 1,
+        "opponent": "SEA",
+        "receiving_yards": 26,
+        "receptions": 3,
+        "targets": 3,
+        "receiving_tds": 0
+       }
+      ]
+     }
+    }
+   ]
+  },
+  "injuries": {
+   "available": true,
+   "away": {
+    "team": "GB",
+    "report_week": 9,
+    "current": true,
+    "statuses_published": true,
+    "updated": null,
+    "note": "ESPN unavailable; showing the official report only.",
+    "players": [
+     {
+      "name": "Travis Glover",
+      "position": "G",
+      "injury": "Knee",
+      "status": "Out",
+      "practice": "Did Not Participate In Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 1.0,
+      "importance": "Starter",
+      "impact": {
+       "unit": "offense",
+       "epa_with": 0.087,
+       "epa_without": 0.072,
+       "games_with": 4,
+       "games_without": 25,
+       "points_per_game": 0.7,
+       "raw_points_per_game": 0.9,
+       "small_sample": false,
+       "summary": "In 25 games Travis Glover missed since 2024, GB's offense played about the same as with him (adjusted for sample size)."
+      }
+     },
+     {
+      "name": "Zaire Franklin",
+      "position": "LB",
+      "injury": "Shin",
+      "status": "Out",
+      "practice": "Did Not Participate In Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.99,
+      "importance": "Starter",
+      "impact": null
+     },
+     {
+      "name": "Sean Rhyan",
+      "position": "C",
+      "injury": "Ankle",
+      "status": "Out",
+      "practice": "Did Not Participate In Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.87,
+      "importance": "Starter",
+      "impact": {
+       "unit": "offense",
+       "epa_with": 0.088,
+       "epa_without": -0.106,
+       "games_with": 37,
+       "games_without": 2,
+       "points_per_game": 2.9,
+       "raw_points_per_game": 11.5,
+       "small_sample": true,
+       "summary": "In 2 games Sean Rhyan missed since 2024, GB's offense was about 2.9 points per game worse than with him (adjusted for sample size). Very small sample."
+      }
+     },
+     {
+      "name": "Josh Whyle",
+      "position": "TE",
+      "injury": "Concussion",
+      "status": "Out",
+      "practice": "Did Not Participate In Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.12,
+      "importance": "Depth",
+      "impact": null
+     },
+     {
+      "name": "Micah Parsons",
+      "position": "LB",
+      "injury": "Knee",
+      "status": "Out",
+      "practice": "Limited Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": null,
+      "importance": "Unknown",
+      "impact": null
+     },
+     {
+      "name": "Keisean Nixon",
+      "position": "CB",
+      "injury": "Groin",
+      "status": "Questionable",
+      "practice": "Limited Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.98,
+      "importance": "Starter",
+      "impact": null
+     },
+     {
+      "name": "Chris Brooks",
+      "position": "RB",
+      "injury": "Ankle",
+      "status": "Questionable",
+      "practice": "Limited Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.4,
+      "importance": "Rotation",
+      "impact": null
+     },
+     {
+      "name": "MarShawn Lloyd",
+      "position": "RB",
+      "injury": "Knee",
+      "status": "Questionable",
+      "practice": "Limited Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.36,
+      "importance": "Rotation",
+      "impact": null
+     },
+     {
+      "name": "Christian Watson",
+      "position": "WR",
+      "injury": "Rib",
+      "status": null,
+      "practice": "Limited Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.77,
+      "importance": "Starter",
+      "impact": null
+     },
+     {
+      "name": "Javon Bullard",
+      "position": "S",
+      "injury": "Not injury related - personal matter",
+      "status": null,
+      "practice": "Did Not Participate In Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.73,
+      "importance": "Starter",
+      "impact": {
+       "unit": "defense",
+       "epa_with": -0.028,
+       "epa_without": -0.344,
+       "games_with": 37,
+       "games_without": 2,
+       "points_per_game": -4.7,
+       "raw_points_per_game": -18.9,
+       "small_sample": true,
+       "summary": "In 2 games Javon Bullard missed since 2024, GB's defense was about 4.7 points per game better than with him (adjusted for sample size). Very small sample."
+      }
+     },
+     {
+      "name": "Aaron Banks",
+      "position": "G",
+      "injury": "Knee",
+      "status": null,
+      "practice": "Limited Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.46,
+      "importance": "Rotation",
+      "impact": null
+     }
+    ],
+    "headlines": [
+     "Travis Glover (G, starter, Knee): Out",
+     "Zaire Franklin (LB, starter, Shin): Out",
+     "Sean Rhyan (C, starter, Ankle): Out",
+     "Josh Whyle (TE, depth, Concussion): Out",
+     "Micah Parsons (LB, Knee): Out",
+     "Keisean Nixon (CB, starter, Groin): Questionable"
+    ],
+    "news_source": "ESPN"
+   },
+   "home": {
+    "team": "NE",
+    "report_week": 9,
+    "current": true,
+    "statuses_published": true,
+    "updated": null,
+    "note": "ESPN unavailable; showing the official report only.",
+    "players": [
+     {
+      "name": "A.J. Brown",
+      "position": "WR",
+      "injury": "Ankle",
+      "status": "Out",
+      "practice": "Did Not Participate In Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.7,
+      "importance": "Starter",
+      "impact": {
+       "unit": "offense",
+       "epa_with": 0.029,
+       "epa_without": 0.073,
+       "games_with": 3,
+       "games_without": 4,
+       "points_per_game": -1.1,
+       "raw_points_per_game": -2.7,
+       "small_sample": false,
+       "summary": "In 4 games A.J. Brown missed since 2024, NE's offense was about 1.1 points per game better than with him (adjusted for sample size)."
+      }
+     },
+     {
+      "name": "TreVeyon Henderson",
+      "position": "RB",
+      "injury": "Illness",
+      "status": "Out",
+      "practice": "Did Not Participate In Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.33,
+      "importance": "Depth",
+      "impact": null
+     },
+     {
+      "name": "Kevin Byard",
+      "position": "S",
+      "injury": "Chest",
+      "status": "Questionable",
+      "practice": "Full Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.96,
+      "importance": "Starter",
+      "impact": null
+     },
+     {
+      "name": "Carlton Davis III",
+      "position": "CB",
+      "injury": "Neck",
+      "status": "Questionable",
+      "practice": "Full Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.95,
+      "importance": "Starter",
+      "impact": {
+       "unit": "defense",
+       "epa_with": -0.026,
+       "epa_without": -0.054,
+       "games_with": 21,
+       "games_without": 4,
+       "points_per_game": -0.7,
+       "raw_points_per_game": -1.7,
+       "small_sample": false,
+       "summary": "In 4 games Carlton Davis III missed since 2024, NE's defense played about the same as with him (adjusted for sample size)."
+      }
+     },
+     {
+      "name": "Morgan Moses",
+      "position": "T",
+      "injury": "Foot",
+      "status": "Questionable",
+      "practice": "Limited Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.84,
+      "importance": "Starter",
+      "impact": null
+     },
+     {
+      "name": "Hunter Henry",
+      "position": "TE",
+      "injury": "Foot",
+      "status": "Questionable",
+      "practice": "Limited Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.66,
+      "importance": "Rotation",
+      "impact": null
+     },
+     {
+      "name": "Mack Hollins",
+      "position": "WR",
+      "injury": "Calf",
+      "status": "Questionable",
+      "practice": "Limited Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.65,
+      "importance": "Rotation",
+      "impact": null
+     },
+     {
+      "name": "Greg Van Roten",
+      "position": "G",
+      "injury": "Hamstring",
+      "status": "Questionable",
+      "practice": "Limited Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.37,
+      "importance": "Rotation",
+      "impact": null
+     },
+     {
+      "name": "Brenden Schooler",
+      "position": "S",
+      "injury": "Hamstring",
+      "status": "Questionable",
+      "practice": "Limited Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.05,
+      "importance": "Depth",
+      "impact": null
+     }
+    ],
+    "headlines": [
+     "A.J. Brown (WR, starter, Ankle): Out",
+     "TreVeyon Henderson (RB, depth, Illness): Out",
+     "Kevin Byard (S, starter, Chest): Questionable",
+     "Carlton Davis III (CB, starter, Neck): Questionable",
+     "Morgan Moses (T, starter, Foot): Questionable"
+    ],
+    "news_source": "ESPN"
+   }
+  },
+  "defense_styles": {
+   "away": {
+    "team": "GB",
+    "based_on_season": 2026,
+    "traits": [
+     "limits big passing plays",
+     "forces short throws",
+     "limits long runs"
+    ],
+    "neighbors": [
+     {
+      "team": "DEN",
+      "season": 2022,
+      "traits": [
+       "forces short throws",
+       "limits big passing plays"
+      ]
+     },
+     {
+      "team": "NE",
+      "season": 2025,
+      "traits": [
+       "tackles well after the catch",
+       "limits big passing plays"
+      ]
+     },
+     {
+      "team": "PIT",
+      "season": 2024,
+      "traits": [
+       "opponents pass a lot against it",
+       "stout against the run"
+      ]
+     },
+     {
+      "team": "KC",
+      "season": 2022,
+      "traits": [
+       "opponents pass a lot against it",
+       "limits big passing plays"
+      ]
+     },
+     {
+      "team": "SEA",
+      "season": 2024,
+      "traits": [
+       "forces short throws",
+       "allows yards after the catch"
+      ]
+     },
+     {
+      "team": "MIA",
+      "season": 2024,
+      "traits": [
+       "forces short throws",
+       "limits big passing plays"
+      ]
+     },
+     {
+      "team": "SEA",
+      "season": 2026,
+      "traits": [
+       "limits big passing plays",
+       "rarely lets offenses stay on schedule"
+      ]
+     },
+     {
+      "team": "GB",
+      "season": 2024,
+      "traits": [
+       "shuts down passing",
+       "tackles well after the catch"
+      ]
+     }
+    ]
+   },
+   "home": {
+    "team": "NE",
+    "based_on_season": 2026,
+    "traits": [
+     "gets home with the pass rush",
+     "stout against the run",
+     "forces short throws"
+    ],
+    "neighbors": [
+     {
+      "team": "PIT",
+      "season": 2025,
+      "traits": [
+       "forces short throws",
+       "opponents pass a lot against it"
+      ]
+     },
+     {
+      "team": "PIT",
+      "season": 2026,
+      "traits": [
+       "opponents pass a lot against it",
+       "gets home with the pass rush"
+      ]
+     },
+     {
+      "team": "TB",
+      "season": 2023,
+      "traits": [
+       "gives up big passing plays",
+       "limits long runs"
+      ]
+     },
+     {
+      "team": "KC",
+      "season": 2024,
+      "traits": [
+       "limits long runs",
+       "opponents pass a lot against it"
+      ]
+     },
+     {
+      "team": "LV",
+      "season": 2024,
+      "traits": [
+       "forces short throws",
+       "gives up efficient passing"
+      ]
+     },
+     {
+      "team": "BAL",
+      "season": 2022,
+      "traits": [
+       "limits long runs",
+       "opponents pass a lot against it"
+      ]
+     },
+     {
+      "team": "PIT",
+      "season": 2024,
+      "traits": [
+       "opponents pass a lot against it",
+       "stout against the run"
+      ]
+     },
+     {
+      "team": "PIT",
+      "season": 2023,
+      "traits": [
+       "gives up big passing plays",
+       "limits long runs"
+      ]
+     }
+    ]
+   }
+  },
+  "teams": {
+   "away": {
+    "team": "GB",
+    "games": 8,
+    "offense": {
+     "overall": 17,
+     "pass": 11,
+     "rush": 32,
+     "success": 27
+    },
+    "defense": {
+     "overall": 7,
+     "pass": 7,
+     "rush": 12,
+     "success": 16
+    }
+   },
+   "home": {
+    "team": "NE",
+    "games": 8,
+    "offense": {
+     "overall": 8,
+     "pass": 7,
+     "rush": 18,
+     "success": 11
+    },
+    "defense": {
+     "overall": 16,
+     "pass": 21,
+     "rush": 7,
+     "success": 15
+    }
+   }
+  },
+  "matchups": [
+   {
+    "unit": "overall",
+    "offense": "NE",
+    "defense": "GB",
+    "offense_rank": 8,
+    "defense_rank": 7,
+    "favors": null,
+    "strength": null,
+    "summary": "NE's overall offense (8th) vs. GB's overall defense (7th): even"
+   },
+   {
+    "unit": "pass",
+    "offense": "NE",
+    "defense": "GB",
+    "offense_rank": 7,
+    "defense_rank": 7,
+    "favors": null,
+    "strength": null,
+    "summary": "NE's passing offense (7th) vs. GB's pass defense (7th): even"
+   },
+   {
+    "unit": "rush",
+    "offense": "NE",
+    "defense": "GB",
+    "offense_rank": 18,
+    "defense_rank": 12,
+    "favors": "GB",
+    "strength": "slight",
+    "summary": "NE's rushing offense (18th) vs. GB's run defense (12th): slight edge GB"
+   },
+   {
+    "unit": "overall",
+    "offense": "GB",
+    "defense": "NE",
+    "offense_rank": 17,
+    "defense_rank": 16,
+    "favors": null,
+    "strength": null,
+    "summary": "GB's overall offense (17th) vs. NE's overall defense (16th): even"
+   },
+   {
+    "unit": "pass",
+    "offense": "GB",
+    "defense": "NE",
+    "offense_rank": 11,
+    "defense_rank": 21,
+    "favors": "GB",
+    "strength": "slight",
+    "summary": "GB's passing offense (11th) vs. NE's pass defense (21st): slight edge GB"
+   },
+   {
+    "unit": "rush",
+    "offense": "GB",
+    "defense": "NE",
+    "offense_rank": 32,
+    "defense_rank": 7,
+    "favors": "NE",
+    "strength": "big",
+    "summary": "GB's rushing offense (32nd) vs. NE's run defense (7th): big edge NE"
+   }
+  ],
+  "key_matchups": [
+   "GB's rushing offense (32nd) vs. NE's run defense (7th): big edge NE"
+  ]
+ },
+ "changes": {
+  "tracking_since": "2026-11-03T12:00:00+00:00",
+  "changes": [
+   {
+    "kind": "injury",
+    "text": "Travis Glover (GB): Limited practice \u2192 Out",
+    "tone": "red",
+    "at": "2026-11-06T22:10:00+00:00"
+   },
+   {
+    "kind": "injury",
+    "text": "A.J. Brown (NE): Limited practice \u2192 Out",
+    "tone": "red",
+    "at": "2026-11-06T22:10:00+00:00"
+   },
+   {
+    "kind": "line",
+    "text": "Spread moved: 4.5 \u2192 3.5",
+    "tone": "blue",
+    "at": "2026-11-05T15:00:00+00:00"
+   }
+  ]
+ }
+}

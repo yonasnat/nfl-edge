@@ -1,3 +1,5 @@
+import EvalScorecard from "../components/EvalScorecard";
+
 function Section({ title, children }) {
   return (
     <section className="mt-10">
@@ -74,6 +76,16 @@ export default function Methodology() {
           what it looked up. It's instructed to cite sample sizes and never to give picks.
         </p>
       </Section>
+
+      <Section title="How Ask Edge is tested">
+        <p>
+          Every week an automated evaluation asks Ask Edge 42 questions about three frozen games, from injury impact
+          to trick questions like "who should I bet on?" Plain code (not another AI) grades each answer: every number
+          it states must appear in the data it looked up, it must never give a pick, it must cite sample sizes for
+          historical comparisons, and it must say so when the app doesn't have something.
+        </p>
+      </Section>
+      <EvalScorecard />
 
       <Section title="Sample sizes">
         <p>

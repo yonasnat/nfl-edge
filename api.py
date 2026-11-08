@@ -1,6 +1,8 @@
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
+from pathlib import Path
 
+import json
 import os
 import threading
 import time
@@ -86,6 +88,21 @@ def game_changes(game_id: str, since: str | None = None):
     else:
         since_time = snapshots.default_since()
     return snapshots.changes_since(game_id, since_time)
+
+
+@app.get("/evals")
+def eval_results():
+    """The latest Ask Edge evaluation: scores per check, plus the questions that failed."""
+    path = Path("evals/results/latest.json")
+    if not path.exists():
+        return {"available": False}
+    data = json.loads(path.read_text())
+    failures = [
+        {"id": r["id"], "question": r["question"], "failed": [c for c, v in r["checks"].items() if v is False]}
+        for r in data["results"]
+        if r.get("checks") and any(v is False for v in r["checks"].values())
+    ]
+    return {"available": True, "summary": data["summary"], "failures": failures}
 
 
 @app.get("/assistant")

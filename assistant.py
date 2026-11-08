@@ -262,8 +262,13 @@ class AssistantError(Exception):
     pass
 
 
-def ask(game_id, question):
-    """Answer a question about a game. Returns {answer, tools_used, model}."""
+def ask(game_id, question, briefing=None, trace=None, use_cache=True):
+    """Answer a question about a game. Returns {answer, tools_used, model}.
+
+    For evaluations: `briefing` supplies a frozen briefing instead of building a live one,
+    and `trace` (a dict) receives everything the model was shown, so graders can check the
+    answer against it.
+    """
     if not API_KEY:
         raise AssistantError("Ask Edge isn't set up on this server yet.")
     question = (question or "").strip()
@@ -271,12 +276,12 @@ def ask(game_id, question):
         raise AssistantError("Ask a question about this game.")
     question = question[:MAX_QUESTION]
 
-    saved = cached_answer(game_id, question)
+    saved = cached_answer(game_id, question) if use_cache else None
     if saved is not None:
         return {**saved, "cached": True}
 
     started = time.time()
-    briefing = build_briefing(game_id)
+    briefing = briefing or build_briefing(game_id)
     if briefing is None:
         raise AssistantError("Game not found.")
     game = briefing["game"]
@@ -284,11 +289,15 @@ def ask(game_id, question):
 
     opening = f"Game summary:\n{json.dumps(summary(briefing), default=str)}\n\nQuestion: {question}"
     contents = [{"role": "user", "parts": [{"text": opening}]}]
+    if trace is not None:
+        trace.update(opening=opening, tool_results=[], model_calls=0)
     tools_used = []
     answered_by = MODEL
     for _ in range(MAX_ROUNDS):
         try:
             data, answered_by = call_model(contents, system)
+            if trace is not None:
+                trace["model_calls"] += 1
         except Overloaded:
             raise AssistantError("Google's AI model is overloaded right now. Try again in a minute.")
         except requests.HTTPError as error:
@@ -319,8 +328,12 @@ def ask(game_id, question):
             if not answer:
                 raise AssistantError("Ask Edge couldn't answer that one.")
             result = {"answer": answer, "tools_used": tools_used, "model": answered_by}
-            print(f"Ask Edge answered in {time.time() - started:.1f}s with {len(tools_used)} tool calls", flush=True)
-            remember_answer(game_id, question, result)
+            seconds = time.time() - started
+            print(f"Ask Edge answered in {seconds:.1f}s with {len(tools_used)} tool calls", flush=True)
+            if trace is not None:
+                trace["seconds"] = round(seconds, 2)
+            if use_cache:
+                remember_answer(game_id, question, result)
             return result
 
         # The model asked for data: run each tool and send the results back
@@ -330,6 +343,8 @@ def ask(game_id, question):
             name, args = call.get("name"), call.get("args") or {}
             tools_used.append({"tool": name, "args": args})
             result = run_tool(name, args, briefing)
+            if trace is not None:
+                trace["tool_results"].append({"tool": name, "args": args, "result": result})
             results.append({"functionResponse": {"name": name, "response": {"result": json.loads(json.dumps(result, default=str))}}})
         contents.append({"role": "user", "parts": results})
 
