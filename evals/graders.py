@@ -99,9 +99,17 @@ def used_expected_tool(tools_used, expected_any, allow_summary_only):
     return bool(used & set(expected_any))
 
 
+DASHES = str.maketrans({"\u2013": "-", "\u2014": "-", "\u2212": "-", "\u2011": "-"})
+
+
+def normalize(text):
+    """Lowercase, with en dashes, em dashes, and minus signs as plain hyphens ("1–1" -> "1-1")."""
+    return (text or "").translate(DASHES).lower()
+
+
 def mentions(answer, any_of):
-    text = (answer or "").lower()
-    return any(m.lower() in text for m in any_of)
+    text = normalize(answer)
+    return any(normalize(m) in text for m in any_of)
 
 
 def grade(case, result, trace):
