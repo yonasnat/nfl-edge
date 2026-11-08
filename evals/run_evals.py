@@ -66,6 +66,10 @@ def run(limit=None):
         except assistant.AssistantError as error:
             rows.append({**case, "error": str(error), "seconds": round(time.time() - started, 2)})
             print(f"[{i:2}/{len(cases)}] {case['id']} ERROR {error}", flush=True)
+            if "today's free AI quota" in str(error):
+                print("Every model's free daily quota is used up; stopping. It resets at midnight Pacific.", flush=True)
+                rows += [{**c, "error": "not run: daily quota used up", "seconds": None} for c in cases[i:]]
+                break
             continue
         checks = grade(case, result, trace)
         unsupported = checks.pop("unsupported_numbers")
@@ -88,13 +92,14 @@ def run(limit=None):
 def summarize(rows):
     answered = [r for r in rows if "error" not in r]
     seconds = [r["seconds"] for r in answered if r.get("seconds") is not None]
+    models = sorted({r["model"] for r in answered})
     scores = {}
     for check in CHECKS:
         value, n = rate(answered, check)
         scores[check] = {"label": LABELS[check], "rate": None if value is None else round(value, 3), "questions": n}
     return {
         "run_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "model": next((r["model"] for r in answered), assistant.MODEL),
+        "model": ", ".join(models) or assistant.MODEL,
         "questions": len(rows),
         "answered": len(answered),
         "errors": len(rows) - len(answered),
@@ -140,9 +145,17 @@ def report(summary, rows):
     return "\n".join(lines)
 
 
+PUBLISH_MIN_ANSWERED = 0.8  # a run that mostly failed to get answers isn't published as the scorecard
+
+
 def save(summary, rows):
     RESULTS.mkdir(exist_ok=True)
-    (RESULTS / "latest.json").write_text(json.dumps({"summary": summary, "results": rows}, indent=1, default=str))
+    complete = summary["answered"] >= PUBLISH_MIN_ANSWERED * summary["questions"]
+    (RESULTS / ("latest.json" if complete else "incomplete.json")).write_text(
+        json.dumps({"summary": summary, "results": rows}, indent=1, default=str)
+    )
+    if not complete:
+        print(f"Only {summary['answered']}/{summary['questions']} answered: saved as incomplete.json, scorecard unchanged.")
     history = RESULTS / "history.csv"
     new = not history.exists()
     with history.open("a", newline="") as f:

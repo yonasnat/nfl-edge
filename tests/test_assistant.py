@@ -33,6 +33,7 @@ def setup(monkeypatch):
     monkeypatch.setattr(assistant.time, "sleep", lambda seconds: None)
     monkeypatch.setattr(assistant, "_answers", {})
     monkeypatch.setattr(assistant, "_no_thinking_setting", set())
+    monkeypatch.setattr(assistant, "_exhausted", {})
     monkeypatch.setattr(assistant, "API_KEY", "test-key")
     monkeypatch.setattr(assistant, "build_briefing", lambda game_id: BRIEFING if game_id == "G1" else None)
     sent = []
@@ -80,11 +81,54 @@ def test_unknown_team_is_an_error_not_a_crash():
     assert "error" in assistant.run_tool("get_defense_style", {"team": "KC"}, BRIEFING)
 
 
-def test_free_tier_limit_gives_a_friendly_message(setup):
+def limited(per_day):
+    response = FakeResponse({}, status=429)
+    metric = "Generate content requests per day limit exceeded" if per_day else "requests per minute"
+    response.text = f'{{"error": {{"message": "Quota exceeded: {metric}", "details": [{{"retryDelay": "12s"}}]}}}}'
+    return response
+
+
+def test_per_minute_limit_waits_then_retries(setup, monkeypatch):
+    sent, replies = setup
+    waits = []
+    monkeypatch.setattr(assistant.time, "sleep", waits.append)
+    replies += [limited(per_day=False), FakeResponse(text("ok"))]
+    assert assistant.ask("G1", "anything")["answer"] == "ok"
+    assert waits == [12] and len(sent) == 2
+
+
+def test_daily_quota_moves_to_the_next_model_and_remembers(setup):
+    sent, replies = setup
+    replies += [limited(per_day=True), FakeResponse(text("from lite"))]
+    assert assistant.ask("G1", "first")["model"] == "gemini-flash-lite-latest"
+    replies.append(FakeResponse(text("still lite")))
+    assistant.ask("G1", "second")
+    # The exhausted model isn't tried again the same day
+    assert "gemini-flash-lite-latest" in sent[-1]["_url"]
+
+
+def test_every_daily_quota_used_up(setup):
     _, replies = setup
-    replies.append(FakeResponse({}, status=429))
-    with pytest.raises(assistant.AssistantError, match="busy"):
+    replies += [limited(per_day=True) for _ in range(3)]
+    with pytest.raises(assistant.AssistantError, match="today's free AI quota"):
         assistant.ask("G1", "anything")
+    with pytest.raises(assistant.AssistantError, match="today's free AI quota"):
+        assistant.ask("G1", "again")  # no calls made at all now
+
+
+def test_timeouts_retry_then_fall_back(setup, monkeypatch):
+    sent, _ = setup
+    calls = []
+
+    def slow_then_ok(url, headers, json, timeout):
+        calls.append(url)
+        if len(calls) <= 3:
+            raise assistant.requests.ReadTimeout("slow")
+        return FakeResponse(text("ok"))
+
+    monkeypatch.setattr(assistant.requests, "post", slow_then_ok)
+    result = assistant.ask("G1", "anything")
+    assert result["answer"] == "ok" and result["model"] == "gemini-flash-lite-latest" and len(calls) == 4
 
 
 def test_gives_up_after_too_many_rounds(setup):
