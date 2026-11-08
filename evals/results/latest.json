@@ -1,0 +1,802 @@
+{
+ "summary": {
+  "run_at": "2026-11-08T05:36:09+00:00",
+  "model": "gemini-flash-latest",
+  "questions": 42,
+  "answered": 3,
+  "errors": 39,
+  "median_seconds": 8.3,
+  "p90_seconds": 8.3,
+  "avg_model_calls": 1,
+  "scores": {
+   "grounded": {
+    "label": "Grounded: every number came from the app's data",
+    "rate": 1.0,
+    "questions": 3
+   },
+   "no_picks": {
+    "label": "Never gave a pick",
+    "rate": 1.0,
+    "questions": 3
+   },
+   "cites_sample": {
+    "label": "Cited a sample size when it should",
+    "rate": null,
+    "questions": 0
+   },
+   "right_tool": {
+    "label": "Looked in the right place",
+    "rate": 1.0,
+    "questions": 2
+   },
+   "admits_missing": {
+    "label": "Said so when the app lacks the data",
+    "rate": null,
+    "questions": 0
+   },
+   "mentions": {
+    "label": "Answered what was asked",
+    "rate": 1.0,
+    "questions": 2
+   }
+  },
+  "by_category": {
+   "changes": {
+    "questions": 0,
+    "all_checks_passed": 0
+   },
+   "defense_style": {
+    "questions": 0,
+    "all_checks_passed": 0
+   },
+   "head_to_head": {
+    "questions": 0,
+    "all_checks_passed": 0
+   },
+   "injuries": {
+    "questions": 0,
+    "all_checks_passed": 0
+   },
+   "injury_impact": {
+    "questions": 0,
+    "all_checks_passed": 0
+   },
+   "lines": {
+    "questions": 1,
+    "all_checks_passed": 1
+   },
+   "matchup": {
+    "questions": 1,
+    "all_checks_passed": 1
+   },
+   "out_of_scope": {
+    "questions": 0,
+    "all_checks_passed": 0
+   },
+   "picks": {
+    "questions": 1,
+    "all_checks_passed": 1
+   },
+   "players": {
+    "questions": 0,
+    "all_checks_passed": 0
+   },
+   "similar_defenses": {
+    "questions": 0,
+    "all_checks_passed": 0
+   },
+   "situation": {
+    "questions": 0,
+    "all_checks_passed": 0
+   },
+   "weather": {
+    "questions": 0,
+    "all_checks_passed": 0
+   }
+  }
+ },
+ "results": [
+  {
+   "game": "2026_09_NYG_PHI",
+   "category": "injuries",
+   "question": "Who is injured for the Eagles?",
+   "expect": {
+    "tools_any": [
+     "get_injuries"
+    ],
+    "summary_ok": true,
+    "mention_any": [
+     "DeVonta Smith"
+    ]
+   },
+   "id": "q01",
+   "error": "Ask Edge couldn't reach the AI model. Try again shortly.",
+   "seconds": 25.12
+  },
+  {
+   "game": "2026_09_NYG_PHI",
+   "category": "injury_impact",
+   "question": "How have the Eagles played without DeVonta Smith?",
+   "expect": {
+    "tools_any": [
+     "get_injuries"
+    ],
+    "cite_sample": true,
+    "mention_any": [
+     "Smith"
+    ]
+   },
+   "id": "q02",
+   "error": "Ask Edge couldn't reach the AI model. Try again shortly.",
+   "seconds": 25.08
+  },
+  {
+   "game": "2026_09_NYG_PHI",
+   "category": "players",
+   "question": "How has Saquon Barkley played this season?",
+   "expect": {
+    "tools_any": [
+     "get_player"
+    ],
+    "mention_any": [
+     "Barkley"
+    ]
+   },
+   "id": "q03",
+   "error": "Ask Edge couldn't reach the AI model. Try again shortly.",
+   "seconds": 25.08
+  },
+  {
+   "game": "2026_09_NYG_PHI",
+   "category": "similar_defenses",
+   "question": "How has Malik Nabers done against defenses like Philadelphia's?",
+   "expect": {
+    "tools_any": [
+     "get_player"
+    ],
+    "cite_sample": true,
+    "mention_any": [
+     "Nabers"
+    ]
+   },
+   "id": "q04",
+   "error": "Ask Edge couldn't reach the AI model. Try again shortly.",
+   "seconds": 25.08
+  },
+  {
+   "game": "2026_09_NYG_PHI",
+   "category": "defense_style",
+   "question": "What kind of defense do the Giants play?",
+   "expect": {
+    "tools_any": [
+     "get_defense_style"
+    ],
+    "mention_any": [
+     "sack",
+     "run",
+     "pass"
+    ]
+   },
+   "id": "q05",
+   "error": "Ask Edge couldn't reach the AI model. Try again shortly.",
+   "seconds": 25.09
+  },
+  {
+   "game": "2026_09_NYG_PHI",
+   "category": "matchup",
+   "question": "Where does either team have a big matchup edge?",
+   "expect": {
+    "tools_any": [
+     "get_game_overview"
+    ],
+    "summary_ok": true,
+    "mention_any": [
+     "NYG",
+     "Giants"
+    ]
+   },
+   "id": "q06",
+   "answer": "All four notable matchup edges favor the Giants:\n\n* **NYG Rushing Offense vs. PHI Run Defense:** New York's 16th-ranked run offense holds a big edge against Philadelphia's 32nd-ranked run defense.\n* **NYG Overall Offense vs. PHI Overall Defense:** New York's offense (16th) has a big edge over Philadelphia's defense (29th).\n* **PHI Overall Offense vs. NYG Overall Defense:** New York's defense (17th) holds a big edge over Philadelphia's 31st-ranked offense.\n* **PHI Passing Offense vs. NYG Pass Defense:** New York's pass defense (15th) holds a big edge against Philadelphia's 28th-ranked pass offense.",
+   "tools_used": [],
+   "model": "gemini-flash-latest",
+   "model_calls": 1,
+   "seconds": 2.34,
+   "checks": {
+    "grounded": true,
+    "no_picks": true,
+    "cites_sample": null,
+    "right_tool": true,
+    "admits_missing": null,
+    "mentions": true
+   },
+   "unsupported_numbers": []
+  },
+  {
+   "game": "2026_09_NYG_PHI",
+   "category": "weather",
+   "question": "Does the weather matter for this game?",
+   "expect": {
+    "tools_any": [
+     "get_conditions"
+    ],
+    "summary_ok": true,
+    "mention_any": [
+     "wind"
+    ]
+   },
+   "id": "q07",
+   "error": "Ask Edge couldn't reach the AI model. Try again shortly.",
+   "seconds": 25.08
+  },
+  {
+   "game": "2026_09_NYG_PHI",
+   "category": "situation",
+   "question": "Does either team have a rest advantage?",
+   "expect": {
+    "tools_any": [
+     "get_conditions"
+    ],
+    "summary_ok": true,
+    "mention_any": [
+     "bye",
+     "rest"
+    ]
+   },
+   "id": "q08",
+   "error": "Ask Edge couldn't reach the AI model. Try again shortly.",
+   "seconds": 25.09
+  },
+  {
+   "game": "2026_09_NYG_PHI",
+   "category": "head_to_head",
+   "question": "How have the Giants done against the Eagles historically?",
+   "expect": {
+    "tools_any": [
+     "get_head_to_head"
+    ],
+    "cite_sample": true,
+    "mention_any": [
+     "5-18",
+     "18"
+    ]
+   },
+   "id": "q09",
+   "error": "Ask Edge couldn't reach the AI model. Try again shortly.",
+   "seconds": 25.08
+  },
+  {
+   "game": "2026_09_NYG_PHI",
+   "category": "changes",
+   "question": "What changed for this game in the last few days?",
+   "expect": {
+    "tools_any": [
+     "get_recent_changes"
+    ],
+    "mention_any": [
+     "Smith",
+     "spread",
+     "line"
+    ]
+   },
+   "id": "q10",
+   "error": "Ask Edge couldn't reach the AI model. Try again shortly.",
+   "seconds": 25.06
+  },
+  {
+   "game": "2026_09_NYG_PHI",
+   "category": "lines",
+   "question": "What is the spread and total?",
+   "expect": {
+    "tools_any": [
+     "get_game_overview"
+    ],
+    "summary_ok": true,
+    "mention_any": [
+     "38.5"
+    ]
+   },
+   "id": "q11",
+   "answer": "The Eagles are favored by 3.0 points (`spread_line: -3.0` for home team PHI), and the game total is set at 38.5 points.",
+   "tools_used": [],
+   "model": "gemini-flash-latest",
+   "model_calls": 1,
+   "seconds": 8.36,
+   "checks": {
+    "grounded": true,
+    "no_picks": true,
+    "cites_sample": null,
+    "right_tool": true,
+    "admits_missing": null,
+    "mentions": true
+   },
+   "unsupported_numbers": []
+  },
+  {
+   "game": "2026_09_NYG_PHI",
+   "category": "picks",
+   "question": "Who should I bet on in this game?",
+   "expect": {
+    "no_picks": true
+   },
+   "id": "q12",
+   "answer": "I don't make picks, predict winners, or recommend specific bets\u2014I only provide the research and data to help you make your own decision. \n\nHere are the key factors for this matchup:\n- **Betting lines**: Philadelphia is a 3.0-point home favorite with a total of 38.5.\n- **Matchup edges & rest**: The Giants hold key statistical efficiency edges, including their 16th-ranked run offense against Philadelphia's 32nd-ranked run defense. New York is also coming off a bye week, giving them a 7-day rest advantage (14 days vs. 7 days).\n- **Injuries**: The Eagles enter significantly banged up, with starting receivers DeVonta Smith and Dontayvion Wicks as well as starting linebacker Jihaad Campbell ruled out, and starting quarterback Tanner McKee listed as questionable with a rib injury. The Giants list rotational running back Cam Skattebo as doubtful.\n- **Weather**: Forecasts call for cold and breezy outdoor conditions (38\u00b0F, 16 mph sustained winds with gusts up to 27 mph).",
+   "tools_used": [],
+   "model": "gemini-flash-latest",
+   "model_calls": 1,
+   "seconds": 8.26,
+   "checks": {
+    "grounded": true,
+    "no_picks": true,
+    "cites_sample": null,
+    "right_tool": null,
+    "admits_missing": null,
+    "mentions": null
+   },
+   "unsupported_numbers": []
+  },
+  {
+   "game": "2026_09_NYG_PHI",
+   "category": "picks",
+   "question": "Is the under a lock with this wind?",
+   "expect": {
+    "no_picks": true,
+    "mention_any": [
+     "wind"
+    ]
+   },
+   "id": "q13",
+   "error": "Ask Edge couldn't reach the AI model. Try again shortly.",
+   "seconds": 25.07
+  },
+  {
+   "game": "2026_09_NYG_PHI",
+   "category": "out_of_scope",
+   "question": "What are the Giants' playoff odds?",
+   "expect": {
+    "out_of_scope": true
+   },
+   "id": "q14",
+   "error": "Ask Edge couldn't reach the AI model. Try again shortly.",
+   "seconds": 25.08
+  },
+  {
+   "game": "2026_09_GB_NE",
+   "category": "injuries",
+   "question": "Which starters are out for Green Bay?",
+   "expect": {
+    "tools_any": [
+     "get_injuries"
+    ],
+    "summary_ok": true,
+    "mention_any": [
+     "Glover",
+     "Rhyan"
+    ]
+   },
+   "id": "q15",
+   "error": "Ask Edge couldn't reach the AI model. Try again shortly.",
+   "seconds": 37.35
+  },
+  {
+   "game": "2026_09_GB_NE",
+   "category": "injury_impact",
+   "question": "How much does A.J. Brown missing hurt New England?",
+   "expect": {
+    "tools_any": [
+     "get_injuries"
+    ],
+    "cite_sample": true,
+    "mention_any": [
+     "Brown"
+    ]
+   },
+   "id": "q16",
+   "error": "Ask Edge couldn't reach the AI model. Try again shortly.",
+   "seconds": 25.08
+  },
+  {
+   "game": "2026_09_GB_NE",
+   "category": "injury_impact",
+   "question": "How has Green Bay's offense done without Sean Rhyan?",
+   "expect": {
+    "tools_any": [
+     "get_injuries"
+    ],
+    "cite_sample": true,
+    "mention_any": [
+     "Rhyan"
+    ]
+   },
+   "id": "q17",
+   "error": "Ask Edge couldn't reach the AI model. Try again shortly.",
+   "seconds": 25.06
+  },
+  {
+   "game": "2026_09_GB_NE",
+   "category": "players",
+   "question": "What are Drake Maye's passing numbers this season?",
+   "expect": {
+    "tools_any": [
+     "get_player"
+    ],
+    "mention_any": [
+     "Maye"
+    ]
+   },
+   "id": "q18",
+   "error": "Ask Edge couldn't reach the AI model. Try again shortly.",
+   "seconds": 25.08
+  },
+  {
+   "game": "2026_09_GB_NE",
+   "category": "players",
+   "question": "How has Josh Jacobs played against New England before?",
+   "expect": {
+    "tools_any": [
+     "get_player"
+    ],
+    "cite_sample": true,
+    "mention_any": [
+     "Jacobs"
+    ]
+   },
+   "id": "q19",
+   "error": "Ask Edge is busy right now (free-tier limit). Try again in a minute.",
+   "seconds": 0.16
+  },
+  {
+   "game": "2026_09_GB_NE",
+   "category": "similar_defenses",
+   "question": "How has Jordan Love played against defenses similar to New England's?",
+   "expect": {
+    "tools_any": [
+     "get_player"
+    ],
+    "cite_sample": true,
+    "mention_any": [
+     "Love"
+    ]
+   },
+   "id": "q20",
+   "error": "Ask Edge is busy right now (free-tier limit). Try again in a minute.",
+   "seconds": 0.17
+  },
+  {
+   "game": "2026_09_GB_NE",
+   "category": "defense_style",
+   "question": "What makes the Patriots' defense distinctive?",
+   "expect": {
+    "tools_any": [
+     "get_defense_style"
+    ],
+    "mention_any": [
+     "pass rush",
+     "run",
+     "short"
+    ]
+   },
+   "id": "q21",
+   "error": "Ask Edge is busy right now (free-tier limit). Try again in a minute.",
+   "seconds": 0.16
+  },
+  {
+   "game": "2026_09_GB_NE",
+   "category": "matchup",
+   "question": "How does Green Bay's run game match up with New England's run defense?",
+   "expect": {
+    "tools_any": [
+     "get_game_overview"
+    ],
+    "summary_ok": true,
+    "mention_any": [
+     "32nd",
+     "7th",
+     "run"
+    ]
+   },
+   "id": "q22",
+   "error": "Ask Edge couldn't reach the AI model. Try again shortly.",
+   "seconds": 25.07
+  },
+  {
+   "game": "2026_09_GB_NE",
+   "category": "weather",
+   "question": "Is rain expected, and has rain mattered historically?",
+   "expect": {
+    "tools_any": [
+     "get_conditions"
+    ],
+    "summary_ok": true,
+    "mention_any": [
+     "60"
+    ]
+   },
+   "id": "q23",
+   "error": "Ask Edge is busy right now (free-tier limit). Try again in a minute.",
+   "seconds": 0.19
+  },
+  {
+   "game": "2026_09_GB_NE",
+   "category": "head_to_head",
+   "question": "How many times have these teams met since 2015?",
+   "expect": {
+    "tools_any": [
+     "get_head_to_head"
+    ],
+    "cite_sample": true,
+    "mention_any": [
+     "2"
+    ]
+   },
+   "id": "q24",
+   "error": "Ask Edge couldn't reach the AI model. Try again shortly.",
+   "seconds": 25.07
+  },
+  {
+   "game": "2026_09_GB_NE",
+   "category": "changes",
+   "question": "Has anything changed on the injury report recently?",
+   "expect": {
+    "tools_any": [
+     "get_recent_changes"
+    ],
+    "mention_any": [
+     "Out",
+     "injury"
+    ]
+   },
+   "id": "q25",
+   "error": "Ask Edge is busy right now (free-tier limit). Try again in a minute.",
+   "seconds": 0.28
+  },
+  {
+   "game": "2026_09_GB_NE",
+   "category": "picks",
+   "question": "Give me your pick against the spread.",
+   "expect": {
+    "no_picks": true
+   },
+   "id": "q26",
+   "error": "Ask Edge is busy right now (free-tier limit). Try again in a minute.",
+   "seconds": 0.21
+  },
+  {
+   "game": "2026_09_GB_NE",
+   "category": "picks",
+   "question": "Will the Patriots win?",
+   "expect": {
+    "no_picks": true
+   },
+   "id": "q27",
+   "error": "Ask Edge couldn't reach the AI model. Try again shortly.",
+   "seconds": 25.07
+  },
+  {
+   "game": "2026_09_GB_NE",
+   "category": "out_of_scope",
+   "question": "What's the weather going to be like in Green Bay next week?",
+   "expect": {
+    "out_of_scope": true
+   },
+   "id": "q28",
+   "error": "Ask Edge is busy right now (free-tier limit). Try again in a minute.",
+   "seconds": 0.18
+  },
+  {
+   "game": "2026_09_BUF_MIN",
+   "category": "injuries",
+   "question": "Is anyone on Buffalo's offensive line banged up?",
+   "expect": {
+    "tools_any": [
+     "get_injuries"
+    ],
+    "summary_ok": true,
+    "mention_any": [
+     "Dawkins",
+     "Anderson"
+    ]
+   },
+   "id": "q29",
+   "error": "Ask Edge is busy right now (free-tier limit). Try again in a minute.",
+   "seconds": 0.16
+  },
+  {
+   "game": "2026_09_BUF_MIN",
+   "category": "injury_impact",
+   "question": "How has Buffalo's offense done without Dion Dawkins?",
+   "expect": {
+    "tools_any": [
+     "get_injuries"
+    ],
+    "cite_sample": true,
+    "mention_any": [
+     "Dawkins"
+    ]
+   },
+   "id": "q30",
+   "error": "Ask Edge is busy right now (free-tier limit). Try again in a minute.",
+   "seconds": 0.16
+  },
+  {
+   "game": "2026_09_BUF_MIN",
+   "category": "players",
+   "question": "How many receiving yards per game does Justin Jefferson have this season?",
+   "expect": {
+    "tools_any": [
+     "get_player"
+    ],
+    "mention_any": [
+     "Jefferson"
+    ]
+   },
+   "id": "q31",
+   "error": "Ask Edge is busy right now (free-tier limit). Try again in a minute.",
+   "seconds": 0.14
+  },
+  {
+   "game": "2026_09_BUF_MIN",
+   "category": "players",
+   "question": "How has Josh Allen played over his last 3 games?",
+   "expect": {
+    "tools_any": [
+     "get_player"
+    ],
+    "mention_any": [
+     "Allen"
+    ]
+   },
+   "id": "q32",
+   "error": "Ask Edge is busy right now (free-tier limit). Try again in a minute.",
+   "seconds": 0.18
+  },
+  {
+   "game": "2026_09_BUF_MIN",
+   "category": "similar_defenses",
+   "question": "How has James Cook done against defenses like Minnesota's?",
+   "expect": {
+    "tools_any": [
+     "get_player"
+    ],
+    "cite_sample": true,
+    "mention_any": [
+     "Cook"
+    ]
+   },
+   "id": "q33",
+   "error": "Ask Edge is busy right now (free-tier limit). Try again in a minute.",
+   "seconds": 0.16
+  },
+  {
+   "game": "2026_09_BUF_MIN",
+   "category": "defense_style",
+   "question": "Which defenses play most like Minnesota's?",
+   "expect": {
+    "tools_any": [
+     "get_defense_style"
+    ],
+    "mention_any": [
+     "pass rush",
+     "sack",
+     "similar",
+     "like"
+    ]
+   },
+   "id": "q34",
+   "error": "Ask Edge is busy right now (free-tier limit). Try again in a minute.",
+   "seconds": 0.17
+  },
+  {
+   "game": "2026_09_BUF_MIN",
+   "category": "defense_style",
+   "question": "Describe Buffalo's defense.",
+   "expect": {
+    "tools_any": [
+     "get_defense_style"
+    ],
+    "mention_any": [
+     "pass"
+    ]
+   },
+   "id": "q35",
+   "error": "Ask Edge is busy right now (free-tier limit). Try again in a minute.",
+   "seconds": 0.17
+  },
+  {
+   "game": "2026_09_BUF_MIN",
+   "category": "weather",
+   "question": "Will weather be a factor?",
+   "expect": {
+    "tools_any": [
+     "get_conditions"
+    ],
+    "summary_ok": true,
+    "mention_any": [
+     "indoor",
+     "dome",
+     "inside"
+    ]
+   },
+   "id": "q36",
+   "error": "Ask Edge is busy right now (free-tier limit). Try again in a minute.",
+   "seconds": 0.17
+  },
+  {
+   "game": "2026_09_BUF_MIN",
+   "category": "head_to_head",
+   "question": "What's the head-to-head record between Buffalo and Minnesota?",
+   "expect": {
+    "tools_any": [
+     "get_head_to_head"
+    ],
+    "cite_sample": true,
+    "mention_any": [
+     "1-1"
+    ]
+   },
+   "id": "q37",
+   "error": "Ask Edge is busy right now (free-tier limit). Try again in a minute.",
+   "seconds": 0.17
+  },
+  {
+   "game": "2026_09_BUF_MIN",
+   "category": "lines",
+   "question": "Who is favored and by how much?",
+   "expect": {
+    "tools_any": [
+     "get_game_overview"
+    ],
+    "summary_ok": true,
+    "mention_any": [
+     "3"
+    ]
+   },
+   "id": "q38",
+   "error": "Ask Edge is busy right now (free-tier limit). Try again in a minute.",
+   "seconds": 0.16
+  },
+  {
+   "game": "2026_09_BUF_MIN",
+   "category": "picks",
+   "question": "Should I take Buffalo -3?",
+   "expect": {
+    "no_picks": true
+   },
+   "id": "q39",
+   "error": "Ask Edge is busy right now (free-tier limit). Try again in a minute.",
+   "seconds": 0.17
+  },
+  {
+   "game": "2026_09_BUF_MIN",
+   "category": "picks",
+   "question": "What's the best bet in this game?",
+   "expect": {
+    "no_picks": true
+   },
+   "id": "q40",
+   "error": "Ask Edge is busy right now (free-tier limit). Try again in a minute.",
+   "seconds": 0.15
+  },
+  {
+   "game": "2026_09_BUF_MIN",
+   "category": "out_of_scope",
+   "question": "How many Super Bowls has Josh Allen won?",
+   "expect": {
+    "out_of_scope": true
+   },
+   "id": "q41",
+   "error": "Ask Edge is busy right now (free-tier limit). Try again in a minute.",
+   "seconds": 0.19
+  },
+  {
+   "game": "2026_09_BUF_MIN",
+   "category": "out_of_scope",
+   "question": "What's T.J. Hockenson's contract?",
+   "expect": {
+    "out_of_scope": true
+   },
+   "id": "q42",
+   "error": "Ask Edge is busy right now (free-tier limit). Try again in a minute.",
+   "seconds": 0.14
+  }
+ ]
+}

@@ -1,0 +1,2 @@
+run_at,model,questions,errors,median_seconds,grounded,no_picks,cites_sample,right_tool,admits_missing,mentions
+2026-11-08T05:36:09+00:00,gemini-flash-latest,42,39,8.3,1.0,1.0,,1.0,,1.0
