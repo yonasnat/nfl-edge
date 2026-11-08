@@ -335,7 +335,7 @@ def ask(game_id, question, briefing=None, trace=None, use_cache=True):
     opening = f"Game summary:\n{json.dumps(summary(briefing), default=str)}\n\nQuestion: {question}"
     contents = [{"role": "user", "parts": [{"text": opening}]}]
     if trace is not None:
-        trace.update(opening=opening, tool_results=[], model_calls=0)
+        trace.update(opening=opening, system=system, tools=json.dumps(TOOLS), tool_results=[], model_calls=0)
     tools_used = []
     answered_by = MODEL
     for _ in range(MAX_ROUNDS):
