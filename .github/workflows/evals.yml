@@ -4,6 +4,15 @@ on:
   schedule:
     - cron: "37 16 * * 2"   # Tuesdays, 9:37 AM Pacific
   workflow_dispatch:         # run it by hand from the Actions tab
+    inputs:
+      model:
+        description: "Gemini model to evaluate (blank = the app's default)"
+        required: false
+        default: ""
+      limit:
+        description: "Only ask the first N questions (blank = all 42)"
+        required: false
+        default: ""
 
 permissions:
   contents: write            # saves the results back to the repo
@@ -18,6 +27,7 @@ jobs:
     timeout-minutes: 30
     env:
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_MODEL: ${{ inputs.model || vars.GEMINI_MODEL || 'gemini-flash-latest' }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
@@ -33,7 +43,7 @@ jobs:
 
       - name: Run the evaluation
         if: env.GEMINI_API_KEY != ''
-        run: python evals/run_evals.py --strict
+        run: python evals/run_evals.py --strict ${{ inputs.limit && format('--limit {0}', inputs.limit) || '' }}
 
       - name: Save the results
         if: always() && env.GEMINI_API_KEY != '' && hashFiles('evals/results/latest.json') != ''

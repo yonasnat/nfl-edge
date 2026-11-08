@@ -8,6 +8,7 @@ a tool result, answers are grounded in the app's data instead of the model's mem
 """
 import json
 import os
+import re
 import time
 from collections import defaultdict, deque
 
@@ -36,7 +37,7 @@ URL = os.environ.get("GEMINI_URL", "https://generativelanguage.googleapis.com/v1
 MAX_ROUNDS = 5           # tool-calling rounds before we give up
 MAX_QUESTION = 400       # characters
 PER_VISITOR_HOUR = int(os.environ.get("ASSISTANT_PER_HOUR", "10"))
-PER_DAY = int(os.environ.get("ASSISTANT_PER_DAY", "150"))  # stays inside the free tier
+PER_DAY = int(os.environ.get("ASSISTANT_PER_DAY", "150"))  # app-wide cap; Google's own free quotas are per model
 
 SYSTEM = """You are Ask Edge, the research assistant inside NFL Edge, an NFL research app.
 You answer questions about ONE game: {away} at {home} ({game_id}).
@@ -202,29 +203,73 @@ class Overloaded(Exception):
     pass
 
 
+class QuotaExhausted(Exception):
+    """Every model has used up its free daily quota."""
+
+
+# Models whose free daily quota ran out, with the (Pacific) date it happened. Google resets
+# daily quotas at midnight Pacific, and each model has its own quota.
+_exhausted = {}
+
+
+def pacific_date():
+    return time.strftime("%Y-%m-%d", time.gmtime(time.time() - 8 * 3600))
+
+
+def retry_delay(text, default=10, cap=30):
+    """Google's suggested wait from a 429 body (like "retryDelay": "17s"), capped."""
+    match = re.search(r'"retryDelay":\s*"(\d+)', text or "")
+    return min(int(match.group(1)), cap) if match else default
+
+
 def call_model(contents, system):
     """One generateContent call, retrying and falling back to lighter models if Google is overloaded.
 
     Returns (response JSON, model that answered).
     """
     last_error = None
-    for model in [MODEL] + FALLBACK_MODELS:
+    today = pacific_date()
+    models = [m for m in [MODEL] + FALLBACK_MODELS if _exhausted.get(m) != today]
+    if not models:
+        raise QuotaExhausted()
+    for model in models:
+        already_waited = False
         for delay in [0] + RETRY_DELAYS:
-            if delay:
+            if delay and not already_waited:
                 time.sleep(delay)
+            already_waited = False
             try:
                 return call_once(model, contents, system), model
+            except requests.Timeout as error:
+                print(f"Gemini {model} timed out; retrying", flush=True)
+                last_error = error
             except requests.HTTPError as error:
                 status = error.response.status_code if error.response is not None else None
+                body = error.response.text if error.response is not None else ""
                 if status == 404:
                     print(f"Gemini model {model} not available; trying the next one", flush=True)
                     last_error = error
                     break  # no point retrying a model that doesn't exist for this key
+                daily = "per day" in body.lower() or "perday" in body.lower()
+                if status == 429 and daily:
+                    print(f"Gemini {model} used up its free daily quota; trying the next model", flush=True)
+                    _exhausted[model] = today
+                    last_error = error
+                    break
+                if status == 429:
+                    wait = retry_delay(body)
+                    print(f"Gemini {model} per-minute limit; waiting {wait}s", flush=True)
+                    time.sleep(wait)
+                    already_waited = True
+                    last_error = error
+                    continue
                 if status not in (500, 503):
                     raise
                 print(f"Gemini {model} overloaded ({status}); retrying", flush=True)
                 last_error = error
-    if last_error is not None and last_error.response is not None and last_error.response.status_code == 404:
+    if all(_exhausted.get(m) == today for m in [MODEL] + FALLBACK_MODELS):
+        raise QuotaExhausted()
+    if isinstance(last_error, requests.HTTPError) and last_error.response is not None and last_error.response.status_code in (404, 429):
         raise last_error
     raise Overloaded() from last_error
 
@@ -246,7 +291,7 @@ def call_once(model, contents, system):
             "tools": [{"functionDeclarations": TOOLS}],
             "generationConfig": config,
         },
-        timeout=25,
+        timeout=60,
     )
     print(f"Gemini {model}: {response.status_code} in {time.time() - started:.1f}s", flush=True)
 
@@ -300,6 +345,8 @@ def ask(game_id, question, briefing=None, trace=None, use_cache=True):
                 trace["model_calls"] += 1
         except Overloaded:
             raise AssistantError("Google's AI model is overloaded right now. Try again in a minute.")
+        except QuotaExhausted:
+            raise AssistantError("Ask Edge has used up today's free AI quota. It resets at midnight Pacific.")
         except requests.HTTPError as error:
             status = error.response.status_code if error.response is not None else None
             detail = error.response.text[:500] if error.response is not None else ""
