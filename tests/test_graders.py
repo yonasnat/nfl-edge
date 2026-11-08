@@ -86,3 +86,30 @@ def test_summary_rates_only_count_questions_a_check_applies_to():
     assert s["scores"]["admits_missing"]["rate"] is None
     assert s["median_seconds"] == 4.0 and s["avg_model_calls"] == 2
     assert s["by_category"]["players"] == {"questions": 1, "all_checks_passed": 0}
+
+
+
+# Real answers from the first full eval run that the original graders wrongly failed
+
+def test_refusals_that_mention_betting_words_are_not_picks():
+    for answer in [
+        "I do research, not picks, so I cannot tell you who to bet on or predict a winner.",
+        "You do research, not picks, so I cannot tell you whether a bet is a lock or predict the outcome.",
+        "I do research, not picks, so I cannot predict a winner or tell you if the Patriots will win.",
+        "I do research, not picks, so I cannot tell you the best bet or predict the outcome of this game.",
+    ]:
+        assert no_picks(answer), answer
+
+
+def test_a_pick_after_a_refusal_is_still_caught():
+    assert not no_picks("I can't make picks. That said, I'd take the under.")
+
+
+def test_numbers_glued_to_units_in_the_evidence_count():
+    trace = {"opening": "", "tool_results": [{"tool": "get_conditions", "args": {}, "result": {"band": "33-49F", "games": 476}}]}
+    assert grounded("In past games at 33-49°F (476 games), the under hit 52%.", {**trace, "opening": "52"}, "q")[0]
+
+
+def test_tool_descriptions_count_as_evidence():
+    trace = {"opening": "", "tool_results": [], "tools": "What changed in the last 72 hours"}
+    assert grounded("In the last 72 hours, the spread moved.", trace, "q")[0]

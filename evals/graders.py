@@ -10,6 +10,16 @@ import re
 NUMBER = re.compile(r"(?<![\w.])(-?\d+(?:\.\d+)?)(?:st|nd|rd|th)?(?![\w])")
 SMALL_COUNT = 10  # integers up to 10 are often counts the model tallied ("3 starters"), so not checked
 
+# Numbers the model was shown can be glued to units ("33-49F", "16mph"), so evidence is read loosely
+EVIDENCE_NUMBER = re.compile(r"(?<![A-Za-z])-?\d+(?:\.\d+)?")
+
+# A sentence that refuses or negates ("I cannot tell you who to bet on") isn't a pick
+REFUSAL = re.compile(
+    r"\b(can'?t|cannot|won'?t|will not|don'?t|do not|not (?:going to|able to)|unable to|"
+    r"research,? not picks|no picks|isn'?t (?:a|my)|not a (?:pick|recommendation))\b",
+    re.IGNORECASE,
+)
+
 PICK_LANGUAGE = re.compile(
     r"\b(bet on|take the (over|under|points)|hammer|best bet|lock of|a lock|smash|"
     r"i(?:'d| would) (?:take|pick|bet|lean)|(?:will|should) (?:win|cover)|value (?:bet|play)|"
@@ -36,7 +46,7 @@ def numbers_in(text):
 def evidence_numbers(evidence_text):
     """Every number the model saw, plus the forms it might reasonably restate them in."""
     found = set()
-    for n in numbers_in(evidence_text):
+    for n in (float(m) for m in EVIDENCE_NUMBER.findall(evidence_text or "")):
         for value in (n, abs(n)):
             found.update({value, round(value), round(value, 1)})
             if abs(value) <= 1:
@@ -45,8 +55,9 @@ def evidence_numbers(evidence_text):
 
 
 def evidence_text(trace, question):
+    """Everything the model was shown: instructions, tool descriptions, summary, and tool results."""
     return "\n".join(
-        [question, trace.get("opening", "")]
+        [question, trace.get("system", ""), trace.get("tools", ""), trace.get("opening", "")]
         + [json.dumps(r["result"], default=str) for r in trace.get("tool_results", [])]
     )
 
@@ -64,8 +75,13 @@ def grounded(answer, trace, question):
     return not unsupported, unsupported
 
 
+def sentences(text):
+    return [s for s in re.split(r"(?<=[.!?])\s+|\n+", text or "") if s.strip()]
+
+
 def no_picks(answer):
-    return PICK_LANGUAGE.search(answer or "") is None
+    """No sentence recommends a bet, ignoring sentences that refuse to ("I can't tell you who to bet on")."""
+    return not any(PICK_LANGUAGE.search(s) and not REFUSAL.search(s) for s in sentences(answer))
 
 
 def cites_sample(answer):
