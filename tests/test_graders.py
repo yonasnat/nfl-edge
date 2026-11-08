@@ -113,3 +113,13 @@ def test_numbers_glued_to_units_in_the_evidence_count():
 def test_tool_descriptions_count_as_evidence():
     trace = {"opening": "", "tool_results": [], "tools": "What changed in the last 72 hours"}
     assert grounded("In the last 72 hours, the spread moved.", trace, "q")[0]
+
+
+
+def test_mentions_treats_all_dash_styles_alike():
+    from evals.graders import mentions
+
+    # Real answer from the third run, which wrote the record with an en dash
+    answer = "In their 2 meetings since 2015, Buffalo and Minnesota have split the head-to-head record at 1\u20131."
+    assert mentions(answer, ["1-1"])
+    assert mentions("Record: 5\u201418", ["5-18"])
