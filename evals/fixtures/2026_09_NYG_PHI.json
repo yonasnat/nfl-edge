@@ -1,0 +1,2431 @@
+{
+ "note": "Frozen for Ask Edge evals. Real app data, except the forecast and 'changes' are fixed test values.",
+ "briefing": {
+  "game": {
+   "game_id": "2026_09_NYG_PHI",
+   "week": 9,
+   "gameday": "2026-11-08",
+   "gametime": "13:00",
+   "kickoff": "2026-11-08T13:00:00-05:00",
+   "away": "NYG",
+   "home": "PHI",
+   "away_score": null,
+   "home_score": null,
+   "location": "Home",
+   "stadium": "Lincoln Financial Field",
+   "roof": "outdoors",
+   "surface": "grass",
+   "spread_line": -3.0,
+   "total_line": 38.5,
+   "away_rest": 14,
+   "home_rest": 7,
+   "div_game": true
+  },
+  "weather": {
+   "available": true,
+   "indoor": false,
+   "temperature_f": 38,
+   "wind_mph": 16,
+   "gusts_mph": 27,
+   "precip_chance": 10,
+   "summary": "38\u00b0F, wind 16 mph, 10% chance of precipitation",
+   "flags": [
+    "Wind: 16 mph",
+    "Gusts up to 27 mph"
+   ],
+   "evidence": [
+    "Past outdoor games with 15-19 mph wind (169 games, 2015-2025): scoring averaged 2.3 points below the total, and the under won 56%. Based on conditions measured at kickoff, not forecasts.",
+    "Past outdoor games with 33-49F temperatures (476 games, 2015-2025): scoring averaged 0.0 points above the total, and the under won 52%. Based on conditions measured at kickoff, not forecasts."
+   ]
+  },
+  "situation": {
+   "facts": [
+    "Rest: NYG 14 days, PHI 7 days",
+    "Surface: natural grass",
+    "Elevation: about 30 feet",
+    "NYG travel: about 85 miles",
+    "Kickoff on body clocks: NYG 1:00 PM, PHI 1:00 PM"
+   ],
+   "flags": [
+    "NYG coming off a bye (14 days of rest)",
+    "Rest advantage: NYG has 7 more days"
+   ],
+   "evidence": [
+    "NYG - Team off a bye vs. opponent not off a bye (294 games, 2015-2025): covered the spread 50% of the time, averaging -0.2 points vs. the spread. Break-even is 52.4%."
+   ]
+  },
+  "head_to_head": {
+   "games": 23,
+   "summary": "23 meetings since 2015: NYG 5-18 PHI. Against the spread: NYG 12-11 PHI. Totals: 12 overs, 11 unders, averaging 46.3 points.",
+   "wins": {
+    "NYG": 5,
+    "PHI": 18
+   },
+   "covers": {
+    "NYG": 12,
+    "PHI": 11
+   },
+   "ties": 0,
+   "overs": 12,
+   "unders": 11,
+   "avg_total": 46.3,
+   "caution": "Older meetings involved different rosters and coaches; the most recent games matter most.",
+   "recent": [
+    {
+     "season": 2025,
+     "week": 8,
+     "game_type": "REG",
+     "gameday": "2025-10-26",
+     "home": "PHI",
+     "away": "NYG",
+     "home_score": 38,
+     "away_score": 20,
+     "winner": "PHI",
+     "spread_line": 7.0,
+     "covered": "PHI",
+     "total": 58,
+     "total_line": 43.5,
+     "went": "over"
+    },
+    {
+     "season": 2025,
+     "week": 6,
+     "game_type": "REG",
+     "gameday": "2025-10-09",
+     "home": "NYG",
+     "away": "PHI",
+     "home_score": 34,
+     "away_score": 17,
+     "winner": "NYG",
+     "spread_line": -7.0,
+     "covered": "NYG",
+     "total": 51,
+     "total_line": 40.5,
+     "went": "over"
+    },
+    {
+     "season": 2024,
+     "week": 18,
+     "game_type": "REG",
+     "gameday": "2025-01-05",
+     "home": "PHI",
+     "away": "NYG",
+     "home_score": 20,
+     "away_score": 13,
+     "winner": "PHI",
+     "spread_line": 3.0,
+     "covered": "PHI",
+     "total": 33,
+     "total_line": 36.5,
+     "went": "under"
+    },
+    {
+     "season": 2024,
+     "week": 7,
+     "game_type": "REG",
+     "gameday": "2024-10-20",
+     "home": "NYG",
+     "away": "PHI",
+     "home_score": 3,
+     "away_score": 28,
+     "winner": "PHI",
+     "spread_line": -3.0,
+     "covered": "PHI",
+     "total": 31,
+     "total_line": 42.0,
+     "went": "under"
+    },
+    {
+     "season": 2023,
+     "week": 18,
+     "game_type": "REG",
+     "gameday": "2024-01-07",
+     "home": "NYG",
+     "away": "PHI",
+     "home_score": 27,
+     "away_score": 10,
+     "winner": "NYG",
+     "spread_line": -4.5,
+     "covered": "NYG",
+     "total": 37,
+     "total_line": 43.0,
+     "went": "under"
+    },
+    {
+     "season": 2023,
+     "week": 16,
+     "game_type": "REG",
+     "gameday": "2023-12-25",
+     "home": "PHI",
+     "away": "NYG",
+     "home_score": 33,
+     "away_score": 25,
+     "winner": "PHI",
+     "spread_line": 14.0,
+     "covered": "NYG",
+     "total": 58,
+     "total_line": 41.0,
+     "went": "over"
+    },
+    {
+     "season": 2022,
+     "week": 20,
+     "game_type": "DIV",
+     "gameday": "2023-01-21",
+     "home": "PHI",
+     "away": "NYG",
+     "home_score": 38,
+     "away_score": 7,
+     "winner": "PHI",
+     "spread_line": 8.0,
+     "covered": "PHI",
+     "total": 45,
+     "total_line": 48.0,
+     "went": "under"
+    },
+    {
+     "season": 2022,
+     "week": 18,
+     "game_type": "REG",
+     "gameday": "2023-01-08",
+     "home": "PHI",
+     "away": "NYG",
+     "home_score": 22,
+     "away_score": 16,
+     "winner": "PHI",
+     "spread_line": 16.5,
+     "covered": "NYG",
+     "total": 38,
+     "total_line": 42.5,
+     "went": "under"
+    },
+    {
+     "season": 2022,
+     "week": 14,
+     "game_type": "REG",
+     "gameday": "2022-12-11",
+     "home": "NYG",
+     "away": "PHI",
+     "home_score": 22,
+     "away_score": 48,
+     "winner": "PHI",
+     "spread_line": -7.5,
+     "covered": "PHI",
+     "total": 70,
+     "total_line": 44.5,
+     "went": "over"
+    },
+    {
+     "season": 2021,
+     "week": 16,
+     "game_type": "REG",
+     "gameday": "2021-12-26",
+     "home": "PHI",
+     "away": "NYG",
+     "home_score": 34,
+     "away_score": 10,
+     "winner": "PHI",
+     "spread_line": 11.0,
+     "covered": "PHI",
+     "total": 44,
+     "total_line": 41.0,
+     "went": "over"
+    }
+   ]
+  },
+  "players": {
+   "away": [
+    {
+     "player_id": "00-0039923",
+     "name": "J.J. McCarthy",
+     "position": "QB",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/eeecyzrxuih3pv2sywvx",
+     "games_this_season": 3,
+     "vs_opponent_games": 0,
+     "stats": [
+      {
+       "stat": "passing_yards",
+       "label": "passing yards",
+       "season": 165.0,
+       "last3": 165.0,
+       "career": 163.6,
+       "vs_opponent": null
+      },
+      {
+       "stat": "passing_tds",
+       "label": "passing TDs",
+       "season": 0.3,
+       "last3": 0.3,
+       "career": 0.9,
+       "vs_opponent": null
+      },
+      {
+       "stat": "passing_interceptions",
+       "label": "interceptions",
+       "season": 0.3,
+       "last3": 0.3,
+       "career": 1.0,
+       "vs_opponent": null
+      },
+      {
+       "stat": "rushing_yards",
+       "label": "rushing yards",
+       "season": 9.7,
+       "last3": 9.7,
+       "career": 16.2,
+       "vs_opponent": null
+      }
+     ],
+     "vs_opponent_log": [],
+     "summary": "J.J. McCarthy: 165 passing yards per game this season (3 games). Hasn't played PHI since 2015.",
+     "vs_similar": {
+      "games": 0
+     }
+    },
+    {
+     "player_id": "00-0040715",
+     "name": "Cam Skattebo",
+     "position": "RB",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/hlggiqdfvj1f4kntkafr",
+     "games_this_season": 6,
+     "vs_opponent_games": 2,
+     "stats": [
+      {
+       "stat": "rushing_yards",
+       "label": "rushing yards",
+       "season": 69.7,
+       "last3": 80.3,
+       "career": 59.1,
+       "vs_opponent": 55.0
+      },
+      {
+       "stat": "carries",
+       "label": "carries",
+       "season": 16.3,
+       "last3": 16.0,
+       "career": 14.2,
+       "vs_opponent": 11.0
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 1.8,
+       "last3": 1.3,
+       "career": 2.5,
+       "vs_opponent": 1.5
+      },
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 12.7,
+       "last3": 5.7,
+       "career": 20.2,
+       "vs_opponent": 15.0
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2025,
+       "week": 6,
+       "team": "NYG",
+       "rushing_yards": 98,
+       "carries": 19,
+       "receptions": 2,
+       "receiving_yards": 12
+      },
+      {
+       "season": 2025,
+       "week": 8,
+       "team": "NYG",
+       "rushing_yards": 12,
+       "carries": 3,
+       "receptions": 1,
+       "receiving_yards": 18
+      }
+     ],
+     "summary": "Cam Skattebo: 70 rushing yards per game this season (6 games). 2 games vs. PHI: 55 per game, compared with 59 in all games since 2015. Very small sample.",
+     "vs_similar": {
+      "games": 1,
+      "baseline_games": 6,
+      "stats": [
+       {
+        "stat": "rushing_yards",
+        "vs_similar": 81.0,
+        "baseline": 69.7,
+        "change_pct": 16,
+        "label": "rushing yards"
+       },
+       {
+        "stat": "carries",
+        "vs_similar": 18.0,
+        "baseline": 16.3,
+        "change_pct": 10,
+        "label": "carries"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 0.0,
+        "baseline": 1.8,
+        "change_pct": -100,
+        "label": "receptions"
+       },
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 0.0,
+        "baseline": 12.7,
+        "change_pct": -100,
+        "label": "receiving yards"
+       }
+      ],
+      "log": [
+       {
+        "season": 2026,
+        "week": 1,
+        "opponent": "DAL",
+        "rushing_yards": 81,
+        "carries": 18,
+        "receptions": 0,
+        "receiving_yards": 0
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0036893",
+     "name": "Najee Harris",
+     "position": "RB",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/grfxgbvqnzz40r7rdtvk",
+     "games_this_season": 5,
+     "vs_opponent_games": 2,
+     "stats": [
+      {
+       "stat": "rushing_yards",
+       "label": "rushing yards",
+       "season": 19.8,
+       "last3": 13.7,
+       "career": 57.7,
+       "vs_opponent": 23.0
+      },
+      {
+       "stat": "carries",
+       "label": "carries",
+       "season": 6.2,
+       "last3": 6.0,
+       "career": 14.8,
+       "vs_opponent": 7.0
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 0.2,
+       "last3": 0.3,
+       "career": 2.4,
+       "vs_opponent": 3.5
+      },
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 1.0,
+       "last3": 1.7,
+       "career": 15.6,
+       "vs_opponent": 16.5
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2022,
+       "week": 8,
+       "team": "PIT",
+       "rushing_yards": 32,
+       "carries": 8,
+       "receptions": 6,
+       "receiving_yards": 26
+      },
+      {
+       "season": 2024,
+       "week": 15,
+       "team": "PIT",
+       "rushing_yards": 14,
+       "carries": 6,
+       "receptions": 1,
+       "receiving_yards": 7
+      }
+     ],
+     "summary": "Najee Harris: 20 rushing yards per game this season (5 games). 2 games vs. PHI: 23 per game, compared with 58 in all games since 2015. Very small sample.",
+     "vs_similar": {
+      "games": 5,
+      "baseline_games": 56,
+      "stats": [
+       {
+        "stat": "rushing_yards",
+        "vs_similar": 66.6,
+        "baseline": 57.3,
+        "change_pct": 16,
+        "label": "rushing yards"
+       },
+       {
+        "stat": "carries",
+        "vs_similar": 16.6,
+        "baseline": 14.7,
+        "change_pct": 13,
+        "label": "carries"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 3.0,
+        "baseline": 1.9,
+        "change_pct": 57,
+        "label": "receptions"
+       },
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 19.0,
+        "baseline": 12.3,
+        "change_pct": 55,
+        "label": "receiving yards"
+       }
+      ],
+      "log": [
+       {
+        "season": 2022,
+        "week": 3,
+        "opponent": "CLE",
+        "rushing_yards": 56,
+        "carries": 15,
+        "receptions": 3,
+        "receiving_yards": 5
+       },
+       {
+        "season": 2022,
+        "week": 13,
+        "opponent": "ATL",
+        "rushing_yards": 86,
+        "carries": 17,
+        "receptions": 1,
+        "receiving_yards": 6
+       },
+       {
+        "season": 2022,
+        "week": 18,
+        "opponent": "CLE",
+        "rushing_yards": 80,
+        "carries": 23,
+        "receptions": 1,
+        "receiving_yards": 10
+       },
+       {
+        "season": 2024,
+        "week": 13,
+        "opponent": "CIN",
+        "rushing_yards": 75,
+        "carries": 16,
+        "receptions": 6,
+        "receiving_yards": 54
+       },
+       {
+        "season": 2024,
+        "week": 18,
+        "opponent": "CIN",
+        "rushing_yards": 36,
+        "carries": 12,
+        "receptions": 4,
+        "receiving_yards": 20
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0039337",
+     "name": "Malik Nabers",
+     "position": "WR",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/w3edoyyuomqlovvp9ixc",
+     "games_this_season": 7,
+     "vs_opponent_games": 2,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 86.4,
+       "last3": 132.3,
+       "career": 80.0,
+       "vs_opponent": 52.5
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 6.9,
+       "last3": 10.0,
+       "career": 6.7,
+       "vs_opponent": 4.5
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 10.0,
+       "last3": 14.7,
+       "career": 10.6,
+       "vs_opponent": 8.0
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.3,
+       "last3": 0.3,
+       "career": 0.4,
+       "vs_opponent": 0.5
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2024,
+       "week": 7,
+       "team": "NYG",
+       "receiving_yards": 41,
+       "receptions": 4,
+       "targets": 8,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2024,
+       "week": 18,
+       "team": "NYG",
+       "receiving_yards": 64,
+       "receptions": 5,
+       "targets": 8,
+       "receiving_tds": 1
+      }
+     ],
+     "summary": "Malik Nabers: 86 receiving yards per game this season (7 games). 2 games vs. PHI: 52 per game, compared with 80 in all games since 2015. Very small sample.",
+     "vs_similar": {
+      "games": 1,
+      "baseline_games": 22,
+      "stats": [
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 69.0,
+        "baseline": 82.2,
+        "change_pct": -16,
+        "label": "receiving yards"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 6.0,
+        "baseline": 7.1,
+        "change_pct": -16,
+        "label": "receptions"
+       },
+       {
+        "stat": "targets",
+        "vs_similar": 9.0,
+        "baseline": 10.9,
+        "change_pct": -17,
+        "label": "targets"
+       },
+       {
+        "stat": "receiving_tds",
+        "vs_similar": 0.0,
+        "baseline": 0.4,
+        "change_pct": -100,
+        "label": "receiving TDs"
+       }
+      ],
+      "log": [
+       {
+        "season": 2026,
+        "week": 1,
+        "opponent": "DAL",
+        "receiving_yards": 69,
+        "receptions": 6,
+        "targets": 9,
+        "receiving_tds": 0
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0041042",
+     "name": "Malachi Fields",
+     "position": "WR",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/tpls1aptxx9x8xaqvjtj",
+     "games_this_season": 7,
+     "vs_opponent_games": 0,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 35.4,
+       "last3": 40.7,
+       "career": 35.4,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 2.3,
+       "last3": 2.7,
+       "career": 2.3,
+       "vs_opponent": null
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 4.3,
+       "last3": 5.0,
+       "career": 4.3,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.1,
+       "last3": 0.0,
+       "career": 0.1,
+       "vs_opponent": null
+      }
+     ],
+     "vs_opponent_log": [],
+     "summary": "Malachi Fields: 35 receiving yards per game this season (7 games). Hasn't played PHI since 2015.",
+     "vs_similar": {
+      "games": 1,
+      "baseline_games": 7,
+      "stats": [
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 25.0,
+        "baseline": 35.4,
+        "change_pct": -29,
+        "label": "receiving yards"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 2.0,
+        "baseline": 2.3,
+        "change_pct": -12,
+        "label": "receptions"
+       },
+       {
+        "stat": "targets",
+        "vs_similar": 4.0,
+        "baseline": 4.3,
+        "change_pct": -7,
+        "label": "targets"
+       },
+       {
+        "stat": "receiving_tds",
+        "vs_similar": 0.0,
+        "baseline": 0.1,
+        "change_pct": -100,
+        "label": "receiving TDs"
+       }
+      ],
+      "log": [
+       {
+        "season": 2026,
+        "week": 1,
+        "opponent": "DAL",
+        "receiving_yards": 25,
+        "receptions": 2,
+        "targets": 4,
+        "receiving_tds": 0
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0036309",
+     "name": "Darnell Mooney",
+     "position": "WR",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/eaejonwaflt9drrs9ika",
+     "games_this_season": 7,
+     "vs_opponent_games": 1,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 16.1,
+       "last3": 6.0,
+       "career": 43.1,
+       "vs_opponent": 88.0
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 1.3,
+       "last3": 1.0,
+       "career": 3.3,
+       "vs_opponent": 3.0
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 3.1,
+       "last3": 4.0,
+       "career": 5.8,
+       "vs_opponent": 7.0
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.0,
+       "last3": 0.0,
+       "career": 0.2,
+       "vs_opponent": 1.0
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2024,
+       "week": 2,
+       "team": "ATL",
+       "receiving_yards": 88,
+       "receptions": 3,
+       "targets": 7,
+       "receiving_tds": 1
+      }
+     ],
+     "summary": "Darnell Mooney: 16 receiving yards per game this season (7 games). 1 game vs. PHI: 88 per game, compared with 43 in all games since 2015. Very small sample.",
+     "vs_similar": {
+      "games": 4,
+      "baseline_games": 48,
+      "stats": [
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 28.2,
+        "baseline": 41.9,
+        "change_pct": -33,
+        "label": "receiving yards"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 2.5,
+        "baseline": 3.0,
+        "change_pct": -17,
+        "label": "receptions"
+       },
+       {
+        "stat": "targets",
+        "vs_similar": 3.8,
+        "baseline": 5.2,
+        "change_pct": -28,
+        "label": "targets"
+       },
+       {
+        "stat": "receiving_tds",
+        "vs_similar": 0.2,
+        "baseline": 0.2,
+        "change_pct": 50,
+        "label": "receiving TDs"
+       }
+      ],
+      "log": [
+       {
+        "season": 2022,
+        "week": 10,
+        "opponent": "DET",
+        "receiving_yards": 57,
+        "receptions": 4,
+        "targets": 4,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2022,
+        "week": 11,
+        "opponent": "ATL",
+        "receiving_yards": 29,
+        "receptions": 4,
+        "targets": 5,
+        "receiving_tds": 1
+       },
+       {
+        "season": 2023,
+        "week": 5,
+        "opponent": "WAS",
+        "receiving_yards": 0,
+        "receptions": 0,
+        "targets": 4,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2026,
+        "week": 1,
+        "opponent": "DAL",
+        "receiving_yards": 27,
+        "receptions": 2,
+        "targets": 2,
+        "receiving_tds": 0
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0037838",
+     "name": "Isaiah Likely",
+     "position": "TE",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/b1pahldt9ixp9lssxi2d",
+     "games_this_season": 7,
+     "vs_opponent_games": 1,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 56.4,
+       "last3": 68.3,
+       "career": 32.4,
+       "vs_opponent": 38.0
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 5.9,
+       "last3": 6.3,
+       "career": 2.8,
+       "vs_opponent": 5.0
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 9.0,
+       "last3": 9.3,
+       "career": 4.1,
+       "vs_opponent": 8.0
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.7,
+       "last3": 1.0,
+       "career": 0.3,
+       "vs_opponent": 1.0
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2024,
+       "week": 13,
+       "team": "BAL",
+       "receiving_yards": 38,
+       "receptions": 5,
+       "targets": 8,
+       "receiving_tds": 1
+      }
+     ],
+     "summary": "Isaiah Likely: 56 receiving yards per game this season (7 games). 1 game vs. PHI: 38 per game, compared with 32 in all games since 2015. Very small sample.",
+     "vs_similar": {
+      "games": 5,
+      "baseline_games": 50,
+      "stats": [
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 25.8,
+        "baseline": 33.1,
+        "change_pct": -22,
+        "label": "receiving yards"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 3.0,
+        "baseline": 3.0,
+        "change_pct": 1,
+        "label": "receptions"
+       },
+       {
+        "stat": "targets",
+        "vs_similar": 3.4,
+        "baseline": 4.4,
+        "change_pct": -23,
+        "label": "targets"
+       },
+       {
+        "stat": "receiving_tds",
+        "vs_similar": 0.8,
+        "baseline": 0.4,
+        "change_pct": 111,
+        "label": "receiving TDs"
+       }
+      ],
+      "log": [
+       {
+        "season": 2022,
+        "week": 7,
+        "opponent": "CLE",
+        "receiving_yards": 16,
+        "receptions": 1,
+        "targets": 1,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2022,
+        "week": 15,
+        "opponent": "CLE",
+        "receiving_yards": 18,
+        "receptions": 2,
+        "targets": 3,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2022,
+        "week": 16,
+        "opponent": "ATL",
+        "receiving_yards": 4,
+        "receptions": 1,
+        "targets": 2,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2024,
+        "week": 5,
+        "opponent": "CIN",
+        "receiving_yards": 13,
+        "receptions": 3,
+        "targets": 3,
+        "receiving_tds": 2
+       },
+       {
+        "season": 2026,
+        "week": 1,
+        "opponent": "DAL",
+        "receiving_yards": 78,
+        "receptions": 8,
+        "targets": 8,
+        "receiving_tds": 2
+       }
+      ]
+     }
+    }
+   ],
+   "home": [
+    {
+     "player_id": "00-0039398",
+     "name": "Joe Milton III",
+     "position": "QB",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/tsj9lobse1gxzanf39dt",
+     "games_this_season": 0,
+     "vs_opponent_games": 1,
+     "stats": [
+      {
+       "stat": "passing_yards",
+       "label": "passing yards",
+       "season": null,
+       "last3": null,
+       "career": 84.8,
+       "vs_opponent": 73.0
+      },
+      {
+       "stat": "passing_tds",
+       "label": "passing TDs",
+       "season": null,
+       "last3": null,
+       "career": 0.4,
+       "vs_opponent": 0.0
+      },
+      {
+       "stat": "passing_interceptions",
+       "label": "interceptions",
+       "season": null,
+       "last3": null,
+       "career": 0.4,
+       "vs_opponent": 1.0
+      },
+      {
+       "stat": "rushing_yards",
+       "label": "rushing yards",
+       "season": null,
+       "last3": null,
+       "career": 13.2,
+       "vs_opponent": 43.0
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2025,
+       "week": 18,
+       "team": "DAL",
+       "passing_yards": 73,
+       "passing_tds": 0,
+       "passing_interceptions": 1,
+       "rushing_yards": 43
+      }
+     ],
+     "summary": "Joe Milton III: hasn't played yet this season. 1 game vs. NYG: 73 per game, compared with 85 in all games since 2015. Very small sample.",
+     "vs_similar": {
+      "games": 0
+     }
+    },
+    {
+     "player_id": "00-0034844",
+     "name": "Saquon Barkley",
+     "position": "RB",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/qcayrzjpura2zydszonh",
+     "games_this_season": 6,
+     "vs_opponent_games": 3,
+     "stats": [
+      {
+       "stat": "rushing_yards",
+       "label": "rushing yards",
+       "season": 45.7,
+       "last3": 33.3,
+       "career": 78.6,
+       "vs_opponent": 128.0
+      },
+      {
+       "stat": "carries",
+       "label": "carries",
+       "season": 9.3,
+       "last3": 7.3,
+       "career": 16.9,
+       "vs_opponent": 14.3
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 1.2,
+       "last3": 1.3,
+       "career": 3.3,
+       "vs_opponent": 2.7
+      },
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 6.8,
+       "last3": 11.7,
+       "career": 24.1,
+       "vs_opponent": 14.7
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2024,
+       "week": 7,
+       "team": "PHI",
+       "rushing_yards": 176,
+       "carries": 17,
+       "receptions": 2,
+       "receiving_yards": 11
+      },
+      {
+       "season": 2025,
+       "week": 6,
+       "team": "PHI",
+       "rushing_yards": 58,
+       "carries": 12,
+       "receptions": 2,
+       "receiving_yards": 9
+      },
+      {
+       "season": 2025,
+       "week": 8,
+       "team": "PHI",
+       "rushing_yards": 150,
+       "carries": 14,
+       "receptions": 4,
+       "receiving_yards": 24
+      }
+     ],
+     "summary": "Saquon Barkley: 46 rushing yards per game this season (6 games). 3 games vs. NYG: 128 per game, compared with 79 in all games since 2015. Very small sample.",
+     "vs_similar": {
+      "games": 3,
+      "baseline_games": 68,
+      "stats": [
+       {
+        "stat": "rushing_yards",
+        "vs_similar": 90.3,
+        "baseline": 83.7,
+        "change_pct": 8,
+        "label": "rushing yards"
+       },
+       {
+        "stat": "carries",
+        "vs_similar": 21.0,
+        "baseline": 18.0,
+        "change_pct": 17,
+        "label": "carries"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 1.7,
+        "baseline": 2.6,
+        "change_pct": -35,
+        "label": "receptions"
+       },
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 8.0,
+        "baseline": 17.8,
+        "change_pct": -55,
+        "label": "receiving yards"
+       }
+      ],
+      "log": [
+       {
+        "season": 2024,
+        "week": 2,
+        "opponent": "ATL",
+        "rushing_yards": 95,
+        "carries": 22,
+        "receptions": 4,
+        "receiving_yards": 21
+       },
+       {
+        "season": 2024,
+        "week": 8,
+        "opponent": "CIN",
+        "rushing_yards": 108,
+        "carries": 22,
+        "receptions": 1,
+        "receiving_yards": 3
+       },
+       {
+        "season": 2025,
+        "week": 17,
+        "opponent": "BUF",
+        "rushing_yards": 68,
+        "carries": 19,
+        "receptions": 0,
+        "receiving_yards": 0
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0037258",
+     "name": "Dameon Pierce",
+     "position": "RB",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/oai3defivyfyofxxh4ux",
+     "games_this_season": 3,
+     "vs_opponent_games": 1,
+     "stats": [
+      {
+       "stat": "rushing_yards",
+       "label": "rushing yards",
+       "season": 32.0,
+       "last3": 32.0,
+       "career": 36.8,
+       "vs_opponent": 94.0
+      },
+      {
+       "stat": "carries",
+       "label": "carries",
+       "season": 12.3,
+       "last3": 12.3,
+       "career": 9.5,
+       "vs_opponent": 17.0
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 2.3,
+       "last3": 2.3,
+       "career": 1.1,
+       "vs_opponent": 2.0
+      },
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 4.7,
+       "last3": 4.7,
+       "career": 5.8,
+       "vs_opponent": 28.0
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2022,
+       "week": 10,
+       "team": "HOU",
+       "rushing_yards": 94,
+       "carries": 17,
+       "receptions": 2,
+       "receiving_yards": 28
+      }
+     ],
+     "summary": "Dameon Pierce: 32 rushing yards per game this season (3 games). 1 game vs. NYG: 94 per game, compared with 37 in all games since 2015. Very small sample.",
+     "vs_similar": {
+      "games": 5,
+      "baseline_games": 45,
+      "stats": [
+       {
+        "stat": "rushing_yards",
+        "vs_similar": 39.8,
+        "baseline": 39.6,
+        "change_pct": 1,
+        "label": "rushing yards"
+       },
+       {
+        "stat": "carries",
+        "vs_similar": 12.2,
+        "baseline": 10.1,
+        "change_pct": 20,
+        "label": "carries"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 2.2,
+        "baseline": 1.2,
+        "change_pct": 90,
+        "label": "receptions"
+       },
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 13.8,
+        "baseline": 6.3,
+        "change_pct": 120,
+        "label": "receiving yards"
+       }
+      ],
+      "log": [
+       {
+        "season": 2022,
+        "week": 13,
+        "opponent": "CLE",
+        "rushing_yards": 73,
+        "carries": 18,
+        "receptions": 3,
+        "receiving_yards": 22
+       },
+       {
+        "season": 2023,
+        "week": 3,
+        "opponent": "JAX",
+        "rushing_yards": 31,
+        "carries": 14,
+        "receptions": 3,
+        "receiving_yards": 28
+       },
+       {
+        "season": 2023,
+        "week": 8,
+        "opponent": "CAR",
+        "rushing_yards": 46,
+        "carries": 12,
+        "receptions": 0,
+        "receiving_yards": 0
+       },
+       {
+        "season": 2023,
+        "week": 12,
+        "opponent": "JAX",
+        "rushing_yards": 14,
+        "carries": 5,
+        "receptions": 1,
+        "receiving_yards": 4
+       },
+       {
+        "season": 2026,
+        "week": 6,
+        "opponent": "CAR",
+        "rushing_yards": 35,
+        "carries": 12,
+        "receptions": 4,
+        "receiving_yards": 15
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0040867",
+     "name": "Makai Lemon",
+     "position": "WR",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ys2i2o7c0bl36xvlrojz",
+     "games_this_season": 8,
+     "vs_opponent_games": 0,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 31.4,
+       "last3": 47.7,
+       "career": 31.4,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 3.9,
+       "last3": 5.3,
+       "career": 3.9,
+       "vs_opponent": null
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 5.6,
+       "last3": 7.7,
+       "career": 5.6,
+       "vs_opponent": null
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.1,
+       "last3": 0.3,
+       "career": 0.1,
+       "vs_opponent": null
+      }
+     ],
+     "vs_opponent_log": [],
+     "summary": "Makai Lemon: 31 receiving yards per game this season (8 games). Hasn't played NYG since 2015.",
+     "vs_similar": {
+      "games": 1,
+      "baseline_games": 8,
+      "stats": [
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 19.0,
+        "baseline": 31.4,
+        "change_pct": -39,
+        "label": "receiving yards"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 3.0,
+        "baseline": 3.9,
+        "change_pct": -23,
+        "label": "receptions"
+       },
+       {
+        "stat": "targets",
+        "vs_similar": 6.0,
+        "baseline": 5.6,
+        "change_pct": 7,
+        "label": "targets"
+       },
+       {
+        "stat": "receiving_tds",
+        "vs_similar": 0.0,
+        "baseline": 0.1,
+        "change_pct": -100,
+        "label": "receiving TDs"
+       }
+      ],
+      "log": [
+       {
+        "season": 2026,
+        "week": 6,
+        "opponent": "CAR",
+        "receiving_yards": 19,
+        "receptions": 3,
+        "targets": 6,
+        "receiving_tds": 0
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0036912",
+     "name": "DeVonta Smith",
+     "position": "WR",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/k724kq3hyv7jc0y9s03x",
+     "games_this_season": 4,
+     "vs_opponent_games": 9,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 77.5,
+       "last3": 85.7,
+       "career": 63.8,
+       "vs_opponent": 56.0
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 6.5,
+       "last3": 7.7,
+       "career": 4.9,
+       "vs_opponent": 4.4
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 10.2,
+       "last3": 11.7,
+       "career": 7.1,
+       "vs_opponent": 6.4
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.5,
+       "last3": 0.7,
+       "career": 0.4,
+       "vs_opponent": 0.4
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2021,
+       "week": 12,
+       "team": "PHI",
+       "receiving_yards": 22,
+       "receptions": 2,
+       "targets": 4,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2021,
+       "week": 16,
+       "team": "PHI",
+       "receiving_yards": 80,
+       "receptions": 5,
+       "targets": 7,
+       "receiving_tds": 1
+      },
+      {
+       "season": 2022,
+       "week": 14,
+       "team": "PHI",
+       "receiving_yards": 64,
+       "receptions": 5,
+       "targets": 8,
+       "receiving_tds": 1
+      },
+      {
+       "season": 2022,
+       "week": 18,
+       "team": "PHI",
+       "receiving_yards": 67,
+       "receptions": 7,
+       "targets": 8,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2022,
+       "week": 20,
+       "team": "PHI",
+       "receiving_yards": 61,
+       "receptions": 6,
+       "targets": 10,
+       "receiving_tds": 1
+      },
+      {
+       "season": 2023,
+       "week": 16,
+       "team": "PHI",
+       "receiving_yards": 79,
+       "receptions": 4,
+       "targets": 5,
+       "receiving_tds": 1
+      },
+      {
+       "season": 2024,
+       "week": 7,
+       "team": "PHI",
+       "receiving_yards": -2,
+       "receptions": 1,
+       "targets": 2,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2025,
+       "week": 6,
+       "team": "PHI",
+       "receiving_yards": 49,
+       "receptions": 4,
+       "targets": 5,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2025,
+       "week": 8,
+       "team": "PHI",
+       "receiving_yards": 84,
+       "receptions": 6,
+       "targets": 9,
+       "receiving_tds": 0
+      }
+     ],
+     "summary": "DeVonta Smith: 78 receiving yards per game this season (4 games). 9 games vs. NYG: 56 per game, compared with 64 in all games since 2015.",
+     "vs_similar": {
+      "games": 4,
+      "baseline_games": 67,
+      "stats": [
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 65.2,
+        "baseline": 65.9,
+        "change_pct": -1,
+        "label": "receiving yards"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 5.5,
+        "baseline": 5.2,
+        "change_pct": 6,
+        "label": "receptions"
+       },
+       {
+        "stat": "targets",
+        "vs_similar": 9.0,
+        "baseline": 7.3,
+        "change_pct": 23,
+        "label": "targets"
+       },
+       {
+        "stat": "receiving_tds",
+        "vs_similar": 0.8,
+        "baseline": 0.4,
+        "change_pct": 79,
+        "label": "receiving TDs"
+       }
+      ],
+      "log": [
+       {
+        "season": 2024,
+        "week": 2,
+        "opponent": "ATL",
+        "receiving_yards": 76,
+        "receptions": 7,
+        "targets": 10,
+        "receiving_tds": 1
+       },
+       {
+        "season": 2024,
+        "week": 8,
+        "opponent": "CIN",
+        "receiving_yards": 85,
+        "receptions": 6,
+        "targets": 7,
+        "receiving_tds": 1
+       },
+       {
+        "season": 2025,
+        "week": 17,
+        "opponent": "BUF",
+        "receiving_yards": 25,
+        "receptions": 2,
+        "targets": 5,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2026,
+        "week": 6,
+        "opponent": "CAR",
+        "receiving_yards": 75,
+        "receptions": 7,
+        "targets": 14,
+        "receiving_tds": 1
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0038393",
+     "name": "Dontayvion Wicks",
+     "position": "WR",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/v1lt8kpvkn0qw5elyaoz",
+     "games_this_season": 6,
+     "vs_opponent_games": 2,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 47.3,
+       "last3": 35.0,
+       "career": 31.0,
+       "vs_opponent": 14.5
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 3.2,
+       "last3": 3.3,
+       "career": 2.4,
+       "vs_opponent": 1.5
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 5.3,
+       "last3": 5.7,
+       "career": 4.1,
+       "vs_opponent": 4.0
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.2,
+       "last3": 0.0,
+       "career": 0.2,
+       "vs_opponent": 0.0
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2023,
+       "week": 14,
+       "team": "GB",
+       "receiving_yards": 20,
+       "receptions": 2,
+       "targets": 6,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2025,
+       "week": 11,
+       "team": "GB",
+       "receiving_yards": 9,
+       "receptions": 1,
+       "targets": 2,
+       "receiving_tds": 0
+      }
+     ],
+     "summary": "Dontayvion Wicks: 47 receiving yards per game this season (6 games). 2 games vs. NYG: 14 per game, compared with 31 in all games since 2015. Very small sample.",
+     "vs_similar": {
+      "games": 2,
+      "baseline_games": 51,
+      "stats": [
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 26.5,
+        "baseline": 31.6,
+        "change_pct": -16,
+        "label": "receiving yards"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 2.0,
+        "baseline": 2.5,
+        "change_pct": -20,
+        "label": "receptions"
+       },
+       {
+        "stat": "targets",
+        "vs_similar": 3.0,
+        "baseline": 4.2,
+        "change_pct": -28,
+        "label": "targets"
+       },
+       {
+        "stat": "receiving_tds",
+        "vs_similar": 0.5,
+        "baseline": 0.2,
+        "change_pct": 112,
+        "label": "receiving TDs"
+       }
+      ],
+      "log": [
+       {
+        "season": 2023,
+        "week": 16,
+        "opponent": "CAR",
+        "receiving_yards": 29,
+        "receptions": 2,
+        "targets": 2,
+        "receiving_tds": 1
+       },
+       {
+        "season": 2026,
+        "week": 6,
+        "opponent": "CAR",
+        "receiving_yards": 24,
+        "receptions": 2,
+        "targets": 4,
+        "receiving_tds": 0
+       }
+      ]
+     }
+    },
+    {
+     "player_id": "00-0034351",
+     "name": "Dallas Goedert",
+     "position": "TE",
+     "headshot_url": "https://static.www.nfl.com/image/upload/f_auto,q_auto/league/bafepstxu7vvxb9v5vua",
+     "games_this_season": 6,
+     "vs_opponent_games": 14,
+     "stats": [
+      {
+       "stat": "receiving_yards",
+       "label": "receiving yards",
+       "season": 43.0,
+       "last3": 46.3,
+       "career": 43.9,
+       "vs_opponent": 41.4
+      },
+      {
+       "stat": "receptions",
+       "label": "receptions",
+       "season": 4.3,
+       "last3": 5.0,
+       "career": 3.9,
+       "vs_opponent": 3.8
+      },
+      {
+       "stat": "targets",
+       "label": "targets",
+       "season": 5.8,
+       "last3": 6.3,
+       "career": 5.3,
+       "vs_opponent": 5.6
+      },
+      {
+       "stat": "receiving_tds",
+       "label": "receiving TDs",
+       "season": 0.3,
+       "last3": 0.0,
+       "career": 0.3,
+       "vs_opponent": 0.3
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "season": 2018,
+       "week": 6,
+       "team": "PHI",
+       "receiving_yards": 7,
+       "receptions": 1,
+       "targets": 1,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2018,
+       "week": 12,
+       "team": "PHI",
+       "receiving_yards": 33,
+       "receptions": 3,
+       "targets": 4,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2019,
+       "week": 14,
+       "team": "PHI",
+       "receiving_yards": 41,
+       "receptions": 3,
+       "targets": 6,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2019,
+       "week": 17,
+       "team": "PHI",
+       "receiving_yards": 65,
+       "receptions": 4,
+       "targets": 10,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2020,
+       "week": 10,
+       "team": "PHI",
+       "receiving_yards": 33,
+       "receptions": 4,
+       "targets": 6,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2021,
+       "week": 12,
+       "team": "PHI",
+       "receiving_yards": 0,
+       "receptions": 1,
+       "targets": 3,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2021,
+       "week": 16,
+       "team": "PHI",
+       "receiving_yards": 28,
+       "receptions": 2,
+       "targets": 4,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2022,
+       "week": 18,
+       "team": "PHI",
+       "receiving_yards": 46,
+       "receptions": 6,
+       "targets": 7,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2022,
+       "week": 20,
+       "team": "PHI",
+       "receiving_yards": 58,
+       "receptions": 5,
+       "targets": 5,
+       "receiving_tds": 1
+      },
+      {
+       "season": 2023,
+       "week": 16,
+       "team": "PHI",
+       "receiving_yards": 71,
+       "receptions": 7,
+       "targets": 9,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2023,
+       "week": 18,
+       "team": "PHI",
+       "receiving_yards": 4,
+       "receptions": 1,
+       "targets": 3,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2024,
+       "week": 18,
+       "team": "PHI",
+       "receiving_yards": 55,
+       "receptions": 4,
+       "targets": 6,
+       "receiving_tds": 0
+      },
+      {
+       "season": 2025,
+       "week": 6,
+       "team": "PHI",
+       "receiving_yards": 110,
+       "receptions": 9,
+       "targets": 11,
+       "receiving_tds": 1
+      },
+      {
+       "season": 2025,
+       "week": 8,
+       "team": "PHI",
+       "receiving_yards": 28,
+       "receptions": 3,
+       "targets": 3,
+       "receiving_tds": 2
+      }
+     ],
+     "summary": "Dallas Goedert: 43 receiving yards per game this season (6 games). 14 games vs. NYG: 41 per game, compared with 44 in all games since 2015.",
+     "vs_similar": {
+      "games": 3,
+      "baseline_games": 57,
+      "stats": [
+       {
+        "stat": "receiving_yards",
+        "vs_similar": 35.7,
+        "baseline": 46.3,
+        "change_pct": -23,
+        "label": "receiving yards"
+       },
+       {
+        "stat": "receptions",
+        "vs_similar": 4.0,
+        "baseline": 4.2,
+        "change_pct": -6,
+        "label": "receptions"
+       },
+       {
+        "stat": "targets",
+        "vs_similar": 6.0,
+        "baseline": 5.6,
+        "change_pct": 7,
+        "label": "targets"
+       },
+       {
+        "stat": "receiving_tds",
+        "vs_similar": 0.3,
+        "baseline": 0.4,
+        "change_pct": -10,
+        "label": "receiving TDs"
+       }
+      ],
+      "log": [
+       {
+        "season": 2024,
+        "week": 2,
+        "opponent": "ATL",
+        "receiving_yards": 38,
+        "receptions": 3,
+        "targets": 4,
+        "receiving_tds": 0
+       },
+       {
+        "season": 2025,
+        "week": 17,
+        "opponent": "BUF",
+        "receiving_yards": 8,
+        "receptions": 3,
+        "targets": 6,
+        "receiving_tds": 1
+       },
+       {
+        "season": 2026,
+        "week": 6,
+        "opponent": "CAR",
+        "receiving_yards": 61,
+        "receptions": 6,
+        "targets": 8,
+        "receiving_tds": 0
+       }
+      ]
+     }
+    }
+   ]
+  },
+  "injuries": {
+   "available": true,
+   "away": {
+    "team": "NYG",
+    "report_week": 9,
+    "current": true,
+    "statuses_published": true,
+    "updated": null,
+    "note": "ESPN unavailable; showing the official report only.",
+    "players": [
+     {
+      "name": "Cam Skattebo",
+      "position": "RB",
+      "injury": "Hamstring",
+      "status": "Doubtful",
+      "practice": "Limited Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.55,
+      "importance": "Rotation",
+      "impact": null
+     },
+     {
+      "name": "Charlie Jones",
+      "position": "WR",
+      "injury": "Hand",
+      "status": "Questionable",
+      "practice": "Limited Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.07,
+      "importance": "Depth",
+      "impact": null
+     }
+    ],
+    "headlines": [
+     "Cam Skattebo (RB, rotation, Hamstring): Doubtful"
+    ],
+    "news_source": "ESPN"
+   },
+   "home": {
+    "team": "PHI",
+    "report_week": 9,
+    "current": true,
+    "statuses_published": true,
+    "updated": null,
+    "note": "ESPN unavailable; showing the official report only.",
+    "players": [
+     {
+      "name": "DeVonta Smith",
+      "position": "WR",
+      "injury": "Hamstring",
+      "status": "Out",
+      "practice": "Did Not Participate In Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.87,
+      "importance": "Starter",
+      "impact": {
+       "unit": "offense",
+       "epa_with": 0.058,
+       "epa_without": -0.035,
+       "games_with": 33,
+       "games_without": 6,
+       "points_per_game": 2.8,
+       "raw_points_per_game": 5.7,
+       "small_sample": false,
+       "summary": "In 6 games DeVonta Smith missed since 2024, PHI's offense was about 2.8 points per game worse than with him (adjusted for sample size)."
+      }
+     },
+     {
+      "name": "Jihaad Campbell",
+      "position": "LB",
+      "injury": "Hamstring",
+      "status": "Out",
+      "practice": "Did Not Participate In Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.82,
+      "importance": "Starter",
+      "impact": null
+     },
+     {
+      "name": "Dontayvion Wicks",
+      "position": "WR",
+      "injury": "Ankle",
+      "status": "Out",
+      "practice": "Did Not Participate In Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.8,
+      "importance": "Starter",
+      "impact": null
+     },
+     {
+      "name": "Michael Carter II",
+      "position": "CB",
+      "injury": "Abdomen",
+      "status": "Out",
+      "practice": "Did Not Participate In Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.29,
+      "importance": "Depth",
+      "impact": null
+     },
+     {
+      "name": "Jonathan Jones",
+      "position": "CB",
+      "injury": "Hamstring",
+      "status": "Out",
+      "practice": "Did Not Participate In Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.11,
+      "importance": "Depth",
+      "impact": null
+     },
+     {
+      "name": "Britain Covey",
+      "position": "WR",
+      "injury": "Knee",
+      "status": "Out",
+      "practice": "Did Not Participate In Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.0,
+      "importance": "Depth",
+      "impact": null
+     },
+     {
+      "name": "Tanner McKee",
+      "position": "QB",
+      "injury": "Rib",
+      "status": "Questionable",
+      "practice": "Limited Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 1.0,
+      "importance": "Starting QB",
+      "impact": {
+       "unit": "offense",
+       "epa_with": -0.104,
+       "epa_without": -0.059,
+       "games_with": 5,
+       "games_without": 18,
+       "points_per_game": -2.0,
+       "raw_points_per_game": -2.6,
+       "small_sample": false,
+       "summary": "In 18 games Tanner McKee missed since 2024, PHI's offense was about 2.0 points per game better than with him (adjusted for sample size)."
+      }
+     },
+     {
+      "name": "Jalyx Hunt",
+      "position": "LB",
+      "injury": "Knee",
+      "status": null,
+      "practice": "Limited Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.6,
+      "importance": "Rotation",
+      "impact": null
+     },
+     {
+      "name": "Saquon Barkley",
+      "position": "RB",
+      "injury": "Hamstring",
+      "status": null,
+      "practice": "Limited Participation in Practice",
+      "news": null,
+      "news_date": null,
+      "snap_share": 0.35,
+      "importance": "Rotation",
+      "impact": null
+     }
+    ],
+    "headlines": [
+     "DeVonta Smith (WR, starter, Hamstring): Out",
+     "Jihaad Campbell (LB, starter, Hamstring): Out",
+     "Dontayvion Wicks (WR, starter, Ankle): Out",
+     "Michael Carter II (CB, depth, Abdomen): Out",
+     "Jonathan Jones (CB, depth, Hamstring): Out",
+     "Britain Covey (WR, depth, Knee): Out",
+     "Tanner McKee (QB, starting qb, Rib): Questionable"
+    ],
+    "news_source": "ESPN"
+   }
+  },
+  "defense_styles": {
+   "away": {
+    "team": "NYG",
+    "based_on_season": 2026,
+    "traits": [
+     "rarely gets sacks",
+     "allows long runs",
+     "limits big passing plays"
+    ],
+    "neighbors": [
+     {
+      "team": "CAR",
+      "season": 2026,
+      "traits": [
+       "tackles well after the catch",
+       "limits big passing plays"
+      ]
+     },
+     {
+      "team": "BUF",
+      "season": 2025,
+      "traits": [
+       "leaky against the run",
+       "allows long runs"
+      ]
+     },
+     {
+      "team": "CAR",
+      "season": 2023,
+      "traits": [
+       "opponents run a lot against it",
+       "leaky against the run"
+      ]
+     },
+     {
+      "team": "ATL",
+      "season": 2024,
+      "traits": [
+       "rarely gets sacks",
+       "tackles well after the catch"
+      ]
+     },
+     {
+      "team": "JAX",
+      "season": 2023,
+      "traits": [
+       "opponents pass a lot against it",
+       "limits big passing plays"
+      ]
+     },
+     {
+      "team": "CIN",
+      "season": 2024,
+      "traits": [
+       "rarely gets sacks",
+       "lets offenses stay on schedule"
+      ]
+     },
+     {
+      "team": "CLE",
+      "season": 2022,
+      "traits": [
+       "leaky against the run",
+       "allows long runs"
+      ]
+     },
+     {
+      "team": "CAR",
+      "season": 2025,
+      "traits": [
+       "opponents run a lot against it",
+       "rarely gets sacks"
+      ]
+     }
+    ]
+   },
+   "home": {
+    "team": "PHI",
+    "based_on_season": 2026,
+    "traits": [
+     "leaky against the run",
+     "rarely gets sacks",
+     "opponents throw deep on it"
+    ],
+    "neighbors": [
+     {
+      "team": "DAL",
+      "season": 2026,
+      "traits": [
+       "gives up efficient passing",
+       "leaky against the run"
+      ]
+     },
+     {
+      "team": "NE",
+      "season": 2024,
+      "traits": [
+       "rarely gets sacks",
+       "gives up efficient passing"
+      ]
+     },
+     {
+      "team": "DET",
+      "season": 2022,
+      "traits": [
+       "opponents throw deep on it",
+       "leaky against the run"
+      ]
+     },
+     {
+      "team": "CLE",
+      "season": 2022,
+      "traits": [
+       "leaky against the run",
+       "allows long runs"
+      ]
+     },
+     {
+      "team": "ATL",
+      "season": 2022,
+      "traits": [
+       "lets offenses stay on schedule",
+       "rarely gets sacks"
+      ]
+     },
+     {
+      "team": "LA",
+      "season": 2024,
+      "traits": [
+       "gives up big passing plays",
+       "limits long runs"
+      ]
+     },
+     {
+      "team": "WAS",
+      "season": 2023,
+      "traits": [
+       "gives up efficient passing",
+       "lets offenses stay on schedule"
+      ]
+     },
+     {
+      "team": "CIN",
+      "season": 2024,
+      "traits": [
+       "rarely gets sacks",
+       "lets offenses stay on schedule"
+      ]
+     }
+    ]
+   }
+  },
+  "teams": {
+   "away": {
+    "team": "NYG",
+    "games": 7,
+    "offense": {
+     "overall": 16,
+     "pass": 16,
+     "rush": 16,
+     "success": 19
+    },
+    "defense": {
+     "overall": 17,
+     "pass": 15,
+     "rush": 25,
+     "success": 14
+    }
+   },
+   "home": {
+    "team": "PHI",
+    "games": 8,
+    "offense": {
+     "overall": 31,
+     "pass": 28,
+     "rush": 25,
+     "success": 31
+    },
+    "defense": {
+     "overall": 29,
+     "pass": 26,
+     "rush": 32,
+     "success": 23
+    }
+   }
+  },
+  "matchups": [
+   {
+    "unit": "overall",
+    "offense": "PHI",
+    "defense": "NYG",
+    "offense_rank": 31,
+    "defense_rank": 17,
+    "favors": "NYG",
+    "strength": "big",
+    "summary": "PHI's overall offense (31st) vs. NYG's overall defense (17th): big edge NYG"
+   },
+   {
+    "unit": "pass",
+    "offense": "PHI",
+    "defense": "NYG",
+    "offense_rank": 28,
+    "defense_rank": 15,
+    "favors": "NYG",
+    "strength": "big",
+    "summary": "PHI's passing offense (28th) vs. NYG's pass defense (15th): big edge NYG"
+   },
+   {
+    "unit": "rush",
+    "offense": "PHI",
+    "defense": "NYG",
+    "offense_rank": 25,
+    "defense_rank": 25,
+    "favors": null,
+    "strength": null,
+    "summary": "PHI's rushing offense (25th) vs. NYG's run defense (25th): even"
+   },
+   {
+    "unit": "overall",
+    "offense": "NYG",
+    "defense": "PHI",
+    "offense_rank": 16,
+    "defense_rank": 29,
+    "favors": "NYG",
+    "strength": "big",
+    "summary": "NYG's overall offense (16th) vs. PHI's overall defense (29th): big edge NYG"
+   },
+   {
+    "unit": "pass",
+    "offense": "NYG",
+    "defense": "PHI",
+    "offense_rank": 16,
+    "defense_rank": 26,
+    "favors": "NYG",
+    "strength": "slight",
+    "summary": "NYG's passing offense (16th) vs. PHI's pass defense (26th): slight edge NYG"
+   },
+   {
+    "unit": "rush",
+    "offense": "NYG",
+    "defense": "PHI",
+    "offense_rank": 16,
+    "defense_rank": 32,
+    "favors": "NYG",
+    "strength": "big",
+    "summary": "NYG's rushing offense (16th) vs. PHI's run defense (32nd): big edge NYG"
+   }
+  ],
+  "key_matchups": [
+   "PHI's overall offense (31st) vs. NYG's overall defense (17th): big edge NYG",
+   "PHI's passing offense (28th) vs. NYG's pass defense (15th): big edge NYG",
+   "NYG's overall offense (16th) vs. PHI's overall defense (29th): big edge NYG",
+   "NYG's rushing offense (16th) vs. PHI's run defense (32nd): big edge NYG"
+  ]
+ },
+ "changes": {
+  "tracking_since": "2026-11-03T12:00:00+00:00",
+  "changes": [
+   {
+    "kind": "injury",
+    "text": "Cam Skattebo (NYG): Limited practice \u2192 Doubtful",
+    "tone": "red",
+    "at": "2026-11-06T22:10:00+00:00"
+   },
+   {
+    "kind": "injury",
+    "text": "DeVonta Smith (PHI): Limited practice \u2192 Out",
+    "tone": "red",
+    "at": "2026-11-06T22:10:00+00:00"
+   },
+   {
+    "kind": "line",
+    "text": "Spread moved: -2.0 \u2192 -3.0",
+    "tone": "blue",
+    "at": "2026-11-05T15:00:00+00:00"
+   }
+  ]
+ }
+}

@@ -26,6 +26,20 @@ It does not make picks. It started as a prediction model, and testing showed why
 - A regression model on team efficiency and quarterback ratings, tested on 1,424 games it never saw, missed final margins by 10.06 points on average against the sportsbook's 9.76. When it disagreed with the line, the line was usually right, because it priced in information like injuries.
 - Of the betting angles tested, moderate wind (10–19 mph) stood out: the under won 58.6% of 594 games, against a 52.4% break-even. Byes, altitude, and early body-clock kickoffs showed no edge once the line was accounted for.
 
+## How Ask Edge is evaluated
+
+An AI feature is only as good as its worst answers, so Ask Edge has its own test suite in `evals/`:
+
+- **42 questions** about 3 frozen games (`evals/fixtures/`), covering injuries, injury impact, player stats, similar defenses, defense styles, weather, rest, head-to-head, recent changes, and trap questions ("who should I bet on?", data the app doesn't have).
+- **Graders written in plain code**, not another AI, so results are repeatable:
+  - *Grounded*: every number in the answer must appear in the data the model was shown (allowing for rounding, signs, and percentages).
+  - *No picks*: no betting recommendations, even when asked directly.
+  - *Sample sizes*: historical comparisons must say how many games they rest on.
+  - *Right tool* and *admits missing data*.
+- **Runs weekly in GitHub Actions** (and on demand), saves results to `evals/results/`, tracks scores over time in `history.csv`, and publishes the latest scorecard on the app's Methodology page.
+
+Run it yourself: `python evals/run_evals.py` (needs `GEMINI_API_KEY`). The graders have their own unit tests.
+
 ## Architecture
 
 ```

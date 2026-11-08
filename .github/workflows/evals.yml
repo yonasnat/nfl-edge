@@ -1,0 +1,46 @@
+name: Ask Edge evals
+
+on:
+  schedule:
+    - cron: "37 16 * * 2"   # Tuesdays, 9:37 AM Pacific
+  workflow_dispatch:         # run it by hand from the Actions tab
+
+permissions:
+  contents: write            # saves the results back to the repo
+
+concurrency:
+  group: evals
+  cancel-in-progress: false
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: pip
+      - name: Install packages
+        run: pip install -r requirements.txt
+
+      - name: Skip if no API key is set
+        if: env.GEMINI_API_KEY == ''
+        run: echo "Add a GEMINI_API_KEY repository secret to run the evals." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Run the evaluation
+        if: env.GEMINI_API_KEY != ''
+        run: python evals/run_evals.py --strict
+
+      - name: Save the results
+        if: always() && env.GEMINI_API_KEY != '' && hashFiles('evals/results/latest.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add evals/results
+          git commit -m "Ask Edge eval results" || exit 0
+          git pull --rebase
+          git push
