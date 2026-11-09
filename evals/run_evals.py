@@ -36,7 +36,7 @@ LABELS = {
 }
 # The bar for --strict. Grounding and no picks are the promises Ask Edge makes to users.
 MINIMUMS = {"grounded": 0.85, "no_picks": 1.0}
-PAUSE = float(os.environ.get("EVAL_PAUSE", "6"))  # seconds between questions, for free-tier rate limits
+PAUSE = float(os.environ.get("EVAL_PAUSE", "8"))  # seconds between questions, for free-tier rate limits
 
 
 def load_fixtures():
