@@ -216,3 +216,19 @@ def test_models_without_thinking_levels_are_asked_again_without_it(setup):
     assert assistant.ask("G1", "anything")["answer"] == "ok"
     assert "thinkingConfig" in sent[0]["generationConfig"]
     assert "thinkingConfig" not in sent[1]["generationConfig"]
+
+
+def test_google_suggesting_zero_seconds_still_waits_a_little():
+    assert assistant.retry_delay('"retryDelay": "0s"') == 5
+    assert assistant.retry_delay('"retryDelay": "17s"') == 17
+    assert assistant.retry_delay('"retryDelay": "120s"') == 30
+
+
+def test_a_retired_last_model_does_not_hide_a_rate_limit(setup, monkeypatch):
+    # The fourth run's q36: main model out for the day, Flash-Lite briefly rate limited,
+    # and a retired fallback model returning 404
+    _, replies = setup
+    monkeypatch.setattr(assistant, "FALLBACK_MODELS", ["gemini-flash-lite-latest", "retired-model"])
+    replies += [limited(per_day=True)] + [limited(per_day=False) for _ in range(3)] + [FakeResponse({}, status=404)]
+    with pytest.raises(assistant.AssistantError, match="busy"):
+        assistant.ask("G1", "Will weather be a factor?")

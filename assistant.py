@@ -26,7 +26,7 @@ MODEL = os.environ.get("GEMINI_MODEL", "gemini-flash-latest")
 # Tried in order when a model is overloaded (503) or not available to this key (404)
 FALLBACK_MODELS = [
     m.strip()
-    for m in os.environ.get("GEMINI_FALLBACK_MODELS", "gemini-flash-lite-latest,gemini-2.5-flash").split(",")
+    for m in os.environ.get("GEMINI_FALLBACK_MODELS", "gemini-flash-lite-latest").split(",")
     if m.strip()
 ]
 RETRY_DELAYS = [1, 3]    # seconds to wait before retrying the same model
@@ -208,6 +208,10 @@ class Overloaded(Exception):
     pass
 
 
+class RateLimited(Exception):
+    """Per-minute limits on every available model."""
+
+
 class QuotaExhausted(Exception):
     """Every model has used up its free daily quota."""
 
@@ -221,10 +225,13 @@ def pacific_date():
     return time.strftime("%Y-%m-%d", time.gmtime(time.time() - 8 * 3600))
 
 
-def retry_delay(text, default=10, cap=30):
-    """Google's suggested wait from a 429 body (like "retryDelay": "17s"), capped."""
+def retry_delay(text, default=10, floor=5, cap=30):
+    """Google's suggested wait from a 429 body (like "retryDelay": "17s"), kept between 5 and 30 seconds.
+
+    Google sometimes suggests 0s, and retrying instantly just hits the same limit again.
+    """
     match = re.search(r'"retryDelay":\s*"(\d+)', text or "")
-    return min(int(match.group(1)), cap) if match else default
+    return max(floor, min(int(match.group(1)), cap)) if match else default
 
 
 def call_model(contents, system):
@@ -237,6 +244,7 @@ def call_model(contents, system):
     models = [m for m in [MODEL] + FALLBACK_MODELS if _exhausted.get(m) != today]
     if not models:
         raise QuotaExhausted()
+    statuses = []  # why each model failed, to report the real reason
     for model in models:
         already_waited = False
         for delay in [0] + RETRY_DELAYS:
@@ -251,6 +259,7 @@ def call_model(contents, system):
             except requests.HTTPError as error:
                 status = error.response.status_code if error.response is not None else None
                 body = error.response.text if error.response is not None else ""
+                statuses.append(status)
                 if status == 404:
                     print(f"Gemini model {model} not available; trying the next one", flush=True)
                     last_error = error
@@ -274,8 +283,11 @@ def call_model(contents, system):
                 last_error = error
     if all(_exhausted.get(m) == today for m in [MODEL] + FALLBACK_MODELS):
         raise QuotaExhausted()
-    if isinstance(last_error, requests.HTTPError) and last_error.response is not None and last_error.response.status_code in (404, 429):
+    # Only blame missing models if every model was missing; otherwise it was a busy or rate-limited moment
+    if statuses and all(s == 404 for s in statuses):
         raise last_error
+    if statuses and all(s == 429 for s in statuses if s != 404):
+        raise RateLimited() from last_error
     raise Overloaded() from last_error
 
 
@@ -350,13 +362,15 @@ def ask(game_id, question, briefing=None, trace=None, use_cache=True):
                 trace["model_calls"] += 1
         except Overloaded:
             raise AssistantError("Google's AI model is overloaded right now. Try again in a minute.")
+        except RateLimited:
+            raise AssistantError("Ask Edge is busy right now (free-tier limit). Try again in a minute.")
         except QuotaExhausted:
             raise AssistantError("Ask Edge has used up today's free AI quota. It resets at midnight Pacific.")
         except requests.HTTPError as error:
             status = error.response.status_code if error.response is not None else None
             detail = error.response.text[:500] if error.response is not None else ""
             # Shows up in Render's Logs tab (never includes the key, which is sent in a header)
-            print(f"Gemini error {status} for model {MODEL}: {detail}", flush=True)
+            print(f"Gemini error {status}: {detail}", flush=True)
             if status == 429:
                 raise AssistantError("Ask Edge is busy right now (free-tier limit). Try again in a minute.")
             if status in (400, 401, 403) and ("API key" in detail or "API_KEY" in detail or status in (401, 403)):
