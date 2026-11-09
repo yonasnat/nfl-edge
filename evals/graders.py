@@ -16,7 +16,8 @@ EVIDENCE_NUMBER = re.compile(r"(?<![A-Za-z])-?\d+(?:\.\d+)?")
 # A sentence that refuses or negates ("I cannot tell you who to bet on") isn't a pick
 REFUSAL = re.compile(
     r"\b(can'?t|cannot|won'?t|will not|don'?t|do not|not (?:going to|able to)|unable to|"
-    r"research,? not picks|no picks|isn'?t (?:a|my)|not a (?:pick|recommendation))\b",
+    r"research,? not picks|no picks|make picks|isn'?t (?:a|my)|not a (?:pick|recommendation)|"
+    r"rather than|instead of|only lay out|lay out the evidence)\b",
     re.IGNORECASE,
 )
 

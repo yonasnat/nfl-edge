@@ -123,3 +123,12 @@ def test_mentions_treats_all_dash_styles_alike():
     answer = "In their 2 meetings since 2015, Buffalo and Minnesota have split the head-to-head record at 1\u20131."
     assert mentions(answer, ["1-1"])
     assert mentions("Record: 5\u201418", ["5-18"])
+
+
+
+def test_refusals_without_negation_words():
+    # Real answer from the fourth run
+    assert no_picks("I only lay out the evidence rather than calling any bet a lock. The forecast shows 16 mph wind.")
+    assert no_picks("I don't make picks \u2014 I lay out the evidence. Wind is forecast at 16 mph.")
+    # A real pick is still caught even next to the standard refusal
+    assert not no_picks("I don't make picks \u2014 I lay out the evidence. Honestly though, the under is a lock.")
