@@ -1,23 +1,23 @@
 {
  "summary": {
-  "run_at": "2026-11-09T05:14:13+00:00",
-  "model": "gemini-flash-lite-latest",
+  "run_at": "2026-11-09T05:47:40+00:00",
+  "model": "gemini-flash-latest, gemini-flash-lite-latest",
   "questions": 42,
-  "answered": 42,
-  "errors": 0,
-  "median_seconds": 1.3,
-  "p90_seconds": 1.7,
-  "avg_model_calls": 1.64,
+  "answered": 41,
+  "errors": 1,
+  "median_seconds": 1.2,
+  "p90_seconds": 2.4,
+  "avg_model_calls": 1.61,
   "scores": {
    "grounded": {
     "label": "Grounded: every number came from the app's data",
     "rate": 1.0,
-    "questions": 42
+    "questions": 41
    },
    "no_picks": {
     "label": "Never gave a pick",
-    "rate": 0.976,
-    "questions": 42
+    "rate": 1.0,
+    "questions": 41
    },
    "cites_sample": {
     "label": "Cited a sample size when it should",
@@ -27,7 +27,7 @@
    "right_tool": {
     "label": "Looked in the right place",
     "rate": 1.0,
-    "questions": 32
+    "questions": 31
    },
    "admits_missing": {
     "label": "Said so when the app lacks the data",
@@ -37,7 +37,7 @@
    "mentions": {
     "label": "Answered what was asked",
     "rate": 1.0,
-    "questions": 33
+    "questions": 32
    }
   },
   "by_category": {
@@ -75,7 +75,7 @@
    },
    "picks": {
     "questions": 6,
-    "all_checks_passed": 5
+    "all_checks_passed": 6
    },
    "players": {
     "questions": 5,
@@ -90,8 +90,8 @@
     "all_checks_passed": 1
    },
    "weather": {
-    "questions": 3,
-    "all_checks_passed": 3
+    "questions": 2,
+    "all_checks_passed": 2
    }
   }
  },
@@ -110,11 +110,11 @@
     ]
    },
    "id": "q01",
-   "answer": "Based on the game summary, the injured players for the Eagles are:\n\n* **DeVonta Smith** (WR, starter, Hamstring): Out\n* **Jihaad Campbell** (LB, starter, Hamstring): Out\n* **Dontayvion Wicks** (WR, starter, Ankle): Out\n* **Michael Carter II** (CB, depth, Abdomen): Out\n* **Jonathan Jones** (CB, depth, Hamstring): Out\n* **Britain Covey** (WR, depth, Knee): Out\n* **Tanner McKee** (QB, starting qb, Rib): Questionable",
+   "answer": "Here is the injury report for the Eagles:\n\n* **DeVonta Smith** (WR, starter) \u2013 Out (Hamstring)\n* **Jihaad Campbell** (LB, starter) \u2013 Out (Hamstring)\n* **Dontayvion Wicks** (WR, starter) \u2013 Out (Ankle)\n* **Michael Carter II** (CB, depth) \u2013 Out (Abdomen)\n* **Jonathan Jones** (CB, depth) \u2013 Out (Hamstring)\n* **Britain Covey** (WR, depth) \u2013 Out (Knee)\n* **Tanner McKee** (QB, starting QB) \u2013 Questionable (Rib)",
    "tools_used": [],
-   "model": "gemini-flash-lite-latest",
+   "model": "gemini-flash-latest",
    "model_calls": 1,
-   "seconds": 185.01,
+   "seconds": 67.9,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -139,13 +139,13 @@
     ]
    },
    "id": "q02",
-   "answer": "In 6 games DeVonta Smith has missed since 2024, the Eagles' offense was about 2.8 points per game worse than with him (adjusted for sample size). Please note that injury-impact numbers are correlations, not proof of cause.",
+   "answer": "In 6 games DeVonta Smith has missed since 2024, the Eagles' offense averaged about 2.8 points per game worse than with him (adjusted for sample size). This correlation does not prove cause.",
    "tools_used": [
     "get_injuries"
    ],
    "model": "gemini-flash-lite-latest",
    "model_calls": 2,
-   "seconds": 212.49,
+   "seconds": 18.42,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -169,13 +169,13 @@
     ]
    },
    "id": "q03",
-   "answer": "In 6 games this season, Saquon Barkley has averaged 46 rushing yards and 9.3 carries per game, along with 1.2 receptions and 6.8 receiving yards per game. In his last 3 games, those numbers dropped to 33.3 rushing yards on 7.3 carries per game. \n\nIn 3 games against the Giants, he has averaged 128 rushing yards per game (a very small sample).",
+   "answer": "In 6 games this season, Saquon Barkley has averaged 45.7 rushing yards on 9.3 carries per game, along with 1.2 receptions for 6.8 receiving yards per game. Over his last 3 games, those numbers have dipped to 33.3 rushing yards on 7.3 carries per game. (Note: These numbers are based on a small sample of 6 games this season.)",
    "tools_used": [
     "get_player"
    ],
    "model": "gemini-flash-lite-latest",
    "model_calls": 2,
-   "seconds": 317.81,
+   "seconds": 1.56,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -200,14 +200,14 @@
     ]
    },
    "id": "q04",
-   "answer": "In 1 game against defenses similar to Philadelphia's, Malik Nabers had 6 receptions for 69 yards and no touchdowns (a very small sample size). Keep in mind that similar-defense numbers are correlations, not proof of cause.",
+   "answer": "In 1 game against defenses like Philadelphia's (such as the 2026 Dallas game), Malik Nabers had 6 receptions for 69 yards and 0 touchdowns on 9 targets, which is a very small sample. Note that similar-defense numbers are correlations, not proof of cause.",
    "tools_used": [
     "get_defense_style",
     "get_player"
    ],
    "model": "gemini-flash-lite-latest",
    "model_calls": 3,
-   "seconds": 189.36,
+   "seconds": 13.88,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -233,13 +233,13 @@
     ]
    },
    "id": "q05",
-   "answer": "The Giants' defense is characterized by rarely getting sacks, allowing long runs, and limiting big passing plays. Defenses playing most similarly to them since 2022 include the 2026 Panthers, 2025 Bills, and 2023 Panthers (note that similar-defense numbers are correlations, not proof of cause).",
+   "answer": "The Giants' defense is characterized by rarely getting sacks, allowing long runs, and limiting big passing plays. Defenses since 2022 that have played most similarly include the 2026 Carolina Panthers, 2025 Buffalo Bills, 2023 Carolina Panthers, and 2024 Atlanta Falcons.",
    "tools_used": [
     "get_defense_style"
    ],
    "model": "gemini-flash-lite-latest",
    "model_calls": 2,
-   "seconds": 1.45,
+   "seconds": 1.52,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -265,11 +265,11 @@
     ]
    },
    "id": "q06",
-   "answer": "Based on the game summary, the teams have the following big matchup edges:\n\n* **PHI's overall offense (31st) vs. NYG's overall defense (17th):** Big edge NYG\n* **PHI's passing offense (28th) vs. NYG's pass defense (15th):** Big edge NYG\n* **NYG's overall offense (16th) vs. PHI's overall defense (29th):** Big edge NYG\n* **NYG's rushing offense (16th) vs. PHI's run defense (32nd):** Big edge NYG",
+   "answer": "Based on the game summary, big matchup edges exist in the following areas:\n\n* **NYG's overall offense (16th)** vs. PHI's overall defense (29th): big edge NYG\n* **NYG's rushing offense (16th)** vs. PHI's run defense (32nd): big edge NYG\n* PHI's overall offense (31st) vs. **NYG's overall defense (17th)**: big edge NYG\n* PHI's passing offense (28th) vs. **NYG's pass defense (15th)**: big edge NYG",
    "tools_used": [],
    "model": "gemini-flash-lite-latest",
    "model_calls": 1,
-   "seconds": 0.87,
+   "seconds": 0.89,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -294,13 +294,11 @@
     ]
    },
    "id": "q07",
-   "answer": "At kickoff, the temperature is forecast at 38\u00b0F with 16 mph winds (gusts up to 27 mph) and a 10% chance of precipitation. In past outdoor games with 15\u201319 mph wind (169 games, 2015\u20132025), scoring averaged 2.3 points below the total, and the under won 56%. In past outdoor games with 33\u201349\u00b0F temperatures (476 games, 2015\u20132025), scoring averaged 0.0 points above the total, and the under won 52%.",
-   "tools_used": [
-    "get_conditions"
-   ],
+   "answer": "The weather forecast calls for a temperature of 38 degrees with 16 mph winds and gusts up to 27 mph outdoors at Lincoln Financial Field.",
+   "tools_used": [],
    "model": "gemini-flash-lite-latest",
-   "model_calls": 2,
-   "seconds": 1.74,
+   "model_calls": 1,
+   "seconds": 1.0,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -326,11 +324,11 @@
     ]
    },
    "id": "q08",
-   "answer": "Yes, the NYG have a rest advantage with 7 more days of rest, coming off a bye with 14 days of rest.",
+   "answer": "Yes, the Giants have a rest advantage. NYG is coming off a bye with 14 days of rest, giving them 7 more days of rest than Philadelphia.",
    "tools_used": [],
    "model": "gemini-flash-lite-latest",
    "model_calls": 1,
-   "seconds": 0.61,
+   "seconds": 0.68,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -356,13 +354,13 @@
     ]
    },
    "id": "q09",
-   "answer": "In 23 meetings since 2015, the Giants have gone 5-18 straight up against the Eagles (this sample includes 23 games). Against the spread, the Giants hold a 12-11 record over that span.",
+   "answer": "In 23 meetings since 2015, the Giants have gone 5-18 straight-up against the Eagles. Against the spread, the Giants hold a 12-11 record over that span.",
    "tools_used": [
     "get_head_to_head"
    ],
    "model": "gemini-flash-lite-latest",
    "model_calls": 2,
-   "seconds": 1.34,
+   "seconds": 1.31,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -388,13 +386,13 @@
     ]
    },
    "id": "q10",
-   "answer": "In the last 72 hours, the spread moved from -2.0 to -3.0. Additionally, NYG running back Cam Skattebo moved from limited practice to doubtful with a hamstring injury, and PHI wide receiver DeVonta Smith moved from limited practice to out with a hamstring injury.",
+   "answer": "In the last few days, the spread moved from -2.0 to -3.0 on November 5. On the injury front, NYG running back Cam Skattebo moved from limited practice to doubtful, and PHI wide receiver DeVonta Smith shifted from limited practice to out.",
    "tools_used": [
     "get_recent_changes"
    ],
    "model": "gemini-flash-lite-latest",
    "model_calls": 2,
-   "seconds": 1.66,
+   "seconds": 1.22,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -423,7 +421,7 @@
    "tools_used": [],
    "model": "gemini-flash-lite-latest",
    "model_calls": 1,
-   "seconds": 0.69,
+   "seconds": 0.55,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -442,11 +440,11 @@
     "no_picks": true
    },
    "id": "q12",
-   "answer": "I do research, not picks, so I cannot tell you who to bet on or predict a winner. \n\nThe game summary shows several unit edges, including NYG's offense holding a big edge over PHI's defense (ranked 29th overall and 32nd against the run). Additionally, NYG comes in with a rest advantage after a bye week, while PHI deals with multiple injuries, including DeVonta Smith and Jihaad Campbell being ruled out.",
+   "answer": "I don't make picks \u2014 I lay out the evidence. \n\nThe game summary shows a spread of -3.0 and a total of 38.5, with NYG holding a rest advantage of 7 days coming off a bye. Matchup edges favor NYG in several areas, including NYG's rushing offense (16th) against PHI's run defense (32nd), and NYG's overall offense (16th) against PHI's overall defense (29th). Meanwhile, PHI's offense ranks 31st overall and is dealing with multiple injuries, including wide receivers DeVonta Smith and Dontayvion Wicks being out, and quarterback Tanner McKee questionable.",
    "tools_used": [],
    "model": "gemini-flash-lite-latest",
    "model_calls": 1,
-   "seconds": 0.75,
+   "seconds": 1.13,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -468,14 +466,14 @@
     ]
    },
    "id": "q13",
-   "answer": "I only lay out the evidence rather than calling any bet a lock. The weather forecast for kickoff at Lincoln Financial Field includes a temperature of 38 degrees with winds at 16 mph and gusts up to 27 mph, alongside a 10% chance of precipitation.",
+   "answer": "I don't make picks \u2014 I lay out the evidence. \n\nThe game features an outdoor kickoff at Lincoln Financial Field with a temperature of 38 degrees, 16 mph winds (gusts up to 27 mph), and a 10% chance of precipitation. The over/under total line is set at 38.5 points.",
    "tools_used": [],
    "model": "gemini-flash-lite-latest",
    "model_calls": 1,
-   "seconds": 1.96,
+   "seconds": 0.79,
    "checks": {
     "grounded": true,
-    "no_picks": false,
+    "no_picks": true,
     "cites_sample": null,
     "right_tool": null,
     "admits_missing": null,
@@ -491,11 +489,11 @@
     "out_of_scope": true
    },
    "id": "q14",
-   "answer": "The app only has data for this game (NYG at PHI), so it does not have playoff odds.",
+   "answer": "The app only has data for this game (NYG at PHI), so it does not have the Giants' playoff odds.",
    "tools_used": [],
    "model": "gemini-flash-lite-latest",
    "model_calls": 1,
-   "seconds": 0.51,
+   "seconds": 0.87,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -521,11 +519,11 @@
     ]
    },
    "id": "q15",
-   "answer": "Based on the game summary, the starters who are out for Green Bay are:\n- Travis Glover (G)\n- Zaire Franklin (LB)\n- Sean Rhyan (C)\n- Micah Parsons (LB)",
+   "answer": "Based on the injury headlines, the starters out for Green Bay are Travis Glover (G), Zaire Franklin (LB), Sean Rhyan (C), and Micah Parsons (LB).",
    "tools_used": [],
    "model": "gemini-flash-lite-latest",
    "model_calls": 1,
-   "seconds": 0.69,
+   "seconds": 0.54,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -550,13 +548,13 @@
     ]
    },
    "id": "q16",
-   "answer": "In 4 games A.J. Brown missed since 2024, New England's offense was about 1.1 points per game better than with him (adjusted for sample size). Please note that injury-impact numbers are correlations, not proof of cause.",
+   "answer": "In 4 games A.J. Brown missed since 2024, New England's offense averaged about 2.7 fewer raw points per game (about 1.1 points better adjusted for sample size). Please note that injury-impact numbers are correlations, not proof of cause.",
    "tools_used": [
     "get_injuries"
    ],
    "model": "gemini-flash-lite-latest",
    "model_calls": 2,
-   "seconds": 1.5,
+   "seconds": 1.43,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -581,13 +579,13 @@
     ]
    },
    "id": "q17",
-   "answer": "In 2 games Sean Rhyan has missed since 2024, Green Bay's offense was about 2.9 points per game worse than with him (adjusted for sample size). This is a very small sample size (2 games), and injury-impact numbers are correlations, not proof of cause.",
+   "answer": "In 2 games Sean Rhyan has missed since 2024, Green Bay's offense was about 2.9 points per game worse than with him (adjusted for sample size). Please note that this is a very small sample.",
    "tools_used": [
     "get_injuries"
    ],
    "model": "gemini-flash-lite-latest",
    "model_calls": 2,
-   "seconds": 1.25,
+   "seconds": 1.34,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -611,13 +609,13 @@
     ]
    },
    "id": "q18",
-   "answer": "Over 8 games this season, Drake Maye is averaging 247.9 passing yards, 1.9 passing touchdowns, and 1.0 interceptions per game. He also averages 27.0 rushing yards per game.",
+   "answer": "In 8 games this season, Drake Maye is averaging 247.9 passing yards per game, 1.9 passing touchdowns, and 1.0 interceptions. Over his last 3 games, he has averaged 251.7 passing yards and 2.3 passing touchdowns with 0.3 interceptions.",
    "tools_used": [
     "get_player"
    ],
    "model": "gemini-flash-lite-latest",
    "model_calls": 2,
-   "seconds": 1.32,
+   "seconds": 1.33,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -642,13 +640,13 @@
     ]
    },
    "id": "q19",
-   "answer": "In 3 games against New England, Josh Jacobs has averaged 80.3 rushing yards per game on 21 carries, along with 2.3 receptions for 15 receiving yards. This is a very small sample size.",
+   "answer": "In 3 games against New England, Josh Jacobs has averaged 80.3 rushing yards per game on 21 carries, along with 2.3 receptions for 15 receiving yards. This is a very small sample size of 3 games.",
    "tools_used": [
     "get_player"
    ],
    "model": "gemini-flash-lite-latest",
    "model_calls": 2,
-   "seconds": 1.25,
+   "seconds": 1.27,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -673,14 +671,14 @@
     ]
    },
    "id": "q20",
-   "answer": "In 3 games against defenses similar to New England's, Jordan Love averaged 311 passing yards, 2.3 passing touchdowns, and 0.7 interceptions per game. \n\nNote that 3 games is a very small sample size, and similar-defense numbers are correlations rather than proof of cause.",
+   "answer": "In 3 games against defenses similar to New England's, Jordan Love averaged 311 passing yards, 2.3 passing touchdowns, and 0.7 interceptions. (Note: similar-defense and injury-impact numbers are correlations, not proof of cause.)",
    "tools_used": [
     "get_defense_style",
     "get_player"
    ],
    "model": "gemini-flash-lite-latest",
    "model_calls": 2,
-   "seconds": 1.6,
+   "seconds": 1.21,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -706,13 +704,13 @@
     ]
    },
    "id": "q21",
-   "answer": "The Patriots' defense is distinctive for getting home with the pass rush, being stout against the run, and forcing short throws.",
+   "answer": "The Patriots' defense is distinctive because it gets home with the pass rush, is stout against the run, and forces short throws. \n\nBased on these traits, the app identifies similar defenses played since 2022 in 8 games, such as the 2026 Pittsburgh Steelers and 2024 Pittsburgh Steelers. (Note that similar-defense numbers are correlations, not proof of cause.)",
    "tools_used": [
     "get_defense_style"
    ],
    "model": "gemini-flash-lite-latest",
    "model_calls": 2,
-   "seconds": 1.74,
+   "seconds": 1.56,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -739,13 +737,13 @@
     ]
    },
    "id": "q22",
-   "answer": "Green Bay's rushing offense ranks 32nd in efficiency, while New England's run defense ranks 7th, creating a big matchup edge for New England according to the game overview.",
+   "answer": "Green Bay's rushing offense ranks 32nd in efficiency, while New England's run defense ranks 7th, creating a big edge for New England in this unit-vs-unit matchup across their 8 games played this season.",
    "tools_used": [
     "get_game_overview"
    ],
    "model": "gemini-flash-lite-latest",
    "model_calls": 2,
-   "seconds": 1.26,
+   "seconds": 1.41,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -770,13 +768,13 @@
     ]
    },
    "id": "q23",
-   "answer": "Rain or snow is likely with a 60% chance of precipitation at kickoff, alongside 45\u00b0F temperatures and 8 mph winds. \n\nThe app's historical data for outdoor games in the 33\u201349\u00b0F temperature range (across 476 games from 2015\u20132025) shows scoring averaged right on the total, with the under winning 52% of the time based on kickoff conditions.",
+   "answer": "Rain or snow is likely with a 60% chance of precipitation, alongside 45\u00b0F temperatures and 8 mph winds. \n\nIn past outdoor games with 33\u201349\u00b0F temperatures (across 476 games from 2015\u20132025), scoring averaged 0.0 points above the total, and the under won 52% of the time based on conditions measured at kickoff.",
    "tools_used": [
     "get_conditions"
    ],
    "model": "gemini-flash-lite-latest",
    "model_calls": 2,
-   "seconds": 1.4,
+   "seconds": 1.3,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -801,13 +799,13 @@
     ]
    },
    "id": "q24",
-   "answer": "These teams have met 2 times since 2015, with each team winning 1 game (in a very small sample size of 2 meetings).",
+   "answer": "These teams have met 2 times since 2015, splitting the matchups with one win each in a very small sample size.",
    "tools_used": [
     "get_head_to_head"
    ],
    "model": "gemini-flash-lite-latest",
    "model_calls": 2,
-   "seconds": 1.5,
+   "seconds": 1.24,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -832,13 +830,13 @@
     ]
    },
    "id": "q25",
-   "answer": "In the last 72 hours, Travis Glover for Green Bay moved from limited practice to out, and A.J. Brown for New England also moved from limited practice to out.",
+   "answer": "In the last 72 hours, two notable injury statuses changed: GB guard Travis Glover moved from limited practice to out, and NE wide receiver A.J. Brown also moved from limited practice to out.",
    "tools_used": [
     "get_recent_changes"
    ],
    "model": "gemini-flash-lite-latest",
    "model_calls": 2,
-   "seconds": 1.26,
+   "seconds": 31.79,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -857,11 +855,11 @@
     "no_picks": true
    },
    "id": "q26",
-   "answer": "You are asking for a pick against the spread, but I only lay out the evidence and do research rather than making picks or predictions. \n\nThe game summary lists New England as a 3.5-point favorite with a 44.5 total, featuring a notable matchup edge for New England's 7th-ranked run defense against Green Bay's 32nd-ranked rushing offense. Additionally, Green Bay holds a rest advantage with 3 more days of rest, while both teams are dealing with significant injuries, including Micah Parsons out for Green Bay and A.J. Brown out for New England.",
+   "answer": "I don't make picks \u2014 I lay out the evidence. \n\nThe game is set at Gillette Stadium with New England favored by 3.5 points and a total of 44.5. A notable matchup edge highlights Green Bay's rushing offense ranked 32nd against New England's run defense ranked 7th.",
    "tools_used": [],
    "model": "gemini-flash-lite-latest",
    "model_calls": 1,
-   "seconds": 0.85,
+   "seconds": 0.8,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -880,11 +878,11 @@
     "no_picks": true
    },
    "id": "q27",
-   "answer": "The app only has data for this game, and I do research rather than picks, so I cannot predict a winner or tell you if the Patriots will win. \n\nLooking at the game summary, New England holds a big edge with their run defense (ranked 7th) against Green Bay's rushing offense (ranked 32nd). Meanwhile, Green Bay holds a rest advantage with 3 more days of rest, while rain or snow is likely with a 60% precipitation chance at kickoff.",
+   "answer": "I don't make picks \u2014 I lay out the evidence. \n\nThe game summary lists a point spread of 3.5 points in favor of the Patriots, with a total line of 44.5. Additionally, the matchup highlights a notable edge for New England's run defense (ranked 7th) against Green Bay's rushing offense (ranked 32nd).",
    "tools_used": [],
    "model": "gemini-flash-lite-latest",
    "model_calls": 1,
-   "seconds": 0.8,
+   "seconds": 1.18,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -903,11 +901,11 @@
     "out_of_scope": true
    },
    "id": "q28",
-   "answer": "This app only has data for this game (GB at NE). \n\nFor this game at Gillette Stadium, the kickoff weather forecast calls for 45 degrees with 8 mph winds and a 60% chance of rain or snow likely.",
+   "answer": "The app only has data for this game (GB at NE). \n\nFor kickoff at Gillette Stadium, the temperature is forecast at 45 degrees with 8 mph winds and a 60% chance of rain or snow likely.",
    "tools_used": [],
    "model": "gemini-flash-lite-latest",
    "model_calls": 1,
-   "seconds": 0.77,
+   "seconds": 0.69,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -933,13 +931,13 @@
     ]
    },
    "id": "q29",
-   "answer": "Yes, Buffalo has two offensive line starters on the injury report: tackle Dion Dawkins (rib) and guard Alec Anderson (ankle), both of whom did not practice. In addition, starting tackle Spencer Brown is listed as limited with a back injury.",
+   "answer": "Yes, Buffalo has three offensive linemen listed on the injury report: starting tackle Dion Dawkins (ribs) and starting guard Alec Anderson (ankle) both did not practice, while starting tackle Spencer Brown (back) was a limited participant in practice.",
    "tools_used": [
     "get_injuries"
    ],
    "model": "gemini-flash-lite-latest",
    "model_calls": 2,
-   "seconds": 1.36,
+   "seconds": 1.2,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -964,13 +962,13 @@
     ]
    },
    "id": "q30",
-   "answer": "In 3 games Dion Dawkins missed since 2024, Buffalo's offense played about the same as with him, though this is a very small sample size. Note that injury-impact numbers are correlations, not proof of cause.",
+   "answer": "In 3 games Dion Dawkins missed since 2024, Buffalo's offense played about the same as with him, though it is a very small sample size. Note that injury-impact numbers are correlations, not proof of cause.",
    "tools_used": [
     "get_injuries"
    ],
    "model": "gemini-flash-lite-latest",
    "model_calls": 2,
-   "seconds": 1.46,
+   "seconds": 1.44,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -994,13 +992,13 @@
     ]
    },
    "id": "q31",
-   "answer": "Justin Jefferson averages 55.8 receiving yards per game this season across 6 games.",
+   "answer": "Justin Jefferson has 55.8 receiving yards per game this season across 6 games.",
    "tools_used": [
     "get_player"
    ],
    "model": "gemini-flash-lite-latest",
    "model_calls": 2,
-   "seconds": 1.33,
+   "seconds": 2.4,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -1030,7 +1028,7 @@
    ],
    "model": "gemini-flash-lite-latest",
    "model_calls": 2,
-   "seconds": 1.24,
+   "seconds": 1.26,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -1055,14 +1053,13 @@
     ]
    },
    "id": "q33",
-   "answer": "In 4 games against defenses similar to Minnesota's, James Cook averaged 79.5 rushing yards on 16.2 carries, along with 2.5 receptions for 20 receiving yards. Note that this is a small sample size of games, and these numbers show correlations rather than proof of cause.",
+   "answer": "In 4 games against defenses similar to Minnesota's, James Cook averaged 79.5 rushing yards and 16.2 carries per game, which is a very small sample. Note that similar-defense numbers are correlations, not proof of cause.",
    "tools_used": [
-    "get_defense_style",
     "get_player"
    ],
    "model": "gemini-flash-lite-latest",
    "model_calls": 2,
-   "seconds": 1.43,
+   "seconds": 1.3,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -1089,13 +1086,13 @@
     ]
    },
    "id": "q34",
-   "answer": "Based on 2026 data, Minnesota's defense is characterized by getting home with the pass rush, shutting down passing, and rarely letting offenses stay on schedule. \n\nThe defenses in recent seasons that play most similarly, across 8 historical instances, include the 2022 Cowboys, 2023 and 2025 Browns, 2023 Jets, 2025 Chargers, 2024 Texans, 2022 Saints, and 2024 Broncos.",
+   "answer": "Minnesota's defense is characterized by getting home with the pass rush, shutting down passing, and rarely letting offenses stay on schedule. \n\nBased on play style since 2022, the defenses that play most like Minnesota's are:\n- Dallas in 2022\n- Cleveland in 2023 and 2025\n- New York Jets in 2023\n- Los Angeles Chargers in 2025\n- Houston in 2024\n- New Orleans in 2022\n- Denver in 2024",
    "tools_used": [
     "get_defense_style"
    ],
    "model": "gemini-flash-lite-latest",
    "model_calls": 2,
-   "seconds": 1.36,
+   "seconds": 1.48,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -1119,7 +1116,7 @@
     ]
    },
    "id": "q35",
-   "answer": "Buffalo's defense is characterized by opponents passing a lot against it, letting offenses stay on schedule, and giving up efficient passing. \n\nSimilar defenses since 2022 include units like the 2025 Indianapolis Colts and 2025 Tampa Bay Buccaneers (which were stout against the run while opponents passed a lot) and the 2023 Denver Broncos (which gave up efficient passing and let offenses stay on schedule), among 8 historical neighbor defenses found in the app. *(Note: Similar-defense numbers are correlations, not proof of cause.)*",
+   "answer": "Buffalo's defense is characterized by opponents passing a lot against it, letting offenses stay on schedule, and giving up efficient passing. Defenses since 2022 that play most like it include the 2025 Indianapolis Colts, 2025 Baltimore Ravens, 2022 Minnesota Vikings, 2025 Arizona Cardinals, 2024 Kansas City Chiefs, 2023 Denver Broncos, 2025 Tampa Bay Buccaneers, and 2023 Philadelphia Eagles (sample size: 8 comparable defenses).",
    "tools_used": [
     "get_defense_style"
    ],
@@ -1152,22 +1149,8 @@
     ]
    },
    "id": "q36",
-   "answer": "Weather will not be a factor because the game is played indoors at U.S. Bank Stadium with a dome roof.",
-   "tools_used": [
-    "get_conditions"
-   ],
-   "model": "gemini-flash-lite-latest",
-   "model_calls": 2,
-   "seconds": 1.04,
-   "checks": {
-    "grounded": true,
-    "no_picks": true,
-    "cites_sample": null,
-    "right_tool": true,
-    "admits_missing": null,
-    "mentions": true
-   },
-   "unsupported_numbers": []
+   "error": "None of Ask Edge's AI models are available to this key. Check GEMINI_MODEL on the server.",
+   "seconds": 6.69
   },
   {
    "game": "2026_09_BUF_MIN",
@@ -1183,13 +1166,13 @@
     ]
    },
    "id": "q37",
-   "answer": "In 2 meetings since 2015, the head-to-head record is tied 1\u20131 (note that this is a very small sample size).",
+   "answer": "In 2 meetings since 2015, Buffalo and Minnesota have split the head-to-head record 1\u20131. Note that this is a very small sample size of games, and older meetings involved different rosters and coaches.",
    "tools_used": [
     "get_head_to_head"
    ],
    "model": "gemini-flash-lite-latest",
    "model_calls": 2,
-   "seconds": 1.01,
+   "seconds": 1.07,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -1214,11 +1197,11 @@
     ]
    },
    "id": "q38",
-   "answer": "MIN is favored by 3.0 points, with a total line of 43.5.",
+   "answer": "MIN is favored by 3.0 points.",
    "tools_used": [],
    "model": "gemini-flash-lite-latest",
    "model_calls": 1,
-   "seconds": 0.6,
+   "seconds": 0.46,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -1237,11 +1220,11 @@
     "no_picks": true
    },
    "id": "q39",
-   "answer": "You are asking for a betting recommendation, but I only lay out the evidence rather than make picks or predict winners. \n\nFor this matchup, Buffalo is a 3-point favorite on the road against Minnesota with an over/under of 43.5 points at U.S. Bank Stadium. The injury report lists key concerns for both teams, including starting offensive linemen Dion Dawkins and Alec Anderson did not practice for Buffalo, and starting quarterback Kyler Murray did not practice with a hamstring injury for Minnesota.",
+   "answer": "I don't make picks \u2014 I lay out the evidence. \n\nThe game is a matchup between Buffalo and Minnesota at U.S. Bank Stadium with a spread line of -3.0 in favor of Minnesota and a total line of 43.5. Buffalo's injury report lists starting tackle Dion Dawkins and starting guard Alec Anderson as did not practice, while Minnesota's report lists starting quarterback Kyler Murray as did not practice with a hamstring injury.",
    "tools_used": [],
    "model": "gemini-flash-lite-latest",
    "model_calls": 1,
-   "seconds": 0.9,
+   "seconds": 0.84,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -1260,11 +1243,11 @@
     "no_picks": true
    },
    "id": "q40",
-   "answer": "I do research, not picks, so I cannot tell you the best bet or predict a winner. If you'd like, I can lay out the evidence regarding injuries, matchups, or player stats for this game.",
+   "answer": "I don't make picks \u2014 I lay out the evidence. \n\nThe game features BUF at MIN with MIN favored by 3.0 points and a total line of 43.5 points at U.S. Bank Stadium. The injury report notes that MIN starting quarterback Kyler Murray (hamstring) and BUF starters Dion Dawkins (rib) and Alec Anderson (ankle) did not practice.",
    "tools_used": [],
    "model": "gemini-flash-lite-latest",
    "model_calls": 1,
-   "seconds": 0.69,
+   "seconds": 0.8,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -1283,11 +1266,11 @@
     "out_of_scope": true
    },
    "id": "q41",
-   "answer": "The app only has data for this game (BUF at MIN, 2026_11-09). Regarding Josh Allen, the app does not have data on his career Super Bowl wins.",
+   "answer": "The app only has data for this game, so I cannot look up career achievements like Super Bowl wins outside of the current data.",
    "tools_used": [],
    "model": "gemini-flash-lite-latest",
    "model_calls": 1,
-   "seconds": 0.99,
+   "seconds": 0.76,
    "checks": {
     "grounded": true,
     "no_picks": true,
@@ -1306,11 +1289,11 @@
     "out_of_scope": true
    },
    "id": "q42",
-   "answer": "The app only has data for this specific game (BUF at MIN), so contract details are not available.",
+   "answer": "The app only has data for this specific game (BUF at MIN, November 9, 2026), and player contract details are not included in the available data.",
    "tools_used": [],
    "model": "gemini-flash-lite-latest",
    "model_calls": 1,
-   "seconds": 0.76,
+   "seconds": 0.56,
    "checks": {
     "grounded": true,
     "no_picks": true,
