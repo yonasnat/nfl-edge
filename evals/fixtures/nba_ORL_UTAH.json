@@ -1,0 +1,1859 @@
+{
+ "sport": "nba",
+ "note": "Frozen for Ask Edge evals. Real app data, except the betting line, the injury list, and 'changes' are fixed test values.",
+ "briefing": {
+  "sport": "nba",
+  "game": {
+   "game_id": "401909973",
+   "sport": "nba",
+   "date": "2026-11-11",
+   "gameday": "2026-11-11",
+   "kickoff": "2026-11-12T02:00:00+00:00",
+   "start": "2026-11-12T02:00Z",
+   "away": "ORL",
+   "home": "UTAH",
+   "away_score": null,
+   "home_score": null,
+   "final": false,
+   "live": false,
+   "status_detail": null,
+   "venue": "Delta Center",
+   "stadium": "Delta Center",
+   "city": "Salt Lake City",
+   "neutral": false,
+   "playoffs": false,
+   "note": "",
+   "spread_line": 6.5,
+   "total_line": 231.0,
+   "line_source": "test"
+  },
+  "weather": null,
+  "situation": {
+   "facts": [
+    "ORL: played yesterday; 532 miles from Sacramento.",
+    "ORL: game 4 of a road trip.",
+    "UTAH: played yesterday."
+   ],
+   "flags": [
+    "ORL on a back-to-back",
+    "ORL at altitude",
+    "ORL game 4 of road trip",
+    "UTAH on a back-to-back"
+   ],
+   "evidence": [
+    "Road teams in Denver or Salt Lake City since 2022-23: won 43.8% of 320 games, average margin -2.0.",
+    "Road teams four or more games into a road trip since 2022-23: won 42.6% of 723 games, average margin -3.1.",
+    "All home teams since 2022-23: won 55.5% of 5,004 games, average margin +2.0. That's the baseline to compare against."
+   ],
+   "teams": {
+    "ORL": {
+     "rest_days": 0,
+     "back_to_back": true,
+     "three_in_four": false,
+     "miles": 532,
+     "tz_shift": 1.0,
+     "road_streak": 4,
+     "altitude_visit": true
+    },
+    "UTAH": {
+     "rest_days": 0,
+     "back_to_back": true,
+     "three_in_four": true,
+     "miles": 0,
+     "tz_shift": 0.0,
+     "road_streak": 0,
+     "altitude_visit": false
+    }
+   }
+  },
+  "head_to_head": {
+   "games": 8,
+   "since": "since 2022-23",
+   "summary": "8 meetings since 2022-23: ORL 4-4 UTAH. Average margin ORL -3.0, average total 228.2 points.",
+   "wins": {
+    "ORL": 4,
+    "UTAH": 4
+   },
+   "avg_total": 228.2,
+   "avg_margin": {
+    "ORL": -3.0,
+    "UTAH": 3.0
+   },
+   "caution": "Rosters change a lot from season to season; the most recent meetings matter most.",
+   "recent": [
+    {
+     "date": "2026-02-07",
+     "season": 2026,
+     "playoffs": false,
+     "home": "ORL",
+     "away": "UTAH",
+     "home_score": 120,
+     "away_score": 117,
+     "winner": "ORL",
+     "total": 237
+    },
+    {
+     "date": "2025-12-20",
+     "season": 2026,
+     "playoffs": false,
+     "home": "UTAH",
+     "away": "ORL",
+     "home_score": 127,
+     "away_score": 128,
+     "winner": "ORL",
+     "total": 255
+    },
+    {
+     "date": "2025-02-01",
+     "season": 2025,
+     "playoffs": false,
+     "home": "UTAH",
+     "away": "ORL",
+     "home_score": 113,
+     "away_score": 99,
+     "winner": "UTAH",
+     "total": 212
+    },
+    {
+     "date": "2025-01-05",
+     "season": 2025,
+     "playoffs": false,
+     "home": "ORL",
+     "away": "UTAH",
+     "home_score": 92,
+     "away_score": 105,
+     "winner": "UTAH",
+     "total": 197
+    },
+    {
+     "date": "2024-02-29",
+     "season": 2024,
+     "playoffs": false,
+     "home": "ORL",
+     "away": "UTAH",
+     "home_score": 115,
+     "away_score": 107,
+     "winner": "ORL",
+     "total": 222
+    },
+    {
+     "date": "2023-11-02",
+     "season": 2024,
+     "playoffs": false,
+     "home": "UTAH",
+     "away": "ORL",
+     "home_score": 113,
+     "away_score": 115,
+     "winner": "ORL",
+     "total": 228
+    },
+    {
+     "date": "2023-03-09",
+     "season": 2023,
+     "playoffs": false,
+     "home": "ORL",
+     "away": "UTAH",
+     "home_score": 124,
+     "away_score": 131,
+     "winner": "UTAH",
+     "total": 255
+    },
+    {
+     "date": "2023-01-13",
+     "season": 2023,
+     "playoffs": false,
+     "home": "UTAH",
+     "away": "ORL",
+     "home_score": 112,
+     "away_score": 108,
+     "winner": "UTAH",
+     "total": 220
+    }
+   ]
+  },
+  "players": {
+   "away": [
+    {
+     "player_id": 4566434,
+     "name": "Franz Wagner",
+     "position": "F",
+     "headshot_url": "https://a.espncdn.com/i/headshots/nba/players/full/4566434.png",
+     "games_this_season": 10,
+     "vs_opponent_games": 5,
+     "recent_label": "Last 5",
+     "career_label": "Since 2022-23",
+     "stats": [
+      {
+       "stat": "points",
+       "label": "points",
+       "season": 22.0,
+       "recent": 23.2,
+       "career": 20.6,
+       "vs_opponent": 24.4
+      },
+      {
+       "stat": "rebounds",
+       "label": "rebounds",
+       "season": 6.4,
+       "recent": 6.0,
+       "career": 5.1,
+       "vs_opponent": 3.8
+      },
+      {
+       "stat": "assists",
+       "label": "assists",
+       "season": 8.6,
+       "recent": 10.2,
+       "career": 4.1,
+       "vs_opponent": 3.0
+      },
+      {
+       "stat": "threes",
+       "label": "threes made",
+       "season": 1.1,
+       "recent": 1.2,
+       "career": 1.5,
+       "vs_opponent": 2.8
+      },
+      {
+       "stat": "minutes",
+       "label": "minutes",
+       "season": 36.6,
+       "recent": 38.8,
+       "career": 32.8,
+       "vs_opponent": 35.2
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "date": "2023-01-13",
+       "team": "ORL",
+       "points": 26.0,
+       "rebounds": 5.0,
+       "assists": 2.0,
+       "threes": 5.0,
+       "minutes": 35.0
+      },
+      {
+       "date": "2023-03-09",
+       "team": "ORL",
+       "points": 24.0,
+       "rebounds": 1.0,
+       "assists": 1.0,
+       "threes": 4.0,
+       "minutes": 35.0
+      },
+      {
+       "date": "2023-11-02",
+       "team": "ORL",
+       "points": 21.0,
+       "rebounds": 4.0,
+       "assists": 5.0,
+       "threes": 2.0,
+       "minutes": 38.0
+      },
+      {
+       "date": "2024-02-29",
+       "team": "ORL",
+       "points": 14.0,
+       "rebounds": 3.0,
+       "assists": 6.0,
+       "threes": 0.0,
+       "minutes": 34.0
+      },
+      {
+       "date": "2025-02-01",
+       "team": "ORL",
+       "points": 37.0,
+       "rebounds": 6.0,
+       "assists": 1.0,
+       "threes": 3.0,
+       "minutes": 34.0
+      }
+     ],
+     "summary": "Franz Wagner: 22.0 points, 6.4 rebounds, and 8.6 assists per game this season (10 games). 5 games vs. UTAH since 2022-23: 24.4 points per game, compared with 20.6 in all his games.",
+     "vs_similar": {
+      "games": 13,
+      "baseline_games": 256,
+      "stats": [
+       {
+        "stat": "points",
+        "vs_similar": 22.9,
+        "baseline": 20.6,
+        "change_pct": 11,
+        "label": "points"
+       },
+       {
+        "stat": "rebounds",
+        "vs_similar": 5.8,
+        "baseline": 5.1,
+        "change_pct": 16,
+        "label": "rebounds"
+       },
+       {
+        "stat": "assists",
+        "vs_similar": 3.2,
+        "baseline": 4.0,
+        "change_pct": -22,
+        "label": "assists"
+       },
+       {
+        "stat": "threes",
+        "vs_similar": 1.6,
+        "baseline": 1.5,
+        "change_pct": 7,
+        "label": "threes made"
+       },
+       {
+        "stat": "minutes",
+        "vs_similar": 33.1,
+        "baseline": 32.6,
+        "change_pct": 1,
+        "label": "minutes"
+       }
+      ]
+     }
+    },
+    {
+     "player_id": 4277847,
+     "name": "Wendell Carter Jr.",
+     "position": "C",
+     "headshot_url": "https://a.espncdn.com/i/headshots/nba/players/full/4277847.png",
+     "games_this_season": 10,
+     "vs_opponent_games": 7,
+     "recent_label": "Last 5",
+     "career_label": "Since 2022-23",
+     "stats": [
+      {
+       "stat": "points",
+       "label": "points",
+       "season": 14.1,
+       "recent": 13.4,
+       "career": 11.6,
+       "vs_opponent": 11.7
+      },
+      {
+       "stat": "rebounds",
+       "label": "rebounds",
+       "season": 9.7,
+       "recent": 10.8,
+       "career": 7.6,
+       "vs_opponent": 7.3
+      },
+      {
+       "stat": "assists",
+       "label": "assists",
+       "season": 1.0,
+       "recent": 0.6,
+       "career": 2.0,
+       "vs_opponent": 2.0
+      },
+      {
+       "stat": "threes",
+       "label": "threes made",
+       "season": 1.1,
+       "recent": 1.2,
+       "career": 1.0,
+       "vs_opponent": 1.0
+      },
+      {
+       "stat": "minutes",
+       "label": "minutes",
+       "season": 33.4,
+       "recent": 35.2,
+       "career": 28.1,
+       "vs_opponent": 27.0
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "date": "2024-02-29",
+       "team": "ORL",
+       "points": 6.0,
+       "rebounds": 5.0,
+       "assists": 1.0,
+       "threes": 0.0,
+       "minutes": 22.0
+      },
+      {
+       "date": "2025-01-05",
+       "team": "ORL",
+       "points": 15.0,
+       "rebounds": 6.0,
+       "assists": 2.0,
+       "threes": 1.0,
+       "minutes": 19.0
+      },
+      {
+       "date": "2025-02-01",
+       "team": "ORL",
+       "points": 6.0,
+       "rebounds": 5.0,
+       "assists": 1.0,
+       "threes": 0.0,
+       "minutes": 24.0
+      },
+      {
+       "date": "2025-12-20",
+       "team": "ORL",
+       "points": 14.0,
+       "rebounds": 9.0,
+       "assists": 4.0,
+       "threes": 1.0,
+       "minutes": 37.0
+      },
+      {
+       "date": "2026-02-07",
+       "team": "ORL",
+       "points": 8.0,
+       "rebounds": 6.0,
+       "assists": 1.0,
+       "threes": 0.0,
+       "minutes": 28.0
+      }
+     ],
+     "summary": "Wendell Carter Jr.: 14.1 points, 9.7 rebounds, and 1.0 assists per game this season (10 games). 7 games vs. UTAH since 2022-23: 11.7 points per game, compared with 11.6 in all his games.",
+     "vs_similar": {
+      "games": 15,
+      "baseline_games": 268,
+      "stats": [
+       {
+        "stat": "points",
+        "vs_similar": 11.8,
+        "baseline": 11.8,
+        "change_pct": 0,
+        "label": "points"
+       },
+       {
+        "stat": "rebounds",
+        "vs_similar": 7.6,
+        "baseline": 7.6,
+        "change_pct": 0,
+        "label": "rebounds"
+       },
+       {
+        "stat": "assists",
+        "vs_similar": 2.5,
+        "baseline": 2.0,
+        "change_pct": 29,
+        "label": "assists"
+       },
+       {
+        "stat": "threes",
+        "vs_similar": 0.7,
+        "baseline": 1.0,
+        "change_pct": -26,
+        "label": "threes made"
+       },
+       {
+        "stat": "minutes",
+        "vs_similar": 27.7,
+        "baseline": 27.9,
+        "change_pct": -1,
+        "label": "minutes"
+       }
+      ]
+     }
+    },
+    {
+     "player_id": 4066320,
+     "name": "Desmond Bane",
+     "position": "G",
+     "headshot_url": "https://a.espncdn.com/i/headshots/nba/players/full/4066320.png",
+     "games_this_season": 9,
+     "vs_opponent_games": 12,
+     "recent_label": "Last 5",
+     "career_label": "Since 2022-23",
+     "stats": [
+      {
+       "stat": "points",
+       "label": "points",
+       "season": 17.2,
+       "recent": 19.4,
+       "career": 20.6,
+       "vs_opponent": 24.0
+      },
+      {
+       "stat": "rebounds",
+       "label": "rebounds",
+       "season": 4.1,
+       "recent": 3.8,
+       "career": 4.9,
+       "vs_opponent": 5.2
+      },
+      {
+       "stat": "assists",
+       "label": "assists",
+       "season": 2.4,
+       "recent": 2.8,
+       "career": 4.5,
+       "vs_opponent": 5.0
+      },
+      {
+       "stat": "threes",
+       "label": "threes made",
+       "season": 3.6,
+       "recent": 4.4,
+       "career": 2.6,
+       "vs_opponent": 3.2
+      },
+      {
+       "stat": "minutes",
+       "label": "minutes",
+       "season": 34.7,
+       "recent": 36.6,
+       "career": 33.1,
+       "vs_opponent": 32.7
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "date": "2025-01-25",
+       "team": "MEM",
+       "points": 17.0,
+       "rebounds": 9.0,
+       "assists": 6.0,
+       "threes": 2.0,
+       "minutes": 29.0
+      },
+      {
+       "date": "2025-03-12",
+       "team": "MEM",
+       "points": 17.0,
+       "rebounds": 5.0,
+       "assists": 9.0,
+       "threes": 3.0,
+       "minutes": 33.0
+      },
+      {
+       "date": "2025-03-25",
+       "team": "MEM",
+       "points": 21.0,
+       "rebounds": 4.0,
+       "assists": 6.0,
+       "threes": 2.0,
+       "minutes": 30.0
+      },
+      {
+       "date": "2025-12-20",
+       "team": "ORL",
+       "points": 32.0,
+       "rebounds": 6.0,
+       "assists": 1.0,
+       "threes": 3.0,
+       "minutes": 39.0
+      },
+      {
+       "date": "2026-02-07",
+       "team": "ORL",
+       "points": 22.0,
+       "rebounds": 3.0,
+       "assists": 2.0,
+       "threes": 2.0,
+       "minutes": 36.0
+      }
+     ],
+     "summary": "Desmond Bane: 17.2 points, 4.1 rebounds, and 2.4 assists per game this season (9 games). 12 games vs. UTAH since 2022-23: 24.0 points per game, compared with 20.6 in all his games.",
+     "vs_similar": {
+      "games": 11,
+      "baseline_games": 260,
+      "stats": [
+       {
+        "stat": "points",
+        "vs_similar": 22.0,
+        "baseline": 20.7,
+        "change_pct": 6,
+        "label": "points"
+       },
+       {
+        "stat": "rebounds",
+        "vs_similar": 4.5,
+        "baseline": 4.9,
+        "change_pct": -9,
+        "label": "rebounds"
+       },
+       {
+        "stat": "assists",
+        "vs_similar": 4.5,
+        "baseline": 4.7,
+        "change_pct": -3,
+        "label": "assists"
+       },
+       {
+        "stat": "threes",
+        "vs_similar": 2.1,
+        "baseline": 2.6,
+        "change_pct": -18,
+        "label": "threes made"
+       },
+       {
+        "stat": "minutes",
+        "vs_similar": 29.5,
+        "baseline": 32.9,
+        "change_pct": -10,
+        "label": "minutes"
+       }
+      ]
+     }
+    },
+    {
+     "player_id": 4702382,
+     "name": "Tristan da Silva",
+     "position": "F",
+     "headshot_url": "https://a.espncdn.com/i/headshots/nba/players/full/4702382.png",
+     "games_this_season": 9,
+     "vs_opponent_games": 3,
+     "recent_label": "Last 5",
+     "career_label": "Since 2022-23",
+     "stats": [
+      {
+       "stat": "points",
+       "label": "points",
+       "season": 15.1,
+       "recent": 15.6,
+       "career": 8.6,
+       "vs_opponent": 7.7
+      },
+      {
+       "stat": "rebounds",
+       "label": "rebounds",
+       "season": 3.7,
+       "recent": 4.6,
+       "career": 3.5,
+       "vs_opponent": 5.0
+      },
+      {
+       "stat": "assists",
+       "label": "assists",
+       "season": 1.7,
+       "recent": 1.6,
+       "career": 1.5,
+       "vs_opponent": 1.3
+      },
+      {
+       "stat": "threes",
+       "label": "threes made",
+       "season": 3.6,
+       "recent": 3.6,
+       "career": 1.4,
+       "vs_opponent": 1.0
+      },
+      {
+       "stat": "minutes",
+       "label": "minutes",
+       "season": 30.4,
+       "recent": 31.8,
+       "career": 23.2,
+       "vs_opponent": 25.3
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "date": "2025-01-05",
+       "team": "ORL",
+       "points": 6.0,
+       "rebounds": 9.0,
+       "assists": 2.0,
+       "threes": 0.0,
+       "minutes": 31.0
+      },
+      {
+       "date": "2025-02-01",
+       "team": "ORL",
+       "points": 9.0,
+       "rebounds": 4.0,
+       "assists": 0.0,
+       "threes": 1.0,
+       "minutes": 25.0
+      },
+      {
+       "date": "2026-02-07",
+       "team": "ORL",
+       "points": 8.0,
+       "rebounds": 2.0,
+       "assists": 2.0,
+       "threes": 2.0,
+       "minutes": 20.0
+      }
+     ],
+     "summary": "Tristan da Silva: 15.1 points, 3.7 rebounds, and 1.7 assists per game this season (9 games). 3 games vs. UTAH since 2022-23: 7.7 points per game, compared with 8.6 in all his games. Very small sample.",
+     "vs_similar": {
+      "games": 8,
+      "baseline_games": 160,
+      "stats": [
+       {
+        "stat": "points",
+        "vs_similar": 7.9,
+        "baseline": 8.9,
+        "change_pct": -12,
+        "label": "points"
+       },
+       {
+        "stat": "rebounds",
+        "vs_similar": 4.1,
+        "baseline": 3.5,
+        "change_pct": 17,
+        "label": "rebounds"
+       },
+       {
+        "stat": "assists",
+        "vs_similar": 1.5,
+        "baseline": 1.6,
+        "change_pct": -5,
+        "label": "assists"
+       },
+       {
+        "stat": "threes",
+        "vs_similar": 1.6,
+        "baseline": 1.4,
+        "change_pct": 12,
+        "label": "threes made"
+       },
+       {
+        "stat": "minutes",
+        "vs_similar": 25.1,
+        "baseline": 23.8,
+        "change_pct": 6,
+        "label": "minutes"
+       }
+      ]
+     }
+    },
+    {
+     "player_id": 5239561,
+     "name": "Jase Richardson",
+     "position": "G",
+     "headshot_url": "https://a.espncdn.com/i/headshots/nba/players/full/5239561.png",
+     "games_this_season": 10,
+     "vs_opponent_games": 2,
+     "recent_label": "Last 5",
+     "career_label": "Since 2022-23",
+     "stats": [
+      {
+       "stat": "points",
+       "label": "points",
+       "season": 5.9,
+       "recent": 6.2,
+       "career": 4.7,
+       "vs_opponent": 7.5
+      },
+      {
+       "stat": "rebounds",
+       "label": "rebounds",
+       "season": 2.0,
+       "recent": 1.8,
+       "career": 1.3,
+       "vs_opponent": 0.5
+      },
+      {
+       "stat": "assists",
+       "label": "assists",
+       "season": 2.5,
+       "recent": 3.2,
+       "career": 1.3,
+       "vs_opponent": 2.5
+      },
+      {
+       "stat": "threes",
+       "label": "threes made",
+       "season": 0.7,
+       "recent": 0.4,
+       "career": 0.6,
+       "vs_opponent": 1.5
+      },
+      {
+       "stat": "minutes",
+       "label": "minutes",
+       "season": 21.8,
+       "recent": 25.2,
+       "career": 12.5,
+       "vs_opponent": 18.5
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "date": "2025-12-20",
+       "team": "ORL",
+       "points": 10.0,
+       "rebounds": 1.0,
+       "assists": 3.0,
+       "threes": 2.0,
+       "minutes": 23.0
+      },
+      {
+       "date": "2026-02-07",
+       "team": "ORL",
+       "points": 5.0,
+       "rebounds": 0.0,
+       "assists": 2.0,
+       "threes": 1.0,
+       "minutes": 14.0
+      }
+     ],
+     "summary": "Jase Richardson: 5.9 points, 2.0 rebounds, and 2.5 assists per game this season (10 games). 2 games vs. UTAH since 2022-23: 7.5 points per game, compared with 4.7 in all his games. Very small sample.",
+     "vs_similar": {
+      "games": 1,
+      "baseline_games": 64,
+      "stats": [
+       {
+        "stat": "points",
+        "vs_similar": 2.0,
+        "baseline": 4.7,
+        "change_pct": -57,
+        "label": "points"
+       },
+       {
+        "stat": "rebounds",
+        "vs_similar": 2.0,
+        "baseline": 1.3,
+        "change_pct": 54,
+        "label": "rebounds"
+       },
+       {
+        "stat": "assists",
+        "vs_similar": 2.0,
+        "baseline": 1.3,
+        "change_pct": 54,
+        "label": "assists"
+       },
+       {
+        "stat": "threes",
+        "vs_similar": 0.0,
+        "baseline": 0.5,
+        "change_pct": -100,
+        "label": "threes made"
+       },
+       {
+        "stat": "minutes",
+        "vs_similar": 12.0,
+        "baseline": 12.6,
+        "change_pct": -5,
+        "label": "minutes"
+       }
+      ]
+     }
+    }
+   ],
+   "home": [
+    {
+     "player_id": 4873138,
+     "name": "Ace Bailey",
+     "position": "G",
+     "headshot_url": "https://a.espncdn.com/i/headshots/nba/players/full/4873138.png",
+     "games_this_season": 11,
+     "vs_opponent_games": 2,
+     "recent_label": "Last 5",
+     "career_label": "Since 2022-23",
+     "stats": [
+      {
+       "stat": "points",
+       "label": "points",
+       "season": 12.9,
+       "recent": 12.4,
+       "career": 13.7,
+       "vs_opponent": 12.0
+      },
+      {
+       "stat": "rebounds",
+       "label": "rebounds",
+       "season": 6.5,
+       "recent": 5.0,
+       "career": 4.5,
+       "vs_opponent": 3.5
+      },
+      {
+       "stat": "assists",
+       "label": "assists",
+       "season": 1.9,
+       "recent": 1.6,
+       "career": 1.8,
+       "vs_opponent": 3.0
+      },
+      {
+       "stat": "threes",
+       "label": "threes made",
+       "season": 1.4,
+       "recent": 1.2,
+       "career": 1.8,
+       "vs_opponent": 1.5
+      },
+      {
+       "stat": "minutes",
+       "label": "minutes",
+       "season": 31.0,
+       "recent": 31.0,
+       "career": 28.0,
+       "vs_opponent": 32.5
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "date": "2025-12-20",
+       "team": "UTAH",
+       "points": 14.0,
+       "rebounds": 4.0,
+       "assists": 3.0,
+       "threes": 2.0,
+       "minutes": 34.0
+      },
+      {
+       "date": "2026-02-07",
+       "team": "UTAH",
+       "points": 10.0,
+       "rebounds": 3.0,
+       "assists": 3.0,
+       "threes": 1.0,
+       "minutes": 31.0
+      }
+     ],
+     "summary": "Ace Bailey: 12.9 points, 6.5 rebounds, and 1.9 assists per game this season (11 games). 2 games vs. ORL since 2022-23: 12.0 points per game, compared with 13.7 in all his games. Very small sample.",
+     "vs_similar": {
+      "games": 8,
+      "baseline_games": 83,
+      "stats": [
+       {
+        "stat": "points",
+        "vs_similar": 15.1,
+        "baseline": 13.7,
+        "change_pct": 11,
+        "label": "points"
+       },
+       {
+        "stat": "rebounds",
+        "vs_similar": 3.8,
+        "baseline": 4.5,
+        "change_pct": -17,
+        "label": "rebounds"
+       },
+       {
+        "stat": "assists",
+        "vs_similar": 2.1,
+        "baseline": 1.8,
+        "change_pct": 16,
+        "label": "assists"
+       },
+       {
+        "stat": "threes",
+        "vs_similar": 2.0,
+        "baseline": 1.8,
+        "change_pct": 9,
+        "label": "threes made"
+       },
+       {
+        "stat": "minutes",
+        "vs_similar": 29.8,
+        "baseline": 28.0,
+        "change_pct": 6,
+        "label": "minutes"
+       }
+      ]
+     }
+    },
+    {
+     "player_id": 5041955,
+     "name": "Darryn Peterson",
+     "position": "G",
+     "headshot_url": "https://a.espncdn.com/i/headshots/nba/players/full/5041955.png",
+     "games_this_season": 11,
+     "vs_opponent_games": 0,
+     "recent_label": "Last 5",
+     "career_label": "Since 2022-23",
+     "stats": [
+      {
+       "stat": "points",
+       "label": "points",
+       "season": 15.7,
+       "recent": 18.6,
+       "career": 15.7,
+       "vs_opponent": null
+      },
+      {
+       "stat": "rebounds",
+       "label": "rebounds",
+       "season": 4.0,
+       "recent": 3.6,
+       "career": 4.0,
+       "vs_opponent": null
+      },
+      {
+       "stat": "assists",
+       "label": "assists",
+       "season": 3.9,
+       "recent": 5.2,
+       "career": 3.9,
+       "vs_opponent": null
+      },
+      {
+       "stat": "threes",
+       "label": "threes made",
+       "season": 2.1,
+       "recent": 2.6,
+       "career": 2.1,
+       "vs_opponent": null
+      },
+      {
+       "stat": "minutes",
+       "label": "minutes",
+       "season": 30.7,
+       "recent": 31.8,
+       "career": 30.7,
+       "vs_opponent": null
+      }
+     ],
+     "vs_opponent_log": [],
+     "summary": "Darryn Peterson: 15.7 points, 4.0 rebounds, and 3.9 assists per game this season (11 games). Hasn't played ORL since 2022-23.",
+     "vs_similar": {
+      "games": 0
+     }
+    },
+    {
+     "player_id": 4433627,
+     "name": "Keyonte George",
+     "position": "G",
+     "headshot_url": "https://a.espncdn.com/i/headshots/nba/players/full/4433627.png",
+     "games_this_season": 10,
+     "vs_opponent_games": 5,
+     "recent_label": "Last 5",
+     "career_label": "Since 2022-23",
+     "stats": [
+      {
+       "stat": "points",
+       "label": "points",
+       "season": 21.1,
+       "recent": 17.8,
+       "career": 17.4,
+       "vs_opponent": 13.8
+      },
+      {
+       "stat": "rebounds",
+       "label": "rebounds",
+       "season": 4.3,
+       "recent": 4.6,
+       "career": 3.4,
+       "vs_opponent": 2.8
+      },
+      {
+       "stat": "assists",
+       "label": "assists",
+       "season": 6.4,
+       "recent": 6.0,
+       "career": 5.4,
+       "vs_opponent": 5.2
+      },
+      {
+       "stat": "threes",
+       "label": "threes made",
+       "season": 1.8,
+       "recent": 0.8,
+       "career": 2.3,
+       "vs_opponent": 1.0
+      },
+      {
+       "stat": "minutes",
+       "label": "minutes",
+       "season": 32.1,
+       "recent": 31.4,
+       "career": 30.3,
+       "vs_opponent": 25.4
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "date": "2023-11-02",
+       "team": "UTAH",
+       "points": 6.0,
+       "rebounds": 2.0,
+       "assists": 3.0,
+       "threes": 1.0,
+       "minutes": 17.0
+      },
+      {
+       "date": "2024-02-29",
+       "team": "UTAH",
+       "points": 19.0,
+       "rebounds": 3.0,
+       "assists": 9.0,
+       "threes": 2.0,
+       "minutes": 31.0
+      },
+      {
+       "date": "2025-02-01",
+       "team": "UTAH",
+       "points": 12.0,
+       "rebounds": 4.0,
+       "assists": 4.0,
+       "threes": 0.0,
+       "minutes": 24.0
+      },
+      {
+       "date": "2025-12-20",
+       "team": "UTAH",
+       "points": 27.0,
+       "rebounds": 4.0,
+       "assists": 9.0,
+       "threes": 2.0,
+       "minutes": 42.0
+      },
+      {
+       "date": "2026-02-07",
+       "team": "UTAH",
+       "points": 5.0,
+       "rebounds": 1.0,
+       "assists": 1.0,
+       "threes": 0.0,
+       "minutes": 13.0
+      }
+     ],
+     "summary": "Keyonte George: 21.1 points, 4.3 rebounds, and 6.4 assists per game this season (10 games). 5 games vs. ORL since 2022-23: 13.8 points per game, compared with 17.4 in all his games.",
+     "vs_similar": {
+      "games": 16,
+      "baseline_games": 206,
+      "stats": [
+       {
+        "stat": "points",
+        "vs_similar": 18.9,
+        "baseline": 17.4,
+        "change_pct": 9,
+        "label": "points"
+       },
+       {
+        "stat": "rebounds",
+        "vs_similar": 3.5,
+        "baseline": 3.4,
+        "change_pct": 2,
+        "label": "rebounds"
+       },
+       {
+        "stat": "assists",
+        "vs_similar": 6.3,
+        "baseline": 5.4,
+        "change_pct": 18,
+        "label": "assists"
+       },
+       {
+        "stat": "threes",
+        "vs_similar": 2.4,
+        "baseline": 2.3,
+        "change_pct": 6,
+        "label": "threes made"
+       },
+       {
+        "stat": "minutes",
+        "vs_similar": 32.4,
+        "baseline": 30.3,
+        "change_pct": 7,
+        "label": "minutes"
+       }
+      ]
+     }
+    },
+    {
+     "player_id": 4066336,
+     "name": "Lauri Markkanen",
+     "position": "F",
+     "headshot_url": "https://a.espncdn.com/i/headshots/nba/players/full/4066336.png",
+     "games_this_season": 8,
+     "vs_opponent_games": 6,
+     "recent_label": "Last 5",
+     "career_label": "Since 2022-23",
+     "stats": [
+      {
+       "stat": "points",
+       "label": "points",
+       "season": 18.0,
+       "recent": 16.4,
+       "career": 23.5,
+       "vs_opponent": 23.0
+      },
+      {
+       "stat": "rebounds",
+       "label": "rebounds",
+       "season": 6.8,
+       "recent": 6.4,
+       "career": 7.5,
+       "vs_opponent": 7.5
+      },
+      {
+       "stat": "assists",
+       "label": "assists",
+       "season": 2.0,
+       "recent": 1.8,
+       "career": 1.9,
+       "vs_opponent": 1.0
+      },
+      {
+       "stat": "threes",
+       "label": "threes made",
+       "season": 3.6,
+       "recent": 3.8,
+       "career": 3.0,
+       "vs_opponent": 3.5
+      },
+      {
+       "stat": "minutes",
+       "label": "minutes",
+       "season": 30.9,
+       "recent": 27.8,
+       "career": 33.3,
+       "vs_opponent": 32.8
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "date": "2023-03-09",
+       "team": "UTAH",
+       "points": 31.0,
+       "rebounds": 5.0,
+       "assists": 2.0,
+       "threes": 3.0,
+       "minutes": 34.0
+      },
+      {
+       "date": "2023-11-02",
+       "team": "UTAH",
+       "points": 22.0,
+       "rebounds": 7.0,
+       "assists": 1.0,
+       "threes": 4.0,
+       "minutes": 33.0
+      },
+      {
+       "date": "2024-02-29",
+       "team": "UTAH",
+       "points": 18.0,
+       "rebounds": 3.0,
+       "assists": 0.0,
+       "threes": 4.0,
+       "minutes": 34.0
+      },
+      {
+       "date": "2025-02-01",
+       "team": "UTAH",
+       "points": 12.0,
+       "rebounds": 11.0,
+       "assists": 0.0,
+       "threes": 4.0,
+       "minutes": 33.0
+      },
+      {
+       "date": "2026-02-07",
+       "team": "UTAH",
+       "points": 27.0,
+       "rebounds": 7.0,
+       "assists": 1.0,
+       "threes": 3.0,
+       "minutes": 27.0
+      }
+     ],
+     "summary": "Lauri Markkanen: 18.0 points, 6.8 rebounds, and 2.0 assists per game this season (8 games). 6 games vs. ORL since 2022-23: 23.0 points per game, compared with 23.5 in all his games.",
+     "vs_similar": {
+      "games": 17,
+      "baseline_games": 218,
+      "stats": [
+       {
+        "stat": "points",
+        "vs_similar": 23.7,
+        "baseline": 23.5,
+        "change_pct": 1,
+        "label": "points"
+       },
+       {
+        "stat": "rebounds",
+        "vs_similar": 7.4,
+        "baseline": 7.5,
+        "change_pct": -1,
+        "label": "rebounds"
+       },
+       {
+        "stat": "assists",
+        "vs_similar": 2.1,
+        "baseline": 1.9,
+        "change_pct": 13,
+        "label": "assists"
+       },
+       {
+        "stat": "threes",
+        "vs_similar": 2.5,
+        "baseline": 3.0,
+        "change_pct": -16,
+        "label": "threes made"
+       },
+       {
+        "stat": "minutes",
+        "vs_similar": 33.1,
+        "baseline": 33.3,
+        "change_pct": -1,
+        "label": "minutes"
+       }
+      ]
+     }
+    },
+    {
+     "player_id": 4397077,
+     "name": "Jaxson Hayes",
+     "position": "C",
+     "headshot_url": "https://a.espncdn.com/i/headshots/nba/players/full/4397077.png",
+     "games_this_season": 10,
+     "vs_opponent_games": 6,
+     "recent_label": "Last 5",
+     "career_label": "Since 2022-23",
+     "stats": [
+      {
+       "stat": "points",
+       "label": "points",
+       "season": 8.3,
+       "recent": 8.6,
+       "career": 5.8,
+       "vs_opponent": 5.7
+      },
+      {
+       "stat": "rebounds",
+       "label": "rebounds",
+       "season": 5.9,
+       "recent": 5.2,
+       "career": 3.7,
+       "vs_opponent": 4.2
+      },
+      {
+       "stat": "assists",
+       "label": "assists",
+       "season": 1.8,
+       "recent": 1.2,
+       "career": 0.8,
+       "vs_opponent": 0.3
+      },
+      {
+       "stat": "threes",
+       "label": "threes made",
+       "season": 0.0,
+       "recent": 0.0,
+       "career": 0.0,
+       "vs_opponent": 0.0
+      },
+      {
+       "stat": "minutes",
+       "label": "minutes",
+       "season": 24.5,
+       "recent": 23.4,
+       "career": 15.9,
+       "vs_opponent": 16.7
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "date": "2023-02-27",
+       "team": "NO",
+       "points": 6.0,
+       "rebounds": 5.0,
+       "assists": 0.0,
+       "threes": 0.0,
+       "minutes": 25.0
+      },
+      {
+       "date": "2023-10-30",
+       "team": "LAL",
+       "points": 0.0,
+       "rebounds": 2.0,
+       "assists": 0.0,
+       "threes": 0.0,
+       "minutes": 10.0
+      },
+      {
+       "date": "2023-11-04",
+       "team": "LAL",
+       "points": 2.0,
+       "rebounds": 1.0,
+       "assists": 1.0,
+       "threes": 0.0,
+       "minutes": 11.0
+      },
+      {
+       "date": "2025-03-24",
+       "team": "LAL",
+       "points": 4.0,
+       "rebounds": 4.0,
+       "assists": 0.0,
+       "threes": 0.0,
+       "minutes": 18.0
+      },
+      {
+       "date": "2026-03-21",
+       "team": "LAL",
+       "points": 8.0,
+       "rebounds": 7.0,
+       "assists": 0.0,
+       "threes": 0.0,
+       "minutes": 19.0
+      }
+     ],
+     "summary": "Jaxson Hayes: 8.3 points, 5.9 rebounds, and 1.8 assists per game this season (10 games). 6 games vs. ORL since 2022-23: 5.7 points per game, compared with 5.8 in all his games.",
+     "vs_similar": {
+      "games": 11,
+      "baseline_games": 250,
+      "stats": [
+       {
+        "stat": "points",
+        "vs_similar": 3.6,
+        "baseline": 6.0,
+        "change_pct": -39,
+        "label": "points"
+       },
+       {
+        "stat": "rebounds",
+        "vs_similar": 3.5,
+        "baseline": 3.8,
+        "change_pct": -9,
+        "label": "rebounds"
+       },
+       {
+        "stat": "assists",
+        "vs_similar": 0.8,
+        "baseline": 0.8,
+        "change_pct": 1,
+        "label": "assists"
+       },
+       {
+        "stat": "threes",
+        "vs_similar": 0.0,
+        "baseline": 0.0,
+        "change_pct": -100,
+        "label": "threes made"
+       },
+       {
+        "stat": "minutes",
+        "vs_similar": 14.9,
+        "baseline": 16.2,
+        "change_pct": -8,
+        "label": "minutes"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  "injuries": {
+   "available": true,
+   "away": {
+    "team": "ORL",
+    "statuses_published": true,
+    "updated": "2026-11-11T20:00Z",
+    "note": "Statuses and news from ESPN. Importance comes from minutes played this season.",
+    "players": [
+     {
+      "name": "Wendell Carter Jr.",
+      "position": "C",
+      "injury": "Knee",
+      "status": "Out",
+      "practice": null,
+      "news": "Wendell Carter Jr. (knee) is listed as out. (Test value.)",
+      "news_date": "2026-11-11T20:00Z",
+      "minutes_per_game": 33.4,
+      "importance": "Starter",
+      "impact": {
+       "unit": "team",
+       "net_with": -0.6,
+       "net_without": -0.1,
+       "record_with": "48-44",
+       "record_without": "2-2",
+       "games_with": 92,
+       "games_without": 4,
+       "points_per_game": -0.2,
+       "raw_points_per_game": -0.5,
+       "small_sample": false,
+       "summary": "In 4 games Wendell Carter Jr. missed since 2025-26, ORL went 2-2 and played about the same as with him (net rating -0.1 without him, -0.6 with; adjusted for sample size)."
+      }
+     }
+    ],
+    "headlines": [
+     "Wendell Carter Jr. (C, starter, Knee): Out"
+    ],
+    "news_source": "ESPN"
+   },
+   "home": {
+    "team": "UTAH",
+    "statuses_published": true,
+    "updated": "2026-11-11T20:00Z",
+    "note": "Statuses and news from ESPN. Importance comes from minutes played this season.",
+    "players": [
+     {
+      "name": "Ace Bailey",
+      "position": "G",
+      "injury": "Back",
+      "status": "Day-To-Day",
+      "practice": null,
+      "news": "Ace Bailey (back) is listed as day-to-day. (Test value.)",
+      "news_date": "2026-11-11T20:00Z",
+      "minutes_per_game": 31.0,
+      "importance": "Starter",
+      "impact": {
+       "unit": "team",
+       "net_with": -9.1,
+       "net_without": -11.2,
+       "record_with": "14-57",
+       "record_without": "3-7",
+       "games_with": 71,
+       "games_without": 10,
+       "points_per_game": 1.4,
+       "raw_points_per_game": 2.3,
+       "small_sample": false,
+       "summary": "In 10 games Ace Bailey missed since 2025-26, UTAH went 3-7 and was about 1.4 points per game worse than with him (net rating -11.2 without him, -9.1 with; adjusted for sample size)."
+      }
+     }
+    ],
+    "headlines": [
+     "Ace Bailey (G, starter, Back): Day-To-Day"
+    ],
+    "news_source": "ESPN"
+   }
+  },
+  "defense_styles": {
+   "away": {
+    "team": "ORL",
+    "based_on_season": 2027,
+    "traits": [
+     "cleans the defensive glass",
+     "runs shooters off the three-point line",
+     "allows good shooting"
+    ],
+    "neighbors": [
+     {
+      "team": "ORL",
+      "season": 2026,
+      "traits": [
+       "runs shooters off the three-point line",
+       "cleans the defensive glass"
+      ]
+     },
+     {
+      "team": "CHA",
+      "season": 2027,
+      "traits": [
+       "plays at a slow pace",
+       "cleans the defensive glass"
+      ]
+     },
+     {
+      "team": "LAL",
+      "season": 2026,
+      "traits": [
+       "rarely fouls",
+       "plays at a slow pace"
+      ]
+     },
+     {
+      "team": "LAC",
+      "season": 2023,
+      "traits": [
+       "rarely fouls",
+       "plays at a slow pace"
+      ]
+     },
+     {
+      "team": "BKN",
+      "season": 2024,
+      "traits": [
+       "gives up fast-break points",
+       "rarely forces turnovers"
+      ]
+     },
+     {
+      "team": "NY",
+      "season": 2025,
+      "traits": [
+       "plays at a slow pace",
+       "runs shooters off the three-point line"
+      ]
+     },
+     {
+      "team": "GS",
+      "season": 2026,
+      "traits": [
+       "forces lots of turnovers",
+       "allows good shooting"
+      ]
+     },
+     {
+      "team": "DAL",
+      "season": 2024,
+      "traits": [
+       "gives up fast-break points",
+       "plays at a fast pace"
+      ]
+     }
+    ]
+   },
+   "home": {
+    "team": "UTAH",
+    "based_on_season": 2027,
+    "traits": [
+     "sends opponents to the line",
+     "gives up fast-break points",
+     "cleans the defensive glass"
+    ],
+    "neighbors": [
+     {
+      "team": "ORL",
+      "season": 2026,
+      "traits": [
+       "runs shooters off the three-point line",
+       "cleans the defensive glass"
+      ]
+     },
+     {
+      "team": "POR",
+      "season": 2027,
+      "traits": [
+       "sends opponents to the line",
+       "rarely forces turnovers"
+      ]
+     },
+     {
+      "team": "TOR",
+      "season": 2025,
+      "traits": [
+       "sends opponents to the line",
+       "gives up offensive rebounds"
+      ]
+     },
+     {
+      "team": "DET",
+      "season": 2024,
+      "traits": [
+       "sends opponents to the line",
+       "rarely forces turnovers"
+      ]
+     },
+     {
+      "team": "GS",
+      "season": 2024,
+      "traits": [
+       "rarely forces turnovers",
+       "plays at a fast pace"
+      ]
+     },
+     {
+      "team": "DET",
+      "season": 2025,
+      "traits": [
+       "protects the paint",
+       "sends opponents to the line"
+      ]
+     },
+     {
+      "team": "PHX",
+      "season": 2023,
+      "traits": [
+       "sends opponents to the line",
+       "contests shots well"
+      ]
+     },
+     {
+      "team": "POR",
+      "season": 2026,
+      "traits": [
+       "runs shooters off the three-point line",
+       "gives up fast-break points"
+      ]
+     }
+    ]
+   }
+  },
+  "teams": {
+   "away": {
+    "team": "ORL",
+    "games": 10,
+    "record": "3-7",
+    "last10": "3-7",
+    "off_rtg": 105.2,
+    "def_rtg": 112.5,
+    "net_rtg": -7.4,
+    "net_rank": 24,
+    "pace": 101.9,
+    "pace_rank": 21,
+    "count": 30,
+    "offense": {
+     "overall": 24,
+     "shooting": 20,
+     "turnovers": 27,
+     "rebounding": 16,
+     "free_throws": 23
+    },
+    "defense": {
+     "overall": 21,
+     "shooting": 23,
+     "turnovers": 15,
+     "rebounding": 4,
+     "free_throws": 18
+    },
+    "four_factors": {
+     "efg": 52.6,
+     "tov_pct": 17.1,
+     "oreb_pct": 26.5,
+     "ft_rate": 0.208,
+     "opp_efg": 55.7,
+     "forced_tov_pct": 15.2,
+     "opp_oreb_pct": 23.8,
+     "opp_ft_rate": 0.222
+    }
+   },
+   "home": {
+    "team": "UTAH",
+    "games": 11,
+    "record": "1-10",
+    "last10": "1-9",
+    "off_rtg": 101.9,
+    "def_rtg": 112.6,
+    "net_rtg": -10.8,
+    "net_rank": 26,
+    "pace": 104.5,
+    "pace_rank": 5,
+    "count": 30,
+    "offense": {
+     "overall": 29,
+     "shooting": 28,
+     "turnovers": 25,
+     "rebounding": 18,
+     "free_throws": 14
+    },
+    "defense": {
+     "overall": 22,
+     "shooting": 11,
+     "turnovers": 23,
+     "rebounding": 5,
+     "free_throws": 30
+    },
+    "four_factors": {
+     "efg": 50.3,
+     "tov_pct": 16.8,
+     "oreb_pct": 25.7,
+     "ft_rate": 0.22,
+     "opp_efg": 52.0,
+     "forced_tov_pct": 13.9,
+     "opp_oreb_pct": 24.2,
+     "opp_ft_rate": 0.312
+    }
+   }
+  },
+  "matchups": [
+   {
+    "unit": "overall",
+    "offense": "UTAH",
+    "defense": "ORL",
+    "offense_rank": 29,
+    "defense_rank": 21,
+    "favors": "ORL",
+    "strength": "slight",
+    "summary": "UTAH's offense (29th) vs. ORL's defense (21st): slight edge ORL"
+   },
+   {
+    "unit": "shooting",
+    "offense": "UTAH",
+    "defense": "ORL",
+    "offense_rank": 28,
+    "defense_rank": 23,
+    "favors": null,
+    "strength": null,
+    "summary": "UTAH's shooting (28th) vs. ORL's shot defense (23rd): even"
+   },
+   {
+    "unit": "turnovers",
+    "offense": "UTAH",
+    "defense": "ORL",
+    "offense_rank": 25,
+    "defense_rank": 15,
+    "favors": "ORL",
+    "strength": "slight",
+    "summary": "UTAH's ball security (25th) vs. ORL's turnover forcing (15th): slight edge ORL"
+   },
+   {
+    "unit": "rebounding",
+    "offense": "UTAH",
+    "defense": "ORL",
+    "offense_rank": 18,
+    "defense_rank": 4,
+    "favors": "ORL",
+    "strength": "slight",
+    "summary": "UTAH's offensive rebounding (18th) vs. ORL's defensive rebounding (4th): slight edge ORL"
+   },
+   {
+    "unit": "free_throws",
+    "offense": "UTAH",
+    "defense": "ORL",
+    "offense_rank": 14,
+    "defense_rank": 18,
+    "favors": null,
+    "strength": null,
+    "summary": "UTAH's free-throw drawing (14th) vs. ORL's foul avoidance (18th): even"
+   },
+   {
+    "unit": "overall",
+    "offense": "ORL",
+    "defense": "UTAH",
+    "offense_rank": 24,
+    "defense_rank": 22,
+    "favors": null,
+    "strength": null,
+    "summary": "ORL's offense (24th) vs. UTAH's defense (22nd): even"
+   },
+   {
+    "unit": "shooting",
+    "offense": "ORL",
+    "defense": "UTAH",
+    "offense_rank": 20,
+    "defense_rank": 11,
+    "favors": "UTAH",
+    "strength": "slight",
+    "summary": "ORL's shooting (20th) vs. UTAH's shot defense (11th): slight edge UTAH"
+   },
+   {
+    "unit": "turnovers",
+    "offense": "ORL",
+    "defense": "UTAH",
+    "offense_rank": 27,
+    "defense_rank": 23,
+    "favors": null,
+    "strength": null,
+    "summary": "ORL's ball security (27th) vs. UTAH's turnover forcing (23rd): even"
+   },
+   {
+    "unit": "rebounding",
+    "offense": "ORL",
+    "defense": "UTAH",
+    "offense_rank": 16,
+    "defense_rank": 5,
+    "favors": "UTAH",
+    "strength": "slight",
+    "summary": "ORL's offensive rebounding (16th) vs. UTAH's defensive rebounding (5th): slight edge UTAH"
+   },
+   {
+    "unit": "free_throws",
+    "offense": "ORL",
+    "defense": "UTAH",
+    "offense_rank": 23,
+    "defense_rank": 30,
+    "favors": null,
+    "strength": null,
+    "summary": "ORL's free-throw drawing (23rd) vs. UTAH's foul avoidance (30th): even"
+   }
+  ],
+  "key_matchups": [],
+  "notes": []
+ },
+ "changes": {
+  "tracking_since": "2026-11-09T12:00:00+00:00",
+  "changes": [
+   {
+    "kind": "injury",
+    "text": "Wendell Carter Jr. (ORL): Day-To-Day \u2192 Out",
+    "tone": "red",
+    "at": "2026-11-11T18:30:00+00:00"
+   },
+   {
+    "kind": "line",
+    "text": "Spread moved: 5.5 \u2192 6.5",
+    "tone": "blue",
+    "at": "2026-11-11T15:00:00+00:00"
+   }
+  ]
+ }
+}

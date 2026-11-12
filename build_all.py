@@ -12,6 +12,7 @@ STEPS = [
     "situation_effects.py",    # historical travel and rest evidence
     "build_snap_data.py",      # snap shares, for injury impact
     "build_defense_styles.py", # defense styles, for similar-defense matchups
+    "build_nba_data.py",       # NBA schedules, box scores, ratings inputs, and situation evidence
 ]
 
 for step in STEPS:

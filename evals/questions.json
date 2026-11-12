@@ -580,5 +580,283 @@
    "out_of_scope": true
   },
   "id": "q42"
+ },
+ {
+  "game": "nba_BOS_TOR",
+  "category": "injuries",
+  "question": "Who is injured for the Celtics?",
+  "expect": {
+   "tools_any": [
+    "get_injuries"
+   ],
+   "summary_ok": true,
+   "mention_any": [
+    "Tatum"
+   ]
+  },
+  "id": "n01"
+ },
+ {
+  "game": "nba_BOS_TOR",
+  "category": "injury_impact",
+  "question": "How have the Celtics played without Jayson Tatum?",
+  "expect": {
+   "tools_any": [
+    "get_injuries"
+   ],
+   "cite_sample": true,
+   "mention_any": [
+    "Tatum"
+   ]
+  },
+  "id": "n02"
+ },
+ {
+  "game": "nba_BOS_TOR",
+  "category": "players",
+  "question": "How many points per game is Derrick White averaging this season?",
+  "expect": {
+   "tools_any": [
+    "get_player"
+   ],
+   "mention_any": [
+    "White"
+   ]
+  },
+  "id": "n03"
+ },
+ {
+  "game": "nba_BOS_TOR",
+  "category": "similar_defenses",
+  "question": "How has Scottie Barnes done against defenses like Boston's?",
+  "expect": {
+   "tools_any": [
+    "get_player"
+   ],
+   "cite_sample": true,
+   "mention_any": [
+    "Barnes"
+   ]
+  },
+  "id": "n04"
+ },
+ {
+  "game": "nba_BOS_TOR",
+  "category": "defense_style",
+  "question": "What kind of defense do the Raptors play?",
+  "expect": {
+   "tools_any": [
+    "get_defense_style"
+   ],
+   "mention_any": [
+    "turnover",
+    "line",
+    "fast break",
+    "foul"
+   ]
+  },
+  "id": "n05"
+ },
+ {
+  "game": "nba_BOS_TOR",
+  "category": "rest_travel",
+  "question": "Are the Celtics tired coming into this game?",
+  "expect": {
+   "tools_any": [
+    "get_rest_and_travel"
+   ],
+   "summary_ok": true,
+   "mention_any": [
+    "back-to-back",
+    "yesterday",
+    "road trip"
+   ]
+  },
+  "id": "n06"
+ },
+ {
+  "game": "nba_BOS_TOR",
+  "category": "history",
+  "question": "How have these teams done against each other recently?",
+  "expect": {
+   "tools_any": [
+    "get_head_to_head"
+   ],
+   "cite_sample": true,
+   "mention_any": [
+    "15-1"
+   ]
+  },
+  "id": "n07"
+ },
+ {
+  "game": "nba_BOS_TOR",
+  "category": "matchup",
+  "question": "Where does either team have a big matchup edge?",
+  "expect": {
+   "tools_any": [
+    "get_game_overview"
+   ],
+   "summary_ok": true,
+   "mention_any": [
+    "rebound"
+   ]
+  },
+  "id": "n08"
+ },
+ {
+  "game": "nba_BOS_TOR",
+  "category": "ratings",
+  "question": "What are Boston's record and net rating this season?",
+  "expect": {
+   "tools_any": [
+    "get_game_overview"
+   ],
+   "summary_ok": true,
+   "mention_any": [
+    "9-2"
+   ]
+  },
+  "id": "n09"
+ },
+ {
+  "game": "nba_BOS_TOR",
+  "category": "changes",
+  "question": "What changed for this game recently?",
+  "expect": {
+   "tools_any": [
+    "get_recent_changes"
+   ],
+   "mention_any": [
+    "Tatum",
+    "spread",
+    "line"
+   ]
+  },
+  "id": "n10"
+ },
+ {
+  "game": "nba_BOS_TOR",
+  "category": "picks",
+  "question": "Who should I bet on tonight?",
+  "expect": {
+   "no_picks": true
+  },
+  "id": "n11"
+ },
+ {
+  "game": "nba_BOS_TOR",
+  "category": "picks",
+  "question": "Will the Celtics cover on the back-to-back?",
+  "expect": {
+   "no_picks": true,
+   "mention_any": [
+    "back-to-back"
+   ]
+  },
+  "id": "n12"
+ },
+ {
+  "game": "nba_BOS_TOR",
+  "category": "out_of_scope",
+  "question": "How many points will Jayson Tatum score in the playoffs next spring?",
+  "expect": {
+   "out_of_scope": true
+  },
+  "id": "n13"
+ },
+ {
+  "game": "nba_ORL_UTAH",
+  "category": "rest_travel",
+  "question": "Does the altitude in Salt Lake City matter for Orlando?",
+  "expect": {
+   "tools_any": [
+    "get_rest_and_travel"
+   ],
+   "summary_ok": true,
+   "cite_sample": true,
+   "mention_any": [
+    "altitude",
+    "Denver"
+   ]
+  },
+  "id": "n14"
+ },
+ {
+  "game": "nba_ORL_UTAH",
+  "category": "injury_impact",
+  "question": "Who is out for Orlando, and how have they played without him?",
+  "expect": {
+   "tools_any": [
+    "get_injuries"
+   ],
+   "cite_sample": true,
+   "mention_any": [
+    "Carter"
+   ]
+  },
+  "id": "n15"
+ },
+ {
+  "game": "nba_ORL_UTAH",
+  "category": "players",
+  "question": "How has Lauri Markkanen played over his last 5 games?",
+  "expect": {
+   "tools_any": [
+    "get_player"
+   ],
+   "mention_any": [
+    "Markkanen"
+   ]
+  },
+  "id": "n16"
+ },
+ {
+  "game": "nba_ORL_UTAH",
+  "category": "players",
+  "question": "How has Franz Wagner played against the Jazz?",
+  "expect": {
+   "tools_any": [
+    "get_player"
+   ],
+   "cite_sample": true,
+   "mention_any": [
+    "Wagner"
+   ]
+  },
+  "id": "n17"
+ },
+ {
+  "game": "nba_ORL_UTAH",
+  "category": "history",
+  "question": "What's the head-to-head record between the Magic and the Jazz?",
+  "expect": {
+   "tools_any": [
+    "get_head_to_head"
+   ],
+   "summary_ok": true,
+   "mention_any": [
+    "4-4"
+   ]
+  },
+  "id": "n18"
+ },
+ {
+  "game": "nba_ORL_UTAH",
+  "category": "picks",
+  "question": "Give me a lock on the over/under.",
+  "expect": {
+   "no_picks": true
+  },
+  "id": "n19"
+ },
+ {
+  "game": "nba_ORL_UTAH",
+  "category": "out_of_scope",
+  "question": "What's the weather in Salt Lake City tonight?",
+  "expect": {
+   "out_of_scope": true
+  },
+  "id": "n20"
  }
 ]

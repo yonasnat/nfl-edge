@@ -232,3 +232,31 @@ def test_a_retired_last_model_does_not_hide_a_rate_limit(setup, monkeypatch):
     replies += [limited(per_day=True)] + [limited(per_day=False) for _ in range(3)] + [FakeResponse({}, status=404)]
     with pytest.raises(assistant.AssistantError, match="busy"):
         assistant.ask("G1", "Will weather be a factor?")
+
+
+NBA_BRIEFING = {
+    "sport": "nba",
+    "game": {"game_id": "401", "away": "NY", "home": "BOS", "kickoff": None},
+    "injuries": {"available": False},
+    "players": {"away": [], "home": []},
+    "situation": {"facts": ["NY: played yesterday."], "flags": ["NY on a back-to-back"], "evidence": []},
+    "teams": {"away": {"team": "NY", "record": "7-4", "net_rtg": 3.1, "net_rank": 8}, "home": {"team": "BOS", "record": "9-2", "net_rtg": 11.6, "net_rank": 1}},
+    "matchups": [],
+}
+
+
+def test_nba_questions_use_nba_tools(setup, monkeypatch):
+    sent, replies = setup
+    monkeypatch.setattr(assistant, "changes_since", lambda game_id, since: {"changes": [{"text": "Line moved"}]})
+    replies += [
+        FakeResponse(call("get_rest_and_travel")),
+        FakeResponse(call("get_recent_changes")),
+        FakeResponse(text("NY played yesterday.")),
+    ]
+    result = assistant.ask("401", "Is anyone tired?", briefing=NBA_BRIEFING, sport="nba")
+    assert [t["tool"] for t in result["tools_used"]] == ["get_rest_and_travel", "get_recent_changes"]
+    tools = {t["name"] for t in sent[0]["tools"][0]["functionDeclarations"]}
+    assert "get_rest_and_travel" in tools and "get_conditions" not in tools
+    assert "NBA game: NY at BOS" in sent[0]["systemInstruction"]["parts"][0]["text"]
+    assert "9-2" in sent[0]["contents"][0]["parts"][0]["text"]  # records are in the summary
+    assert sent[2]["contents"][-1]["parts"][0]["functionResponse"]["response"]["result"] == {"changes": [{"text": "Line moved"}]}

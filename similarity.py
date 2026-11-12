@@ -51,23 +51,24 @@ def target_row(styles, team, season=SEASON):
     return previous.row(0, named=True) if previous.height else None
 
 
-def traits(row, count=3):
+def traits(row, count=3, features=FEATURES):
     """What makes a defense stand out most, in plain English, most unusual first."""
-    ranked = sorted(FEATURES, key=lambda f: -abs(row[f"z_{f[0]}"]))[:count]
+    ranked = sorted(features, key=lambda f: -abs(row[f"z_{f[0]}"]))[:count]
     return [high if row[f"z_{column}"] > 0 else low for column, high, low in ranked]
 
 
-def nearest(styles, row, k=NEIGHBORS):
+def nearest(styles, row, k=NEIGHBORS, features=FEATURES):
     """The k defenses closest to `row`, excluding that exact team-season."""
+    columns = [c for c, _, _ in features]
     others = styles.filter(~((pl.col("team") == row["team"]) & (pl.col("season") == row["season"])))
-    matrix = others.select([f"z_{c}" for c in COLUMNS]).to_numpy()
-    point = np.array([[row[f"z_{c}"] for c in COLUMNS]])
+    matrix = others.select([f"z_{c}" for c in columns]).to_numpy()
+    point = np.array([[row[f"z_{c}"] for c in columns]])
     model = NearestNeighbors(n_neighbors=min(k, len(matrix))).fit(matrix)
     _, indexes = model.kneighbors(point)
     neighbors = []
     for index in indexes[0]:
         match = others.row(int(index), named=True)
-        neighbors.append({"team": match["team"], "season": match["season"], "traits": traits(match, 2)})
+        neighbors.append({"team": match["team"], "season": match["season"], "traits": traits(match, 2, features)})
     return neighbors
 
 

@@ -137,7 +137,7 @@ def extract_facts(briefing):
         for side in ("away", "home"):
             report = injuries.get(side) or {}
             for p in report.get("players", []):
-                if p["importance"] not in ("Starting QB", "Starter", "Rotation"):
+                if p["importance"] not in ("Starting QB", "Star", "Starter", "Rotation"):
                     continue
                 status = p["status"] or practice_label(p["practice"])
                 if status:
@@ -183,7 +183,7 @@ def describe(key, old, new):
             text = f"{name} ({team}) is off the injury report (was {old})"
         else:
             text = f"{name} ({team}): {old} → {new}"
-        worse = new in ("Out", "Doubtful") or (new == "Questionable" and old not in ("Out", "Doubtful"))
+        worse = new in ("Out", "Doubtful") or (new in ("Questionable", "Day-To-Day") and old not in ("Out", "Doubtful"))
         tone = "red" if worse else "green" if new is None or new == "Full practice" else "yellow"
         return {"kind": "injury", "text": text, "tone": tone}
     if kind == "weather":

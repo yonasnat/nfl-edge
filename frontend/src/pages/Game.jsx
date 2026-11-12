@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import { getJson } from "../api";
 import { team } from "../teams";
+import { SPORTS, useSport } from "../sport";
 import { formatSpread, kickoffDay, kickoffTime } from "../format";
 import TeamChip from "../components/TeamChip";
 import { Badge, Card, SectionHeading } from "../components/ui";
@@ -14,17 +15,19 @@ import Changes from "../components/briefing/Changes";
 import AskEdge from "../components/briefing/AskEdge";
 import DefenseStyles from "../components/briefing/DefenseStyles";
 
-const SECTIONS = [
-  ["overview", "At a glance"],
-  ["ask", "Ask Edge"],
-  ["injuries", "Injuries"],
-  ["matchup", "Matchup"],
-  ["players", "Players"],
-  ["conditions", "Conditions"],
-  ["history", "History"],
-];
+function sections(sport) {
+  return [
+    ["overview", "At a glance"],
+    ["ask", "Ask Edge"],
+    ["injuries", "Injuries"],
+    ["matchup", "Matchup"],
+    ["players", "Players"],
+    ["conditions", sport === "nba" ? "Rest & travel" : "Conditions"],
+    ["history", "History"],
+  ];
+}
 
-const TAG_TONE = { Injury: "red", Matchup: "green", Weather: "yellow", Situation: "orange" };
+const TAG_TONE = { Injury: "red", Matchup: "green", Weather: "yellow", Situation: "orange", Schedule: "orange", Pace: "blue" };
 
 function Takeaways({ data }) {
   const items = [];
@@ -32,8 +35,10 @@ function Takeaways({ data }) {
     for (const text of (data.injuries?.[side]?.headlines ?? []).slice(0, 3)) items.push(["Injury", text]);
   }
   for (const text of data.key_matchups.slice(0, 3)) items.push(["Matchup", text]);
+  for (const text of data.notes ?? []) items.push(["Pace", text]);
   for (const text of data.weather?.flags ?? []) items.push(["Weather", text]);
-  for (const text of data.situation?.flags ?? []) items.push(["Situation", text]);
+  const situationTag = data.sport === "nba" ? "Schedule" : "Situation";
+  for (const text of data.situation?.flags ?? []) items.push([situationTag, text]);
 
   if (items.length === 0) {
     return (
@@ -54,8 +59,8 @@ function Takeaways({ data }) {
   );
 }
 
-function TeamBlock({ abbr, score, alignRight }) {
-  const t = team(abbr);
+function TeamBlock({ abbr, score, alignRight, sport }) {
+  const t = team(abbr, sport);
   return (
     <div className={`flex min-w-0 flex-1 items-center gap-3 ${alignRight ? "flex-row-reverse text-right" : ""}`}>
       <TeamChip abbr={abbr} size="lg" />
@@ -79,22 +84,29 @@ function Loading() {
           <div key={i} className="h-16 rounded-xl bg-zinc-900" />
         ))}
       </div>
-      <p className="mt-6 text-sm text-zinc-500">Gathering injuries, weather, matchups, and history...</p>
+      <p className="mt-6 text-sm text-zinc-500">Gathering injuries, matchups, players, and history...</p>
     </div>
   );
 }
 
 export default function Game() {
   const { gameId } = useParams();
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
+  const sport = useSport();
+  const s = SPORTS[sport];
+  const [loaded, setLoaded] = useState({ key: null, data: null, error: null });
   const [askEnabled, setAskEnabled] = useState(false);
+  const key = `${sport}:${gameId}`;
 
   useEffect(() => {
-    getJson(`/games/${gameId}`)
-      .then(setData)
-      .catch((err) => setError(err.message));
-  }, [gameId]);
+    let cancelled = false;
+    getJson(`${SPORTS[sport].api}/games/${gameId}`)
+      .then((data) => !cancelled && setLoaded({ key: `${sport}:${gameId}`, data, error: null }))
+      .catch((err) => !cancelled && setLoaded({ key: `${sport}:${gameId}`, data: null, error: err.message }));
+    return () => {
+      cancelled = true;
+    };
+  }, [sport, gameId]);
+  const { data, error } = loaded.key === key ? loaded : { data: null, error: null };
 
   // Ask the server whether Ask Edge is on. A sleeping or busy server can fail this check,
   // so try a few times before hiding the section.
@@ -119,14 +131,16 @@ export default function Game() {
   if (!data) return <Loading />;
 
   const { game } = data;
-  const final = game.home_score !== null && game.away_score !== null;
-  const awayColor = team(game.away).color;
-  const homeColor = team(game.home).color;
+  const final = game.final ?? (game.home_score !== null && game.away_score !== null);
+  const showScore = final || game.live;
+  const awayColor = team(game.away, sport).color;
+  const homeColor = team(game.home, sport).color;
+  const nba = sport === "nba";
 
   return (
     <div>
-      <Link to="/" className="text-sm text-zinc-400 hover:text-white">
-        ← This week
+      <Link to={s.home} className="text-sm text-zinc-400 hover:text-white">
+        ← {s.homeLabel}
       </Link>
 
       <div
@@ -136,24 +150,31 @@ export default function Game() {
         }}
       >
         <div className="flex items-center justify-between gap-3">
-          <TeamBlock abbr={game.away} score={final ? game.away_score : null} />
+          <TeamBlock abbr={game.away} score={showScore ? game.away_score : null} sport={sport} />
           <div className="shrink-0 text-center text-xs text-zinc-400">
-            <div className="text-sm font-bold text-zinc-100">{final ? "Final" : kickoffTime(game)}</div>
+            <div className={`text-sm font-bold ${game.live ? "text-red-300" : "text-zinc-100"}`}>
+              {game.live ? game.status_detail ?? "Live" : final ? "Final" : kickoffTime(game)}
+            </div>
             <div>{kickoffDay(game)}</div>
           </div>
-          <TeamBlock abbr={game.home} score={final ? game.home_score : null} alignRight />
+          <TeamBlock abbr={game.home} score={showScore ? game.home_score : null} sport={sport} alignRight />
         </div>
         <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
           <Badge>{formatSpread(game)}</Badge>
           {game.total_line !== null && <Badge>O/U {game.total_line}</Badge>}
           {game.div_game && <Badge tone="blue">Division game</Badge>}
-          <span className="text-xs text-zinc-400">{game.stadium}</span>
+          {game.playoffs && <Badge tone="blue">Playoffs</Badge>}
+          {game.neutral && <Badge tone="blue">Neutral site</Badge>}
+          <span className="text-xs text-zinc-400">
+            {game.stadium}
+            {nba && game.city ? `, ${game.city}` : ""}
+          </span>
         </div>
       </div>
 
-      {!final && <Changes gameId={game.game_id} />}
+      {!final && <Changes gameId={game.game_id} api={s.api} />}
 
-      {final && (
+      {final && !nba && (
         <div className="mt-4 rounded-2xl border border-yellow-500/20 bg-yellow-500/5 p-4 text-sm text-yellow-100/90">
           This game has been played. The briefing below shows the latest data, which now includes
           this game's result and next week's injury reports. Saved pre-game briefings are coming
@@ -163,7 +184,7 @@ export default function Game() {
 
       <nav className="sticky top-14 z-10 -mx-4 mt-6 overflow-x-auto border-b border-zinc-800 bg-zinc-950/90 px-4 backdrop-blur">
         <div className="flex gap-5 text-sm font-medium">
-          {SECTIONS.filter(([id]) => id !== "ask" || askEnabled).map(([id, label]) => (
+          {sections(sport).filter(([id]) => id !== "ask" || askEnabled).map(([id, label]) => (
             <a key={id} href={`#${id}`} className="whitespace-nowrap py-3 text-zinc-400 transition hover:text-white">
               {label}
             </a>
@@ -188,30 +209,45 @@ export default function Game() {
       <SectionHeading id="injuries" title="Injuries" subtitle="Ranked by status, then by how much each player plays." />
       <Injuries injuries={data.injuries} />
 
-      <SectionHeading id="matchup" title="Matchup" subtitle="Each offense against the defense it faces, unit by unit." />
-      <Matchup matchups={data.matchups} teams={data.teams} />
+      <SectionHeading
+        id="matchup"
+        title="Matchup"
+        subtitle={
+          nba
+            ? "Each offense against the defense it faces: overall rating and the Four Factors."
+            : "Each offense against the defense it faces, unit by unit."
+        }
+      />
+      <Matchup matchups={data.matchups} teams={data.teams} sport={sport} />
       <DefenseStyles styles={data.defense_styles} />
 
       <SectionHeading
         id="players"
         title="Key players"
-        subtitle="Per-game numbers this season, recently, over his career, against this opponent, and against defenses that play like it."
+        subtitle={
+          nba
+            ? "Each team's five biggest minutes-getters: this season, recently, since 2022-23, against this opponent, and against defenses that play like it."
+            : "Per-game numbers this season, recently, over his career, against this opponent, and against defenses that play like it."
+        }
       />
       <Players players={data.players} game={game} injuries={data.injuries} />
 
       <SectionHeading
         id="conditions"
-        title="Conditions"
-        subtitle="Weather, travel, rest, and schedule, with how similar situations played out historically."
+        title={nba ? "Rest & travel" : "Conditions"}
+        subtitle={
+          nba
+            ? "Back-to-backs, rest, travel, road trips, and altitude, with how teams in the same spot have done since 2022-23."
+            : "Weather, travel, rest, and schedule, with how similar situations played out historically."
+        }
       />
       <Conditions weather={data.weather} situation={data.situation} />
 
-      <SectionHeading id="history" title="Head-to-head" subtitle="Every meeting since 2015." />
-      <History h2h={data.head_to_head} game={game} />
+      <SectionHeading id="history" title="Head-to-head" subtitle={`Every meeting ${s.since}.`} />
+      <History h2h={data.head_to_head} game={game} sport={sport} />
 
       <p className="mt-12 text-xs text-zinc-600">
-        Data: nflverse (play-by-play, schedules, official injury reports), ESPN (injury statuses and news),
-        Open-Meteo (weather). Ask Edge uses Google Gemini. For research only; not betting advice.
+        {s.dataSources} Ask Edge uses Google Gemini. For research only; not betting advice.
       </p>
     </div>
   );

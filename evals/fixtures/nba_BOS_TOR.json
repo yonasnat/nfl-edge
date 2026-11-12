@@ -1,0 +1,2039 @@
+{
+ "sport": "nba",
+ "note": "Frozen for Ask Edge evals. Real app data, except the betting line, the injury list, and 'changes' are fixed test values.",
+ "briefing": {
+  "sport": "nba",
+  "game": {
+   "game_id": "401909968",
+   "sport": "nba",
+   "date": "2026-11-11",
+   "gameday": "2026-11-11",
+   "kickoff": "2026-11-12T00:00:00+00:00",
+   "start": "2026-11-12T00:00Z",
+   "away": "BOS",
+   "home": "TOR",
+   "away_score": null,
+   "home_score": null,
+   "final": false,
+   "live": false,
+   "status_detail": null,
+   "venue": "Scotiabank Arena",
+   "stadium": "Scotiabank Arena",
+   "city": "Toronto",
+   "neutral": false,
+   "playoffs": false,
+   "note": "",
+   "spread_line": -3.5,
+   "total_line": 224.5,
+   "line_source": "test"
+  },
+  "weather": null,
+  "situation": {
+   "facts": [
+    "BOS: played yesterday; 337 miles from Philadelphia.",
+    "BOS: game 4 of a road trip.",
+    "TOR: 1 day of rest."
+   ],
+   "flags": [
+    "BOS on a back-to-back",
+    "BOS game 4 of road trip"
+   ],
+   "evidence": [
+    "Teams on the second night of a back-to-back against a rested opponent since 2022-23: won 43.3% of 1,240 games, average margin -2.7.",
+    "Road teams four or more games into a road trip since 2022-23: won 42.6% of 723 games, average margin -3.1.",
+    "All home teams since 2022-23: won 55.5% of 5,004 games, average margin +2.0. That's the baseline to compare against."
+   ],
+   "teams": {
+    "BOS": {
+     "rest_days": 0,
+     "back_to_back": true,
+     "three_in_four": true,
+     "miles": 337,
+     "tz_shift": 0.0,
+     "road_streak": 4,
+     "altitude_visit": false
+    },
+    "TOR": {
+     "rest_days": 1,
+     "back_to_back": false,
+     "three_in_four": false,
+     "miles": 0,
+     "tz_shift": 0.0,
+     "road_streak": 0,
+     "altitude_visit": false
+    }
+   }
+  },
+  "head_to_head": {
+   "games": 16,
+   "since": "since 2022-23",
+   "summary": "16 meetings since 2022-23: BOS 15-1 TOR. Average margin BOS +10.5, average total 217.2 points.",
+   "wins": {
+    "BOS": 15,
+    "TOR": 1
+   },
+   "avg_total": 217.2,
+   "avg_margin": {
+    "BOS": 10.5,
+    "TOR": -10.5
+   },
+   "caution": "Rosters change a lot from season to season; the most recent meetings matter most.",
+   "recent": [
+    {
+     "date": "2026-04-05",
+     "season": 2026,
+     "playoffs": false,
+     "home": "BOS",
+     "away": "TOR",
+     "home_score": 115,
+     "away_score": 101,
+     "winner": "BOS",
+     "total": 216
+    },
+    {
+     "date": "2026-01-09",
+     "season": 2026,
+     "playoffs": false,
+     "home": "BOS",
+     "away": "TOR",
+     "home_score": 125,
+     "away_score": 117,
+     "winner": "BOS",
+     "total": 242
+    },
+    {
+     "date": "2025-12-20",
+     "season": 2026,
+     "playoffs": false,
+     "home": "TOR",
+     "away": "BOS",
+     "home_score": 96,
+     "away_score": 112,
+     "winner": "BOS",
+     "total": 208
+    },
+    {
+     "date": "2025-12-07",
+     "season": 2026,
+     "playoffs": false,
+     "home": "TOR",
+     "away": "BOS",
+     "home_score": 113,
+     "away_score": 121,
+     "winner": "BOS",
+     "total": 234
+    },
+    {
+     "date": "2025-02-25",
+     "season": 2025,
+     "playoffs": false,
+     "home": "TOR",
+     "away": "BOS",
+     "home_score": 101,
+     "away_score": 111,
+     "winner": "BOS",
+     "total": 212
+    },
+    {
+     "date": "2025-01-15",
+     "season": 2025,
+     "playoffs": false,
+     "home": "TOR",
+     "away": "BOS",
+     "home_score": 110,
+     "away_score": 97,
+     "winner": "TOR",
+     "total": 207
+    },
+    {
+     "date": "2024-12-31",
+     "season": 2025,
+     "playoffs": false,
+     "home": "BOS",
+     "away": "TOR",
+     "home_score": 125,
+     "away_score": 71,
+     "winner": "BOS",
+     "total": 196
+    },
+    {
+     "date": "2024-11-16",
+     "season": 2025,
+     "playoffs": false,
+     "home": "BOS",
+     "away": "TOR",
+     "home_score": 126,
+     "away_score": 123,
+     "winner": "BOS",
+     "total": 249
+    },
+    {
+     "date": "2024-01-15",
+     "season": 2024,
+     "playoffs": false,
+     "home": "TOR",
+     "away": "BOS",
+     "home_score": 96,
+     "away_score": 105,
+     "winner": "BOS",
+     "total": 201
+    },
+    {
+     "date": "2023-12-29",
+     "season": 2024,
+     "playoffs": false,
+     "home": "BOS",
+     "away": "TOR",
+     "home_score": 120,
+     "away_score": 118,
+     "winner": "BOS",
+     "total": 238
+    }
+   ]
+  },
+  "players": {
+   "away": [
+    {
+     "player_id": 4065648,
+     "name": "Jayson Tatum",
+     "position": "F",
+     "headshot_url": "https://a.espncdn.com/i/headshots/nba/players/full/4065648.png",
+     "games_this_season": 10,
+     "vs_opponent_games": 10,
+     "recent_label": "Last 5",
+     "career_label": "Since 2022-23",
+     "stats": [
+      {
+       "stat": "points",
+       "label": "points",
+       "season": 26.5,
+       "recent": 25.4,
+       "career": 27.2,
+       "vs_opponent": 22.0
+      },
+      {
+       "stat": "rebounds",
+       "label": "rebounds",
+       "season": 6.0,
+       "recent": 5.6,
+       "career": 8.8,
+       "vs_opponent": 8.9
+      },
+      {
+       "stat": "assists",
+       "label": "assists",
+       "season": 7.4,
+       "recent": 7.0,
+       "career": 5.4,
+       "vs_opponent": 5.6
+      },
+      {
+       "stat": "threes",
+       "label": "threes made",
+       "season": 2.4,
+       "recent": 3.0,
+       "career": 3.1,
+       "vs_opponent": 2.7
+      },
+      {
+       "stat": "minutes",
+       "label": "minutes",
+       "season": 33.6,
+       "recent": 31.2,
+       "career": 36.7,
+       "vs_opponent": 34.8
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "date": "2024-11-16",
+       "team": "BOS",
+       "points": 24.0,
+       "rebounds": 11.0,
+       "assists": 9.0,
+       "threes": 5.0,
+       "minutes": 42.0
+      },
+      {
+       "date": "2024-12-31",
+       "team": "BOS",
+       "points": 23.0,
+       "rebounds": 8.0,
+       "assists": 3.0,
+       "threes": 4.0,
+       "minutes": 29.0
+      },
+      {
+       "date": "2025-01-15",
+       "team": "BOS",
+       "points": 16.0,
+       "rebounds": 10.0,
+       "assists": 7.0,
+       "threes": 3.0,
+       "minutes": 36.0
+      },
+      {
+       "date": "2025-02-25",
+       "team": "BOS",
+       "points": 19.0,
+       "rebounds": 6.0,
+       "assists": 11.0,
+       "threes": 3.0,
+       "minutes": 40.0
+      },
+      {
+       "date": "2026-04-05",
+       "team": "BOS",
+       "points": 23.0,
+       "rebounds": 13.0,
+       "assists": 7.0,
+       "threes": 2.0,
+       "minutes": 34.0
+      }
+     ],
+     "summary": "Jayson Tatum: 26.5 points, 6.0 rebounds, and 7.4 assists per game this season (10 games). 10 games vs. TOR since 2022-23: 22.0 points per game, compared with 27.2 in all his games.",
+     "vs_similar": {
+      "games": 15,
+      "baseline_games": 246,
+      "stats": [
+       {
+        "stat": "points",
+        "vs_similar": 24.5,
+        "baseline": 27.5,
+        "change_pct": -11,
+        "label": "points"
+       },
+       {
+        "stat": "rebounds",
+        "vs_similar": 9.2,
+        "baseline": 8.5,
+        "change_pct": 8,
+        "label": "rebounds"
+       },
+       {
+        "stat": "assists",
+        "vs_similar": 5.1,
+        "baseline": 5.3,
+        "change_pct": -3,
+        "label": "assists"
+       },
+       {
+        "stat": "threes",
+        "vs_similar": 2.7,
+        "baseline": 3.2,
+        "change_pct": -17,
+        "label": "threes made"
+       },
+       {
+        "stat": "minutes",
+        "vs_similar": 35.7,
+        "baseline": 36.0,
+        "change_pct": -1,
+        "label": "minutes"
+       }
+      ]
+     }
+    },
+    {
+     "player_id": 3078576,
+     "name": "Derrick White",
+     "position": "G",
+     "headshot_url": "https://a.espncdn.com/i/headshots/nba/players/full/3078576.png",
+     "games_this_season": 11,
+     "vs_opponent_games": 16,
+     "recent_label": "Last 5",
+     "career_label": "Since 2022-23",
+     "stats": [
+      {
+       "stat": "points",
+       "label": "points",
+       "season": 12.2,
+       "recent": 12.6,
+       "career": 15.0,
+       "vs_opponent": 14.9
+      },
+      {
+       "stat": "rebounds",
+       "label": "rebounds",
+       "season": 3.1,
+       "recent": 2.8,
+       "career": 4.1,
+       "vs_opponent": 3.8
+      },
+      {
+       "stat": "assists",
+       "label": "assists",
+       "season": 5.1,
+       "recent": 5.0,
+       "career": 4.5,
+       "vs_opponent": 4.6
+      },
+      {
+       "stat": "threes",
+       "label": "threes made",
+       "season": 1.6,
+       "recent": 1.6,
+       "career": 2.7,
+       "vs_opponent": 2.5
+      },
+      {
+       "stat": "minutes",
+       "label": "minutes",
+       "season": 29.1,
+       "recent": 28.0,
+       "career": 32.3,
+       "vs_opponent": 33.1
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "date": "2025-02-25",
+       "team": "BOS",
+       "points": 22.0,
+       "rebounds": 3.0,
+       "assists": 5.0,
+       "threes": 6.0,
+       "minutes": 38.0
+      },
+      {
+       "date": "2025-12-07",
+       "team": "BOS",
+       "points": 27.0,
+       "rebounds": 4.0,
+       "assists": 5.0,
+       "threes": 6.0,
+       "minutes": 37.0
+      },
+      {
+       "date": "2025-12-20",
+       "team": "BOS",
+       "points": 15.0,
+       "rebounds": 5.0,
+       "assists": 7.0,
+       "threes": 4.0,
+       "minutes": 36.0
+      },
+      {
+       "date": "2026-01-09",
+       "team": "BOS",
+       "points": 18.0,
+       "rebounds": 3.0,
+       "assists": 5.0,
+       "threes": 2.0,
+       "minutes": 38.0
+      },
+      {
+       "date": "2026-04-05",
+       "team": "BOS",
+       "points": 10.0,
+       "rebounds": 6.0,
+       "assists": 6.0,
+       "threes": 2.0,
+       "minutes": 35.0
+      }
+     ],
+     "summary": "Derrick White: 12.2 points, 3.1 rebounds, and 5.1 assists per game this season (11 games). 16 games vs. TOR since 2022-23: 14.9 points per game, compared with 15.0 in all his games.",
+     "vs_similar": {
+      "games": 19,
+      "baseline_games": 319,
+      "stats": [
+       {
+        "stat": "points",
+        "vs_similar": 15.8,
+        "baseline": 15.0,
+        "change_pct": 6,
+        "label": "points"
+       },
+       {
+        "stat": "rebounds",
+        "vs_similar": 3.7,
+        "baseline": 4.1,
+        "change_pct": -11,
+        "label": "rebounds"
+       },
+       {
+        "stat": "assists",
+        "vs_similar": 4.4,
+        "baseline": 4.8,
+        "change_pct": -8,
+        "label": "assists"
+       },
+       {
+        "stat": "threes",
+        "vs_similar": 3.1,
+        "baseline": 2.6,
+        "change_pct": 18,
+        "label": "threes made"
+       },
+       {
+        "stat": "minutes",
+        "vs_similar": 32.5,
+        "baseline": 32.0,
+        "change_pct": 1,
+        "label": "minutes"
+       }
+      ]
+     }
+    },
+    {
+     "player_id": 4251,
+     "name": "Paul George",
+     "position": "F",
+     "headshot_url": "https://a.espncdn.com/i/headshots/nba/players/full/4251.png",
+     "games_this_season": 10,
+     "vs_opponent_games": 6,
+     "recent_label": "Last 5",
+     "career_label": "Since 2022-23",
+     "stats": [
+      {
+       "stat": "points",
+       "label": "points",
+       "season": 22.0,
+       "recent": 22.6,
+       "career": 20.5,
+       "vs_opponent": 20.8
+      },
+      {
+       "stat": "rebounds",
+       "label": "rebounds",
+       "season": 5.2,
+       "recent": 4.4,
+       "career": 5.5,
+       "vs_opponent": 4.2
+      },
+      {
+       "stat": "assists",
+       "label": "assists",
+       "season": 3.8,
+       "recent": 3.2,
+       "career": 4.1,
+       "vs_opponent": 4.0
+      },
+      {
+       "stat": "threes",
+       "label": "threes made",
+       "season": 3.7,
+       "recent": 4.2,
+       "career": 2.9,
+       "vs_opponent": 3.0
+      },
+      {
+       "stat": "minutes",
+       "label": "minutes",
+       "season": 30.1,
+       "recent": 29.6,
+       "career": 33.3,
+       "vs_opponent": 34.0
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "date": "2023-03-08",
+       "team": "LAC",
+       "points": 23.0,
+       "rebounds": 2.0,
+       "assists": 4.0,
+       "threes": 2.0,
+       "minutes": 39.0
+      },
+      {
+       "date": "2024-01-10",
+       "team": "LAC",
+       "points": 29.0,
+       "rebounds": 7.0,
+       "assists": 6.0,
+       "threes": 5.0,
+       "minutes": 38.0
+      },
+      {
+       "date": "2024-01-26",
+       "team": "LAC",
+       "points": 21.0,
+       "rebounds": 2.0,
+       "assists": 1.0,
+       "threes": 3.0,
+       "minutes": 28.0
+      },
+      {
+       "date": "2025-02-11",
+       "team": "PHI",
+       "points": 14.0,
+       "rebounds": 3.0,
+       "assists": 2.0,
+       "threes": 2.0,
+       "minutes": 36.0
+      },
+      {
+       "date": "2026-01-12",
+       "team": "PHI",
+       "points": 15.0,
+       "rebounds": 4.0,
+       "assists": 6.0,
+       "threes": 1.0,
+       "minutes": 29.0
+      }
+     ],
+     "summary": "Paul George: 22.0 points, 5.2 rebounds, and 3.8 assists per game this season (10 games). 6 games vs. TOR since 2022-23: 20.8 points per game, compared with 20.5 in all his games.",
+     "vs_similar": {
+      "games": 11,
+      "baseline_games": 218,
+      "stats": [
+       {
+        "stat": "points",
+        "vs_similar": 19.5,
+        "baseline": 20.8,
+        "change_pct": -6,
+        "label": "points"
+       },
+       {
+        "stat": "rebounds",
+        "vs_similar": 5.9,
+        "baseline": 5.5,
+        "change_pct": 8,
+        "label": "rebounds"
+       },
+       {
+        "stat": "assists",
+        "vs_similar": 4.2,
+        "baseline": 4.1,
+        "change_pct": 1,
+        "label": "assists"
+       },
+       {
+        "stat": "threes",
+        "vs_similar": 2.4,
+        "baseline": 2.9,
+        "change_pct": -19,
+        "label": "threes made"
+       },
+       {
+        "stat": "minutes",
+        "vs_similar": 34.5,
+        "baseline": 33.1,
+        "change_pct": 4,
+        "label": "minutes"
+       }
+      ]
+     }
+    },
+    {
+     "player_id": 4066354,
+     "name": "Payton Pritchard",
+     "position": "G",
+     "headshot_url": "https://a.espncdn.com/i/headshots/nba/players/full/4066354.png",
+     "games_this_season": 11,
+     "vs_opponent_games": 14,
+     "recent_label": "Last 5",
+     "career_label": "Since 2022-23",
+     "stats": [
+      {
+       "stat": "points",
+       "label": "points",
+       "season": 13.3,
+       "recent": 11.2,
+       "career": 11.8,
+       "vs_opponent": 15.4
+      },
+      {
+       "stat": "rebounds",
+       "label": "rebounds",
+       "season": 3.5,
+       "recent": 4.2,
+       "career": 3.2,
+       "vs_opponent": 3.9
+      },
+      {
+       "stat": "assists",
+       "label": "assists",
+       "season": 3.9,
+       "recent": 4.4,
+       "career": 3.4,
+       "vs_opponent": 4.3
+      },
+      {
+       "stat": "threes",
+       "label": "threes made",
+       "season": 2.3,
+       "recent": 2.4,
+       "career": 2.2,
+       "vs_opponent": 2.9
+      },
+      {
+       "stat": "minutes",
+       "label": "minutes",
+       "season": 26.9,
+       "recent": 26.0,
+       "career": 24.8,
+       "vs_opponent": 27.8
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "date": "2025-02-25",
+       "team": "BOS",
+       "points": 20.0,
+       "rebounds": 7.0,
+       "assists": 2.0,
+       "threes": 4.0,
+       "minutes": 35.0
+      },
+      {
+       "date": "2025-12-07",
+       "team": "BOS",
+       "points": 15.0,
+       "rebounds": 4.0,
+       "assists": 6.0,
+       "threes": 3.0,
+       "minutes": 38.0
+      },
+      {
+       "date": "2025-12-20",
+       "team": "BOS",
+       "points": 33.0,
+       "rebounds": 7.0,
+       "assists": 10.0,
+       "threes": 4.0,
+       "minutes": 37.0
+      },
+      {
+       "date": "2026-01-09",
+       "team": "BOS",
+       "points": 27.0,
+       "rebounds": 5.0,
+       "assists": 8.0,
+       "threes": 3.0,
+       "minutes": 30.0
+      },
+      {
+       "date": "2026-04-05",
+       "team": "BOS",
+       "points": 17.0,
+       "rebounds": 1.0,
+       "assists": 3.0,
+       "threes": 1.0,
+       "minutes": 30.0
+      }
+     ],
+     "summary": "Payton Pritchard: 13.3 points, 3.5 rebounds, and 3.9 assists per game this season (11 games). 14 games vs. TOR since 2022-23: 15.4 points per game, compared with 11.8 in all his games.",
+     "vs_similar": {
+      "games": 18,
+      "baseline_games": 300,
+      "stats": [
+       {
+        "stat": "points",
+        "vs_similar": 15.5,
+        "baseline": 12.3,
+        "change_pct": 26,
+        "label": "points"
+       },
+       {
+        "stat": "rebounds",
+        "vs_similar": 3.7,
+        "baseline": 3.4,
+        "change_pct": 10,
+        "label": "rebounds"
+       },
+       {
+        "stat": "assists",
+        "vs_similar": 3.9,
+        "baseline": 3.6,
+        "change_pct": 9,
+        "label": "assists"
+       },
+       {
+        "stat": "threes",
+        "vs_similar": 2.8,
+        "baseline": 2.3,
+        "change_pct": 20,
+        "label": "threes made"
+       },
+       {
+        "stat": "minutes",
+        "vs_similar": 26.6,
+        "baseline": 25.3,
+        "change_pct": 5,
+        "label": "minutes"
+       }
+      ]
+     }
+    },
+    {
+     "player_id": 4397424,
+     "name": "Neemias Queta",
+     "position": "C",
+     "headshot_url": "https://a.espncdn.com/i/headshots/nba/players/full/4397424.png",
+     "games_this_season": 11,
+     "vs_opponent_games": 9,
+     "recent_label": "Last 5",
+     "career_label": "Since 2022-23",
+     "stats": [
+      {
+       "stat": "points",
+       "label": "points",
+       "season": 9.0,
+       "recent": 9.2,
+       "career": 7.4,
+       "vs_opponent": 9.7
+      },
+      {
+       "stat": "rebounds",
+       "label": "rebounds",
+       "season": 6.2,
+       "recent": 7.2,
+       "career": 5.9,
+       "vs_opponent": 5.7
+      },
+      {
+       "stat": "assists",
+       "label": "assists",
+       "season": 1.7,
+       "recent": 2.4,
+       "career": 1.1,
+       "vs_opponent": 1.2
+      },
+      {
+       "stat": "threes",
+       "label": "threes made",
+       "season": 0.2,
+       "recent": 0.2,
+       "career": 0.0,
+       "vs_opponent": 0.0
+      },
+      {
+       "stat": "minutes",
+       "label": "minutes",
+       "season": 21.7,
+       "recent": 22.8,
+       "career": 18.4,
+       "vs_opponent": 22.7
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "date": "2025-02-25",
+       "team": "BOS",
+       "points": 8.0,
+       "rebounds": 5.0,
+       "assists": 0.0,
+       "threes": 0.0,
+       "minutes": 20.0
+      },
+      {
+       "date": "2025-12-07",
+       "team": "BOS",
+       "points": 11.0,
+       "rebounds": 11.0,
+       "assists": 4.0,
+       "threes": 0.0,
+       "minutes": 34.0
+      },
+      {
+       "date": "2025-12-20",
+       "team": "BOS",
+       "points": 14.0,
+       "rebounds": 5.0,
+       "assists": 0.0,
+       "threes": 0.0,
+       "minutes": 22.0
+      },
+      {
+       "date": "2026-01-09",
+       "team": "BOS",
+       "points": 10.0,
+       "rebounds": 6.0,
+       "assists": 0.0,
+       "threes": 0.0,
+       "minutes": 27.0
+      },
+      {
+       "date": "2026-04-05",
+       "team": "BOS",
+       "points": 18.0,
+       "rebounds": 7.0,
+       "assists": 4.0,
+       "threes": 0.0,
+       "minutes": 34.0
+      }
+     ],
+     "summary": "Neemias Queta: 9.0 points, 6.2 rebounds, and 1.7 assists per game this season (11 games). 9 games vs. TOR since 2022-23: 9.7 points per game, compared with 7.4 in all his games.",
+     "vs_similar": {
+      "games": 15,
+      "baseline_games": 180,
+      "stats": [
+       {
+        "stat": "points",
+        "vs_similar": 8.1,
+        "baseline": 7.5,
+        "change_pct": 8,
+        "label": "points"
+       },
+       {
+        "stat": "rebounds",
+        "vs_similar": 5.7,
+        "baseline": 6.0,
+        "change_pct": -4,
+        "label": "rebounds"
+       },
+       {
+        "stat": "assists",
+        "vs_similar": 1.4,
+        "baseline": 1.2,
+        "change_pct": 19,
+        "label": "assists"
+       },
+       {
+        "stat": "threes",
+        "vs_similar": 0.0,
+        "baseline": 0.0,
+        "change_pct": -100,
+        "label": "threes made"
+       },
+       {
+        "stat": "minutes",
+        "vs_similar": 19.5,
+        "baseline": 18.8,
+        "change_pct": 4,
+        "label": "minutes"
+       }
+      ]
+     }
+    }
+   ],
+   "home": [
+    {
+     "player_id": 4395625,
+     "name": "RJ Barrett",
+     "position": "F",
+     "headshot_url": "https://a.espncdn.com/i/headshots/nba/players/full/4395625.png",
+     "games_this_season": 10,
+     "vs_opponent_games": 12,
+     "recent_label": "Last 5",
+     "career_label": "Since 2022-23",
+     "stats": [
+      {
+       "stat": "points",
+       "label": "points",
+       "season": 21.3,
+       "recent": 23.2,
+       "career": 20.1,
+       "vs_opponent": 21.6
+      },
+      {
+       "stat": "rebounds",
+       "label": "rebounds",
+       "season": 5.8,
+       "recent": 6.2,
+       "career": 5.5,
+       "vs_opponent": 6.5
+      },
+      {
+       "stat": "assists",
+       "label": "assists",
+       "season": 3.7,
+       "recent": 3.4,
+       "career": 3.6,
+       "vs_opponent": 4.7
+      },
+      {
+       "stat": "threes",
+       "label": "threes made",
+       "season": 1.5,
+       "recent": 2.0,
+       "career": 1.7,
+       "vs_opponent": 1.7
+      },
+      {
+       "stat": "minutes",
+       "label": "minutes",
+       "season": 33.3,
+       "recent": 35.0,
+       "career": 32.4,
+       "vs_opponent": 35.8
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "date": "2024-11-16",
+       "team": "TOR",
+       "points": 25.0,
+       "rebounds": 10.0,
+       "assists": 15.0,
+       "threes": 1.0,
+       "minutes": 42.0
+      },
+      {
+       "date": "2025-01-15",
+       "team": "TOR",
+       "points": 22.0,
+       "rebounds": 10.0,
+       "assists": 8.0,
+       "threes": 1.0,
+       "minutes": 36.0
+      },
+      {
+       "date": "2025-02-25",
+       "team": "TOR",
+       "points": 22.0,
+       "rebounds": 8.0,
+       "assists": 3.0,
+       "threes": 1.0,
+       "minutes": 33.0
+      },
+      {
+       "date": "2026-01-09",
+       "team": "TOR",
+       "points": 19.0,
+       "rebounds": 4.0,
+       "assists": 7.0,
+       "threes": 3.0,
+       "minutes": 28.0
+      },
+      {
+       "date": "2026-04-05",
+       "team": "TOR",
+       "points": 15.0,
+       "rebounds": 5.0,
+       "assists": 4.0,
+       "threes": 1.0,
+       "minutes": 35.0
+      }
+     ],
+     "summary": "RJ Barrett: 21.3 points, 5.8 rebounds, and 3.7 assists per game this season (10 games). 12 games vs. BOS since 2022-23: 21.6 points per game, compared with 20.1 in all his games.",
+     "vs_similar": {
+      "games": 17,
+      "baseline_games": 198,
+      "stats": [
+       {
+        "stat": "points",
+        "vs_similar": 22.1,
+        "baseline": 19.8,
+        "change_pct": 12,
+        "label": "points"
+       },
+       {
+        "stat": "rebounds",
+        "vs_similar": 5.8,
+        "baseline": 5.3,
+        "change_pct": 10,
+        "label": "rebounds"
+       },
+       {
+        "stat": "assists",
+        "vs_similar": 3.1,
+        "baseline": 3.1,
+        "change_pct": -2,
+        "label": "assists"
+       },
+       {
+        "stat": "threes",
+        "vs_similar": 1.7,
+        "baseline": 1.6,
+        "change_pct": 5,
+        "label": "threes made"
+       },
+       {
+        "stat": "minutes",
+        "vs_similar": 33.8,
+        "baseline": 32.2,
+        "change_pct": 5,
+        "label": "minutes"
+       }
+      ]
+     }
+    },
+    {
+     "player_id": 4684272,
+     "name": "Ja'Kobe Walter",
+     "position": "G",
+     "headshot_url": "https://a.espncdn.com/i/headshots/nba/players/full/4684272.png",
+     "games_this_season": 10,
+     "vs_opponent_games": 6,
+     "recent_label": "Last 5",
+     "career_label": "Since 2022-23",
+     "stats": [
+      {
+       "stat": "points",
+       "label": "points",
+       "season": 11.0,
+       "recent": 9.6,
+       "career": 8.4,
+       "vs_opponent": 8.5
+      },
+      {
+       "stat": "rebounds",
+       "label": "rebounds",
+       "season": 4.2,
+       "recent": 4.6,
+       "career": 2.9,
+       "vs_opponent": 2.2
+      },
+      {
+       "stat": "assists",
+       "label": "assists",
+       "season": 2.2,
+       "recent": 2.2,
+       "career": 1.4,
+       "vs_opponent": 0.8
+      },
+      {
+       "stat": "threes",
+       "label": "threes made",
+       "season": 2.1,
+       "recent": 1.4,
+       "career": 1.5,
+       "vs_opponent": 1.8
+      },
+      {
+       "stat": "minutes",
+       "label": "minutes",
+       "season": 29.6,
+       "recent": 31.6,
+       "career": 22.0,
+       "vs_opponent": 21.3
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "date": "2025-02-25",
+       "team": "TOR",
+       "points": 6.0,
+       "rebounds": 3.0,
+       "assists": 0.0,
+       "threes": 0.0,
+       "minutes": 16.0
+      },
+      {
+       "date": "2025-12-07",
+       "team": "TOR",
+       "points": 0.0,
+       "rebounds": 0.0,
+       "assists": 1.0,
+       "threes": 0.0,
+       "minutes": 12.0
+      },
+      {
+       "date": "2025-12-20",
+       "team": "TOR",
+       "points": 7.0,
+       "rebounds": 0.0,
+       "assists": 0.0,
+       "threes": 2.0,
+       "minutes": 15.0
+      },
+      {
+       "date": "2026-01-09",
+       "team": "TOR",
+       "points": 19.0,
+       "rebounds": 6.0,
+       "assists": 1.0,
+       "threes": 5.0,
+       "minutes": 31.0
+      },
+      {
+       "date": "2026-04-05",
+       "team": "TOR",
+       "points": 16.0,
+       "rebounds": 2.0,
+       "assists": 1.0,
+       "threes": 4.0,
+       "minutes": 32.0
+      }
+     ],
+     "summary": "Ja'Kobe Walter: 11.0 points, 4.2 rebounds, and 2.2 assists per game this season (10 games). 6 games vs. BOS since 2022-23: 8.5 points per game, compared with 8.4 in all his games.",
+     "vs_similar": {
+      "games": 9,
+      "baseline_games": 82,
+      "stats": [
+       {
+        "stat": "points",
+        "vs_similar": 8.6,
+        "baseline": 7.9,
+        "change_pct": 8,
+        "label": "points"
+       },
+       {
+        "stat": "rebounds",
+        "vs_similar": 1.9,
+        "baseline": 2.8,
+        "change_pct": -32,
+        "label": "rebounds"
+       },
+       {
+        "stat": "assists",
+        "vs_similar": 0.7,
+        "baseline": 1.3,
+        "change_pct": -49,
+        "label": "assists"
+       },
+       {
+        "stat": "threes",
+        "vs_similar": 2.1,
+        "baseline": 1.6,
+        "change_pct": 32,
+        "label": "threes made"
+       },
+       {
+        "stat": "minutes",
+        "vs_similar": 21.8,
+        "baseline": 21.6,
+        "change_pct": 1,
+        "label": "minutes"
+       }
+      ]
+     }
+    },
+    {
+     "player_id": 4433134,
+     "name": "Scottie Barnes",
+     "position": "F",
+     "headshot_url": "https://a.espncdn.com/i/headshots/nba/players/full/4433134.png",
+     "games_this_season": 8,
+     "vs_opponent_games": 14,
+     "recent_label": "Last 5",
+     "career_label": "Since 2022-23",
+     "stats": [
+      {
+       "stat": "points",
+       "label": "points",
+       "season": 23.5,
+       "recent": 27.4,
+       "career": 18.3,
+       "vs_opponent": 15.4
+      },
+      {
+       "stat": "rebounds",
+       "label": "rebounds",
+       "season": 7.6,
+       "recent": 7.6,
+       "career": 7.4,
+       "vs_opponent": 6.9
+      },
+      {
+       "stat": "assists",
+       "label": "assists",
+       "season": 5.1,
+       "recent": 5.6,
+       "career": 5.7,
+       "vs_opponent": 5.2
+      },
+      {
+       "stat": "threes",
+       "label": "threes made",
+       "season": 0.5,
+       "recent": 0.4,
+       "career": 1.1,
+       "vs_opponent": 1.4
+      },
+      {
+       "stat": "minutes",
+       "label": "minutes",
+       "season": 33.4,
+       "recent": 35.2,
+       "career": 34.1,
+       "vs_opponent": 35.4
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "date": "2025-01-15",
+       "team": "TOR",
+       "points": 18.0,
+       "rebounds": 3.0,
+       "assists": 9.0,
+       "threes": 1.0,
+       "minutes": 36.0
+      },
+      {
+       "date": "2025-02-25",
+       "team": "TOR",
+       "points": 21.0,
+       "rebounds": 3.0,
+       "assists": 6.0,
+       "threes": 0.0,
+       "minutes": 34.0
+      },
+      {
+       "date": "2025-12-07",
+       "team": "TOR",
+       "points": 18.0,
+       "rebounds": 11.0,
+       "assists": 8.0,
+       "threes": 0.0,
+       "minutes": 37.0
+      },
+      {
+       "date": "2025-12-20",
+       "team": "TOR",
+       "points": 12.0,
+       "rebounds": 9.0,
+       "assists": 6.0,
+       "threes": 1.0,
+       "minutes": 33.0
+      },
+      {
+       "date": "2026-04-05",
+       "team": "TOR",
+       "points": 10.0,
+       "rebounds": 6.0,
+       "assists": 8.0,
+       "threes": 0.0,
+       "minutes": 32.0
+      }
+     ],
+     "summary": "Scottie Barnes: 23.5 points, 7.6 rebounds, and 5.1 assists per game this season (8 games). 14 games vs. BOS since 2022-23: 15.4 points per game, compared with 18.3 in all his games.",
+     "vs_similar": {
+      "games": 21,
+      "baseline_games": 225,
+      "stats": [
+       {
+        "stat": "points",
+        "vs_similar": 15.8,
+        "baseline": 17.8,
+        "change_pct": -11,
+        "label": "points"
+       },
+       {
+        "stat": "rebounds",
+        "vs_similar": 6.9,
+        "baseline": 7.4,
+        "change_pct": -7,
+        "label": "rebounds"
+       },
+       {
+        "stat": "assists",
+        "vs_similar": 5.7,
+        "baseline": 5.6,
+        "change_pct": 3,
+        "label": "assists"
+       },
+       {
+        "stat": "threes",
+        "vs_similar": 1.1,
+        "baseline": 1.0,
+        "change_pct": 4,
+        "label": "threes made"
+       },
+       {
+        "stat": "minutes",
+        "vs_similar": 34.0,
+        "baseline": 34.3,
+        "change_pct": -1,
+        "label": "minutes"
+       }
+      ]
+     }
+    },
+    {
+     "player_id": 4395724,
+     "name": "Immanuel Quickley",
+     "position": "G",
+     "headshot_url": "https://a.espncdn.com/i/headshots/nba/players/full/4395724.png",
+     "games_this_season": 8,
+     "vs_opponent_games": 12,
+     "recent_label": "Last 5",
+     "career_label": "Since 2022-23",
+     "stats": [
+      {
+       "stat": "points",
+       "label": "points",
+       "season": 17.4,
+       "recent": 17.0,
+       "career": 16.0,
+       "vs_opponent": 16.0
+      },
+      {
+       "stat": "rebounds",
+       "label": "rebounds",
+       "season": 3.5,
+       "recent": 4.0,
+       "career": 3.9,
+       "vs_opponent": 4.1
+      },
+      {
+       "stat": "assists",
+       "label": "assists",
+       "season": 5.8,
+       "recent": 6.2,
+       "career": 4.7,
+       "vs_opponent": 4.3
+      },
+      {
+       "stat": "threes",
+       "label": "threes made",
+       "season": 2.6,
+       "recent": 2.8,
+       "career": 2.4,
+       "vs_opponent": 2.2
+      },
+      {
+       "stat": "minutes",
+       "label": "minutes",
+       "season": 31.8,
+       "recent": 33.8,
+       "career": 29.5,
+       "vs_opponent": 31.2
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "date": "2024-01-15",
+       "team": "TOR",
+       "points": 21.0,
+       "rebounds": 6.0,
+       "assists": 3.0,
+       "threes": 2.0,
+       "minutes": 37.0
+      },
+      {
+       "date": "2025-02-25",
+       "team": "TOR",
+       "points": 10.0,
+       "rebounds": 6.0,
+       "assists": 7.0,
+       "threes": 0.0,
+       "minutes": 33.0
+      },
+      {
+       "date": "2025-12-07",
+       "team": "TOR",
+       "points": 11.0,
+       "rebounds": 1.0,
+       "assists": 5.0,
+       "threes": 0.0,
+       "minutes": 31.0
+      },
+      {
+       "date": "2025-12-20",
+       "team": "TOR",
+       "points": 3.0,
+       "rebounds": 4.0,
+       "assists": 7.0,
+       "threes": 1.0,
+       "minutes": 32.0
+      },
+      {
+       "date": "2026-01-09",
+       "team": "TOR",
+       "points": 17.0,
+       "rebounds": 2.0,
+       "assists": 13.0,
+       "threes": 4.0,
+       "minutes": 35.0
+      }
+     ],
+     "summary": "Immanuel Quickley: 17.4 points, 3.5 rebounds, and 5.8 assists per game this season (8 games). 12 games vs. BOS since 2022-23: 16.0 points per game, compared with 16.0 in all his games.",
+     "vs_similar": {
+      "games": 20,
+      "baseline_games": 227,
+      "stats": [
+       {
+        "stat": "points",
+        "vs_similar": 12.7,
+        "baseline": 16.1,
+        "change_pct": -21,
+        "label": "points"
+       },
+       {
+        "stat": "rebounds",
+        "vs_similar": 3.2,
+        "baseline": 4.0,
+        "change_pct": -20,
+        "label": "rebounds"
+       },
+       {
+        "stat": "assists",
+        "vs_similar": 5.2,
+        "baseline": 4.7,
+        "change_pct": 10,
+        "label": "assists"
+       },
+       {
+        "stat": "threes",
+        "vs_similar": 2.1,
+        "baseline": 2.4,
+        "change_pct": -11,
+        "label": "threes made"
+       },
+       {
+        "stat": "minutes",
+        "vs_similar": 29.2,
+        "baseline": 30.1,
+        "change_pct": -3,
+        "label": "minutes"
+       }
+      ]
+     }
+    },
+    {
+     "player_id": 4432241,
+     "name": "Jamal Shead",
+     "position": "G",
+     "headshot_url": "https://a.espncdn.com/i/headshots/nba/players/full/4432241.png",
+     "games_this_season": 10,
+     "vs_opponent_games": 8,
+     "recent_label": "Last 5",
+     "career_label": "Since 2022-23",
+     "stats": [
+      {
+       "stat": "points",
+       "label": "points",
+       "season": 7.4,
+       "recent": 9.6,
+       "career": 7.0,
+       "vs_opponent": 7.5
+      },
+      {
+       "stat": "rebounds",
+       "label": "rebounds",
+       "season": 2.1,
+       "recent": 2.2,
+       "career": 1.7,
+       "vs_opponent": 1.6
+      },
+      {
+       "stat": "assists",
+       "label": "assists",
+       "season": 7.0,
+       "recent": 9.0,
+       "career": 5.0,
+       "vs_opponent": 4.0
+      },
+      {
+       "stat": "threes",
+       "label": "threes made",
+       "season": 0.9,
+       "recent": 1.6,
+       "career": 1.0,
+       "vs_opponent": 1.2
+      },
+      {
+       "stat": "minutes",
+       "label": "minutes",
+       "season": 24.2,
+       "recent": 27.0,
+       "career": 21.7,
+       "vs_opponent": 21.9
+      }
+     ],
+     "vs_opponent_log": [
+      {
+       "date": "2025-02-25",
+       "team": "TOR",
+       "points": 6.0,
+       "rebounds": 2.0,
+       "assists": 6.0,
+       "threes": 0.0,
+       "minutes": 18.0
+      },
+      {
+       "date": "2025-12-07",
+       "team": "TOR",
+       "points": 9.0,
+       "rebounds": 4.0,
+       "assists": 3.0,
+       "threes": 1.0,
+       "minutes": 22.0
+      },
+      {
+       "date": "2025-12-20",
+       "team": "TOR",
+       "points": 6.0,
+       "rebounds": 3.0,
+       "assists": 2.0,
+       "threes": 2.0,
+       "minutes": 24.0
+      },
+      {
+       "date": "2026-01-09",
+       "team": "TOR",
+       "points": 13.0,
+       "rebounds": 1.0,
+       "assists": 8.0,
+       "threes": 3.0,
+       "minutes": 24.0
+      },
+      {
+       "date": "2026-04-05",
+       "team": "TOR",
+       "points": 7.0,
+       "rebounds": 1.0,
+       "assists": 5.0,
+       "threes": 1.0,
+       "minutes": 26.0
+      }
+     ],
+     "summary": "Jamal Shead: 7.4 points, 2.1 rebounds, and 7.0 assists per game this season (10 games). 8 games vs. BOS since 2022-23: 7.5 points per game, compared with 7.0 in all his games.",
+     "vs_similar": {
+      "games": 9,
+      "baseline_games": 92,
+      "stats": [
+       {
+        "stat": "points",
+        "vs_similar": 7.4,
+        "baseline": 6.7,
+        "change_pct": 11,
+        "label": "points"
+       },
+       {
+        "stat": "rebounds",
+        "vs_similar": 2.0,
+        "baseline": 1.8,
+        "change_pct": 12,
+        "label": "rebounds"
+       },
+       {
+        "stat": "assists",
+        "vs_similar": 4.1,
+        "baseline": 5.6,
+        "change_pct": -26,
+        "label": "assists"
+       },
+       {
+        "stat": "threes",
+        "vs_similar": 1.4,
+        "baseline": 1.0,
+        "change_pct": 43,
+        "label": "threes made"
+       },
+       {
+        "stat": "minutes",
+        "vs_similar": 24.6,
+        "baseline": 22.7,
+        "change_pct": 8,
+        "label": "minutes"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  "injuries": {
+   "available": true,
+   "away": {
+    "team": "BOS",
+    "statuses_published": true,
+    "updated": "2026-11-11T20:00Z",
+    "note": "Statuses and news from ESPN. Importance comes from minutes played this season.",
+    "players": [
+     {
+      "name": "Jayson Tatum",
+      "position": "F",
+      "injury": "Ankle",
+      "status": "Out",
+      "practice": null,
+      "news": "Jayson Tatum (ankle) is listed as out. (Test value.)",
+      "news_date": "2026-11-11T20:00Z",
+      "minutes_per_game": 33.6,
+      "importance": "Star",
+      "impact": {
+       "unit": "team",
+       "net_with": 9.7,
+       "net_without": 2.4,
+       "record_with": "24-8",
+       "record_without": "3-3",
+       "games_with": 32,
+       "games_without": 6,
+       "points_per_game": 3.6,
+       "raw_points_per_game": 7.1,
+       "small_sample": false,
+       "summary": "In 6 games Jayson Tatum missed since 2025-26, BOS went 3-3 and was about 3.6 points per game worse than with him (net rating +2.4 without him, +9.7 with; adjusted for sample size)."
+      }
+     }
+    ],
+    "headlines": [
+     "Jayson Tatum (F, star, Ankle): Out"
+    ],
+    "news_source": "ESPN"
+   },
+   "home": {
+    "team": "TOR",
+    "statuses_published": true,
+    "updated": "2026-11-11T20:00Z",
+    "note": "Statuses and news from ESPN. Importance comes from minutes played this season.",
+    "players": [
+     {
+      "name": "Ja'Kobe Walter",
+      "position": "G",
+      "injury": "Hamstring",
+      "status": "Day-To-Day",
+      "practice": null,
+      "news": "Ja'Kobe Walter (hamstring) is listed as day-to-day. (Test value.)",
+      "news_date": "2026-11-11T20:00Z",
+      "minutes_per_game": 29.6,
+      "importance": "Starter",
+      "impact": {
+       "unit": "team",
+       "net_with": 3.7,
+       "net_without": 3.0,
+       "record_with": "30-25",
+       "record_without": "4-3",
+       "games_with": 55,
+       "games_without": 7,
+       "points_per_game": 0.4,
+       "raw_points_per_game": 0.7,
+       "small_sample": false,
+       "summary": "In 7 games Ja'Kobe Walter missed since 2025-26, TOR went 4-3 and played about the same as with him (net rating +3.0 without him, +3.7 with; adjusted for sample size)."
+      }
+     }
+    ],
+    "headlines": [
+     "Ja'Kobe Walter (G, starter, Hamstring): Day-To-Day"
+    ],
+    "news_source": "ESPN"
+   }
+  },
+  "defense_styles": {
+   "away": {
+    "team": "BOS",
+    "based_on_season": 2027,
+    "traits": [
+     "lets opponents shoot lots of threes",
+     "protects the paint",
+     "plays at a slow pace"
+    ],
+    "neighbors": [
+     {
+      "team": "NO",
+      "season": 2024,
+      "traits": [
+       "lets opponents shoot lots of threes",
+       "protects the paint"
+      ]
+     },
+     {
+      "team": "OKC",
+      "season": 2027,
+      "traits": [
+       "protects the paint",
+       "contests shots well"
+      ]
+     },
+     {
+      "team": "NY",
+      "season": 2026,
+      "traits": [
+       "lets opponents shoot lots of threes",
+       "cleans the defensive glass"
+      ]
+     },
+     {
+      "team": "CHI",
+      "season": 2023,
+      "traits": [
+       "lets opponents shoot lots of threes",
+       "protects the paint"
+      ]
+     },
+     {
+      "team": "CHI",
+      "season": 2024,
+      "traits": [
+       "lets opponents shoot lots of threes",
+       "protects the paint"
+      ]
+     },
+     {
+      "team": "BOS",
+      "season": 2026,
+      "traits": [
+       "plays at a slow pace",
+       "protects the paint"
+      ]
+     },
+     {
+      "team": "MIA",
+      "season": 2024,
+      "traits": [
+       "cleans the defensive glass",
+       "plays at a slow pace"
+      ]
+     },
+     {
+      "team": "MIA",
+      "season": 2023,
+      "traits": [
+       "lets opponents shoot lots of threes",
+       "plays at a slow pace"
+      ]
+     }
+    ]
+   },
+   "home": {
+    "team": "TOR",
+    "based_on_season": 2027,
+    "traits": [
+     "forces lots of turnovers",
+     "sends opponents to the line",
+     "limits fast breaks"
+    ],
+    "neighbors": [
+     {
+      "team": "TOR",
+      "season": 2026,
+      "traits": [
+       "limits fast breaks",
+       "forces lots of turnovers"
+      ]
+     },
+     {
+      "team": "ATL",
+      "season": 2027,
+      "traits": [
+       "plays at a fast pace",
+       "forces lots of turnovers"
+      ]
+     },
+     {
+      "team": "OKC",
+      "season": 2023,
+      "traits": [
+       "gives up offensive rebounds",
+       "forces lots of turnovers"
+      ]
+     },
+     {
+      "team": "PHX",
+      "season": 2026,
+      "traits": [
+       "forces lots of turnovers",
+       "gives up offensive rebounds"
+      ]
+     },
+     {
+      "team": "MIN",
+      "season": 2023,
+      "traits": [
+       "sends opponents to the line",
+       "gives up offensive rebounds"
+      ]
+     },
+     {
+      "team": "TOR",
+      "season": 2025,
+      "traits": [
+       "sends opponents to the line",
+       "gives up offensive rebounds"
+      ]
+     },
+     {
+      "team": "IND",
+      "season": 2025,
+      "traits": [
+       "limits fast breaks",
+       "runs shooters off the three-point line"
+      ]
+     },
+     {
+      "team": "MEM",
+      "season": 2024,
+      "traits": [
+       "forces lots of turnovers",
+       "protects the paint"
+      ]
+     }
+    ]
+   }
+  },
+  "teams": {
+   "away": {
+    "team": "BOS",
+    "games": 11,
+    "record": "9-2",
+    "last10": "9-1",
+    "off_rtg": 116.4,
+    "def_rtg": 104.8,
+    "net_rtg": 11.6,
+    "net_rank": 1,
+    "pace": 99.4,
+    "pace_rank": 28,
+    "count": 30,
+    "offense": {
+     "overall": 4,
+     "shooting": 9,
+     "turnovers": 11,
+     "rebounding": 6,
+     "free_throws": 22
+    },
+    "defense": {
+     "overall": 6,
+     "shooting": 5,
+     "turnovers": 5,
+     "rebounding": 24,
+     "free_throws": 11
+    },
+    "four_factors": {
+     "efg": 55.0,
+     "tov_pct": 14.4,
+     "oreb_pct": 30.6,
+     "ft_rate": 0.209,
+     "opp_efg": 51.0,
+     "forced_tov_pct": 16.9,
+     "opp_oreb_pct": 28.8,
+     "opp_ft_rate": 0.208
+    }
+   },
+   "home": {
+    "team": "TOR",
+    "games": 10,
+    "record": "5-5",
+    "last10": "5-5",
+    "off_rtg": 112.5,
+    "def_rtg": 110.1,
+    "net_rtg": 2.4,
+    "net_rank": 13,
+    "pace": 103.6,
+    "pace_rank": 7,
+    "count": 30,
+    "offense": {
+     "overall": 11,
+     "shooting": 21,
+     "turnovers": 5,
+     "rebounding": 2,
+     "free_throws": 13
+    },
+    "defense": {
+     "overall": 14,
+     "shooting": 24,
+     "turnovers": 1,
+     "rebounding": 23,
+     "free_throws": 29
+    },
+    "four_factors": {
+     "efg": 52.2,
+     "tov_pct": 14.0,
+     "oreb_pct": 32.5,
+     "ft_rate": 0.222,
+     "opp_efg": 55.9,
+     "forced_tov_pct": 19.2,
+     "opp_oreb_pct": 28.5,
+     "opp_ft_rate": 0.296
+    }
+   }
+  },
+  "matchups": [
+   {
+    "unit": "overall",
+    "offense": "TOR",
+    "defense": "BOS",
+    "offense_rank": 11,
+    "defense_rank": 6,
+    "favors": null,
+    "strength": null,
+    "summary": "TOR's offense (11th) vs. BOS's defense (6th): even"
+   },
+   {
+    "unit": "shooting",
+    "offense": "TOR",
+    "defense": "BOS",
+    "offense_rank": 21,
+    "defense_rank": 5,
+    "favors": "BOS",
+    "strength": "big",
+    "summary": "TOR's shooting (21st) vs. BOS's shot defense (5th): big edge BOS"
+   },
+   {
+    "unit": "turnovers",
+    "offense": "TOR",
+    "defense": "BOS",
+    "offense_rank": 5,
+    "defense_rank": 5,
+    "favors": null,
+    "strength": null,
+    "summary": "TOR's ball security (5th) vs. BOS's turnover forcing (5th): even"
+   },
+   {
+    "unit": "rebounding",
+    "offense": "TOR",
+    "defense": "BOS",
+    "offense_rank": 2,
+    "defense_rank": 24,
+    "favors": "TOR",
+    "strength": "big",
+    "summary": "TOR's offensive rebounding (2nd) vs. BOS's defensive rebounding (24th): big edge TOR"
+   },
+   {
+    "unit": "free_throws",
+    "offense": "TOR",
+    "defense": "BOS",
+    "offense_rank": 13,
+    "defense_rank": 11,
+    "favors": null,
+    "strength": null,
+    "summary": "TOR's free-throw drawing (13th) vs. BOS's foul avoidance (11th): even"
+   },
+   {
+    "unit": "overall",
+    "offense": "BOS",
+    "defense": "TOR",
+    "offense_rank": 4,
+    "defense_rank": 14,
+    "favors": "BOS",
+    "strength": "slight",
+    "summary": "BOS's offense (4th) vs. TOR's defense (14th): slight edge BOS"
+   },
+   {
+    "unit": "shooting",
+    "offense": "BOS",
+    "defense": "TOR",
+    "offense_rank": 9,
+    "defense_rank": 24,
+    "favors": "BOS",
+    "strength": "slight",
+    "summary": "BOS's shooting (9th) vs. TOR's shot defense (24th): slight edge BOS"
+   },
+   {
+    "unit": "turnovers",
+    "offense": "BOS",
+    "defense": "TOR",
+    "offense_rank": 11,
+    "defense_rank": 1,
+    "favors": "TOR",
+    "strength": "slight",
+    "summary": "BOS's ball security (11th) vs. TOR's turnover forcing (1st): slight edge TOR"
+   },
+   {
+    "unit": "rebounding",
+    "offense": "BOS",
+    "defense": "TOR",
+    "offense_rank": 6,
+    "defense_rank": 23,
+    "favors": "BOS",
+    "strength": "big",
+    "summary": "BOS's offensive rebounding (6th) vs. TOR's defensive rebounding (23rd): big edge BOS"
+   },
+   {
+    "unit": "free_throws",
+    "offense": "BOS",
+    "defense": "TOR",
+    "offense_rank": 22,
+    "defense_rank": 29,
+    "favors": null,
+    "strength": null,
+    "summary": "BOS's free-throw drawing (22nd) vs. TOR's foul avoidance (29th): even"
+   }
+  ],
+  "key_matchups": [
+   "TOR's shooting (21st) vs. BOS's shot defense (5th): big edge BOS",
+   "TOR's offensive rebounding (2nd) vs. BOS's defensive rebounding (24th): big edge TOR",
+   "BOS's offensive rebounding (6th) vs. TOR's defensive rebounding (23rd): big edge BOS"
+  ],
+  "notes": []
+ },
+ "changes": {
+  "tracking_since": "2026-11-09T12:00:00+00:00",
+  "changes": [
+   {
+    "kind": "injury",
+    "text": "Jayson Tatum (BOS): Day-To-Day \u2192 Out",
+    "tone": "red",
+    "at": "2026-11-11T18:30:00+00:00"
+   },
+   {
+    "kind": "line",
+    "text": "Spread moved: -4.5 \u2192 -3.5",
+    "tone": "blue",
+    "at": "2026-11-11T15:00:00+00:00"
+   }
+  ]
+ }
+}

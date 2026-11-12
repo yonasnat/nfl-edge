@@ -14,8 +14,8 @@ export default function Methodology() {
     <div className="max-w-2xl">
       <h1 className="text-3xl font-black tracking-tight">Methodology</h1>
       <p className="mt-4 text-zinc-300">
-        NFL Edge lays out evidence; it doesn't make picks. Here's where every number comes from and how much to trust
-        it.
+        Edge lays out evidence for NFL and NBA games; it doesn't make picks. Here's where every number comes from and
+        how much to trust it.
       </p>
 
       <Section title="Efficiency (EPA per play)">
@@ -59,6 +59,40 @@ export default function Methodology() {
         </p>
       </Section>
 
+      <Section title="NBA: ratings and the Four Factors">
+        <p>
+          NBA teams are compared per 100 possessions, so a fast team and a slow team are measured on the same scale.
+          Possessions are estimated from the box score (shots, offensive rebounds, turnovers, and free throws).
+          Offensive and defensive ratings are points scored and allowed per 100 possessions; net rating is the
+          difference.
+        </p>
+        <p>
+          Matchups use the Four Factors, which explain most of why teams win: shooting (effective field-goal
+          percentage, which counts a three as 1.5 makes), turnovers per possession, offensive rebounding percentage,
+          and free throws per shot. Each offense is ranked against the defense it faces. Source: ESPN box scores via
+          sportsdataverse, since 2022-23.
+        </p>
+      </Section>
+
+      <Section title="NBA: rest, travel, and injuries">
+        <p>
+          For each team we count days of rest, back-to-backs, third games in four nights, miles traveled since the last
+          game, time zones crossed, road-trip length, and games in Denver or Salt Lake City. Each flag comes with how
+          teams in the same spot have done since 2022-23 (for example, teams on the second night of a back-to-back
+          against a rested opponent), with the number of games and a home-team baseline to compare against.
+        </p>
+        <p>
+          Injury impact works like the NFL version: his team's games since last season, split into games he played 20+
+          minutes and games he missed, compared by net rating and converted to points per game, then shrunk the same
+          way (n ÷ (n + 6)). Similar defenses use nine numbers per defense (rating allowed, shooting allowed, threes and
+          free throws allowed, turnovers forced, defensive rebounding, paint and fast-break points allowed, and pace).
+        </p>
+        <p>
+          The NBA history data has results but no betting lines, so NBA head-to-head shows wins, margins, and totals
+          rather than records against the spread. Tonight's lines come from ESPN.
+        </p>
+      </Section>
+
       <Section title="What changed">
         <p>
           Every 5 minutes the server rebuilds each briefing and saves a snapshot to a PostgreSQL database whenever an
@@ -71,15 +105,15 @@ export default function Methodology() {
       <Section title="Ask Edge">
         <p>
           Ask Edge is an AI agent built on Google Gemini. It can't see the internet. Instead it gets seven tools that
-          read this app's own data (injury report, a player's stats, defense styles, weather and travel, head-to-head,
-          recent changes, matchup ranks). It decides which to call, reads the results, and answers from them, listing
+          read this app's own data (injury report, a player's stats, defense styles, weather or rest and travel,
+          head-to-head, recent changes, matchup ranks), with a tool set and instructions for each league. It decides which to call, reads the results, and answers from them, listing
           what it looked up. It's instructed to cite sample sizes and never to give picks.
         </p>
       </Section>
 
       <Section title="How Ask Edge is tested">
         <p>
-          Every week an automated evaluation asks Ask Edge 42 questions about three frozen games, from injury impact
+          Every week an automated evaluation asks Ask Edge 62 questions about five frozen games (three NFL, two NBA), from injury impact
           to trick questions like "who should I bet on?" Plain code (not another AI) grades each answer: every number
           it states must appear in the data it looked up, it must never give a pick, it must cite sample sizes for
           historical comparisons, and it must say so when the app doesn't have something.
@@ -95,7 +129,7 @@ export default function Methodology() {
       </Section>
 
       <p className="mt-12 text-xs text-zinc-600">
-        Data: nflverse, ESPN, Open-Meteo. For research only; not betting advice.
+        Data: nflverse, ESPN, sportsdataverse, Open-Meteo. For research only; not betting advice.
       </p>
     </div>
   );

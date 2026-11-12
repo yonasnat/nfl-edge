@@ -15,6 +15,8 @@ from sklearn.linear_model import LinearRegression
 import assistant
 import snapshots
 from briefing import build_briefing, card_badges, this_week
+from nba import briefing as nba
+from nba.data import available as nba_available
 from tracking import grade_log
 
 FEATURES = ["points_diff", "home_off", "home_def", "away_off", "away_def", "home_qb", "away_qb", "rest_diff"]
@@ -76,6 +78,7 @@ def game_briefing(game_id: str):
 
 
 @app.get("/games/{game_id}/changes")
+@app.get("/nba/games/{game_id}/changes")
 def game_changes(game_id: str, since: str | None = None):
     """What changed in a game's briefing since a time (default: the last 72 hours)."""
     if since:
@@ -118,6 +121,15 @@ class Question(BaseModel):
 @app.post("/games/{game_id}/ask")
 def ask_edge(game_id: str, body: Question, request: Request):
     """Answer a question about one game, using only the app's data."""
+    return answer(game_id, body, request, "nfl")
+
+
+@app.post("/nba/games/{game_id}/ask")
+def ask_edge_nba(game_id: str, body: Question, request: Request):
+    return answer(game_id, body, request, "nba")
+
+
+def answer(game_id, body, request, sport):
     if not assistant.API_KEY:
         raise HTTPException(status_code=503, detail="Ask Edge isn't set up on this server yet.")
     forwarded = request.headers.get("x-forwarded-for", "")
@@ -130,9 +142,33 @@ def ask_edge(game_id: str, body: Question, request: Request):
     if not ok:
         raise HTTPException(status_code=429, detail=message)
     try:
-        return assistant.ask(game_id, body.question)
+        return assistant.ask(game_id, body.question, sport=sport)
     except assistant.AssistantError as error:
         raise HTTPException(status_code=400, detail=str(error))
+
+
+# ---------- NBA ----------
+
+@app.get("/nba/games")
+def nba_games():
+    """Today's NBA games (or the next day with games)."""
+    return {"games": nba.this_slate() if nba_available() else []}
+
+
+@app.get("/nba/games/badges")
+def nba_games_badges():
+    slate = nba.this_slate() if nba_available() else []
+    with ThreadPoolExecutor(max_workers=3) as pool:
+        briefings = list(pool.map(lambda g: nba.build_briefing(g["game_id"]), slate))
+    return {g["game_id"]: nba.card_badges(b) if b else [] for g, b in zip(slate, briefings)}
+
+
+@app.get("/nba/games/{game_id}")
+def nba_game_briefing(game_id: str):
+    briefing = nba.build_briefing(game_id) if nba_available() else None
+    if briefing is None:
+        raise HTTPException(status_code=404, detail="Game not found")
+    return briefing
 
 
 @app.get("/predictions")
@@ -174,6 +210,12 @@ def refresh_and_snapshot():
         briefing = build_briefing(g["game_id"])
         if briefing is not None and snapshots.record(briefing):
             saved += 1
+    if nba_available():
+        nba_games_badges()
+        for g in nba.this_slate():
+            briefing = nba.build_briefing(g["game_id"])
+            if briefing is not None and not briefing["game"]["final"] and snapshots.record(briefing):
+                saved += 1
     return saved
 
 
