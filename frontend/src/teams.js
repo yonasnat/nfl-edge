@@ -33,6 +33,40 @@ export const TEAMS = {
   WAS: { city: "Washington", name: "Commanders", color: "#7A1F1F" },
 };
 
-export function team(abbreviation) {
-  return TEAMS[abbreviation] ?? { city: "", name: abbreviation, color: "#52525b" };
+export const NBA_TEAMS = {
+  ATL: { city: "Atlanta", name: "Hawks", color: "#C8102E" },
+  BKN: { city: "Brooklyn", name: "Nets", color: "#3F3F46" },
+  BOS: { city: "Boston", name: "Celtics", color: "#008348" },
+  CHA: { city: "Charlotte", name: "Hornets", color: "#008CA8" },
+  CHI: { city: "Chicago", name: "Bulls", color: "#CE1141" },
+  CLE: { city: "Cleveland", name: "Cavaliers", color: "#860038" },
+  DAL: { city: "Dallas", name: "Mavericks", color: "#0064B1" },
+  DEN: { city: "Denver", name: "Nuggets", color: "#1D4E89" },
+  DET: { city: "Detroit", name: "Pistons", color: "#1D428A" },
+  GS: { city: "Golden State", name: "Warriors", color: "#1D428A" },
+  HOU: { city: "Houston", name: "Rockets", color: "#CE0E2D" },
+  IND: { city: "Indiana", name: "Pacers", color: "#1E4A7A" },
+  LAC: { city: "LA", name: "Clippers", color: "#C8102E" },
+  LAL: { city: "Los Angeles", name: "Lakers", color: "#552583" },
+  MEM: { city: "Memphis", name: "Grizzlies", color: "#5D76A9" },
+  MIA: { city: "Miami", name: "Heat", color: "#98002E" },
+  MIL: { city: "Milwaukee", name: "Bucks", color: "#00471B" },
+  MIN: { city: "Minnesota", name: "Timberwolves", color: "#266092" },
+  NO: { city: "New Orleans", name: "Pelicans", color: "#1F4E79" },
+  NY: { city: "New York", name: "Knicks", color: "#F58426" },
+  OKC: { city: "Oklahoma City", name: "Thunder", color: "#007AC1" },
+  ORL: { city: "Orlando", name: "Magic", color: "#0150B5" },
+  PHI: { city: "Philadelphia", name: "76ers", color: "#1D428A" },
+  PHX: { city: "Phoenix", name: "Suns", color: "#E56020" },
+  POR: { city: "Portland", name: "Trail Blazers", color: "#E03A3E" },
+  SAC: { city: "Sacramento", name: "Kings", color: "#5A2D81" },
+  SA: { city: "San Antonio", name: "Spurs", color: "#6B7280" },
+  TOR: { city: "Toronto", name: "Raptors", color: "#D91244" },
+  UTAH: { city: "Utah", name: "Jazz", color: "#4E008E" },
+  WSH: { city: "Washington", name: "Wizards", color: "#E31837" },
+};
+
+export function team(abbreviation, sport = "nfl") {
+  const teams = sport === "nba" ? NBA_TEAMS : TEAMS;
+  return teams[abbreviation] ?? { city: "", name: abbreviation, color: "#52525b" };
 }

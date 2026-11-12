@@ -10,7 +10,7 @@ on:
         required: false
         default: ""
       limit:
-        description: "Only ask the first N questions (blank = all 42)"
+        description: "Only ask the first N questions (blank = all 62)"
         required: false
         default: ""
 

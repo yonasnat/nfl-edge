@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { team } from "../../teams";
+import { SPORTS, useSport } from "../../sport";
 import { Badge, Card, SampleSize } from "../ui";
 
-const STATUS_TONE = { Out: "red", Doubtful: "orange", Questionable: "yellow" };
+const STATUS_TONE = { Out: "red", Doubtful: "orange", Questionable: "yellow", "Day-To-Day": "yellow" };
 const SUFFIXES = ["jr", "sr", "ii", "iii", "iv", "v"];
 
 // Simplified name for matching across data sources: "Chris Godwin Jr." -> "chris godwin"
@@ -45,7 +46,7 @@ function SimilarStrip({ vs, opponent }) {
   );
 }
 
-function PlayerCard({ p, opponent, status }) {
+function PlayerCard({ p, opponent, status, since }) {
   return (
     <Card>
       <div className="flex items-center gap-3">
@@ -60,7 +61,7 @@ function PlayerCard({ p, opponent, status }) {
             {STATUS_TONE[status] && <Badge tone={STATUS_TONE[status]}>{status}</Badge>}
           </div>
           <div className="text-xs text-zinc-500">
-            {p.position} · {p.games_this_season} games this season
+            {p.position ?? "–"} · {p.games_this_season} games this season
           </div>
         </div>
       </div>
@@ -70,8 +71,8 @@ function PlayerCard({ p, opponent, status }) {
           <tr className="text-xs text-zinc-500">
             <th className="py-1 text-left font-medium">Per game</th>
             <th className="text-right font-medium">Season</th>
-            <th className="text-right font-medium">Last 3</th>
-            <th className="text-right font-medium">Career</th>
+            <th className="text-right font-medium">{p.recent_label ?? "Last 3"}</th>
+            <th className="text-right font-medium">{p.career_label ?? "Career"}</th>
             <th className="text-right font-medium">vs {opponent}</th>
           </tr>
         </thead>
@@ -80,7 +81,7 @@ function PlayerCard({ p, opponent, status }) {
             <tr key={s.stat} className="border-t border-zinc-800">
               <td className="py-1.5 text-zinc-300">{s.label}</td>
               <td className="text-right tabular-nums">{show(s.season)}</td>
-              <td className="text-right tabular-nums">{show(s.last3)}</td>
+              <td className="text-right tabular-nums">{show(s.recent ?? s.last3)}</td>
               <td className="text-right tabular-nums text-zinc-400">{show(s.career)}</td>
               <td className="text-right tabular-nums">{show(s.vs_opponent)}</td>
             </tr>
@@ -95,7 +96,7 @@ function PlayerCard({ p, opponent, status }) {
         {p.vs_opponent_games ? (
           <SampleSize games={p.vs_opponent_games} />
         ) : (
-          <span>hasn't faced them since 2015</span>
+          <span>hasn't faced them {since}</span>
         )}
       </div>
     </Card>
@@ -103,6 +104,7 @@ function PlayerCard({ p, opponent, status }) {
 }
 
 export default function Players({ players, game, injuries }) {
+  const sport = useSport();
   const [side, setSide] = useState("away");
   const list = players?.[side] ?? [];
   const opponent = side === "away" ? game.home : game.away;
@@ -126,13 +128,19 @@ export default function Players({ players, game, injuries }) {
               side === s ? "bg-zinc-100 text-zinc-900" : "text-zinc-400 hover:text-white"
             }`}
           >
-            {team(game[s]).name}
+            {team(game[s], sport).name}
           </button>
         ))}
       </div>
       <div className="mt-3 grid gap-3 md:grid-cols-2">
         {list.map((p) => (
-          <PlayerCard key={p.player_id} p={p} opponent={opponent} status={statusByName[nameKey(p.name)]} />
+          <PlayerCard
+            key={p.player_id}
+            p={p}
+            opponent={opponent}
+            status={statusByName[nameKey(p.name)]}
+            since={SPORTS[sport].since}
+          />
         ))}
       </div>
     </>

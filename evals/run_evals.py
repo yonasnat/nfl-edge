@@ -52,7 +52,8 @@ def run(limit=None):
     cases = json.loads((ROOT / "questions.json").read_text())[:limit]
     fixtures = load_fixtures()
     # The "what changed" tool reads the live database; evals use the frozen feed instead
-    assistant.changes_since = lambda game_id, since: fixtures[game_id]["changes"]
+    by_game = {f["briefing"]["game"]["game_id"]: f for f in fixtures.values()}
+    assistant.changes_since = lambda game_id, since: by_game[game_id]["changes"]
 
     rows = []
     for i, case in enumerate(cases, 1):
@@ -62,7 +63,10 @@ def run(limit=None):
         trace = {}
         started = time.time()
         try:
-            result = assistant.ask(case["game"], case["question"], briefing=briefing, trace=trace, use_cache=False)
+            result = assistant.ask(
+                case["game"], case["question"], briefing=briefing, trace=trace, use_cache=False,
+                sport=fixtures[case["game"]].get("sport", "nfl"),
+            )
         except assistant.AssistantError as error:
             rows.append({**case, "error": str(error), "seconds": round(time.time() - started, 2)})
             print(f"[{i:2}/{len(cases)}] {case['id']} ERROR {error}", flush=True)

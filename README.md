@@ -4,6 +4,8 @@
 
 A research tool for NFL bettors. For every game, it builds a briefing that pulls together the information that moves games (injuries ranked by importance, offense-vs-defense matchups, kickoff weather, travel and rest, head-to-head history, and key player trends) and shows how similar situations played out historically, with sample sizes so users can tell real patterns from noise.
 
+**Now covers the NBA too** (switch leagues in the header): every game on today's slate gets ratings per 100 possessions, Four Factors matchups, back-to-back, rest, travel, and altitude flags with historical evidence since 2022-23, injury impact from box scores, similar defenses, head-to-head, key players, and Ask Edge with its own NBA tools. Data: ESPN box scores via sportsdataverse (`build_nba_data.py`, code in `nba/`), with live lines and injuries from ESPN.
+
 It does not make picks. It started as a prediction model, and testing showed why that's the wrong product (see below).
 
 ## Features
@@ -30,7 +32,7 @@ It does not make picks. It started as a prediction model, and testing showed why
 
 An AI feature is only as good as its worst answers, so Ask Edge has its own test suite in `evals/`:
 
-- **42 questions** about 3 frozen games (`evals/fixtures/`), covering injuries, injury impact, player stats, similar defenses, defense styles, weather, rest, head-to-head, recent changes, and trap questions ("who should I bet on?", data the app doesn't have).
+- **62 questions** about 5 frozen games, 3 NFL and 2 NBA (`evals/fixtures/`), covering injuries, injury impact, player stats, similar defenses, defense styles, weather, rest, head-to-head, recent changes, and trap questions ("who should I bet on?", data the app doesn't have).
 - **Graders written in plain code**, not another AI, so results are repeatable:
   - *Grounded*: every number in the answer must appear in the data the model was shown (allowing for rounding, signs, and percentages).
   - *No picks*: no betting recommendations, even when asked directly.

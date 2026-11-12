@@ -81,19 +81,22 @@ def this_week():
     return [game_info(row) for row in games.iter_rows(named=True)]
 
 
-def compare(offense, defense, unit, key, off_name, def_name, profiles):
-    """Compare one offensive unit to the defensive unit it faces."""
+def compare(offense, defense, unit, key, off_name, def_name, profiles, big=12, slight=6):
+    """Compare one offensive unit to the defensive unit it faces.
+
+    big and slight are how many rank spots apart the two units must be to call an edge.
+    """
     off_rank = profiles[offense][f"off_{key}_rank"]
     def_rank = profiles[defense][f"def_{key}_rank"]
     gap = def_rank - off_rank   # positive: the offense is ranked better than the defense
 
-    if gap >= 12:
+    if gap >= big:
         favors, strength = offense, "big"
-    elif gap >= 6:
+    elif gap >= slight:
         favors, strength = offense, "slight"
-    elif gap <= -12:
+    elif gap <= -big:
         favors, strength = defense, "big"
-    elif gap <= -6:
+    elif gap <= -slight:
         favors, strength = defense, "slight"
     else:
         favors, strength = None, None

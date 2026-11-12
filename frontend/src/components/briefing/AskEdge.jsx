@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { postJson } from "../../api";
+import { SPORTS, useSport } from "../../sport";
 import { Card } from "../ui";
 
 const TOOL_LABEL = {
@@ -8,11 +9,20 @@ const TOOL_LABEL = {
   get_player: "Player stats",
   get_defense_style: "Defense styles",
   get_conditions: "Weather & travel",
+  get_rest_and_travel: "Rest & travel",
   get_head_to_head: "Head-to-head",
   get_recent_changes: "What changed",
 };
 
-function suggestions(game) {
+function suggestions(game, sport) {
+  if (sport === "nba") {
+    return [
+      `Who is injured for ${game.home}, and how has the team done without them?`,
+      "Is either team on a back-to-back, and how do teams usually do in that spot?",
+      `How does ${game.away}'s defense play, and which defenses is it most like?`,
+      "Where does either team have a big matchup edge?",
+    ];
+  }
   return [
     `Who is injured for ${game.home}, and how has the team done without them?`,
     `How does ${game.away}'s defense play, and which defenses is it most like?`,
@@ -65,6 +75,7 @@ function Working() {
 }
 
 export default function AskEdge({ game }) {
+  const sport = useSport();
   const [question, setQuestion] = useState("");
   const [history, setHistory] = useState([]);
   const [busy, setBusy] = useState(false);
@@ -75,7 +86,7 @@ export default function AskEdge({ game }) {
     if (!q || busy) return;
     setBusy(true);
     setError(null);
-    postJson(`/games/${game.game_id}/ask`, { question: q })
+    postJson(`${SPORTS[sport].api}/games/${game.game_id}/ask`, { question: q })
       .then((result) => {
         setHistory((h) => [{ question: q, ...result }, ...h]);
         setQuestion("");
@@ -111,7 +122,7 @@ export default function AskEdge({ game }) {
 
       {history.length === 0 && !busy && (
         <div className="mt-3 flex flex-wrap gap-2">
-          {suggestions(game).map((s) => (
+          {suggestions(game, sport).map((s) => (
             <button
               key={s}
               onClick={() => ask(s)}

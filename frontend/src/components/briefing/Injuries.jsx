@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { team } from "../../teams";
+import { useSport } from "../../sport";
 import { timeAgo } from "../../format";
 import TeamChip from "../TeamChip";
 import { Badge, Card } from "../ui";
 
-const STATUS_TONE = { Out: "red", Doubtful: "orange", Questionable: "yellow", Active: "green" };
-const GAME_STATUSES = ["Out", "Doubtful", "Questionable"];
+const STATUS_TONE = { Out: "red", Doubtful: "orange", Questionable: "yellow", "Day-To-Day": "yellow", Probable: "green", Active: "green" };
+const GAME_STATUSES = ["Out", "Doubtful", "Questionable", "Day-To-Day"];
+const KEY_ROLES = ["Starting QB", "Star", "Starter"];
 
 function practiceLabel(practice) {
   if (!practice) return "No status";
@@ -16,17 +18,16 @@ function practiceLabel(practice) {
 }
 
 function TeamInjuries({ report }) {
+  const sport = useSport();
   const [showAll, setShowAll] = useState(false);
-  const notable = report.players.filter(
-    (p) => GAME_STATUSES.includes(p.status) || ["Starting QB", "Starter"].includes(p.importance)
-  );
+  const notable = report.players.filter((p) => GAME_STATUSES.includes(p.status) || KEY_ROLES.includes(p.importance));
   const shown = showAll ? report.players : notable;
 
   return (
     <Card>
       <div className="flex items-center gap-2">
         <TeamChip abbr={report.team} size="sm" />
-        <h3 className="font-bold">{team(report.team).name}</h3>
+        <h3 className="font-bold">{team(report.team, sport).name}</h3>
         <span className="ml-auto text-xs text-zinc-500">{report.players.length} listed</span>
       </div>
       <p className="mt-2 text-xs text-zinc-500">{report.note}</p>
@@ -42,6 +43,7 @@ function TeamInjuries({ report }) {
                 <span className="text-xs text-zinc-500">
                   {p.position}
                   {p.injury ? ` · ${p.injury}` : ""}
+                  {p.minutes_per_game ? ` · ${p.minutes_per_game} min/game` : ""}
                 </span>
                 <span className="ml-auto flex gap-1.5">
                   {p.importance !== "Unknown" && <Badge>{p.importance}</Badge>}

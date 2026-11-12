@@ -26,19 +26,19 @@ function when(iso) {
   return new Date(iso).toLocaleString([], { weekday: "short", hour: "numeric", minute: "2-digit" });
 }
 
-export default function Changes({ gameId }) {
+export default function Changes({ gameId, api = "" }) {
   const [state, setState] = useState({ loading: true });
 
   useEffect(() => {
     const lastVisit = readLastVisit(gameId);
     const query = lastVisit ? `?since=${encodeURIComponent(lastVisit)}` : "";
-    getJson(`/games/${gameId}/changes${query}`)
+    getJson(`${api}/games/${gameId}/changes${query}`)
       .then((data) => {
         setState({ data, lastVisit });
         saveVisit(gameId);
       })
       .catch(() => setState({ error: true }));
-  }, [gameId]);
+  }, [gameId, api]);
 
   if (state.loading || state.error) return null;
   const { data, lastVisit } = state;

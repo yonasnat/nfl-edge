@@ -234,7 +234,7 @@ def retry_delay(text, default=10, floor=5, cap=30):
     return max(floor, min(int(match.group(1)), cap)) if match else default
 
 
-def call_model(contents, system):
+def call_model(contents, system, tools=None):
     """One generateContent call, retrying and falling back to lighter models if Google is overloaded.
 
     Returns (response JSON, model that answered).
@@ -252,7 +252,7 @@ def call_model(contents, system):
                 time.sleep(delay)
             already_waited = False
             try:
-                return call_once(model, contents, system), model
+                return call_once(model, contents, system, tools), model
             except requests.Timeout as error:
                 print(f"Gemini {model} timed out; retrying", flush=True)
                 last_error = error
@@ -294,7 +294,7 @@ def call_model(contents, system):
 _no_thinking_setting = set()  # models that rejected the thinking setting
 
 
-def call_once(model, contents, system):
+def call_once(model, contents, system, tools=None):
     config = {"temperature": 0.2, "maxOutputTokens": 1024}
     if THINKING_LEVEL and model not in _no_thinking_setting:
         config["thinkingConfig"] = {"thinkingLevel": THINKING_LEVEL}
@@ -305,7 +305,7 @@ def call_once(model, contents, system):
         json={
             "systemInstruction": {"parts": [{"text": system}]},
             "contents": contents,
-            "tools": [{"functionDeclarations": TOOLS}],
+            "tools": [{"functionDeclarations": tools or TOOLS}],
             "generationConfig": config,
         },
         timeout=60,
@@ -315,7 +315,7 @@ def call_once(model, contents, system):
     # Older models don't know thinkingLevel; remember that and ask again without it
     if response.status_code == 400 and "thinking" in response.text.lower() and "thinkingConfig" in config:
         _no_thinking_setting.add(model)
-        return call_once(model, contents, system)
+        return call_once(model, contents, system, tools)
     response.raise_for_status()
     return response.json()
 
@@ -324,7 +324,23 @@ class AssistantError(Exception):
     pass
 
 
-def ask(game_id, question, briefing=None, trace=None, use_cache=True):
+SPORTS = ("nfl", "nba")
+
+
+def sport_setup(sport):
+    """(system prompt, tools, tool runner, summary, briefing builder) for a sport."""
+    if sport == "nba":
+        from nba import assistant_tools as nba
+        from nba.briefing import build_briefing as build_nba
+
+        def run_nba(name, args, briefing):
+            return nba.run_tool(name, args, briefing, lambda game_id: changes_since(game_id, default_since()))
+
+        return nba.SYSTEM, nba.TOOLS, run_nba, nba.summary, build_nba
+    return SYSTEM, TOOLS, run_tool, summary, build_briefing
+
+
+def ask(game_id, question, briefing=None, trace=None, use_cache=True, sport="nfl"):
     """Answer a question about a game. Returns {answer, tools_used, model}.
 
     For evaluations: `briefing` supplies a frozen briefing instead of building a live one,
@@ -343,21 +359,22 @@ def ask(game_id, question, briefing=None, trace=None, use_cache=True):
         return {**saved, "cached": True}
 
     started = time.time()
-    briefing = briefing or build_briefing(game_id)
+    system_text, tools, run, summarize, build = sport_setup(sport)
+    briefing = briefing or build(game_id)
     if briefing is None:
         raise AssistantError("Game not found.")
     game = briefing["game"]
-    system = SYSTEM.format(away=game["away"], home=game["home"], game_id=game_id)
+    system = system_text.format(away=game["away"], home=game["home"], game_id=game_id)
 
-    opening = f"Game summary:\n{json.dumps(summary(briefing), default=str)}\n\nQuestion: {question}"
+    opening = f"Game summary:\n{json.dumps(summarize(briefing), default=str)}\n\nQuestion: {question}"
     contents = [{"role": "user", "parts": [{"text": opening}]}]
     if trace is not None:
-        trace.update(opening=opening, system=system, tools=json.dumps(TOOLS), tool_results=[], model_calls=0)
+        trace.update(opening=opening, system=system, tools=json.dumps(tools), tool_results=[], model_calls=0)
     tools_used = []
     answered_by = MODEL
     for _ in range(MAX_ROUNDS):
         try:
-            data, answered_by = call_model(contents, system)
+            data, answered_by = call_model(contents, system, tools)
             if trace is not None:
                 trace["model_calls"] += 1
         except Overloaded:
@@ -408,7 +425,7 @@ def ask(game_id, question, briefing=None, trace=None, use_cache=True):
         for call in calls:
             name, args = call.get("name"), call.get("args") or {}
             tools_used.append({"tool": name, "args": args})
-            result = run_tool(name, args, briefing)
+            result = run(name, args, briefing)
             if trace is not None:
                 trace["tool_results"].append({"tool": name, "args": args, "result": result})
             results.append({"functionResponse": {"name": name, "response": {"result": json.loads(json.dumps(result, default=str))}}})
