@@ -166,3 +166,21 @@ def test_nba_api(monkeypatch):
     assert briefing["injuries"]["available"] is False  # ESPN unreachable
     assert {"facts", "flags", "evidence"} <= set(briefing["situation"])
     assert len(briefing["players"]["home"]) <= 5
+
+
+def test_opening_line_from_espn_odds():
+    odds = {"pointSpread": {"home": {"open": {"line": "+2.5"}}}, "total": {"over": {"open": {"line": "o221.5"}}}}
+    assert live.opening_line(odds) == {"spread": -2.5, "total": 221.5}
+    assert live.opening_line({}) is None
+
+
+@needs_data
+def test_player_numbers_only_use_games_before_this_one():
+    from nba.players import key_players
+
+    cutoff = date(2026, 11, 5)
+    cards = key_players("BOS", "TOR", cutoff)
+    assert cards
+    for card in cards:
+        assert all(entry["date"] < str(cutoff) for entry in card["game_log"])
+        assert len(card["game_log"]) <= 10

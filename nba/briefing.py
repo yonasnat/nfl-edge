@@ -58,6 +58,7 @@ def game_info(row, scores=None):
         "spread_line": now.get("spread_line"),
         "total_line": now.get("total_line"),
         "line_source": now.get("line_source"),
+        "opening_line": now.get("opening"),
     }
 
 
@@ -105,7 +106,7 @@ def build_briefing(game_id):
         "weather": None,
         "situation": situation({**game, "date": row["date"], "start": row["start"]}),
         "head_to_head": head_to_head(away, home),
-        "players": {"away": key_players(away, home), "home": key_players(home, away)},
+        "players": {"away": key_players(away, home, row["date"]), "home": key_players(home, away, row["date"])},
         "injuries": injuries(game),
         "defense_styles": {"away": similar_defenses(away), "home": similar_defenses(home)},
         "teams": None,

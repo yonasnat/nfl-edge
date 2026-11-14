@@ -110,3 +110,24 @@ def test_without_unpooled_url_schema_uses_the_pooled_one(monkeypatch):
     with pytest.raises(RuntimeError):
         snapshots.setup()
     assert used == ["postgresql://pooled"]
+
+
+def test_line_history_keeps_only_line_changes():
+    snapshots.record(briefing(spread=-3.0), T0)
+    snapshots.record(briefing(spread=-3.0, status="Out"), T0 + timedelta(hours=1))  # not a line change
+    snapshots.record(briefing(spread=-4.5, status="Out"), T0 + timedelta(hours=2))
+    lines = snapshots.line_history("G1", "ATL", "CIN")
+    assert [p["spread"] for p in lines["points"]] == [-3.0, -4.5]
+    assert lines["spread"]["moved"] == -1.5 and lines["total"]["moved"] == 0
+    assert lines["summary"].startswith("Spread CIN -3 → CIN -4.5; Total steady at 48.5 since we started tracking")
+
+
+def test_line_history_starts_from_the_opening_line():
+    snapshots.record(briefing(spread=2.0), T0)
+    lines = snapshots.line_history("G1", "ATL", "CIN", {"spread": -1.0, "total": 47.0})
+    assert lines["points"][0]["opening"] and lines["points"][0]["at"] is None
+    assert "Spread CIN -1 → ATL -2" in lines["summary"] and "since it opened" in lines["summary"]
+
+
+def test_no_lines_yet():
+    assert snapshots.line_history("nothing", "ATL", "CIN") == {"points": [], "summary": "No betting lines recorded yet."}

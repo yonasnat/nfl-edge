@@ -93,6 +93,24 @@ def game_changes(game_id: str, since: str | None = None):
     return snapshots.changes_since(game_id, since_time)
 
 
+@app.get("/games/{game_id}/lines")
+def game_lines(game_id: str):
+    """How the spread and total have moved, from the snapshots we've saved."""
+    return lines_for(build_briefing(game_id))
+
+
+@app.get("/nba/games/{game_id}/lines")
+def nba_game_lines(game_id: str):
+    return lines_for(nba.build_briefing(game_id) if nba_available() else None)
+
+
+def lines_for(briefing):
+    if briefing is None:
+        raise HTTPException(status_code=404, detail="Game not found")
+    game = briefing["game"]
+    return snapshots.line_history(game["game_id"], game["home"], game["away"], game.get("opening_line"))
+
+
 @app.get("/evals")
 def eval_results():
     """The latest Ask Edge evaluation: scores per check, plus the questions that failed."""

@@ -35,11 +35,12 @@ TEAM = {"type": "string", "description": "Team abbreviation, e.g. BOS or GS"}
 TOOLS = [
     tool("get_game_overview", "Tip-off, arena, betting lines, each team's record, offensive/defensive/net ratings, pace, Four Factors ranks, and unit-vs-unit matchup edges."),
     tool("get_injuries", "Injury report for one team or both: status, minutes per game, news, and how the team played in games each injured player missed.", {"team": TEAM}),
-    tool("get_player", "A key player's per-game points, rebounds, assists, threes, and minutes: this season, last 5 games, since 2022-23, vs. this opponent, and vs. defenses similar to this opponent.", {"name": {"type": "string", "description": "Player name"}}, ["name"]),
+    tool("get_player", "A key player's per-game points, rebounds, assists, threes, and minutes: this season, last 5 games, since 2022-23, vs. this opponent, vs. defenses similar to this opponent, and a game-by-game log of his recent games before this one.", {"name": {"type": "string", "description": "Player name"}}, ["name"]),
     tool("get_defense_style", "What makes a team's defense distinctive, and the defenses since 2022-23 that play most like it.", {"team": TEAM}, ["team"]),
     tool("get_rest_and_travel", "Each team's rest days, back-to-backs, travel miles, road-trip length, and altitude, with how teams in the same spots have done since 2022-23."),
     tool("get_head_to_head", "Every meeting between these two teams since 2022-23, playoffs included."),
     tool("get_recent_changes", "What changed in the last 72 hours: injury statuses and betting lines."),
+    tool("get_line_movement", "Every spread and total the app has recorded for this game (and the opening line when ESPN has it), with times, and how far each has moved."),
 ]
 
 

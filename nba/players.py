@@ -9,6 +9,7 @@ STATS = [("points", "points"), ("rebounds", "rebounds"), ("assists", "assists"),
 COLUMNS = [c for c, _ in STATS]
 LABELS = dict(STATS)
 PER_TEAM = 5
+LOG_GAMES = 10
 RECENT = 5
 SINCE = f"since {season_label(FIRST_SEASON)}"
 
@@ -83,6 +84,15 @@ def player_card(games, player_id, opponent, neighbors=None):
         ],
         "summary": summary,
         "vs_similar": vs_similar,
+        "game_log": [
+            {
+                "label": f"{r['date'].strftime('%b')} {r['date'].day}",
+                "date": str(r["date"]),
+                "opponent": r["opponent"],
+                **{c: r[c] for c in COLUMNS},
+            }
+            for r in this_season.tail(LOG_GAMES).iter_rows(named=True)
+        ],
     }
 
 
@@ -101,8 +111,11 @@ def roster_minutes(games, team, season):
     )
 
 
-def key_players(team, opponent):
+def key_players(team, opponent, before=None):
+    """Each team's five biggest minutes-getters, using only games played before `before` (a date)."""
     games = load_player_games()
+    if before is not None:
+        games = games.filter(pl.col("date") < before)
     top = roster_minutes(games, team, SEASON)
     if top.height == 0:
         top = roster_minutes(games, team, SEASON - 1)
