@@ -17,7 +17,7 @@ import requests
 import env  # noqa: F401  (loads .env.local / .env before reading settings)
 from briefing import build_briefing
 from names import name_key
-from snapshots import changes_since, default_since
+from snapshots import changes_since, default_since, line_history
 
 API_KEY = os.environ.get("GEMINI_API_KEY")
 # "-latest" aliases always point at Google's current Flash models, so the app keeps working
@@ -72,12 +72,18 @@ TEAM = {"type": "string", "description": "Team abbreviation, e.g. BUF or KC"}
 TOOLS = [
     tool("get_game_overview", "Kickoff, stadium, betting lines, team efficiency ranks, and unit-vs-unit matchup edges."),
     tool("get_injuries", "Injury report for one team or both: status, practice, snap share, news, and how the team played without each injured starter.", {"team": TEAM}),
-    tool("get_player", "A player's per-game stats this season, last 3 games, career, vs. this opponent, and vs. defenses similar to this opponent.", {"name": {"type": "string", "description": "Player name"}}, ["name"]),
+    tool("get_player", "A player's per-game stats this season, last 3 games, career, vs. this opponent, vs. defenses similar to this opponent, and a game-by-game log of his recent games before this one.", {"name": {"type": "string", "description": "Player name"}}, ["name"]),
     tool("get_defense_style", "What makes a team's defense distinctive, and the defenses since 2022 that play most like it.", {"team": TEAM}, ["team"]),
     tool("get_conditions", "Kickoff weather forecast, travel, rest, time zones, and historical results in similar conditions."),
     tool("get_head_to_head", "Every meeting between these two teams since 2015."),
     tool("get_recent_changes", "What changed in the last 72 hours: injury statuses, forecast, lines, starting quarterbacks."),
+    tool("get_line_movement", "Every spread and total the app has recorded for this game, with times, and how far each has moved."),
 ]
+
+
+def lines_for(game):
+    """The game's line movement (a function, so evals can swap in frozen data)."""
+    return line_history(game["game_id"], game["home"], game["away"], game.get("opening_line"))
 
 
 # ---------- Tools: each one reads from the briefing we already build ----------
@@ -133,6 +139,9 @@ def run_tool(name, args, briefing):
 
     if name == "get_recent_changes":
         return changes_since(game["game_id"], default_since())
+
+    if name == "get_line_movement":
+        return lines_for(game)
 
     return {"error": f"Unknown tool {name}"}
 
@@ -334,6 +343,8 @@ def sport_setup(sport):
         from nba.briefing import build_briefing as build_nba
 
         def run_nba(name, args, briefing):
+            if name == "get_line_movement":
+                return lines_for(briefing["game"])
             return nba.run_tool(name, args, briefing, lambda game_id: changes_since(game_id, default_since()))
 
         return nba.SYSTEM, nba.TOOLS, run_nba, nba.summary, build_nba

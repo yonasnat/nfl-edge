@@ -12,6 +12,7 @@ const TOOL_LABEL = {
   get_rest_and_travel: "Rest & travel",
   get_head_to_head: "Head-to-head",
   get_recent_changes: "What changed",
+  get_line_movement: "Line movement",
 };
 
 function suggestions(game, sport) {

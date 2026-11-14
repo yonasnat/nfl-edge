@@ -14,11 +14,13 @@ import History from "../components/briefing/History";
 import Changes from "../components/briefing/Changes";
 import AskEdge from "../components/briefing/AskEdge";
 import DefenseStyles from "../components/briefing/DefenseStyles";
+import LineMovement from "../components/briefing/LineMovement";
 
 function sections(sport) {
   return [
     ["overview", "At a glance"],
     ["ask", "Ask Edge"],
+    ["lines", "Lines"],
     ["injuries", "Injuries"],
     ["matchup", "Matchup"],
     ["players", "Players"],
@@ -205,6 +207,13 @@ export default function Game() {
           <AskEdge game={game} />
         </>
       )}
+
+      <SectionHeading
+        id="lines"
+        title="Line movement"
+        subtitle="How the spread and total have moved, and when. Hover or tap a point for the time."
+      />
+      <LineMovement game={game} api={s.api} />
 
       <SectionHeading id="injuries" title="Injuries" subtitle="Ranked by status, then by how much each player plays." />
       <Injuries injuries={data.injuries} />

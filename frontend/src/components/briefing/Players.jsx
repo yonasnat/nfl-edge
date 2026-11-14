@@ -2,6 +2,7 @@ import { useState } from "react";
 import { team } from "../../teams";
 import { SPORTS, useSport } from "../../sport";
 import { Badge, Card, SampleSize } from "../ui";
+import { GameBars } from "../charts";
 
 const STATUS_TONE = { Out: "red", Doubtful: "orange", Questionable: "yellow", "Day-To-Day": "yellow" };
 const SUFFIXES = ["jr", "sr", "ii", "iii", "iv", "v"];
@@ -43,6 +44,66 @@ function SimilarStrip({ vs, opponent }) {
         <SampleSize games={vs.games} />
       </div>
     </div>
+  );
+}
+
+// Game by game, up to (not including) this game, for any of his stats
+function GameLog({ p }) {
+  const [stat, setStat] = useState(p.stats[0]?.stat);
+  const log = p.game_log ?? [];
+  if (log.length === 0) return null;
+  const current = p.stats.find((s) => s.stat === stat) ?? p.stats[0];
+  return (
+    <details className="mt-3 rounded-lg bg-zinc-800/30 p-2.5">
+      <summary className="cursor-pointer text-xs font-semibold text-zinc-300">
+        Game log: last {log.length} {log.length === 1 ? "game" : "games"} before this one
+      </summary>
+      <div className="mt-2 flex flex-wrap gap-1">
+        {p.stats.map((s) => (
+          <button
+            key={s.stat}
+            onClick={() => setStat(s.stat)}
+            className={`rounded-full px-2 py-0.5 text-[11px] font-semibold transition ${
+              s.stat === current.stat ? "bg-zinc-100 text-zinc-900" : "bg-zinc-800 text-zinc-400 hover:text-white"
+            }`}
+          >
+            {s.label}
+          </button>
+        ))}
+      </div>
+      <div className="mt-2">
+        <GameBars games={log} stat={current.stat} average={current.season} label={`${p.name}: ${current.label} by game`} />
+      </div>
+      <p className="mt-1 text-[11px] text-zinc-500">
+        Dashed line: season average ({show(current.season)} {current.label}).
+      </p>
+      <table className="mt-2 w-full text-xs">
+        <thead>
+          <tr className="text-zinc-500">
+            <th className="py-1 text-left font-medium">Game</th>
+            {p.stats.map((s) => (
+              <th key={s.stat} className="text-right font-medium">
+                {s.label}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {[...log].reverse().map((g, i) => (
+            <tr key={i} className="border-t border-zinc-800">
+              <td className="py-1 text-zinc-400">
+                {g.label} vs {g.opponent}
+              </td>
+              {p.stats.map((s) => (
+                <td key={s.stat} className="text-right tabular-nums">
+                  {show(g[s.stat])}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </details>
   );
 }
 
@@ -90,6 +151,7 @@ function PlayerCard({ p, opponent, status, since }) {
       </table>
 
       <SimilarStrip vs={p.vs_similar} opponent={opponent} />
+      <GameLog p={p} />
 
       <div className="mt-3 flex items-center gap-2 text-xs text-zinc-500">
         <span>vs {opponent}:</span>

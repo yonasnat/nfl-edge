@@ -175,8 +175,8 @@ def build_briefing(game_id):
     conditions = situation(game)
     history = head_to_head(away, home)
     players = {
-        "away": key_players(away, home, starting_qb(schedule, away, row)),
-        "home": key_players(home, away, starting_qb(schedule, home, row)),
+        "away": key_players(away, home, starting_qb(schedule, away, row), game["week"]),
+        "home": key_players(home, away, starting_qb(schedule, home, row), game["week"]),
     }
     injury_report = injuries(game)
     profiles = load_profiles()

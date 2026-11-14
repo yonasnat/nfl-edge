@@ -54,6 +54,9 @@ def run(limit=None):
     # The "what changed" tool reads the live database; evals use the frozen feed instead
     by_game = {f["briefing"]["game"]["game_id"]: f for f in fixtures.values()}
     assistant.changes_since = lambda game_id, since: by_game[game_id]["changes"]
+    assistant.lines_for = lambda game: by_game[game["game_id"]].get(
+        "lines", {"points": [], "summary": "No line history recorded for this game."}
+    )
 
     rows = []
     for i, case in enumerate(cases, 1):

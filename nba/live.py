@@ -41,6 +41,22 @@ def spread_from_details(details, home, away):
     return None
 
 
+def number(text):
+    try:
+        return float(str(text).lstrip("ou").replace("+", ""))
+    except (TypeError, ValueError):
+        return None
+
+
+def opening_line(odds):
+    """The book's opening spread (home team's expected margin) and total, when ESPN includes them."""
+    home_open = (((odds.get("pointSpread") or {}).get("home") or {}).get("open") or {}).get("line")
+    total_open = (((odds.get("total") or {}).get("over") or {}).get("open") or {}).get("line")
+    spread = number(home_open)
+    opening = {"spread": None if spread is None else -spread, "total": number(total_open)}
+    return opening if opening["spread"] is not None or opening["total"] is not None else None
+
+
 def parse_scoreboard(data):
     """{game_id: live facts} from a scoreboard response."""
     games = {}
@@ -69,6 +85,7 @@ def parse_scoreboard(data):
             "spread_line": spread_from_details(odds.get("details"), home, away),
             "total_line": odds.get("overUnder"),
             "line_source": (odds.get("provider") or {}).get("name"),
+            "opening": opening_line(odds),
         }
     return games
 

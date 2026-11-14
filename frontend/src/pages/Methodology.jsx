@@ -102,11 +102,24 @@ export default function Methodology() {
         </p>
       </Section>
 
+      <Section title="Line movement and game logs">
+        <p>
+          The same 5-minute snapshots record every change to a game's spread and total, so each game shows how its lines
+          have moved and when. For NBA games, ESPN's opening line is the first point when ESPN provides it. Lines are
+          shown as a step chart because a line holds until the book moves it.
+        </p>
+        <p>
+          Player cards include a game-by-game log. Every player number on a game's page (season averages, recent
+          games, the log) uses only games played before that game, so a finished game's page shows what was known going
+          into it.
+        </p>
+      </Section>
+
       <Section title="Ask Edge">
         <p>
-          Ask Edge is an AI agent built on Google Gemini. It can't see the internet. Instead it gets seven tools that
+          Ask Edge is an AI agent built on Google Gemini. It can't see the internet. Instead it gets eight tools that
           read this app's own data (injury report, a player's stats, defense styles, weather or rest and travel,
-          head-to-head, recent changes, matchup ranks), with a tool set and instructions for each league. It decides which to call, reads the results, and answers from them, listing
+          head-to-head, recent changes, line movement, matchup ranks), with a tool set and instructions for each league. It decides which to call, reads the results, and answers from them, listing
           what it looked up. It's instructed to cite sample sizes and never to give picks.
         </p>
       </Section>

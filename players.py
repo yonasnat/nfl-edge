@@ -116,12 +116,26 @@ def player_card(games, player_id, position, opponent, neighbors=None):
         "vs_opponent_log": vs_games,
         "summary": summary,
         "vs_similar": vs_similar,
+        "game_log": [
+            {"label": f"Wk {r['week']}", "opponent": r["opponent_team"], **{c: r[c] for c in columns}}
+            for r in this_season.tail(LOG_GAMES).iter_rows(named=True)
+        ],
     }
 
 
-def key_players(team, opponent, qb_id=None):
-    """The starting QB plus the most-used RBs, WRs, and TE on a team this season."""
-    games = load_player_games()
+LOG_GAMES = 8
+
+
+def before_game(games, week):
+    """Only games played before this one, so every number is what was known going into it."""
+    if week is None:
+        return games
+    return games.filter((pl.col("season") < SEASON) | (pl.col("week") < week))
+
+
+def key_players(team, opponent, qb_id=None, week=None):
+    """The starting QB plus the most-used RBs, WRs, and TE on a team this season, as of before `week`."""
+    games = before_game(load_player_games(), week)
     season = games.filter(pl.col("season") == SEASON)
 
     # Only players whose most recent game this season was for this team (handles trades)
